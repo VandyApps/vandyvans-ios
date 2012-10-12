@@ -2,10 +2,10 @@
 SPEC CHECKSUMS: 
   AFNetworking: 8ebc0d45f8753337f280a427c6b9b707e2eecc94
 
+DEPENDENCIES: 
+- AFNetworking
+
 COCOAPODS: 0.15.1
 
 PODS: 
 - AFNetworking (1.0)
-
-DEPENDENCIES: 
-- AFNetworking

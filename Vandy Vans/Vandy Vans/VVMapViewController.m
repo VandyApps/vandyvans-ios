@@ -10,18 +10,13 @@
 
 @interface VVMapViewController ()
 
+@property (weak, nonatomic) IBOutlet MKMapView *vanMapView;
+
 @end
 
 @implementation VVMapViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+@synthesize vanMapView = _vanMapView;
 
 - (void)viewDidLoad
 {
