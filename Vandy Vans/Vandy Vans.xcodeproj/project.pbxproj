@@ -22,8 +22,9 @@
 		2D34C584162718C500F170CA /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D34C583162718C500F170CA /* first@2x.png */; };
 		2D34C589162718C500F170CA /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D34C588162718C500F170CA /* second.png */; };
 		2D34C58B162718C500F170CA /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D34C58A162718C500F170CA /* second@2x.png */; };
-		2D34C59316271A9100F170CA /* VVArrivalTimeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D34C59216271A9100F170CA /* VVArrivalTimeTableViewController.m */; };
+		2D34C59316271A9100F170CA /* VVStopTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D34C59216271A9100F170CA /* VVStopTableViewController.m */; };
 		2D34C59616271B8600F170CA /* VVMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D34C59516271B8600F170CA /* VVMapViewController.m */; };
+		2DDDB2F8165DBAA5007077E9 /* VVArrivalTimeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DDDB2F7165DBAA5007077E9 /* VVArrivalTimeTableViewController.m */; };
 		2DFBB37D1627A68600EBE7EA /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DFBB37C1627A68600EBE7EA /* MapKit.framework */; };
 		809D88CC0AAF4B31A477FF7E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA171022C5534BA0B4C4AA79 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -48,10 +49,12 @@
 		2D34C583162718C500F170CA /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
 		2D34C588162718C500F170CA /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
 		2D34C58A162718C500F170CA /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
-		2D34C59116271A9100F170CA /* VVArrivalTimeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVArrivalTimeTableViewController.h; sourceTree = "<group>"; };
-		2D34C59216271A9100F170CA /* VVArrivalTimeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVArrivalTimeTableViewController.m; sourceTree = "<group>"; };
+		2D34C59116271A9100F170CA /* VVStopTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVStopTableViewController.h; sourceTree = "<group>"; };
+		2D34C59216271A9100F170CA /* VVStopTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVStopTableViewController.m; sourceTree = "<group>"; };
 		2D34C59416271B8600F170CA /* VVMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVMapViewController.h; sourceTree = "<group>"; };
 		2D34C59516271B8600F170CA /* VVMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVMapViewController.m; sourceTree = "<group>"; };
+		2DDDB2F6165DBAA5007077E9 /* VVArrivalTimeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVArrivalTimeTableViewController.h; sourceTree = "<group>"; };
+		2DDDB2F7165DBAA5007077E9 /* VVArrivalTimeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVArrivalTimeTableViewController.m; sourceTree = "<group>"; };
 		2DFBB37C1627A68600EBE7EA /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		ADCAEF1C8A2C492EB2B3961B /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		BA171022C5534BA0B4C4AA79 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,8 +115,10 @@
 				2D34C59416271B8600F170CA /* VVMapViewController.h */,
 				2D34C59516271B8600F170CA /* VVMapViewController.m */,
 				2D34C57B162718C500F170CA /* MainStoryboard_iPad.storyboard */,
-				2D34C59116271A9100F170CA /* VVArrivalTimeTableViewController.h */,
-				2D34C59216271A9100F170CA /* VVArrivalTimeTableViewController.m */,
+				2D34C59116271A9100F170CA /* VVStopTableViewController.h */,
+				2DDDB2F6165DBAA5007077E9 /* VVArrivalTimeTableViewController.h */,
+				2DDDB2F7165DBAA5007077E9 /* VVArrivalTimeTableViewController.m */,
+				2D34C59216271A9100F170CA /* VVStopTableViewController.m */,
 				2D34C581162718C500F170CA /* first.png */,
 				2D34C583162718C500F170CA /* first@2x.png */,
 				2D34C588162718C500F170CA /* second.png */,
@@ -229,8 +234,9 @@
 			files = (
 				2D34C56D162718C500F170CA /* main.m in Sources */,
 				2D34C571162718C500F170CA /* VVAppDelegate.m in Sources */,
-				2D34C59316271A9100F170CA /* VVArrivalTimeTableViewController.m in Sources */,
+				2D34C59316271A9100F170CA /* VVStopTableViewController.m in Sources */,
 				2D34C59616271B8600F170CA /* VVMapViewController.m in Sources */,
+				2DDDB2F8165DBAA5007077E9 /* VVArrivalTimeTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

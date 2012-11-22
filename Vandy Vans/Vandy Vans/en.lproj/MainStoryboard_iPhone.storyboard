@@ -4,16 +4,49 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1929"/>
     </dependencies>
     <scenes>
-        <!--Arrival Time Table View Controller - Arrival Times-->
+        <!--Stop Table View Controller - Stops-->
         <scene sceneID="WTh-7D-lsP">
             <objects>
-                <tableViewController id="GDS-oA-9Qw" customClass="VVArrivalTimeTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="5VZ-li-d7t">
-                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
+                <tableViewController id="GDS-oA-9Qw" customClass="VVStopTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="5VZ-li-d7t">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Stop" id="Op1-Mc-lMv">
+                                <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="10" y="1" width="280" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <connections>
+                                    <segue destination="YGa-rX-jM2" kind="push" id="7Di-BC-NYA"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="GDS-oA-9Qw" id="eUU-4f-l5a"/>
+                            <outlet property="delegate" destination="GDS-oA-9Qw" id="S8V-O1-Mxy"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Stops" id="V72-qO-SMk"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pfd-46-dPL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1181" y="434"/>
+        </scene>
+        <!--Arrival Time Table View Controller-->
+        <scene sceneID="Fwi-FB-9Ay">
+            <objects>
+                <tableViewController id="YGa-rX-jM2" customClass="VVArrivalTimeTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="bIc-7v-ehB">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Op1-Mc-lMv">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="yBi-Y3-9zd">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -24,15 +57,15 @@
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="GDS-oA-9Qw" id="eUU-4f-l5a"/>
-                            <outlet property="delegate" destination="GDS-oA-9Qw" id="S8V-O1-Mxy"/>
+                            <outlet property="dataSource" destination="YGa-rX-jM2" id="PhR-hz-vMg"/>
+                            <outlet property="delegate" destination="YGa-rX-jM2" id="ReY-q2-trV"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Arrival Times" image="second" id="uTk-V3-NQU"/>
+                    <navigationItem key="navigationItem" id="LUJ-OY-y9p"/>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pfd-46-dPL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xxc-cU-GGn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="655" y="434"/>
+            <point key="canvasLocation" x="1612" y="434"/>
         </scene>
         <!--Map View Controller - Live Bus Map-->
         <scene sceneID="s48-ky-5d3">
@@ -73,12 +106,31 @@
                     </tabBar>
                     <connections>
                         <segue destination="5wh-qK-Mbq" kind="relationship" relationship="viewControllers" id="mkr-a7-sdw"/>
-                        <segue destination="GDS-oA-9Qw" kind="relationship" relationship="viewControllers" id="kmj-eX-wMF"/>
+                        <segue destination="7Lf-VM-cST" kind="relationship" relationship="viewControllers" id="kmj-eX-wMF"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rZc-IV-1ut" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="95" y="-84"/>
+        </scene>
+        <!--Navigation Controller - Arrival Times-->
+        <scene sceneID="oUe-XE-ayK">
+            <objects>
+                <navigationController id="7Lf-VM-cST" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Arrival Times" image="second" id="uTk-V3-NQU"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xeS-id-DXJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="GDS-oA-9Qw" kind="relationship" relationship="rootViewController" id="aVD-A7-byX"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M8S-b9-DOc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="655" y="434"/>
         </scene>
     </scenes>
     <resources>
@@ -97,6 +149,9 @@
             <relationships>
                 <relationship kind="outlet" name="vanMapView" candidateClass="MKMapView"/>
             </relationships>
+        </class>
+        <class className="VVStopTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/VVStopTableViewController.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
