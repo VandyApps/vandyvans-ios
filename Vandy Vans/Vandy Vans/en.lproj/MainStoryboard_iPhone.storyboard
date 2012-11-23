@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1929"/>
     </dependencies>
     <scenes>
-        <!--Stop Table View Controller - Stops-->
+        <!--Stop Table View Controller-->
         <scene sceneID="WTh-7D-lsP">
             <objects>
                 <tableViewController id="GDS-oA-9Qw" customClass="VVStopTableViewController" sceneMemberID="viewController">
@@ -14,7 +14,7 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Stop" id="Op1-Mc-lMv">
-                                <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                                <rect key="frame" x="0.0" y="46" width="320" height="45"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="10" y="1" width="280" height="43"/>
@@ -22,7 +22,19 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <segue destination="YGa-rX-jM2" kind="push" id="7Di-BC-NYA"/>
+                                    <segue destination="YGa-rX-jM2" kind="push" identifier="ArrivalTimesFromStops" id="7Di-BC-NYA"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OtherStops" id="MLR-GW-SPl">
+                                <rect key="frame" x="0.0" y="91" width="320" height="45"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="10" y="0.0" width="280" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <connections>
+                                    <segue destination="nOG-jv-e0L" kind="push" identifier="OtherStopsFromStops" id="SMx-cw-RKZ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -31,11 +43,44 @@
                             <outlet property="delegate" destination="GDS-oA-9Qw" id="S8V-O1-Mxy"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Stops" id="V72-qO-SMk"/>
+                    <navigationItem key="navigationItem" id="V72-qO-SMk"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pfd-46-dPL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1181" y="434"/>
+            <point key="canvasLocation" x="1174" y="394"/>
+        </scene>
+        <!--Stop Table View Controller - Other Stops-->
+        <scene sceneID="6tp-h8-66G">
+            <objects>
+                <tableViewController id="nOG-jv-e0L" customClass="VVStopTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="6xf-oD-l1A">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Stop" id="cpo-jF-G6j">
+                                <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="10" y="1" width="280" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <connections>
+                                    <segue destination="YGa-rX-jM2" kind="push" identifier="ArrivalTimesFromStops" id="uTP-je-CRm"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="nOG-jv-e0L" id="DIE-AJ-wWy"/>
+                            <outlet property="delegate" destination="nOG-jv-e0L" id="dzN-WC-eBN"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Other Stops" id="XeU-SX-SF1"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZRm-O6-jKP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1666" y="720"/>
         </scene>
         <!--Arrival Time Table View Controller-->
         <scene sceneID="Fwi-FB-9Ay">
@@ -65,7 +110,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xxc-cU-GGn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1612" y="434"/>
+            <point key="canvasLocation" x="2080" y="46"/>
         </scene>
         <!--Map View Controller - Live Bus Map-->
         <scene sceneID="s48-ky-5d3">
@@ -113,11 +158,11 @@
             </objects>
             <point key="canvasLocation" x="95" y="-84"/>
         </scene>
-        <!--Navigation Controller - Arrival Times-->
+        <!--Navigation Controller - Stops-->
         <scene sceneID="oUe-XE-ayK">
             <objects>
                 <navigationController id="7Lf-VM-cST" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Arrival Times" image="second" id="uTk-V3-NQU"/>
+                    <tabBarItem key="tabBarItem" title="Stops" image="second" id="uTk-V3-NQU"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="xeS-id-DXJ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -159,4 +204,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="7Di-BC-NYA"/>
+    </inferredMetricsTieBreakers>
 </document>

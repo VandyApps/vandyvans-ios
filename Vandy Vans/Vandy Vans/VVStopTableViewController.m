@@ -7,6 +7,7 @@
 //
 
 #import "VVStopTableViewController.h"
+#import "VVArrivalTimeTableViewController.h"
 
 @interface VVStopTableViewController ()
 
@@ -20,7 +21,12 @@
 
 - (NSArray *)stops {
     if (!_stops) {
-        _stops = @[@"Branscomb Quad", @"Carmichael Towers", @"Murray House", @"Highland Quad", @"Other Routes"];
+        if ([self.title isEqualToString:@"Stops"]) {
+            _stops = @[@"Branscomb Quad", @"Carmichael Towers", @"Murray House", @"Highland Quad", @"Other Stops"];
+        } else {
+            _stops = @[@"Vanderbilt Police Department", @"Vanderbilt Book Store", @"Kissam Quad", @"Terrace Place Garage",
+                @"Wesley Place Garage", @"North House", @"Blair School of Music", @"McGugin Center", @"Blakemore House"];
+        }
     }
     return _stops;
 }
@@ -28,15 +34,24 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    
+    if (!self.title) {
+        self.title = @"Stops";
+    }
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"ArrivalTimesFromStops"]) {
+        ((VVArrivalTimeTableViewController *)segue.destinationViewController).title = ((UITableViewCell *)sender).textLabel.text;
+    } else if ([segue.identifier isEqualToString:@"OtherStopsFromStops"]) {
+        ((VVStopTableViewController *)segue.destinationViewController).title = @"Other Stops";
+    }
 }
 
 #pragma mark - Table View Data Source
@@ -48,24 +63,21 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Stop";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    static NSString *OtherCellIdentifier = @"OtherStops";
+    UITableViewCell *cell;
+    
+    if ([self.title isEqualToString:@"Stops"]) {
+        // If this is the Stops table view, check to see which cell is being retrieved. If it is not the last one, return
+        // a normal stop cell. If it is, return the cell for "Other Stops".
+        cell = (indexPath.row != (self.stops.count - 1)) ? [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath] : [tableView dequeueReusableCellWithIdentifier:OtherCellIdentifier forIndexPath:indexPath];
+    } else {
+        // If it is not the Stops table view, just return the next cell as normal.
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    }
     
     cell.textLabel.text = [self.stops objectAtIndex:indexPath.row];
     
     return cell;
-}
-
-#pragma mark - Table View Delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
 }
 
 @end
