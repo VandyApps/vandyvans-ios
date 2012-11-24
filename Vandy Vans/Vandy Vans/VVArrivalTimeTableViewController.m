@@ -7,11 +7,12 @@
 //
 
 #import "VVArrivalTimeTableViewController.h"
+#import "VVArrivalTime.h"
 
 @interface VVArrivalTimeTableViewController ()
 
 @property (nonatomic) NSUInteger stopID;
-@property (strong, nonatomic) NSDictionary *arrivalTimes;
+@property (strong, nonatomic) NSOrderedSet *arrivalTimes;
 
 @end
 
@@ -56,6 +57,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [VVArrivalTime arrivalTimesForStopID:self.stopID stopName:self.title withBlock:^(NSArray *arrivalTimes) {
+        self.arrivalTimes = [NSOrderedSet orderedSetWithArray:arrivalTimes];
+    }];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -69,11 +74,9 @@
 
 #pragma mark - Table View Data Source
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-#warning Incomplete method implementation.
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return 0;
+    return self.arrivalTimes.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
