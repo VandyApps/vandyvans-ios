@@ -26,6 +26,8 @@
 		2D34C59616271B8600F170CA /* VVMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D34C59516271B8600F170CA /* VVMapViewController.m */; };
 		2D5BE9FC16609B4300CEFFA3 /* VVAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5BE9FB16609B4300CEFFA3 /* VVAPIClient.m */; };
 		2D5BE9FF1660A5A000CEFFA3 /* VVArrivalTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5BE9FE1660A5A000CEFFA3 /* VVArrivalTime.m */; };
+		2DB065A8166177D20077AAB4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DB065A7166177D20077AAB4 /* SystemConfiguration.framework */; };
+		2DB065AA166177DA0077AAB4 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DB065A9166177DA0077AAB4 /* MobileCoreServices.framework */; };
 		2DDDB2F8165DBAA5007077E9 /* VVArrivalTimeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DDDB2F7165DBAA5007077E9 /* VVArrivalTimeTableViewController.m */; };
 		2DFBB37D1627A68600EBE7EA /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DFBB37C1627A68600EBE7EA /* MapKit.framework */; };
 		809D88CC0AAF4B31A477FF7E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA171022C5534BA0B4C4AA79 /* libPods.a */; };
@@ -59,6 +61,8 @@
 		2D5BE9FB16609B4300CEFFA3 /* VVAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVAPIClient.m; sourceTree = "<group>"; };
 		2D5BE9FD1660A5A000CEFFA3 /* VVArrivalTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVArrivalTime.h; sourceTree = "<group>"; };
 		2D5BE9FE1660A5A000CEFFA3 /* VVArrivalTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVArrivalTime.m; sourceTree = "<group>"; };
+		2DB065A7166177D20077AAB4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		2DB065A9166177DA0077AAB4 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		2DDDB2F6165DBAA5007077E9 /* VVArrivalTimeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVArrivalTimeTableViewController.h; sourceTree = "<group>"; };
 		2DDDB2F7165DBAA5007077E9 /* VVArrivalTimeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVArrivalTimeTableViewController.m; sourceTree = "<group>"; };
 		2DFBB37C1627A68600EBE7EA /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -71,6 +75,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DB065AA166177DA0077AAB4 /* MobileCoreServices.framework in Frameworks */,
+				2DB065A8166177D20077AAB4 /* SystemConfiguration.framework in Frameworks */,
 				2DFBB37D1627A68600EBE7EA /* MapKit.framework in Frameworks */,
 				2D34C561162718C500F170CA /* UIKit.framework in Frameworks */,
 				2D34C563162718C500F170CA /* Foundation.framework in Frameworks */,
@@ -103,6 +109,8 @@
 		2D34C55F162718C400F170CA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2DB065A9166177DA0077AAB4 /* MobileCoreServices.framework */,
+				2DB065A7166177D20077AAB4 /* SystemConfiguration.framework */,
 				2DFBB37C1627A68600EBE7EA /* MapKit.framework */,
 				2D34C560162718C400F170CA /* UIKit.framework */,
 				2D34C562162718C500F170CA /* Foundation.framework */,
@@ -115,6 +123,7 @@
 		2D34C566162718C500F170CA /* Vandy Vans */ = {
 			isa = PBXGroup;
 			children = (
+				2D34C578162718C500F170CA /* MainStoryboard_iPhone.storyboard */,
 				2D5BE9FA16609B4300CEFFA3 /* VVAPIClient.h */,
 				2D5BE9FB16609B4300CEFFA3 /* VVAPIClient.m */,
 				2D34C56F162718C500F170CA /* VVAppDelegate.h */,
@@ -123,7 +132,6 @@
 				2D5BE9FE1660A5A000CEFFA3 /* VVArrivalTime.m */,
 				2DDDB2F6165DBAA5007077E9 /* VVArrivalTimeTableViewController.h */,
 				2DDDB2F7165DBAA5007077E9 /* VVArrivalTimeTableViewController.m */,
-				2D34C578162718C500F170CA /* MainStoryboard_iPhone.storyboard */,
 				2D34C59416271B8600F170CA /* VVMapViewController.h */,
 				2D34C59516271B8600F170CA /* VVMapViewController.m */,
 				2D34C57B162718C500F170CA /* MainStoryboard_iPad.storyboard */,
