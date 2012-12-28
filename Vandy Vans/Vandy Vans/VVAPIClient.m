@@ -9,7 +9,7 @@
 #import "VVAPIClient.h"
 #import "AFJSONRequestOperation.h"
 
-static NSString * const kVVAPIBaseURLString = @"http://api.synchromatics.com/";
+static NSString * const kVVAPIBaseURLString = @"http://api.syncromatics.com/";
 
 @implementation VVAPIClient
 

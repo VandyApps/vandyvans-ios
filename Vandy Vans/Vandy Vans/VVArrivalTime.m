@@ -8,6 +8,7 @@
 
 #import "VVArrivalTime.h"
 #import "VVAPIClient.h"
+#import <SVProgressHUD/SVProgressHUD.h>
 
 @implementation VVArrivalTime
 

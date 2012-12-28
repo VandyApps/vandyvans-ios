@@ -8,6 +8,7 @@
 
 #import "VVArrivalTimeTableViewController.h"
 #import "VVArrivalTime.h"
+#import <SVProgressHUD/SVProgressHUD.h>
 
 @interface VVArrivalTimeTableViewController ()
 
@@ -58,9 +59,16 @@
 {
     [super viewDidLoad];
     
-    [VVArrivalTime arrivalTimesForStopID:self.stopID stopName:self.title withBlock:^(NSArray *arrivalTimes) {
-        self.arrivalTimes = [NSOrderedSet orderedSetWithArray:arrivalTimes];
-    }];
+    NSDateComponents *currentDateComponents = [[NSCalendar currentCalendar] components:NSHourCalendarUnit fromDate:[NSDate date]];
+    
+    if (currentDateComponents.hour > 5 && currentDateComponents.hour < 17) {
+        UIAlertView *vansNotRunningAlertView = [[UIAlertView alloc] initWithTitle:@"Vandy Vans Unavailable" message:@"The Vandy Vans are not currently running. Please try again after 5 PM." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [vansNotRunningAlertView show];
+    } else {
+        [VVArrivalTime arrivalTimesForStopID:self.stopID stopName:self.title withBlock:^(NSArray *arrivalTimes) {
+            self.arrivalTimes = [NSOrderedSet orderedSetWithArray:arrivalTimes];
+        }];
+    }
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
