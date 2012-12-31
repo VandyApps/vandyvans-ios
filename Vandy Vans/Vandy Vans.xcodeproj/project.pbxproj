@@ -16,7 +16,6 @@
 		2D34C573162718C500F170CA /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D34C572162718C500F170CA /* Default.png */; };
 		2D34C575162718C500F170CA /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D34C574162718C500F170CA /* Default@2x.png */; };
 		2D34C577162718C500F170CA /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D34C576162718C500F170CA /* Default-568h@2x.png */; };
-		2D34C57A162718C500F170CA /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D34C578162718C500F170CA /* MainStoryboard_iPhone.storyboard */; };
 		2D34C57D162718C500F170CA /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D34C57B162718C500F170CA /* MainStoryboard_iPad.storyboard */; };
 		2D34C582162718C500F170CA /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D34C581162718C500F170CA /* first.png */; };
 		2D34C584162718C500F170CA /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D34C583162718C500F170CA /* first@2x.png */; };
@@ -24,6 +23,7 @@
 		2D34C58B162718C500F170CA /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D34C58A162718C500F170CA /* second@2x.png */; };
 		2D34C59316271A9100F170CA /* VVStopTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D34C59216271A9100F170CA /* VVStopTableViewController.m */; };
 		2D34C59616271B8600F170CA /* VVMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D34C59516271B8600F170CA /* VVMapViewController.m */; };
+		2D4D009A168E5A6E00F0BF67 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D4D0098168E5A6E00F0BF67 /* MainStoryboard_iPhone.storyboard */; };
 		2D5BE9FC16609B4300CEFFA3 /* VVAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5BE9FB16609B4300CEFFA3 /* VVAPIClient.m */; };
 		2D5BE9FF1660A5A000CEFFA3 /* VVArrivalTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5BE9FE1660A5A000CEFFA3 /* VVArrivalTime.m */; };
 		2DB065A8166177D20077AAB4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DB065A7166177D20077AAB4 /* SystemConfiguration.framework */; };
@@ -47,7 +47,6 @@
 		2D34C572162718C500F170CA /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		2D34C574162718C500F170CA /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		2D34C576162718C500F170CA /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		2D34C579162718C500F170CA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		2D34C57C162718C500F170CA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		2D34C581162718C500F170CA /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
 		2D34C583162718C500F170CA /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
@@ -57,6 +56,7 @@
 		2D34C59216271A9100F170CA /* VVStopTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVStopTableViewController.m; sourceTree = "<group>"; };
 		2D34C59416271B8600F170CA /* VVMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVMapViewController.h; sourceTree = "<group>"; };
 		2D34C59516271B8600F170CA /* VVMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVMapViewController.m; sourceTree = "<group>"; };
+		2D4D0099168E5A6E00F0BF67 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		2D5BE9FA16609B4300CEFFA3 /* VVAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVAPIClient.h; sourceTree = "<group>"; };
 		2D5BE9FB16609B4300CEFFA3 /* VVAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVAPIClient.m; sourceTree = "<group>"; };
 		2D5BE9FD1660A5A000CEFFA3 /* VVArrivalTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVArrivalTime.h; sourceTree = "<group>"; };
@@ -123,7 +123,7 @@
 		2D34C566162718C500F170CA /* Vandy Vans */ = {
 			isa = PBXGroup;
 			children = (
-				2D34C578162718C500F170CA /* MainStoryboard_iPhone.storyboard */,
+				2D4D0098168E5A6E00F0BF67 /* MainStoryboard_iPhone.storyboard */,
 				2D5BE9FA16609B4300CEFFA3 /* VVAPIClient.h */,
 				2D5BE9FB16609B4300CEFFA3 /* VVAPIClient.m */,
 				2D34C56F162718C500F170CA /* VVAppDelegate.h */,
@@ -217,12 +217,12 @@
 				2D34C573162718C500F170CA /* Default.png in Resources */,
 				2D34C575162718C500F170CA /* Default@2x.png in Resources */,
 				2D34C577162718C500F170CA /* Default-568h@2x.png in Resources */,
-				2D34C57A162718C500F170CA /* MainStoryboard_iPhone.storyboard in Resources */,
 				2D34C57D162718C500F170CA /* MainStoryboard_iPad.storyboard in Resources */,
 				2D34C582162718C500F170CA /* first.png in Resources */,
 				2D34C584162718C500F170CA /* first@2x.png in Resources */,
 				2D34C589162718C500F170CA /* second.png in Resources */,
 				2D34C58B162718C500F170CA /* second@2x.png in Resources */,
+				2D4D009A168E5A6E00F0BF67 /* MainStoryboard_iPhone.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,20 +271,20 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		2D34C578162718C500F170CA /* MainStoryboard_iPhone.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2D34C579162718C500F170CA /* en */,
-			);
-			name = MainStoryboard_iPhone.storyboard;
-			sourceTree = "<group>";
-		};
 		2D34C57B162718C500F170CA /* MainStoryboard_iPad.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				2D34C57C162718C500F170CA /* en */,
 			);
 			name = MainStoryboard_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		2D4D0098168E5A6E00F0BF67 /* MainStoryboard_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2D4D0099168E5A6E00F0BF67 /* en */,
+			);
+			name = MainStoryboard_iPhone.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
