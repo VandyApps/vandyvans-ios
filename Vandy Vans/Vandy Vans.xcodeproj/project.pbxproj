@@ -13,10 +13,6 @@
 		2D34C56B162718C500F170CA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D34C569162718C500F170CA /* InfoPlist.strings */; };
 		2D34C56D162718C500F170CA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D34C56C162718C500F170CA /* main.m */; };
 		2D34C571162718C500F170CA /* VVAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D34C570162718C500F170CA /* VVAppDelegate.m */; };
-		2D34C573162718C500F170CA /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D34C572162718C500F170CA /* Default.png */; };
-		2D34C575162718C500F170CA /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D34C574162718C500F170CA /* Default@2x.png */; };
-		2D34C577162718C500F170CA /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D34C576162718C500F170CA /* Default-568h@2x.png */; };
-		2D34C57D162718C500F170CA /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D34C57B162718C500F170CA /* MainStoryboard_iPad.storyboard */; };
 		2D34C582162718C500F170CA /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D34C581162718C500F170CA /* first.png */; };
 		2D34C584162718C500F170CA /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D34C583162718C500F170CA /* first@2x.png */; };
 		2D34C589162718C500F170CA /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D34C588162718C500F170CA /* second.png */; };
@@ -44,10 +40,6 @@
 		2D34C56E162718C500F170CA /* Vandy Vans-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Vandy Vans-Prefix.pch"; sourceTree = "<group>"; };
 		2D34C56F162718C500F170CA /* VVAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VVAppDelegate.h; sourceTree = "<group>"; };
 		2D34C570162718C500F170CA /* VVAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VVAppDelegate.m; sourceTree = "<group>"; };
-		2D34C572162718C500F170CA /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		2D34C574162718C500F170CA /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		2D34C576162718C500F170CA /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		2D34C57C162718C500F170CA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		2D34C581162718C500F170CA /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
 		2D34C583162718C500F170CA /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
 		2D34C588162718C500F170CA /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
@@ -134,7 +126,6 @@
 				2DDDB2F7165DBAA5007077E9 /* VVArrivalTimeTableViewController.m */,
 				2D34C59416271B8600F170CA /* VVMapViewController.h */,
 				2D34C59516271B8600F170CA /* VVMapViewController.m */,
-				2D34C57B162718C500F170CA /* MainStoryboard_iPad.storyboard */,
 				2D34C59116271A9100F170CA /* VVStopTableViewController.h */,
 				2D34C59216271A9100F170CA /* VVStopTableViewController.m */,
 				2D34C581162718C500F170CA /* first.png */,
@@ -153,9 +144,6 @@
 				2D34C569162718C500F170CA /* InfoPlist.strings */,
 				2D34C56C162718C500F170CA /* main.m */,
 				2D34C56E162718C500F170CA /* Vandy Vans-Prefix.pch */,
-				2D34C572162718C500F170CA /* Default.png */,
-				2D34C574162718C500F170CA /* Default@2x.png */,
-				2D34C576162718C500F170CA /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -214,10 +202,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D34C56B162718C500F170CA /* InfoPlist.strings in Resources */,
-				2D34C573162718C500F170CA /* Default.png in Resources */,
-				2D34C575162718C500F170CA /* Default@2x.png in Resources */,
-				2D34C577162718C500F170CA /* Default-568h@2x.png in Resources */,
-				2D34C57D162718C500F170CA /* MainStoryboard_iPad.storyboard in Resources */,
 				2D34C582162718C500F170CA /* first.png in Resources */,
 				2D34C584162718C500F170CA /* first@2x.png in Resources */,
 				2D34C589162718C500F170CA /* second.png in Resources */,
@@ -269,14 +253,6 @@
 				2D34C56A162718C500F170CA /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		2D34C57B162718C500F170CA /* MainStoryboard_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2D34C57C162718C500F170CA /* en */,
-			);
-			name = MainStoryboard_iPad.storyboard;
 			sourceTree = "<group>";
 		};
 		2D4D0098168E5A6E00F0BF67 /* MainStoryboard_iPhone.storyboard */ = {
@@ -350,6 +326,7 @@
 				GCC_PREFIX_HEADER = "Vandy Vans/Vandy Vans-Prefix.pch";
 				INFOPLIST_FILE = "Vandy Vans/Vandy Vans-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -362,6 +339,7 @@
 				GCC_PREFIX_HEADER = "Vandy Vans/Vandy Vans-Prefix.pch";
 				INFOPLIST_FILE = "Vandy Vans/Vandy Vans-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
