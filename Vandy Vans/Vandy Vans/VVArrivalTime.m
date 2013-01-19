@@ -19,7 +19,8 @@
     self = [super init];
     if (self) {
         _stopName = [attributes objectForKey:@"StopName"];
-        _arrivalTimeInMinutes = [[attributes objectForKey:@"ArrivalTimeInMinutes"] integerValue];
+        _routeName = [attributes objectForKey:@"RouteName"];
+        _arrivalTimeInMinutes = [attributes objectForKey:@"ArrivalTimeInMinutes"];
     }
     
     return self;
@@ -37,10 +38,11 @@
       [stopName isEqualToString:@"McGugin Center"] || [stopName isEqualToString:@"Blakemore House"]);
 }
 
-+ (void)arrivalTimesForStopID:(NSUInteger)stopID stopName:(NSString *)stopName withBlock:(void (^)(NSArray *arrivalTimes))block {
++ (void)arrivalTimesForStopID:(NSUInteger)stopID stopName:(NSString *)stopName withBlock:(void (^)(NSArray *arrivalTimesArray))block {
     NSDictionary *params = @{@"api_key" : @"a922a34dfb5e63ba549adbb259518909"};
+    
     __block NSDictionary *arrivalTimeAttributes;
-    __block NSMutableOrderedSet *arrivalTimesSet;
+    __block NSMutableOrderedSet *arrivalTimesSet = [[NSMutableOrderedSet alloc] init];
     
     BOOL isStopForAllRoutes = [self isStopForAllRoutes:stopName];
     
@@ -50,8 +52,10 @@
             for (NSDictionary *predictions in [responseObject objectForKey:@"Predictions"]) {
                 arrivalTimeAttributes = @{
                     @"StopName" : stopName,
+                    @"RouteName" : @"Blue",
                     @"ArrivalTimeInMinutes" : [predictions objectForKey:@"Minutes"]
                 };
+                
                 [arrivalTimesSet addObject:[[VVArrivalTime alloc] initWithAttributes:arrivalTimeAttributes]];
             }
             
@@ -61,8 +65,10 @@
                     for (NSDictionary *predictions in [responseObject objectForKey:@"Predictions"]) {
                         arrivalTimeAttributes = @{
                             @"StopName" : stopName,
+                            @"RouteName" : @"Green",
                             @"ArrivalTimeInMinutes" : [predictions objectForKey:@"Minutes"]
                         };
+                        
                         [arrivalTimesSet addObject:[[VVArrivalTime alloc] initWithAttributes:arrivalTimeAttributes]];
                     }
                     
@@ -72,8 +78,10 @@
                             for (NSDictionary *predictions in [responseObject objectForKey:@"Predictions"]) {
                                 arrivalTimeAttributes = @{
                                     @"StopName" : stopName,
+                                    @"RouteName" : @"Red",
                                     @"ArrivalTimeInMinutes" : [predictions objectForKey:@"Minutes"]
                                 };
+                                
                                 [arrivalTimesSet addObject:[[VVArrivalTime alloc] initWithAttributes:arrivalTimeAttributes]];
                             }
                             
@@ -81,13 +89,10 @@
                             
                             if (block) {
                                 block([arrivalTimesSet sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-                                    if (((VVArrivalTime *)obj1).arrivalTimeInMinutes > ((VVArrivalTime *)obj2).arrivalTimeInMinutes) {
-                                        return (NSComparisonResult)NSOrderedDescending;
-                                    } else if (((VVArrivalTime *)obj1).arrivalTimeInMinutes < ((VVArrivalTime *)obj2).arrivalTimeInMinutes) {
-                                        return (NSComparisonResult)NSOrderedAscending;
-                                    } else {
-                                        return (NSComparisonResult)NSOrderedSame;
-                                    }
+                                    VVArrivalTime *arrivalTime1 = (VVArrivalTime *)obj1;
+                                    VVArrivalTime *arrivalTime2 = (VVArrivalTime *)obj2;
+                                    
+                                    return [arrivalTime1.arrivalTimeInMinutes compare:arrivalTime2.arrivalTimeInMinutes];
                                 }]);
                             }
                         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

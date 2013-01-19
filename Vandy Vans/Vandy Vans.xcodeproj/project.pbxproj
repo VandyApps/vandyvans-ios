@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D19045716A3CD590033951C /* LiveBusMapv1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D19045616A3CD590033951C /* LiveBusMapv1.png */; };
 		2D34C561162718C500F170CA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D34C560162718C400F170CA /* UIKit.framework */; };
 		2D34C563162718C500F170CA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D34C562162718C500F170CA /* Foundation.framework */; };
 		2D34C565162718C500F170CA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D34C564162718C500F170CA /* CoreGraphics.framework */; };
@@ -22,6 +23,15 @@
 		2D4D009A168E5A6E00F0BF67 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D4D0098168E5A6E00F0BF67 /* MainStoryboard_iPhone.storyboard */; };
 		2D5BE9FC16609B4300CEFFA3 /* VVAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5BE9FB16609B4300CEFFA3 /* VVAPIClient.m */; };
 		2D5BE9FF1660A5A000CEFFA3 /* VVArrivalTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5BE9FE1660A5A000CEFFA3 /* VVArrivalTime.m */; };
+		2D7890FF16998AE700C70302 /* VVIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D7890FE16998AE700C70302 /* VVIcon.png */; };
+		2D78910216998B0F00C70302 /* VVIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D78910116998B0F00C70302 /* VVIcon@2x.png */; };
+		2D78910416998B3400C70302 /* VVAppStoreIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D78910316998B3400C70302 /* VVAppStoreIcon.png */; };
+		2D78910616998BAD00C70302 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D78910516998BAD00C70302 /* Default-568h@2x.png */; };
+		2D78910816998BC300C70302 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D78910716998BC300C70302 /* Default.png */; };
+		2D78910A16998BED00C70302 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D78910916998BED00C70302 /* Default@2x.png */; };
+		2D78910E16998C0900C70302 /* VVSpotlightIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D78910B16998C0900C70302 /* VVSpotlightIcon@2x.png */; };
+		2D78910F16998C0900C70302 /* VVSpotlightIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D78910C16998C0900C70302 /* VVSpotlightIcon.png */; };
+		2D78911016998C0900C70302 /* VVAppStoreIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D78910D16998C0900C70302 /* VVAppStoreIcon@2x.png */; };
 		2DB065A8166177D20077AAB4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DB065A7166177D20077AAB4 /* SystemConfiguration.framework */; };
 		2DB065AA166177DA0077AAB4 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DB065A9166177DA0077AAB4 /* MobileCoreServices.framework */; };
 		2DDDB2F8165DBAA5007077E9 /* VVArrivalTimeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DDDB2F7165DBAA5007077E9 /* VVArrivalTimeTableViewController.m */; };
@@ -30,6 +40,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2D19045616A3CD590033951C /* LiveBusMapv1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LiveBusMapv1.png; sourceTree = "<group>"; };
 		2D34C55C162718C400F170CA /* Vandy Vans.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Vandy Vans.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D34C560162718C400F170CA /* UIKit.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2D34C562162718C500F170CA /* Foundation.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -53,6 +64,15 @@
 		2D5BE9FB16609B4300CEFFA3 /* VVAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVAPIClient.m; sourceTree = "<group>"; };
 		2D5BE9FD1660A5A000CEFFA3 /* VVArrivalTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVArrivalTime.h; sourceTree = "<group>"; };
 		2D5BE9FE1660A5A000CEFFA3 /* VVArrivalTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVArrivalTime.m; sourceTree = "<group>"; };
+		2D7890FE16998AE700C70302 /* VVIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = VVIcon.png; path = ../VVIcon.png; sourceTree = "<group>"; };
+		2D78910116998B0F00C70302 /* VVIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "VVIcon@2x.png"; path = "../VVIcon@2x.png"; sourceTree = "<group>"; };
+		2D78910316998B3400C70302 /* VVAppStoreIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VVAppStoreIcon.png; sourceTree = "<group>"; };
+		2D78910516998BAD00C70302 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
+		2D78910716998BC300C70302 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
+		2D78910916998BED00C70302 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
+		2D78910B16998C0900C70302 /* VVSpotlightIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VVSpotlightIcon@2x.png"; sourceTree = "<group>"; };
+		2D78910C16998C0900C70302 /* VVSpotlightIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VVSpotlightIcon.png; sourceTree = "<group>"; };
+		2D78910D16998C0900C70302 /* VVAppStoreIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VVAppStoreIcon@2x.png"; sourceTree = "<group>"; };
 		2DB065A7166177D20077AAB4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		2DB065A9166177DA0077AAB4 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		2DDDB2F6165DBAA5007077E9 /* VVArrivalTimeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVArrivalTimeTableViewController.h; sourceTree = "<group>"; };
@@ -140,12 +160,30 @@
 		2D34C567162718C500F170CA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2D78910016998AF600C70302 /* Images */,
 				2D34C568162718C500F170CA /* Vandy Vans-Info.plist */,
 				2D34C569162718C500F170CA /* InfoPlist.strings */,
 				2D34C56C162718C500F170CA /* main.m */,
 				2D34C56E162718C500F170CA /* Vandy Vans-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2D78910016998AF600C70302 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				2D19045616A3CD590033951C /* LiveBusMapv1.png */,
+				2D78910B16998C0900C70302 /* VVSpotlightIcon@2x.png */,
+				2D78910C16998C0900C70302 /* VVSpotlightIcon.png */,
+				2D78910D16998C0900C70302 /* VVAppStoreIcon@2x.png */,
+				2D78910916998BED00C70302 /* Default@2x.png */,
+				2D78910716998BC300C70302 /* Default.png */,
+				2D78910516998BAD00C70302 /* Default-568h@2x.png */,
+				2D78910316998B3400C70302 /* VVAppStoreIcon.png */,
+				2D78910116998B0F00C70302 /* VVIcon@2x.png */,
+				2D7890FE16998AE700C70302 /* VVIcon.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,6 +245,16 @@
 				2D34C589162718C500F170CA /* second.png in Resources */,
 				2D34C58B162718C500F170CA /* second@2x.png in Resources */,
 				2D4D009A168E5A6E00F0BF67 /* MainStoryboard_iPhone.storyboard in Resources */,
+				2D7890FF16998AE700C70302 /* VVIcon.png in Resources */,
+				2D78910216998B0F00C70302 /* VVIcon@2x.png in Resources */,
+				2D78910416998B3400C70302 /* VVAppStoreIcon.png in Resources */,
+				2D78910616998BAD00C70302 /* Default-568h@2x.png in Resources */,
+				2D78910816998BC300C70302 /* Default.png in Resources */,
+				2D78910A16998BED00C70302 /* Default@2x.png in Resources */,
+				2D78910E16998C0900C70302 /* VVSpotlightIcon@2x.png in Resources */,
+				2D78910F16998C0900C70302 /* VVSpotlightIcon.png in Resources */,
+				2D78911016998C0900C70302 /* VVAppStoreIcon@2x.png in Resources */,
+				2D19045716A3CD590033951C /* LiveBusMapv1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
