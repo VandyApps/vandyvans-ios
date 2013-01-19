@@ -169,8 +169,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="5wh-qK-Mbq" kind="relationship" relationship="viewControllers" id="mkr-a7-sdw"/>
                         <segue destination="7Lf-VM-cST" kind="relationship" relationship="viewControllers" id="kmj-eX-wMF"/>
+                        <segue destination="5wh-qK-Mbq" kind="relationship" relationship="viewControllers" id="mkr-a7-sdw"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rZc-IV-1ut" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -210,9 +210,6 @@
         </class>
         <class className="VVArrivalTimeTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VVArrivalTimeTableViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="refresh:" candidateClass="UIRefreshControl"/>
-            </relationships>
         </class>
         <class className="VVMapViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VVMapViewController.h"/>
