@@ -74,6 +74,7 @@
 {
     [super viewDidLoad];
     
+    // Set up the refresh control and then refresh to load the initial data.
     [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     [self refresh];
 }
@@ -102,6 +103,7 @@
             [self.refreshControl endRefreshing];
             self.arrivalTimes = [NSOrderedSet orderedSetWithArray:arrivalTimesArray];
             
+            // If the arrival times set is empty, there are currently no predictions.
             if (self.arrivalTimes.count == 0) {
                 UIAlertView *noArrivalPredictionsAlertView = [[UIAlertView alloc] initWithTitle:@"No Predictions" message:@"There are no arrival predictions at this time." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
                 [noArrivalPredictionsAlertView show];
@@ -113,7 +115,6 @@
 #pragma mark - Table View Data Source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
     return self.arrivalTimes.count;
 }
 
@@ -122,6 +123,7 @@
     static NSString *CellIdentifier = @"ArrivalTimeCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
+    // Configure the cell to display the route name and the number of minutes until arrival.
     VVArrivalTime *arrivalTime = [self.arrivalTimes objectAtIndex:indexPath.row];
     cell.textLabel.text = arrivalTime.routeName;
     

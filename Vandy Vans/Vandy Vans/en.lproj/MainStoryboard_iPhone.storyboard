@@ -43,11 +43,42 @@
                             <outlet property="delegate" destination="GDS-oA-9Qw" id="S8V-O1-Mxy"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="V72-qO-SMk"/>
+                    <navigationItem key="navigationItem" id="V72-qO-SMk">
+                        <barButtonItem key="rightBarButtonItem" title="Settings" id="gk7-pp-U5d"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pfd-46-dPL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1174" y="394"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="rBQ-Z3-tlK">
+            <objects>
+                <tableViewController id="hTO-Uo-jDl" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="KDq-jA-pAM">
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="3s6-9O-iwU">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="hTO-Uo-jDl" id="4VP-mt-AuJ"/>
+                            <outlet property="delegate" destination="hTO-Uo-jDl" id="XIi-BY-9BC"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LPR-4B-FVK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1539" y="-225"/>
         </scene>
         <!--Stop Table View Controller - Other Stops-->
         <scene sceneID="6tp-h8-66G">
@@ -76,7 +107,9 @@
                             <outlet property="delegate" destination="nOG-jv-e0L" id="dzN-WC-eBN"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Other Stops" id="XeU-SX-SF1"/>
+                    <navigationItem key="navigationItem" title="Other Stops" id="XeU-SX-SF1">
+                        <barButtonItem key="rightBarButtonItem" title="Settings" id="TLZ-Tw-CPH"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZRm-O6-jKP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -118,13 +151,12 @@
                             <outlet property="delegate" destination="YGa-rX-jM2" id="ReY-q2-trV"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="LUJ-OY-y9p"/>
+                    <navigationItem key="navigationItem" id="LUJ-OY-y9p">
+                        <barButtonItem key="rightBarButtonItem" title="Settings" id="eYJ-s6-QDb"/>
+                    </navigationItem>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="m2u-kO-RkZ">
                         <autoresizingMask key="autoresizingMask"/>
                         <attributedString key="attributedTitle"/>
-                        <connections>
-                            <action selector="refresh:" destination="YGa-rX-jM2" eventType="valueChanged" id="QpS-I4-WK9"/>
-                        </connections>
                     </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xxc-cU-GGn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -227,6 +259,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="uTP-je-CRm"/>
+        <segue reference="7Di-BC-NYA"/>
     </inferredMetricsTieBreakers>
 </document>
