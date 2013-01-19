@@ -15,6 +15,7 @@
 
 @property (nonatomic) NSUInteger stopID;
 @property (strong, nonatomic) NSOrderedSet *arrivalTimes;
+@property (nonatomic) BOOL vansAreRunning;
 
 @end
 
@@ -22,6 +23,7 @@
 
 @synthesize stopID = _stopID;
 @synthesize arrivalTimes = _arrivalTimes;
+@synthesize vansAreRunning = _vansAreRunning;
 
 - (NSUInteger)stopID {
     if (!_stopID) {
@@ -74,6 +76,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.vansAreRunning = YES;
     
     // Set up the refresh control and then refresh to load the initial data.
     [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
@@ -91,6 +94,7 @@
     
     // If it is not between 5 PM and 5 AM, alert the user that the vans are not running.
     if (currentDateComponents.hour > 5 && currentDateComponents.hour < 17) {
+        self.vansAreRunning = NO;
         // If it has just turned 5 AM, clear any cached arrival times and clear the table view.
         if (self.arrivalTimes.count != 0) {
             self.arrivalTimes = nil;
@@ -151,8 +155,8 @@
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
     NSString *footerTitle;
     
-    if (section == 1) {
-        footerTitle = @"Turn on push notifications to get alerted when the next van is closeby. These will be turned off automatically after you are alerted.";
+    if (self.vansAreRunning && section == 1) {
+        footerTitle = @"Turn on push notifications to get alerted when the next van is close-by. These will be turned off automatically after you are alerted.";
     }
     
     return footerTitle;
