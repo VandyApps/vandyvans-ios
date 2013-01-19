@@ -131,7 +131,7 @@
             </objects>
             <point key="canvasLocation" x="2080" y="46"/>
         </scene>
-        <!--Map View Controller - Live Bus Map-->
+        <!--Map View Controller - Live Map-->
         <scene sceneID="s48-ky-5d3">
             <objects>
                 <viewController id="5wh-qK-Mbq" customClass="VVMapViewController" sceneMemberID="viewController">
@@ -149,7 +149,7 @@
                             <constraint firstItem="pp6-W3-XZk" firstAttribute="top" secondItem="nbf-XI-cDw" secondAttribute="top" type="default" id="fjd-ee-5ww"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Live Bus Map" image="LiveBusMapv1" id="Ng9-Gg-kQX"/>
+                    <tabBarItem key="tabBarItem" title="Live Map" image="LiveBusMapv1" id="Ng9-Gg-kQX"/>
                     <connections>
                         <outlet property="vanMapView" destination="pp6-W3-XZk" id="MgI-Bx-vzJ"/>
                     </connections>
