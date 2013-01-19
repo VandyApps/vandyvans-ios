@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "VVAboutTableViewController.h"
 
-@interface VVStopTableViewController : UITableViewController
+@interface VVStopTableViewController : UITableViewController <VVAboutTableViewControllerDelegate>
 
 @end

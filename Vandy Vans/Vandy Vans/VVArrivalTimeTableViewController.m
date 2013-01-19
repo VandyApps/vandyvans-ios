@@ -9,6 +9,7 @@
 #import "VVArrivalTimeTableViewController.h"
 #import "VVArrivalTime.h"
 #import <SVProgressHUD/SVProgressHUD.h>
+#import "VVAboutTableViewController.h"
 
 @interface VVArrivalTimeTableViewController ()
 
@@ -66,7 +67,7 @@
 - (void)setArrivalTimes:(NSOrderedSet *)arrivalTimes {
     if (_arrivalTimes != arrivalTimes) {
         _arrivalTimes = arrivalTimes;
-        [self.tableView reloadData];
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
 }
 
@@ -114,26 +115,47 @@
 
 #pragma mark - Table View Data Source
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 2;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.arrivalTimes.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"ArrivalTimeCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    static NSString *ArrivalTimeCellIdentifier = @"ArrivalTimeCell";
+    static NSString *PushNotificationCellIdentifier = @"PushNotificationCell";
+    UITableViewCell *cell;
     
-    // Configure the cell to display the route name and the number of minutes until arrival.
-    VVArrivalTime *arrivalTime = [self.arrivalTimes objectAtIndex:indexPath.row];
-    cell.textLabel.text = arrivalTime.routeName;
-    
-    if ([arrivalTime.arrivalTimeInMinutes intValue] == 0) {
-        cell.detailTextLabel.text = @"Arriving";
+    if (indexPath.section == 0) {
+        cell = [tableView dequeueReusableCellWithIdentifier:ArrivalTimeCellIdentifier forIndexPath:indexPath];
+        
+        // Configure the cell to display the route name and the number of minutes until arrival.
+        VVArrivalTime *arrivalTime = [self.arrivalTimes objectAtIndex:indexPath.row];
+        cell.textLabel.text = arrivalTime.routeName;
+        
+        if ([arrivalTime.arrivalTimeInMinutes intValue] == 0) {
+            cell.detailTextLabel.text = @"Arriving";
+        } else {
+            cell.detailTextLabel.text = [[arrivalTime.arrivalTimeInMinutes stringValue] stringByAppendingString:@" minutes"];
+        }
     } else {
-        cell.detailTextLabel.text = [[arrivalTime.arrivalTimeInMinutes stringValue] stringByAppendingString:@" minutes"];
+        cell = [tableView dequeueReusableCellWithIdentifier:PushNotificationCellIdentifier forIndexPath:indexPath];
     }
     
     return cell;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
+    NSString *footerTitle;
+    
+    if (section == 1) {
+        footerTitle = @"Turn on push notifications to get alerted when the next van is closeby. These will be turned off automatically after you are alerted.";
+    }
+    
+    return footerTitle;
 }
 
 @end

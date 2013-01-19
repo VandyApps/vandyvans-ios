@@ -47,10 +47,12 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"ArrivalTimesFromStops"]) {
+    if ([segue.identifier isEqualToString:@"StopsToArrivalTimes"]) {
         ((VVArrivalTimeTableViewController *)segue.destinationViewController).title = ((UITableViewCell *)sender).textLabel.text;
-    } else if ([segue.identifier isEqualToString:@"OtherStopsFromStops"]) {
+    } else if ([segue.identifier isEqualToString:@"StopsToOtherStops"]) {
         ((VVStopTableViewController *)segue.destinationViewController).title = @"Other Stops";
+    } else if ([segue.identifier isEqualToString:@"StopsToAbout"] || [segue.identifier isEqualToString:@"OtherStopsToAbout"]) {
+        ((VVAboutTableViewController *)[((UINavigationController *)segue.destinationViewController).viewControllers objectAtIndex:0]).delegate = self;
     }
 }
 
@@ -78,6 +80,12 @@
     cell.textLabel.text = [self.stops objectAtIndex:indexPath.row];
     
     return cell;
+}
+
+#pragma mark - About Table View Controller Delegate
+
+- (void)aboutTableViewControllerDidFinish:(VVAboutTableViewController *)aboutTableViewController {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
