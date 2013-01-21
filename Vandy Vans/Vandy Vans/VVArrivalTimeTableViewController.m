@@ -124,7 +124,15 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.arrivalTimes.count;
+    NSInteger numberOfRows;
+    
+    if (section == 0) {
+        numberOfRows = self.arrivalTimes.count;
+    } else {
+        numberOfRows = 1;
+    }
+    
+    return numberOfRows;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -156,7 +164,7 @@
     NSString *footerTitle;
     
     if (self.vansAreRunning && section == 1) {
-        footerTitle = @"Turn on push notifications to get alerted when the next van is close-by. These will be turned off automatically after you are alerted.";
+        footerTitle = @"Turn on push notifications to be alerted when the next van is close-by. These will be turned off automatically after you are alerted.";
     }
     
     return footerTitle;
