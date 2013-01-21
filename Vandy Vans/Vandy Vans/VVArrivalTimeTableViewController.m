@@ -92,8 +92,8 @@
 - (void)refresh {
     NSDateComponents *currentDateComponents = [[NSCalendar currentCalendar] components:NSHourCalendarUnit fromDate:[NSDate date]];
     
-    // If it is not between 5 PM and 5 AM, alert the user that the vans are not running.
-    if (currentDateComponents.hour > 5 && currentDateComponents.hour < 17) {
+    // If it is between 5 AM and 5 PM, alert the user that the vans are not running.
+    if (currentDateComponents.hour >= 5 && currentDateComponents.hour < 17) {
         self.vansAreRunning = NO;
         // If it has just turned 5 AM, clear any cached arrival times and clear the table view.
         if (self.arrivalTimes.count != 0) {
@@ -124,11 +124,11 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSInteger numberOfRows;
+    NSInteger numberOfRows = 0;
     
     if (section == 0) {
         numberOfRows = self.arrivalTimes.count;
-    } else {
+    } else if (self.vansAreRunning) {
         numberOfRows = 1;
     }
     
