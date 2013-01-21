@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2D19045716A3CD590033951C /* LiveBusMapv1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D19045616A3CD590033951C /* LiveBusMapv1.png */; };
 		2D34C561162718C500F170CA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D34C560162718C400F170CA /* UIKit.framework */; };
 		2D34C563162718C500F170CA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D34C562162718C500F170CA /* Foundation.framework */; };
 		2D34C565162718C500F170CA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D34C564162718C500F170CA /* CoreGraphics.framework */; };
@@ -34,6 +33,8 @@
 		2D78911016998C0900C70302 /* VVAppStoreIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D78910D16998C0900C70302 /* VVAppStoreIcon@2x.png */; };
 		2DA198AC16AAB8F7008F5CB5 /* VVReportTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA198AB16AAB8F7008F5CB5 /* VVReportTableViewController.m */; };
 		2DA198B016AAC0CC008F5CB5 /* VVAboutTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA198AF16AAC0CC008F5CB5 /* VVAboutTableViewController.m */; };
+		2DA198B316AD494F008F5CB5 /* SpotStopIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DA198B116AD494F008F5CB5 /* SpotStopIcon.png */; };
+		2DA198B416AD494F008F5CB5 /* LiveBusMapLogoNew.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DA198B216AD494F008F5CB5 /* LiveBusMapLogoNew.png */; };
 		2DB065A8166177D20077AAB4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DB065A7166177D20077AAB4 /* SystemConfiguration.framework */; };
 		2DB065AA166177DA0077AAB4 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DB065A9166177DA0077AAB4 /* MobileCoreServices.framework */; };
 		2DDDB2F8165DBAA5007077E9 /* VVArrivalTimeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DDDB2F7165DBAA5007077E9 /* VVArrivalTimeTableViewController.m */; };
@@ -42,7 +43,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2D19045616A3CD590033951C /* LiveBusMapv1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LiveBusMapv1.png; sourceTree = "<group>"; };
 		2D34C55C162718C400F170CA /* Vandy Vans.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Vandy Vans.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D34C560162718C400F170CA /* UIKit.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2D34C562162718C500F170CA /* Foundation.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -79,6 +79,8 @@
 		2DA198AB16AAB8F7008F5CB5 /* VVReportTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVReportTableViewController.m; sourceTree = "<group>"; };
 		2DA198AE16AAC0CC008F5CB5 /* VVAboutTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVAboutTableViewController.h; sourceTree = "<group>"; };
 		2DA198AF16AAC0CC008F5CB5 /* VVAboutTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVAboutTableViewController.m; sourceTree = "<group>"; };
+		2DA198B116AD494F008F5CB5 /* SpotStopIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SpotStopIcon.png; sourceTree = "<group>"; };
+		2DA198B216AD494F008F5CB5 /* LiveBusMapLogoNew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LiveBusMapLogoNew.png; sourceTree = "<group>"; };
 		2DB065A7166177D20077AAB4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		2DB065A9166177DA0077AAB4 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		2DDDB2F6165DBAA5007077E9 /* VVArrivalTimeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVArrivalTimeTableViewController.h; sourceTree = "<group>"; };
@@ -182,7 +184,8 @@
 		2D78910016998AF600C70302 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				2D19045616A3CD590033951C /* LiveBusMapv1.png */,
+				2DA198B116AD494F008F5CB5 /* SpotStopIcon.png */,
+				2DA198B216AD494F008F5CB5 /* LiveBusMapLogoNew.png */,
 				2D78910B16998C0900C70302 /* VVSpotlightIcon@2x.png */,
 				2D78910C16998C0900C70302 /* VVSpotlightIcon.png */,
 				2D78910D16998C0900C70302 /* VVAppStoreIcon@2x.png */,
@@ -264,7 +267,8 @@
 				2D78910E16998C0900C70302 /* VVSpotlightIcon@2x.png in Resources */,
 				2D78910F16998C0900C70302 /* VVSpotlightIcon.png in Resources */,
 				2D78911016998C0900C70302 /* VVAppStoreIcon@2x.png in Resources */,
-				2D19045716A3CD590033951C /* LiveBusMapv1.png in Resources */,
+				2DA198B316AD494F008F5CB5 /* SpotStopIcon.png in Resources */,
+				2DA198B416AD494F008F5CB5 /* LiveBusMapLogoNew.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

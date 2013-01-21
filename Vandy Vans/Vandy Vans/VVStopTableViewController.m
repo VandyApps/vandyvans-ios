@@ -31,10 +31,10 @@
     return _stops;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     
+    // If the title has not yet been set, it is the Stops view, not the Other Stops view.
     if (!self.title) {
         self.title = @"Stops";
     }
@@ -62,8 +62,7 @@
     return self.stops.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"Stop";
     static NSString *OtherCellIdentifier = @"OtherStops";
     UITableViewCell *cell;
@@ -76,6 +75,9 @@
         // If it is not the Stops table view, just return the next cell as normal.
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     }
+    
+    // Alternatingly sets the background color to dark gray or yellow for each row.
+    cell.backgroundColor = (indexPath.row % 2 == 0) ? [UIColor darkGrayColor] : [UIColor yellowColor];
     
     cell.textLabel.text = [self.stops objectAtIndex:indexPath.row];
     

@@ -13,7 +13,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Stop" id="Op1-Mc-lMv">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Stop" id="Op1-Mc-lMv">
                                 <rect key="frame" x="0.0" y="46" width="320" height="45"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -21,11 +21,12 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="YGa-rX-jM2" kind="push" identifier="StopsToArrivalTimes" id="7Di-BC-NYA"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OtherStops" id="MLR-GW-SPl">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OtherStops" id="MLR-GW-SPl">
                                 <rect key="frame" x="0.0" y="91" width="320" height="45"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -343,7 +344,7 @@
                             <constraint firstItem="pp6-W3-XZk" firstAttribute="top" secondItem="nbf-XI-cDw" secondAttribute="top" type="default" id="fjd-ee-5ww"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Live Map" image="LiveBusMapv1" id="Ng9-Gg-kQX"/>
+                    <tabBarItem key="tabBarItem" title="Live Map" image="LiveBusMapLogoNew" id="Ng9-Gg-kQX"/>
                     <connections>
                         <outlet property="vanMapView" destination="pp6-W3-XZk" id="MgI-Bx-vzJ"/>
                     </connections>
@@ -375,7 +376,7 @@
         <scene sceneID="oUe-XE-ayK">
             <objects>
                 <navigationController id="7Lf-VM-cST" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Stops" image="second" id="uTk-V3-NQU"/>
+                    <tabBarItem key="tabBarItem" title="Stops" image="SpotStopIcon" id="uTk-V3-NQU"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="xeS-id-DXJ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -410,8 +411,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="LiveBusMapv1" width="16" height="16"/>
-        <image name="second" width="16" height="16"/>
+        <image name="LiveBusMapLogoNew" width="16" height="16"/>
+        <image name="SpotStopIcon" width="16" height="16"/>
     </resources>
     <classes>
         <class className="NSLayoutConstraint" superclassName="NSObject">
