@@ -13,10 +13,6 @@
 		2D34C56B162718C500F170CA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D34C569162718C500F170CA /* InfoPlist.strings */; };
 		2D34C56D162718C500F170CA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D34C56C162718C500F170CA /* main.m */; };
 		2D34C571162718C500F170CA /* VVAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D34C570162718C500F170CA /* VVAppDelegate.m */; };
-		2D34C582162718C500F170CA /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D34C581162718C500F170CA /* first.png */; };
-		2D34C584162718C500F170CA /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D34C583162718C500F170CA /* first@2x.png */; };
-		2D34C589162718C500F170CA /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D34C588162718C500F170CA /* second.png */; };
-		2D34C58B162718C500F170CA /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D34C58A162718C500F170CA /* second@2x.png */; };
 		2D34C59316271A9100F170CA /* VVStopTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D34C59216271A9100F170CA /* VVStopTableViewController.m */; };
 		2D34C59616271B8600F170CA /* VVMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D34C59516271B8600F170CA /* VVMapViewController.m */; };
 		2D4D009A168E5A6E00F0BF67 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D4D0098168E5A6E00F0BF67 /* MainStoryboard_iPhone.storyboard */; };
@@ -53,10 +49,6 @@
 		2D34C56E162718C500F170CA /* Vandy Vans-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Vandy Vans-Prefix.pch"; sourceTree = "<group>"; };
 		2D34C56F162718C500F170CA /* VVAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VVAppDelegate.h; sourceTree = "<group>"; };
 		2D34C570162718C500F170CA /* VVAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VVAppDelegate.m; sourceTree = "<group>"; };
-		2D34C581162718C500F170CA /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
-		2D34C583162718C500F170CA /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
-		2D34C588162718C500F170CA /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
-		2D34C58A162718C500F170CA /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
 		2D34C59116271A9100F170CA /* VVStopTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVStopTableViewController.h; sourceTree = "<group>"; };
 		2D34C59216271A9100F170CA /* VVStopTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVStopTableViewController.m; sourceTree = "<group>"; };
 		2D34C59416271B8600F170CA /* VVMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVMapViewController.h; sourceTree = "<group>"; };
@@ -160,10 +152,6 @@
 				2D34C59516271B8600F170CA /* VVMapViewController.m */,
 				2D34C59116271A9100F170CA /* VVStopTableViewController.h */,
 				2D34C59216271A9100F170CA /* VVStopTableViewController.m */,
-				2D34C581162718C500F170CA /* first.png */,
-				2D34C583162718C500F170CA /* first@2x.png */,
-				2D34C588162718C500F170CA /* second.png */,
-				2D34C58A162718C500F170CA /* second@2x.png */,
 				2D34C567162718C500F170CA /* Supporting Files */,
 			);
 			path = "Vandy Vans";
@@ -253,10 +241,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D34C56B162718C500F170CA /* InfoPlist.strings in Resources */,
-				2D34C582162718C500F170CA /* first.png in Resources */,
-				2D34C584162718C500F170CA /* first@2x.png in Resources */,
-				2D34C589162718C500F170CA /* second.png in Resources */,
-				2D34C58B162718C500F170CA /* second@2x.png in Resources */,
 				2D4D009A168E5A6E00F0BF67 /* MainStoryboard_iPhone.storyboard in Resources */,
 				2D7890FF16998AE700C70302 /* VVIcon.png in Resources */,
 				2D78910216998B0F00C70302 /* VVIcon@2x.png in Resources */,
