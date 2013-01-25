@@ -118,6 +118,62 @@
                 block(nil);
             }
         }];
+    } else if ([self isStopForOnlyGreenRoute:stopName]) {
+        [[VVAPIClient sharedClient] getPath:[[[[@"Route/" stringByAppendingFormat:@"%i", 749] stringByAppendingString:@"/Stop/"] stringByAppendingFormat:@"%i", stopID] stringByAppendingString:@"/Arrivals"] parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            for (NSDictionary *predictions in [responseObject objectForKey:@"Predictions"]) {
+                arrivalTimeAttributes = @{
+                    @"StopName" : stopName,
+                    @"RouteName" : @"Green",
+                    @"ArrivalTimeInMinutes" : [predictions objectForKey:@"Minutes"]
+                };
+                
+                [arrivalTimesSet addObject:[[VVArrivalTime alloc] initWithAttributes:arrivalTimeAttributes]];
+            }
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"Error: %@", error);
+            
+            if (block) {
+                block(nil);
+            }
+        }];
+    } else if ([stopName isEqualToString:@"North House"]) {
+        [[VVAPIClient sharedClient] getPath:[[[[@"Route/" stringByAppendingFormat:@"%i", 746] stringByAppendingString:@"/Stop/"] stringByAppendingFormat:@"%i", stopID] stringByAppendingString:@"/Arrivals"] parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            for (NSDictionary *predictions in [responseObject objectForKey:@"Predictions"]) {
+                arrivalTimeAttributes = @{
+                    @"StopName" : stopName,
+                    @"RouteName" : @"Red",
+                    @"ArrivalTimeInMinutes" : [predictions objectForKey:@"Minutes"]
+                };
+                
+                [arrivalTimesSet addObject:[[VVArrivalTime alloc] initWithAttributes:arrivalTimeAttributes]];
+            }
+            
+            // Get all of the arrival times for the Yellow Route when running.
+            
+            if (block) {
+                block([arrivalTimesSet sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+                    VVArrivalTime *arrivalTime1 = (VVArrivalTime *)obj1;
+                    VVArrivalTime *arrivalTime2 = (VVArrivalTime *)obj2;
+                    
+                    return [arrivalTime1.arrivalTimeInMinutes compare:arrivalTime2.arrivalTimeInMinutes];
+                }]);
+            }
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"Error: %@", error);
+            
+            if (block) {
+                block(nil);
+            }
+        }];
+    }
+    
+    if (!isStopForAllRoutes && block) {
+        block([arrivalTimesSet sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+            VVArrivalTime *arrivalTime1 = (VVArrivalTime *)obj1;
+            VVArrivalTime *arrivalTime2 = (VVArrivalTime *)obj2;
+            
+            return [arrivalTime1.arrivalTimeInMinutes compare:arrivalTime2.arrivalTimeInMinutes];
+        }]);
     }
 }
 

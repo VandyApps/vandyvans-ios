@@ -21,7 +21,6 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="YGa-rX-jM2" kind="push" identifier="StopsToArrivalTimes" id="7Di-BC-NYA"/>
                                 </connections>
@@ -424,7 +423,6 @@
         <class className="VVAboutTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VVAboutTableViewController.h"/>
             <relationships>
-                <relationship kind="action" name="donePressed:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="reportBugTableViewCell" candidateClass="UITableViewCell"/>
                 <relationship kind="outlet" name="sendFeedbackTableViewCell" candidateClass="UITableViewCell"/>
             </relationships>

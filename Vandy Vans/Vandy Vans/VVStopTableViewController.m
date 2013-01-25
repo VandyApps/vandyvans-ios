@@ -77,7 +77,7 @@
     }
     
     // Alternatingly sets the background color to dark gray or yellow for each row.
-    cell.backgroundColor = (indexPath.row % 2 == 0) ? [UIColor darkGrayColor] : [UIColor yellowColor];
+    //cell.backgroundColor = (indexPath.row % 2 == 0) ? [UIColor darkGrayColor] : [UIColor yellowColor];
     
     cell.textLabel.text = [self.stops objectAtIndex:indexPath.row];
     
