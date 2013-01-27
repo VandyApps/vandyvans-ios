@@ -106,4 +106,11 @@
     return YES;
 }
 
+- (void)textViewDidEndEditing:(UITextView *)textView {
+    if ([textView.text isEqualToString:@""]) {
+        textView.textColor = [UIColor lightGrayColor];
+        textView.text = @"Description";
+    }
+}
+
 @end

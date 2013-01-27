@@ -154,8 +154,8 @@
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gts-4i-uwU">
                                                     <constraints>
+                                                        <constraint firstAttribute="width" constant="293" id="1wu-fe-PEr"/>
                                                         <constraint firstAttribute="height" constant="43" id="s50-U7-Bdz"/>
-                                                        <constraint firstAttribute="width" constant="295" id="vNb-tG-6TW"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -164,7 +164,7 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="Gts-4i-uwU" firstAttribute="leading" secondItem="nOv-b0-C7X" secondAttribute="leading" constant="15" id="Dq8-GF-NFv"/>
+                                            <constraint firstItem="Gts-4i-uwU" firstAttribute="leading" secondItem="nOv-b0-C7X" secondAttribute="leading" constant="17" id="Tgg-Bg-aXh"/>
                                             <constraint firstItem="Gts-4i-uwU" firstAttribute="top" secondItem="nOv-b0-C7X" secondAttribute="top" constant="1" id="yhL-6j-ywk"/>
                                         </constraints>
                                     </tableViewCell>
