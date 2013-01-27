@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface VVReportTableViewController : UITableViewController <UITextViewDelegate>
+@interface VVReportTableViewController : UITableViewController
 
 @property (nonatomic) BOOL userIsSendingFeedback;
 

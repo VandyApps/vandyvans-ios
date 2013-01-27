@@ -10,6 +10,7 @@
 #import <SVProgressHUD/SVProgressHUD.h>
 #import "VVVandyMobileAPIClient.h"
 #import "VVReport.h"
+#import <SSToolkit/SSTextView.h>
 
 @interface VVReportTableViewController ()
 
@@ -18,7 +19,7 @@
 @property (weak, nonatomic) IBOutlet UITableViewCell *notifyWhenResolvedTableViewCell;
 
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
-@property (weak, nonatomic) IBOutlet UITextView *descriptionTextView;
+@property (weak, nonatomic) IBOutlet SSTextView *descriptionTextView;
 
 @end
 
@@ -32,6 +33,8 @@
     if (self.userIsSendingFeedback) {
         self.title = @"Send Feedback";
     }
+    
+    self.descriptionTextView.placeholder = @"Description";
 }
 
 - (void)didReceiveMemoryWarning
@@ -92,24 +95,6 @@
         } else {
             self.notifyWhenResolvedTableViewCell.accessoryType = UITableViewCellAccessoryCheckmark;
         }
-    }
-}
-
-#pragma mark - Text View Delegate
-
-- (BOOL)textViewShouldBeginEditing:(UITextView *)textView {
-    if ([textView.text isEqualToString:@"Description"]) {
-        textView.textColor = [UIColor blackColor];
-        textView.text = @"";
-    }
-    
-    return YES;
-}
-
-- (void)textViewDidEndEditing:(UITextView *)textView {
-    if ([textView.text isEqualToString:@""]) {
-        textView.textColor = [UIColor lightGrayColor];
-        textView.text = @"Description";
     }
 }
 
