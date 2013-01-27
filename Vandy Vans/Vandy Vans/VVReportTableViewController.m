@@ -9,6 +9,7 @@
 #import "VVReportTableViewController.h"
 #import <SVProgressHUD/SVProgressHUD.h>
 #import "VVVandyMobileAPIClient.h"
+#import "VVReport.h"
 
 @interface VVReportTableViewController ()
 
@@ -44,23 +45,11 @@
         [SVProgressHUD showErrorWithStatus:@"Please fill in the email and description fields."];
     }
     
-    NSDictionary *params = @{
-        @"isBugReport" : self.userIsSendingFeedback ? @"FALSE" : @"TRUE",
-        @"senderAddress" : self.emailTextField.text,
-        @"body" : self.descriptionTextView.text,
-        @"notifyWhenResolved" : (self.notifyWhenResolvedTableViewCell.accessoryType == UITableViewCellAccessoryCheckmark) ? @"TRUE" : @"FALSE"
-    };
-    
-    [[VVVandyMobileAPIClient sharedClient] postPath:@"bugReport.php" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        if ([[responseObject objectForKey:@"status"] isEqualToString:@"success"]) {
-            [SVProgressHUD showSuccessWithStatus:@"Report submitted!"];
+    VVReport *report = [[VVReport alloc] initAsBugReport:!self.userIsSendingFeedback withSenderAddress:self.emailTextField.text body:self.descriptionTextView.text andNotification:(self.notifyWhenResolvedTableViewCell.accessoryType == UITableViewCellAccessoryCheckmark)];
+    [report sendWithBlock:^{
+        dispatch_async(dispatch_get_main_queue(), ^{
             [self.navigationController popViewControllerAnimated:YES];
-            [self.delegate reportTableViewControllerDidSendReport:self];
-        } else {
-            [SVProgressHUD showErrorWithStatus:@"Report failed. Please try again later."];
-        }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
+        });
     }];
 }
 
