@@ -7,12 +7,16 @@
 //
 
 #import "VVReportTableViewController.h"
+#import <SVProgressHUD/SVProgressHUD.h>
+#import "VVVandyMobileAPIClient.h"
 
 @interface VVReportTableViewController ()
 
+@property (weak, nonatomic) IBOutlet UITableViewCell *emailTableViewCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *descriptionTableViewCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *notifyWhenResolvedTableViewCell;
 
+@property (weak, nonatomic) IBOutlet UITextField *emailTextField;
 @property (weak, nonatomic) IBOutlet UITextView *descriptionTextView;
 
 @end
@@ -35,13 +39,38 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)sendPressed:(UIBarButtonItem *)sender {
+    if ([self.emailTextField.text isEqualToString:@""] || [self.descriptionTextView.text isEqualToString:@"Description"]) {
+        [SVProgressHUD showErrorWithStatus:@"Please fill in the email and description fields."];
+    }
+    
+    NSDictionary *params = @{
+        @"isBugReport" : self.userIsSendingFeedback ? @"FALSE" : @"TRUE",
+        @"senderAddress" : self.emailTextField.text,
+        @"body" : self.descriptionTextView.text,
+        @"notifyWhenResolved" : (self.notifyWhenResolvedTableViewCell.accessoryType == UITableViewCellAccessoryCheckmark) ? @"TRUE" : @"FALSE"
+    };
+    
+    [[VVVandyMobileAPIClient sharedClient] postPath:@"bugReport.php" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if ([[responseObject objectForKey:@"status"] isEqualToString:@"success"]) {
+            [SVProgressHUD showSuccessWithStatus:@"Report submitted!"];
+            [self.navigationController popViewControllerAnimated:YES];
+            [self.delegate reportTableViewControllerDidSendReport:self];
+        } else {
+            [SVProgressHUD showErrorWithStatus:@"Report failed. Please try again later."];
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
+}
+
 #pragma mark - Table View Data Source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    NSInteger numberOfSections = 2;
+    NSInteger numberOfSections = 3;
     
     if (self.userIsSendingFeedback) {
-        numberOfSections = 1;
+        numberOfSections = 2;
     }
     
     return numberOfSections;
@@ -55,6 +84,8 @@
     UITableViewCell *cell;
     
     if (indexPath.section == 0) {
+        cell = self.emailTableViewCell;
+    } else if (indexPath.section == 1) {
         cell = self.descriptionTableViewCell;
     } else if (!self.userIsSendingFeedback) {
         cell = self.notifyWhenResolvedTableViewCell;

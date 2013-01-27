@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "VVReportTableViewController.h"
 
 @class VVAboutTableViewController;
 

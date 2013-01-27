@@ -143,10 +143,37 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
+                            <tableViewSection id="wV9-yF-sqH">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="nOv-b0-C7X">
+                                        <rect key="frame" x="0.0" y="10" width="320" height="46"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gts-4i-uwU">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="43" id="s50-U7-Bdz"/>
+                                                        <constraint firstAttribute="width" constant="295" id="vNb-tG-6TW"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="Gts-4i-uwU" firstAttribute="leading" secondItem="nOv-b0-C7X" secondAttribute="leading" constant="15" id="Dq8-GF-NFv"/>
+                                            <constraint firstItem="Gts-4i-uwU" firstAttribute="top" secondItem="nOv-b0-C7X" secondAttribute="top" constant="1" id="yhL-6j-ywk"/>
+                                        </constraints>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                             <tableViewSection id="Ym0-bn-eHL">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="198" id="SnN-ev-SF7">
-                                        <rect key="frame" x="0.0" y="10" width="320" height="200"/>
+                                        <rect key="frame" x="0.0" y="76" width="320" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="300" height="197"/>
@@ -177,7 +204,7 @@
                             <tableViewSection id="Rvl-Ss-C1y">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="checkmark" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="6FF-Ra-zEx" style="IBUITableViewCellStyleDefault" id="6m7-dD-TpX">
-                                        <rect key="frame" x="0.0" y="230" width="320" height="46"/>
+                                        <rect key="frame" x="0.0" y="296" width="320" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="280" height="43"/>
@@ -201,17 +228,23 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Report a Bug" id="YkX-OL-L8E">
-                        <barButtonItem key="rightBarButtonItem" title="Send" style="done" id="gNm-sQ-ZJr"/>
+                        <barButtonItem key="rightBarButtonItem" title="Send" style="done" id="gNm-sQ-ZJr">
+                            <connections>
+                                <action selector="sendPressed:" destination="RWM-5b-TYR" id="VHx-zc-9TC"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="descriptionTableViewCell" destination="SnN-ev-SF7" id="8IE-fn-fGC"/>
                         <outlet property="descriptionTextView" destination="WZe-p4-1i3" id="MGd-ly-dcV"/>
+                        <outlet property="emailTableViewCell" destination="nOv-b0-C7X" id="8D6-H3-ymG"/>
+                        <outlet property="emailTextField" destination="Gts-4i-uwU" id="YxU-Xf-4Wu"/>
                         <outlet property="notifyWhenResolvedTableViewCell" destination="6m7-dD-TpX" id="cVq-eT-dvv"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vx6-hQ-jkJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2855" y="-342"/>
+            <point key="canvasLocation" x="2794" y="-398"/>
         </scene>
         <!--Stop Table View Controller - Other Stops-->
         <scene sceneID="6tp-h8-66G">
@@ -423,6 +456,7 @@
         <class className="VVAboutTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VVAboutTableViewController.h"/>
             <relationships>
+                <relationship kind="action" name="donePressed:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="reportBugTableViewCell" candidateClass="UITableViewCell"/>
                 <relationship kind="outlet" name="sendFeedbackTableViewCell" candidateClass="UITableViewCell"/>
             </relationships>
@@ -439,8 +473,11 @@
         <class className="VVReportTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VVReportTableViewController.h"/>
             <relationships>
+                <relationship kind="action" name="sendPressed:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="descriptionTableViewCell" candidateClass="UITableViewCell"/>
                 <relationship kind="outlet" name="descriptionTextView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="emailTableViewCell" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="emailTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="notifyWhenResolvedTableViewCell" candidateClass="UITableViewCell"/>
             </relationships>
         </class>

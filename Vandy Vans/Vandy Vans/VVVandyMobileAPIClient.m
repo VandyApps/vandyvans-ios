@@ -1,24 +1,24 @@
 //
-//  VVAPIClient.m
+//  VVVandyMobileAPIClient.m
 //  Vandy Vans
 //
-//  Created by Seth Friedman on 11/24/12.
-//  Copyright (c) 2012 VandyMobile. All rights reserved.
+//  Created by Seth Friedman on 1/27/13.
+//  Copyright (c) 2013 VandyMobile. All rights reserved.
 //
 
-#import "VVAPIClient.h"
+#import "VVVandyMobileAPIClient.h"
 #import "AFJSONRequestOperation.h"
 
-static NSString * const kVVAPIBaseURLString = @"http://api.syncromatics.com/";
+static NSString * const kVVVandyMobileAPIBaseURLString = @"http://studentorgs.vanderbilt.edu/vandymobile/";
 
-@implementation VVAPIClient
+@implementation VVVandyMobileAPIClient
 
-+ (VVAPIClient *)sharedClient {
-    static VVAPIClient *_sharedClient;
++ (VVVandyMobileAPIClient *)sharedClient {
+    static VVVandyMobileAPIClient *_sharedClient;
     static dispatch_once_t onceToken;
     
     dispatch_once(&onceToken, ^{
-        _sharedClient = [[VVAPIClient alloc] initWithBaseURL:[NSURL URLWithString:kVVAPIBaseURLString]];
+        _sharedClient = [[VVVandyMobileAPIClient alloc] initWithBaseURL:[NSURL URLWithString:kVVVandyMobileAPIBaseURLString]];
     });
     
     return _sharedClient;

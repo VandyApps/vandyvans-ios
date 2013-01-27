@@ -7,7 +7,6 @@
 //
 
 #import "VVAboutTableViewController.h"
-#import "VVReportTableViewController.h"
 
 @interface VVAboutTableViewController ()
 
@@ -30,7 +29,9 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"AboutToSendFeedback"]) {
-        ((VVReportTableViewController *)segue.destinationViewController).userIsSendingFeedback = YES;
+        VVReportTableViewController *reportTableViewController = (VVReportTableViewController *)segue.destinationViewController;
+        
+        reportTableViewController.userIsSendingFeedback = YES;
     }
 }
 
