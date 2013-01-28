@@ -31,150 +31,139 @@
       [stopName isEqualToString:@"Murray House"] || [stopName isEqualToString:@"Highland Quad"]);
 }
 
-+ (BOOL)isStopForOnlyGreenRoute:(NSString *)stopName {
++ (BOOL)isStopForGreenRouteButNotAllRoutes:(NSString *)stopName {
     return ([stopName isEqualToString:@"Vanderbilt Police Department"] || [stopName isEqualToString:@"Vanderbilt Book Store"] ||
       [stopName isEqualToString:@"Kissam Quad"] || [stopName isEqualToString:@"Terrace Place Garage"] ||
       [stopName isEqualToString:@"Wesley Place Garage"] || [stopName isEqualToString:@"Blair School of Music"] ||
       [stopName isEqualToString:@"McGugin Center"] || [stopName isEqualToString:@"Blakemore House"]);
 }
 
++ (BOOL)isStopForBlueRouteButNotAllRoutes:(NSString *)stopName {
+    return [stopName isEqualToString:@"Kissam Quad"];
+}
+
+// The four possible scenarios for this method are that stops are either on all routes, on just the Green Route, on the Green and Blue Routes, or on just the Red Route.
 + (void)arrivalTimesForStopID:(NSUInteger)stopID stopName:(NSString *)stopName withBlock:(void (^)(NSArray *arrivalTimesArray))block {
     NSDictionary *params = @{@"api_key" : @"a922a34dfb5e63ba549adbb259518909"};
     
-    __block NSDictionary *arrivalTimeAttributes;
     __block NSMutableOrderedSet *arrivalTimesSet = [[NSMutableOrderedSet alloc] init];
     
-    BOOL isStopForAllRoutes = [self isStopForAllRoutes:stopName];
+    NSComparator arrivalTimesComparator = ^NSComparisonResult(id obj1, id obj2) {
+        VVArrivalTime *arrivalTime1 = (VVArrivalTime *)obj1;
+        VVArrivalTime *arrivalTime2 = (VVArrivalTime *)obj2;
+        
+        return [arrivalTime1.arrivalTimeInMinutes compare:arrivalTime2.arrivalTimeInMinutes];
+    };
     
-    // Get all of the arrival times for the Blue Route.
-    if (isStopForAllRoutes || [stopName isEqualToString:@"Kissam Quad"]) {
-        [[VVAPIClient sharedClient] getPath:[[[[@"Route/" stringByAppendingFormat:@"%i", 745] stringByAppendingString:@"/Stop/"] stringByAppendingFormat:@"%i", stopID] stringByAppendingString:@"/Arrivals"] parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            for (NSDictionary *predictions in [responseObject objectForKey:@"Predictions"]) {
-                arrivalTimeAttributes = @{
-                    @"StopName" : stopName,
-                    @"RouteName" : @"Blue",
-                    @"ArrivalTimeInMinutes" : [predictions objectForKey:@"Minutes"]
-                };
-                
-                [arrivalTimesSet addObject:[[VVArrivalTime alloc] initWithAttributes:arrivalTimeAttributes]];
-            }
-            
-            // Get all of the arrival times for the Green Route.
-            if (isStopForAllRoutes || [self isStopForOnlyGreenRoute:stopName]) {
-                [[VVAPIClient sharedClient] getPath:[[[[@"Route/" stringByAppendingFormat:@"%i", 749] stringByAppendingString:@"/Stop/"] stringByAppendingFormat:@"%i", stopID] stringByAppendingString:@"/Arrivals"] parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                    for (NSDictionary *predictions in [responseObject objectForKey:@"Predictions"]) {
-                        arrivalTimeAttributes = @{
-                            @"StopName" : stopName,
-                            @"RouteName" : @"Green",
-                            @"ArrivalTimeInMinutes" : [predictions objectForKey:@"Minutes"]
-                        };
-                        
-                        [arrivalTimesSet addObject:[[VVArrivalTime alloc] initWithAttributes:arrivalTimeAttributes]];
-                    }
-                    
-                    // Get all of the arrival times for the Red Route.
-                    if (isStopForAllRoutes || [stopName isEqualToString:@"North House"]) {
-                        [[VVAPIClient sharedClient] getPath:[[[[@"Route/" stringByAppendingFormat:@"%i", 746] stringByAppendingString:@"/Stop/"] stringByAppendingFormat:@"%i", stopID] stringByAppendingString:@"/Arrivals"] parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                            for (NSDictionary *predictions in [responseObject objectForKey:@"Predictions"]) {
-                                arrivalTimeAttributes = @{
-                                    @"StopName" : stopName,
-                                    @"RouteName" : @"Red",
-                                    @"ArrivalTimeInMinutes" : [predictions objectForKey:@"Minutes"]
-                                };
-                                
-                                [arrivalTimesSet addObject:[[VVArrivalTime alloc] initWithAttributes:arrivalTimeAttributes]];
-                            }
-                            
-                            // Get all of the arrival times for the Yellow Route when running.
-                            
-                            if (block) {
-                                block([arrivalTimesSet sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-                                    VVArrivalTime *arrivalTime1 = (VVArrivalTime *)obj1;
-                                    VVArrivalTime *arrivalTime2 = (VVArrivalTime *)obj2;
-                                    
-                                    return [arrivalTime1.arrivalTimeInMinutes compare:arrivalTime2.arrivalTimeInMinutes];
-                                }]);
-                            }
-                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                            NSLog(@"Error: %@", error);
-                            
-                            if (block) {
-                                block(nil);
-                            }
-                        }];
-                    }
-                } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                    NSLog(@"Error: %@", error);
-                    
+    if ([self isStopForAllRoutes:stopName]) {
+        [self addBlueRouteArrivalTimesToArrivalTimes:arrivalTimesSet withStopName:stopName stopID:stopID params:params andBlock:^(NSMutableOrderedSet *arrivalTimes) {
+            [self addGreenRouteArrivalTimesToArrivalTimes:arrivalTimes withStopName:stopName stopID:stopID params:params andBlock:^(NSMutableOrderedSet *arrivalTimes) {
+                [self addRedRouteArrivalTimesToArrivalTimes:arrivalTimes withStopName:stopName stopID:stopID params:params andBlock:^(NSMutableOrderedSet *arrivalTimes) {
                     if (block) {
-                        block(nil);
+                        block([arrivalTimes sortedArrayUsingComparator:arrivalTimesComparator]);
                     }
                 }];
-            }
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSLog(@"Error: %@", error);
-        
-            if (block) {
-                block(nil);
+            }];
+        }];
+    } else if ([self isStopForGreenRouteButNotAllRoutes:stopName]) {
+        [self addGreenRouteArrivalTimesToArrivalTimes:arrivalTimesSet withStopName:stopName stopID:stopID params:params andBlock:^(NSMutableOrderedSet *arrivalTimes) {
+            if ([self isStopForBlueRouteButNotAllRoutes:stopName]) {
+                [self addBlueRouteArrivalTimesToArrivalTimes:arrivalTimes withStopName:stopName stopID:stopID params:params andBlock:^(NSMutableOrderedSet *arrivalTimes) {
+                    if (block) {
+                        block([arrivalTimes sortedArrayUsingComparator:arrivalTimesComparator]);
+                    }
+                }];
+            } else {
+                if (block) {
+                    block([arrivalTimes sortedArrayUsingComparator:arrivalTimesComparator]);
+                }
             }
         }];
-    } else if ([self isStopForOnlyGreenRoute:stopName]) {
-        [[VVAPIClient sharedClient] getPath:[[[[@"Route/" stringByAppendingFormat:@"%i", 749] stringByAppendingString:@"/Stop/"] stringByAppendingFormat:@"%i", stopID] stringByAppendingString:@"/Arrivals"] parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            for (NSDictionary *predictions in [responseObject objectForKey:@"Predictions"]) {
-                arrivalTimeAttributes = @{
-                    @"StopName" : stopName,
-                    @"RouteName" : @"Green",
-                    @"ArrivalTimeInMinutes" : [predictions objectForKey:@"Minutes"]
-                };
-                
-                [arrivalTimesSet addObject:[[VVArrivalTime alloc] initWithAttributes:arrivalTimeAttributes]];
-            }
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSLog(@"Error: %@", error);
-            
+    } else { // The stop is only on the Red Route.
+        [self addRedRouteArrivalTimesToArrivalTimes:arrivalTimesSet withStopName:stopName stopID:stopID params:params andBlock:^(NSMutableOrderedSet *arrivalTimes) {
             if (block) {
-                block(nil);
-            }
-        }];
-    } else if ([stopName isEqualToString:@"North House"]) {
-        [[VVAPIClient sharedClient] getPath:[[[[@"Route/" stringByAppendingFormat:@"%i", 746] stringByAppendingString:@"/Stop/"] stringByAppendingFormat:@"%i", stopID] stringByAppendingString:@"/Arrivals"] parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            for (NSDictionary *predictions in [responseObject objectForKey:@"Predictions"]) {
-                arrivalTimeAttributes = @{
-                    @"StopName" : stopName,
-                    @"RouteName" : @"Red",
-                    @"ArrivalTimeInMinutes" : [predictions objectForKey:@"Minutes"]
-                };
-                
-                [arrivalTimesSet addObject:[[VVArrivalTime alloc] initWithAttributes:arrivalTimeAttributes]];
-            }
-            
-            // Get all of the arrival times for the Yellow Route when running.
-            
-            if (block) {
-                block([arrivalTimesSet sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-                    VVArrivalTime *arrivalTime1 = (VVArrivalTime *)obj1;
-                    VVArrivalTime *arrivalTime2 = (VVArrivalTime *)obj2;
-                    
-                    return [arrivalTime1.arrivalTimeInMinutes compare:arrivalTime2.arrivalTimeInMinutes];
-                }]);
-            }
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSLog(@"Error: %@", error);
-            
-            if (block) {
-                block(nil);
+                block([arrivalTimes sortedArrayUsingComparator:arrivalTimesComparator]);
             }
         }];
     }
+}
+
++ (void)addBlueRouteArrivalTimesToArrivalTimes:(NSMutableOrderedSet *)arrivalTimes withStopName:(NSString *)stopName stopID:(NSUInteger)stopID params:(NSDictionary *)params andBlock:(void (^)(NSMutableOrderedSet *arrivalTimes))block {
+    __block NSDictionary *arrivalTimeAttributes;
     
-    if (!isStopForAllRoutes && block) {
-        block([arrivalTimesSet sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-            VVArrivalTime *arrivalTime1 = (VVArrivalTime *)obj1;
-            VVArrivalTime *arrivalTime2 = (VVArrivalTime *)obj2;
+    [[VVAPIClient sharedClient] getPath:[[[[@"Route/" stringByAppendingFormat:@"%i", 745] stringByAppendingString:@"/Stop/"] stringByAppendingFormat:@"%i", stopID] stringByAppendingString:@"/Arrivals"] parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        for (NSDictionary *predictions in [responseObject objectForKey:@"Predictions"]) {
+            arrivalTimeAttributes = @{
+                @"StopName" : stopName,
+                @"RouteName" : @"Blue",
+                @"ArrivalTimeInMinutes" : [predictions objectForKey:@"Minutes"]
+            };
             
-            return [arrivalTime1.arrivalTimeInMinutes compare:arrivalTime2.arrivalTimeInMinutes];
-        }]);
-    }
+            [arrivalTimes addObject:[[VVArrivalTime alloc] initWithAttributes:arrivalTimeAttributes]];
+        }
+        
+        if (block) {
+            block(arrivalTimes);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+        
+        if (block) {
+            block(nil);
+        }
+    }];
+}
+
++ (void)addGreenRouteArrivalTimesToArrivalTimes:(NSMutableOrderedSet *)arrivalTimes withStopName:(NSString *)stopName stopID:(NSUInteger)stopID params:(NSDictionary *)params andBlock:(void (^)(NSMutableOrderedSet *arrivalTimes))block {
+    __block NSDictionary *arrivalTimeAttributes;
+    
+    [[VVAPIClient sharedClient] getPath:[[[[@"Route/" stringByAppendingFormat:@"%i", 749] stringByAppendingString:@"/Stop/"] stringByAppendingFormat:@"%i", stopID] stringByAppendingString:@"/Arrivals"] parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        for (NSDictionary *predictions in [responseObject objectForKey:@"Predictions"]) {
+            arrivalTimeAttributes = @{
+                @"StopName" : stopName,
+                @"RouteName" : @"Green",
+                @"ArrivalTimeInMinutes" : [predictions objectForKey:@"Minutes"]
+            };
+            
+            [arrivalTimes addObject:[[VVArrivalTime alloc] initWithAttributes:arrivalTimeAttributes]];
+        }
+        
+        if (block) {
+            block(arrivalTimes);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+        
+        if (block) {
+            block(nil);
+        }
+    }];
+}
+
++ (void)addRedRouteArrivalTimesToArrivalTimes:(NSMutableOrderedSet *)arrivalTimes withStopName:(NSString *)stopName stopID:(NSUInteger)stopID params:(NSDictionary *)params andBlock:(void (^)(NSMutableOrderedSet *arrivalTimes))block {
+    __block NSDictionary *arrivalTimeAttributes;
+    
+    [[VVAPIClient sharedClient] getPath:[[[[@"Route/" stringByAppendingFormat:@"%i", 746] stringByAppendingString:@"/Stop/"] stringByAppendingFormat:@"%i", stopID] stringByAppendingString:@"/Arrivals"] parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        for (NSDictionary *predictions in [responseObject objectForKey:@"Predictions"]) {
+            arrivalTimeAttributes = @{
+                @"StopName" : stopName,
+                @"RouteName" : @"Red",
+                @"ArrivalTimeInMinutes" : [predictions objectForKey:@"Minutes"]
+            };
+            
+            [arrivalTimes addObject:[[VVArrivalTime alloc] initWithAttributes:arrivalTimeAttributes]];
+        }
+        
+        if (block) {
+            block(arrivalTimes);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+        
+        if (block) {
+            block(nil);
+        }
+    }];
 }
 
 @end
