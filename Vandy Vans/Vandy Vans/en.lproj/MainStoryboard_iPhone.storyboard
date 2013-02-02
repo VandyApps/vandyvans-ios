@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2843" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="v6n-B9-8t3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="v6n-B9-8t3">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1929"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
         <!--Stop Table View Controller-->
         <scene sceneID="WTh-7D-lsP">
             <objects>
                 <tableViewController id="GDS-oA-9Qw" customClass="VVStopTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="5VZ-li-d7t">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="5VZ-li-d7t">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="separatorColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Stop" id="Op1-Mc-lMv">
-                                <rect key="frame" x="0.0" y="46" width="320" height="45"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Stop" rowHeight="91" id="Op1-Mc-lMv">
+                                <rect key="frame" x="0.0" y="22" width="320" height="91"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="10" y="1" width="280" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="90"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
@@ -25,11 +26,11 @@
                                     <segue destination="YGa-rX-jM2" kind="push" identifier="StopsToArrivalTimes" id="7Di-BC-NYA"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OtherStops" id="MLR-GW-SPl">
-                                <rect key="frame" x="0.0" y="91" width="320" height="45"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OtherStops" rowHeight="91" id="MLR-GW-SPl">
+                                <rect key="frame" x="0.0" y="113" width="320" height="91"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="10" y="0.0" width="280" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="90"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
@@ -44,7 +45,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="V72-qO-SMk">
-                        <barButtonItem key="rightBarButtonItem" title="Settings" id="gk7-pp-U5d">
+                        <barButtonItem key="rightBarButtonItem" title="Settings" style="plain" id="gk7-pp-U5d">
                             <connections>
                                 <segue destination="Ajz-r1-vjM" kind="modal" identifier="StopsToAbout" modalTransitionStyle="flipHorizontal" id="vSy-tV-Pjo"/>
                             </connections>
@@ -105,12 +106,6 @@
                                         </connections>
                                     </tableViewCell>
                                 </cells>
-                            </tableViewSection>
-                            <tableViewSection footerTitle="Created by Seth Friedman and McArthur Gill." id="Qpz-xw-zIO">
-                                <cells/>
-                            </tableViewSection>
-                            <tableViewSection footerTitle="Graphic design by Fletcher Young." id="FK2-el-i4p">
-                                <cells/>
                             </tableViewSection>
                         </sections>
                         <connections>
@@ -247,16 +242,17 @@
         <scene sceneID="6tp-h8-66G">
             <objects>
                 <tableViewController id="nOG-jv-e0L" customClass="VVStopTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="6xf-oD-l1A">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="91" sectionHeaderHeight="22" sectionFooterHeight="22" id="6xf-oD-l1A">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="separatorColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Stop" id="cpo-jF-G6j">
-                                <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Stop" rowHeight="91" id="cpo-jF-G6j">
+                                <rect key="frame" x="0.0" y="22" width="320" height="91"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="10" y="1" width="280" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="90"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
@@ -373,7 +369,7 @@
                             <constraint firstItem="pp6-W3-XZk" firstAttribute="top" secondItem="nbf-XI-cDw" secondAttribute="top" type="default" id="fjd-ee-5ww"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Live Map" image="LiveBusMapLogoNew" id="Ng9-Gg-kQX"/>
+                    <tabBarItem key="tabBarItem" title="Live Map" image="map" id="Ng9-Gg-kQX"/>
                     <connections>
                         <outlet property="vanMapView" destination="pp6-W3-XZk" id="MgI-Bx-vzJ"/>
                     </connections>
@@ -405,7 +401,7 @@
         <scene sceneID="oUe-XE-ayK">
             <objects>
                 <navigationController id="7Lf-VM-cST" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Stops" image="SpotStopIcon" id="uTk-V3-NQU"/>
+                    <tabBarItem key="tabBarItem" title="Stops" image="target" id="uTk-V3-NQU"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="xeS-id-DXJ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -440,8 +436,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="LiveBusMapLogoNew" width="16" height="16"/>
-        <image name="SpotStopIcon" width="16" height="16"/>
+        <image name="map" width="16" height="16"/>
+        <image name="target" width="16" height="16"/>
     </resources>
     <classes>
         <class className="NSLayoutConstraint" superclassName="NSObject">
@@ -466,13 +462,19 @@
         </class>
         <class className="VVMapViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VVMapViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="vanMapView" candidateClass="MKMapView"/>
+            </relationships>
         </class>
         <class className="VVReportTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VVReportTableViewController.h"/>
             <relationships>
+                <relationship kind="action" name="sendPressed:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="descriptionTableViewCell" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="descriptionTextView" candidateClass="SSTextView"/>
                 <relationship kind="outlet" name="emailTableViewCell" candidateClass="UITableViewCell"/>
                 <relationship kind="outlet" name="emailTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="notifyWhenResolvedTableViewCell" candidateClass="UITableViewCell"/>
             </relationships>
         </class>
         <class className="VVStopTableViewController" superclassName="UITableViewController">

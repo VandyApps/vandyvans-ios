@@ -78,6 +78,10 @@
     [super viewDidLoad];
     self.vansAreRunning = YES;
     
+    self.navigationController.navigationBar.tintColor = [UIColor blackColor];
+    
+    self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"VVArrivalTimeBackground-568h.jpg"]];
+    
     // Set up the refresh control and then refresh to load the initial data.
     [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     [self refresh];
@@ -158,16 +162,6 @@
     }
     
     return cell;
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
-    NSString *footerTitle;
-    
-    if (self.vansAreRunning && section == 1) {
-        footerTitle = @"Turn on push notifications to be alerted when the next van is close-by. These will be turned off automatically after you are alerted.";
-    }
-    
-    return footerTitle;
 }
 
 @end
