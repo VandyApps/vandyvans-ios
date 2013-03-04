@@ -88,7 +88,7 @@
 
 #pragma mark - Table View Delegate
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+/*- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     CGFloat rowHeight;
     
     if ([[UIScreen mainScreen] bounds].size.height == 568) {
@@ -106,7 +106,7 @@
     
     // Alternatingly sets the text color to gold or dark gray for each row.
     cell.textLabel.textColor = (indexPath.row % 2 == 0) ? [VVColorPalette goldColor] : [VVColorPalette blackColor];
-}
+}*/
 
 #pragma mark - About Table View Controller Delegate
 
