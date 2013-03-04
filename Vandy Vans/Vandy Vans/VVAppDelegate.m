@@ -8,6 +8,7 @@
 
 #import "VVAppDelegate.h"
 #import <AFNetworking/AFNetworkActivityIndicatorManager.h>
+#import "VVArrivalTimeTableViewController.h"
 
 @implementation VVAppDelegate
 
@@ -16,7 +17,31 @@
     // Override point for customization after application launch.
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
     
+    UILocalNotification *localNotification = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
+    
+    if (localNotification) {
+        UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
+        UINavigationController *navigationController = (UINavigationController *)[tabBarController.viewControllers objectAtIndex:0];
+        
+        VVArrivalTimeTableViewController *arrivalTimeTableViewController = [[VVArrivalTimeTableViewController alloc] init];
+        arrivalTimeTableViewController.title = [localNotification.userInfo objectForKey:@"StopName"];
+        [navigationController pushViewController:arrivalTimeTableViewController animated:YES];
+        
+        application.applicationIconBadgeNumber = localNotification.applicationIconBadgeNumber - 1;
+    }
+    
     return YES;
+}
+
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
+    UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
+    UINavigationController *navigationController = (UINavigationController *)[tabBarController.viewControllers objectAtIndex:0];
+    
+    VVArrivalTimeTableViewController *arrivalTimeTableViewController = [[VVArrivalTimeTableViewController alloc] init];
+    arrivalTimeTableViewController.title = [notification.userInfo objectForKey:@"StopName"];
+    [navigationController pushViewController:arrivalTimeTableViewController animated:YES];
+    
+    application.applicationIconBadgeNumber = notification.applicationIconBadgeNumber-1;
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application

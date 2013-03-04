@@ -10,6 +10,7 @@
 #import "VVArrivalTime.h"
 #import <SVProgressHUD/SVProgressHUD.h>
 #import "VVAboutTableViewController.h"
+#import "VVNotificationCell.h"
 
 @interface VVArrivalTimeTableViewController ()
 
@@ -94,7 +95,7 @@
 }
 
 - (void)refresh {
-    NSDateComponents *currentDateComponents = [[NSCalendar currentCalendar] components:NSHourCalendarUnit fromDate:[NSDate date]];
+    NSDateComponents *currentDateComponents = [[NSCalendar autoupdatingCurrentCalendar] components:NSHourCalendarUnit fromDate:[NSDate date]];
     
     // If it is between 5 AM and 5 PM, alert the user that the vans are not running.
     if (currentDateComponents.hour >= 5 && currentDateComponents.hour < 17) {
@@ -113,12 +114,39 @@
             self.arrivalTimes = [NSOrderedSet orderedSetWithArray:arrivalTimesArray];
             
             // If the arrival times set is empty, there are currently no predictions.
-            if (self.arrivalTimes.count == 0) {
+            if (self.arrivalTimes.count == 0) {                
                 UIAlertView *noArrivalPredictionsAlertView = [[UIAlertView alloc] initWithTitle:@"No Predictions" message:@"There are no arrival predictions at this time." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
                 [noArrivalPredictionsAlertView show];
             }
         }];
     }
+}
+
+- (IBAction)notificationSwitchPressed:(UISwitch *)sender {
+    if (sender.on) {
+        [self scheduleNotificationWithArrivalTime:[self.arrivalTimes objectAtIndex:0]];
+    } else {
+        [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    }
+}
+
+- (void)scheduleNotificationWithArrivalTime:(VVArrivalTime *)arrivalTime {
+    NSDate *scheduledNotificationDate = [NSDate dateWithTimeIntervalSinceNow:(([arrivalTime.arrivalTimeInMinutes integerValue] - 2) * 60)];
+    
+    UILocalNotification *localNotification = [[UILocalNotification alloc] init];
+    
+    localNotification.fireDate = scheduledNotificationDate;
+    localNotification.timeZone = [NSTimeZone defaultTimeZone];
+    
+    localNotification.alertBody = [[[[@"The " stringByAppendingString:arrivalTime.routeName] stringByAppendingString:@" Route will be arriving at "] stringByAppendingString:arrivalTime.stopName] stringByAppendingString:@" in 2 minutes!"];
+    localNotification.alertAction = @"Open App";
+    
+    localNotification.soundName = UILocalNotificationDefaultSoundName;
+    localNotification.applicationIconBadgeNumber = 1;
+    
+    localNotification.userInfo = @{@"StopName" : arrivalTime.stopName};
+    
+    [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
 }
 
 #pragma mark - Table View Data Source
@@ -132,7 +160,7 @@
     
     if (section == 0) {
         numberOfRows = self.arrivalTimes.count;
-    } else if (self.vansAreRunning) {
+    } else if (self.vansAreRunning && self.arrivalTimes.count != 0) {
         numberOfRows = 1;
     }
     
@@ -158,7 +186,7 @@
             cell.detailTextLabel.text = [[arrivalTime.arrivalTimeInMinutes stringValue] stringByAppendingString:@" minutes"];
         }
     } else {
-        cell = [tableView dequeueReusableCellWithIdentifier:PushNotificationCellIdentifier forIndexPath:indexPath];
+        return [tableView dequeueReusableCellWithIdentifier:PushNotificationCellIdentifier];
     }
     
     return cell;

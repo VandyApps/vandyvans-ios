@@ -41,6 +41,7 @@
 		2DB1191616BD229E008BA3E9 /* VVBackground-568h@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2DB1191516BD229E008BA3E9 /* VVBackground-568h@2x.jpg */; };
 		2DBD694816B5272B0058EFE4 /* VVVandyMobileAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBD694716B5272B0058EFE4 /* VVVandyMobileAPIClient.m */; };
 		2DBD694B16B548100058EFE4 /* VVReport.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBD694A16B548100058EFE4 /* VVReport.m */; };
+		2DC2059616E45591008B3F31 /* VVNotificationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC2059516E45591008B3F31 /* VVNotificationCell.m */; };
 		2DDDB2F8165DBAA5007077E9 /* VVArrivalTimeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DDDB2F7165DBAA5007077E9 /* VVArrivalTimeTableViewController.m */; };
 		2DFBB37D1627A68600EBE7EA /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DFBB37C1627A68600EBE7EA /* MapKit.framework */; };
 		809D88CC0AAF4B31A477FF7E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA171022C5534BA0B4C4AA79 /* libPods.a */; };
@@ -94,6 +95,8 @@
 		2DBD694716B5272B0058EFE4 /* VVVandyMobileAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVVandyMobileAPIClient.m; sourceTree = "<group>"; };
 		2DBD694916B548100058EFE4 /* VVReport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVReport.h; sourceTree = "<group>"; };
 		2DBD694A16B548100058EFE4 /* VVReport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVReport.m; sourceTree = "<group>"; };
+		2DC2059416E45591008B3F31 /* VVNotificationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVNotificationCell.h; sourceTree = "<group>"; };
+		2DC2059516E45591008B3F31 /* VVNotificationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVNotificationCell.m; sourceTree = "<group>"; };
 		2DDDB2F6165DBAA5007077E9 /* VVArrivalTimeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVArrivalTimeTableViewController.h; sourceTree = "<group>"; };
 		2DDDB2F7165DBAA5007077E9 /* VVArrivalTimeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVArrivalTimeTableViewController.m; sourceTree = "<group>"; };
 		2DFBB37C1627A68600EBE7EA /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -173,6 +176,8 @@
 				2D5BE9FE1660A5A000CEFFA3 /* VVArrivalTime.m */,
 				2DDDB2F6165DBAA5007077E9 /* VVArrivalTimeTableViewController.h */,
 				2DDDB2F7165DBAA5007077E9 /* VVArrivalTimeTableViewController.m */,
+				2DC2059416E45591008B3F31 /* VVNotificationCell.h */,
+				2DC2059516E45591008B3F31 /* VVNotificationCell.m */,
 				2D34C59416271B8600F170CA /* VVMapViewController.h */,
 				2D34C59516271B8600F170CA /* VVMapViewController.m */,
 				2D34C59116271A9100F170CA /* VVStopTableViewController.h */,
@@ -327,6 +332,7 @@
 				2DBD694816B5272B0058EFE4 /* VVVandyMobileAPIClient.m in Sources */,
 				2DBD694B16B548100058EFE4 /* VVReport.m in Sources */,
 				2DB1190716BD180E008BA3E9 /* VVColorPalette.m in Sources */,
+				2DC2059616E45591008B3F31 /* VVNotificationCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

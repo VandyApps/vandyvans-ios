@@ -308,14 +308,18 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PushNotificationCell" id="PNN-Ky-Mwz">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PushNotificationCell" id="PNN-Ky-Mwz" customClass="VVNotificationCell">
                                 <rect key="frame" x="0.0" y="91" width="320" height="45"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <switch contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Nxs-AK-SGs"/>
+                                        <switch contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Nxs-AK-SGs">
+                                            <connections>
+                                                <action selector="notificationSwitchPressed:" destination="YGa-rX-jM2" eventType="valueChanged" id="AJh-kN-5sl"/>
+                                            </connections>
+                                        </switch>
                                         <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Push Notifications" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zwd-xA-G53">
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
@@ -334,6 +338,9 @@
                                     <constraint firstItem="Nxs-AK-SGs" firstAttribute="leading" secondItem="zwd-xA-G53" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="oVQ-dA-phu"/>
                                     <constraint firstItem="zwd-xA-G53" firstAttribute="top" secondItem="PNN-Ky-Mwz" secondAttribute="top" type="default" id="vTu-1C-Zox"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="notificationSwitch" destination="Nxs-AK-SGs" id="1cR-Tk-bgT"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -452,13 +459,15 @@
         <class className="VVAboutTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VVAboutTableViewController.h"/>
             <relationships>
-                <relationship kind="action" name="donePressed:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="reportBugTableViewCell" candidateClass="UITableViewCell"/>
                 <relationship kind="outlet" name="sendFeedbackTableViewCell" candidateClass="UITableViewCell"/>
             </relationships>
         </class>
         <class className="VVArrivalTimeTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VVArrivalTimeTableViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="notificationSwitchPressed:" candidateClass="UISwitch"/>
+            </relationships>
         </class>
         <class className="VVMapViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VVMapViewController.h"/>
@@ -466,10 +475,15 @@
                 <relationship kind="outlet" name="vanMapView" candidateClass="MKMapView"/>
             </relationships>
         </class>
+        <class className="VVNotificationCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/VVNotificationCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="notificationSwitch" candidateClass="UISwitch"/>
+            </relationships>
+        </class>
         <class className="VVReportTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VVReportTableViewController.h"/>
             <relationships>
-                <relationship kind="action" name="sendPressed:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="descriptionTableViewCell" candidateClass="UITableViewCell"/>
                 <relationship kind="outlet" name="descriptionTextView" candidateClass="SSTextView"/>
                 <relationship kind="outlet" name="emailTableViewCell" candidateClass="UITableViewCell"/>
