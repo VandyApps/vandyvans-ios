@@ -11,8 +11,9 @@
 #import <SVProgressHUD/SVProgressHUD.h>
 #import "VVAboutTableViewController.h"
 #import "VVNotificationCell.h"
+#import "VVAlertBuilder.h"
 
-@interface VVArrivalTimeTableViewController ()
+@interface VVArrivalTimeTableViewController () <UIAlertViewDelegate>
 
 @property (nonatomic) NSUInteger stopID;
 @property (strong, nonatomic) NSOrderedSet *arrivalTimes;
@@ -22,9 +23,7 @@
 
 @implementation VVArrivalTimeTableViewController
 
-@synthesize stopID = _stopID;
 @synthesize arrivalTimes = _arrivalTimes;
-@synthesize vansAreRunning = _vansAreRunning;
 
 - (NSUInteger)stopID {
     if (!_stopID) {
@@ -105,7 +104,7 @@
             self.arrivalTimes = nil;
         }
         
-        UIAlertView *vansNotRunningAlertView = [[UIAlertView alloc] initWithTitle:@"Vandy Vans Unavailable" message:@"The Vandy Vans are not currently running. Please try again after 5 PM." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        UIAlertView *vansNotRunningAlertView = [VVAlertBuilder vansNotRunningAlertWithDelegate:self];
         [self.refreshControl endRefreshing];
         [vansNotRunningAlertView show];
     } else {
@@ -115,7 +114,7 @@
             
             // If the arrival times set is empty, there are currently no predictions.
             if (self.arrivalTimes.count == 0) {                
-                UIAlertView *noArrivalPredictionsAlertView = [[UIAlertView alloc] initWithTitle:@"No Predictions" message:@"There are no arrival predictions at this time." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                UIAlertView *noArrivalPredictionsAlertView = [VVAlertBuilder noArrivalPredictionsAlert];
                 [noArrivalPredictionsAlertView show];
             }
         }];
@@ -124,9 +123,32 @@
 
 - (IBAction)notificationSwitchPressed:(UISwitch *)sender {
     if (sender.on) {
-        [self scheduleNotificationWithArrivalTime:[self.arrivalTimes objectAtIndex:0]];
+        // If there is already a local notification scheduled for another stop, warn the user.
+        NSArray *scheduledLocalNotifications = [UIApplication sharedApplication].scheduledLocalNotifications;
+        if (scheduledLocalNotifications.count != 0) {
+            UILocalNotification *scheduledNotification = scheduledLocalNotifications[0];
+            
+            UIAlertView *reminderAlreadyExistsAlertView = [VVAlertBuilder reminderAlreadyExistsAlertForStopName:scheduledNotification.userInfo[@"StopName"] newStopName:self.title delegate:self];
+            [reminderAlreadyExistsAlertView show];
+        } else {
+            [self findAndScheduleNextArrivalTime];
+        }
     } else {
         [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    }
+}
+
+- (void)findAndScheduleNextArrivalTime {
+    for (VVArrivalTime *arrivalTime in self.arrivalTimes) {
+        if ([arrivalTime.arrivalTimeInMinutes integerValue] > 2) {
+            [self scheduleNotificationWithArrivalTime:arrivalTime];
+            
+            // Create and display an alert to tell the user for which route and stop they have set a notification.
+            UIAlertView *reminderSetAlertView = [VVAlertBuilder reminderSetAlertWithRouteName:arrivalTime.routeName andStopName:arrivalTime.stopName];
+            [reminderSetAlertView show];
+            
+            break;
+        }
     }
 }
 
@@ -138,11 +160,10 @@
     localNotification.fireDate = scheduledNotificationDate;
     localNotification.timeZone = [NSTimeZone defaultTimeZone];
     
-    localNotification.alertBody = [[[[@"The " stringByAppendingString:arrivalTime.routeName] stringByAppendingString:@" Route will be arriving at "] stringByAppendingString:arrivalTime.stopName] stringByAppendingString:@" in 2 minutes!"];
-    localNotification.alertAction = @"Open App";
+    localNotification.alertBody = [VVAlertBuilder vanArrivingAlertMessageWithRouteName:arrivalTime.routeName andStopName:arrivalTime.stopName];
     
     localNotification.soundName = UILocalNotificationDefaultSoundName;
-    localNotification.applicationIconBadgeNumber = 1;
+    ++localNotification.applicationIconBadgeNumber;
     
     localNotification.userInfo = @{@"StopName" : arrivalTime.stopName};
     
@@ -160,7 +181,7 @@
     
     if (section == 0) {
         numberOfRows = self.arrivalTimes.count;
-    } else if (self.vansAreRunning && self.arrivalTimes.count != 0) {
+    } else if (self.vansAreRunning) {
         numberOfRows = 1;
     }
     
@@ -186,10 +207,38 @@
             cell.detailTextLabel.text = [[arrivalTime.arrivalTimeInMinutes stringValue] stringByAppendingString:@" minutes"];
         }
     } else {
-        return [tableView dequeueReusableCellWithIdentifier:PushNotificationCellIdentifier];
+        VVNotificationCell *notificationCell = [tableView dequeueReusableCellWithIdentifier:PushNotificationCellIdentifier];
+        
+        // If a local notification has already been scheduled for this stop, turn the switch on.
+        NSArray *scheduledLocalNotifications = [UIApplication sharedApplication].scheduledLocalNotifications;
+        if (scheduledLocalNotifications.count != 0) {
+            UILocalNotification *scheduledNotification = scheduledLocalNotifications[0];
+            if ([scheduledNotification.userInfo[@"StopName"] isEqualToString:self.title]) {
+                [notificationCell.notificationSwitch setOn:YES animated:NO];
+            }
+        }
+        
+        cell = notificationCell;
     }
     
     return cell;
+}
+
+#pragma mark - Alert View Delegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+        [[UIApplication sharedApplication] cancelAllLocalNotifications];
+        [self findAndScheduleNextArrivalTime];
+        
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 0) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 @end

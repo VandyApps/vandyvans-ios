@@ -29,6 +29,7 @@
 		2D78911016998C0900C70302 /* VVAppStoreIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D78910D16998C0900C70302 /* VVAppStoreIcon@2x.png */; };
 		2DA198AC16AAB8F7008F5CB5 /* VVReportTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA198AB16AAB8F7008F5CB5 /* VVReportTableViewController.m */; };
 		2DA198B016AAC0CC008F5CB5 /* VVAboutTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA198AF16AAC0CC008F5CB5 /* VVAboutTableViewController.m */; };
+		2DAE7C0A16F081370014701E /* VVAlertBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAE7C0916F081370014701E /* VVAlertBuilder.m */; };
 		2DB065A8166177D20077AAB4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DB065A7166177D20077AAB4 /* SystemConfiguration.framework */; };
 		2DB065AA166177DA0077AAB4 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DB065A9166177DA0077AAB4 /* MobileCoreServices.framework */; };
 		2DB118FF16BD142C008BA3E9 /* target.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DB118FD16BD142C008BA3E9 /* target.png */; };
@@ -80,6 +81,8 @@
 		2DA198AB16AAB8F7008F5CB5 /* VVReportTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVReportTableViewController.m; sourceTree = "<group>"; };
 		2DA198AE16AAC0CC008F5CB5 /* VVAboutTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVAboutTableViewController.h; sourceTree = "<group>"; };
 		2DA198AF16AAC0CC008F5CB5 /* VVAboutTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVAboutTableViewController.m; sourceTree = "<group>"; };
+		2DAE7C0816F081360014701E /* VVAlertBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVAlertBuilder.h; sourceTree = "<group>"; };
+		2DAE7C0916F081370014701E /* VVAlertBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVAlertBuilder.m; sourceTree = "<group>"; };
 		2DB065A7166177D20077AAB4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		2DB065A9166177DA0077AAB4 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		2DB118FD16BD142C008BA3E9 /* target.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = target.png; sourceTree = "<group>"; };
@@ -172,6 +175,8 @@
 				2DBD694716B5272B0058EFE4 /* VVVandyMobileAPIClient.m */,
 				2D34C56F162718C500F170CA /* VVAppDelegate.h */,
 				2D34C570162718C500F170CA /* VVAppDelegate.m */,
+				2DAE7C0816F081360014701E /* VVAlertBuilder.h */,
+				2DAE7C0916F081370014701E /* VVAlertBuilder.m */,
 				2D5BE9FD1660A5A000CEFFA3 /* VVArrivalTime.h */,
 				2D5BE9FE1660A5A000CEFFA3 /* VVArrivalTime.m */,
 				2DDDB2F6165DBAA5007077E9 /* VVArrivalTimeTableViewController.h */,
@@ -333,6 +338,7 @@
 				2DBD694B16B548100058EFE4 /* VVReport.m in Sources */,
 				2DB1190716BD180E008BA3E9 /* VVColorPalette.m in Sources */,
 				2DC2059616E45591008B3F31 /* VVNotificationCell.m in Sources */,
+				2DAE7C0A16F081370014701E /* VVAlertBuilder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,10 +420,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = ADCAEF1C8A2C492EB2B3961B /* Pods.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Seth Friedman (95YMDB77KG)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Vandy Vans/Vandy Vans-Prefix.pch";
 				INFOPLIST_FILE = "Vandy Vans/Vandy Vans-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "B5675856-8335-4FC9-8DBC-6C728E9D56CF";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -427,10 +435,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = ADCAEF1C8A2C492EB2B3961B /* Pods.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Seth Friedman (95YMDB77KG)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Vandy Vans/Vandy Vans-Prefix.pch";
 				INFOPLIST_FILE = "Vandy Vans/Vandy Vans-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "B5675856-8335-4FC9-8DBC-6C728E9D56CF";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

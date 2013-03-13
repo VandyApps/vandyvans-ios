@@ -9,39 +9,30 @@
 #import "VVAppDelegate.h"
 #import <AFNetworking/AFNetworkActivityIndicatorManager.h>
 #import "VVArrivalTimeTableViewController.h"
+#import "VVAlertBuilder.h"
 
 @implementation VVAppDelegate
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
-    
-    UILocalNotification *localNotification = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
-    
-    if (localNotification) {
-        UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
-        UINavigationController *navigationController = (UINavigationController *)[tabBarController.viewControllers objectAtIndex:0];
-        
-        VVArrivalTimeTableViewController *arrivalTimeTableViewController = [[VVArrivalTimeTableViewController alloc] init];
-        arrivalTimeTableViewController.title = [localNotification.userInfo objectForKey:@"StopName"];
-        [navigationController pushViewController:arrivalTimeTableViewController animated:YES];
-        
-        application.applicationIconBadgeNumber = localNotification.applicationIconBadgeNumber - 1;
-    }
     
     return YES;
 }
 
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
-    UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
+    /*UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
     UINavigationController *navigationController = (UINavigationController *)[tabBarController.viewControllers objectAtIndex:0];
     
     VVArrivalTimeTableViewController *arrivalTimeTableViewController = [[VVArrivalTimeTableViewController alloc] init];
     arrivalTimeTableViewController.title = [notification.userInfo objectForKey:@"StopName"];
-    [navigationController pushViewController:arrivalTimeTableViewController animated:YES];
+    [navigationController pushViewController:arrivalTimeTableViewController animated:YES];*/
     
-    application.applicationIconBadgeNumber = notification.applicationIconBadgeNumber-1;
+    UIAlertView *vanArrivingAlertView = [VVAlertBuilder vanArrivingAlertWithRouteName:notification.userInfo[@"RouteName"] andStopName:notification.userInfo[@"StopName"]];
+    [vanArrivingAlertView show];
+    
+    application.applicationIconBadgeNumber = --notification.applicationIconBadgeNumber;
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -54,11 +45,16 @@
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    
+    // Ensures that the badge number is cleaned up when no notifications are present.
+    application.applicationIconBadgeNumber = 0;
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    
+    application.applicationIconBadgeNumber = 0;
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
