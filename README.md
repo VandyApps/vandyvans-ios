@@ -14,11 +14,3 @@ The graphic design for the project was done by Fletcher Young.
 ## Contact
 
 You can submit any bug reports or feedback either directly through the app or by emailing [vandyvansapp@gmail.com](mailto:vandyvansapp@gmail.com).
-
-### Creators
-
-[Seth Friedman](https://github.com/sethfri) 
-[@sethfri](https://twitter.com/sethfri)
-
-[McArthur Gill](https://github.com/mcarthurgill) 
-[@mcarthur_gill](https://twitter.com/mcarthur_gill)
