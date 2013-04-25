@@ -1,15 +1,18 @@
 PODS:
   - AFNetworking (1.2.1)
+  - BSModalPickerView (0.2)
   - SSToolkit (1.0.4)
   - SVProgressHUD (0.9)
 
 DEPENDENCIES:
   - AFNetworking
+  - BSModalPickerView
   - SSToolkit
   - SVProgressHUD
 
 SPEC CHECKSUMS:
   AFNetworking: 616da0028916ce296f5c3cef74e5552eb4e10e13
+  BSModalPickerView: 67c5fe2f843d2cf9b3fc54638b993c4ca11af0c2
   SSToolkit: 689acaedac79c2079e492e528a55bcb5db9d98c4
   SVProgressHUD: 03d4845ec8e64591726428a08236c6a5489d45f8
 
