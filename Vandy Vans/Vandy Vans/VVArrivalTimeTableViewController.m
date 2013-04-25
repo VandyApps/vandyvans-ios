@@ -2,36 +2,89 @@
 //  VVArrivalTimeTableViewController.m
 //  Vandy Vans
 //
-//  Created by Seth Friedman on 10/11/12.
+//  Created by Seth Friedman on 11/21/12.
 //  Copyright (c) 2012 VandyMobile. All rights reserved.
 //
 
 #import "VVArrivalTimeTableViewController.h"
+#import "VVArrivalTime.h"
+#import <SVProgressHUD/SVProgressHUD.h>
+#import "VVAboutTableViewController.h"
+#import "VVNotificationCell.h"
+#import "VVAlertBuilder.h"
 
-@interface VVArrivalTimeTableViewController ()
+@interface VVArrivalTimeTableViewController () <UIAlertViewDelegate>
+
+@property (nonatomic) NSUInteger stopID;
+@property (strong, nonatomic) NSOrderedSet *arrivalTimes;
+@property (nonatomic) BOOL vansAreRunning;
 
 @end
 
 @implementation VVArrivalTimeTableViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
+@synthesize arrivalTimes = _arrivalTimes;
+
+- (NSUInteger)stopID {
+    if (!_stopID) {
+        if ([self.title isEqualToString:@"Branscomb Quad"]) {
+            self.stopID = 263473;
+        } else if ([self.title isEqualToString:@"Carmichael Towers"]) {
+            self.stopID = 263470;
+        } else if ([self.title isEqualToString:@"Murray House"]) {
+            self.stopID = 263454;
+        } else if ([self.title isEqualToString:@"Highland Quad"]) {
+            self.stopID = 263444;
+        } else if ([self.title isEqualToString:@"Vanderbilt Police Department"]) {
+            self.stopID = 264041;
+        } else if ([self.title isEqualToString:@"Vanderbilt Book Store"]) {
+            self.stopID = 332298;
+        } else if ([self.title isEqualToString:@"Kissam Quad"]) {
+            self.stopID = 263415;
+        } else if ([self.title isEqualToString:@"Terrace Place Garage"]) {
+            self.stopID = 238083;
+        } else if ([self.title isEqualToString:@"Wesley Place Garage"]) {
+            self.stopID = 238096;
+        } else if ([self.title isEqualToString:@"North House"]) {
+            self.stopID = 263463;
+        } else if ([self.title isEqualToString:@"Blair School of Music"]) {
+            self.stopID = 264091;
+        } else if ([self.title isEqualToString:@"McGugin Center"]) {
+            self.stopID = 264101;
+        } else {
+            self.stopID = 401204;
+        }
     }
-    return self;
+    return _stopID;
+}
+
+- (NSOrderedSet *)arrivalTimes {
+    if (!_arrivalTimes) {
+        _arrivalTimes = [[NSOrderedSet alloc] init];
+    }
+    
+    return _arrivalTimes;
+}
+
+- (void)setArrivalTimes:(NSOrderedSet *)arrivalTimes {
+    if (_arrivalTimes != arrivalTimes) {
+        _arrivalTimes = arrivalTimes;
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.vansAreRunning = YES;
+    
+    self.navigationController.navigationBar.tintColor = [UIColor blackColor];
+    
+    self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"VVBackground"]];
+    
+    // Set up the refresh control and then refresh to load the initial data.
+    [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
+    [self refresh];
 }
 
 - (void)didReceiveMemoryWarning
@@ -40,82 +93,152 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+- (void)refresh {
+    NSDateComponents *currentDateComponents = [[NSCalendar autoupdatingCurrentCalendar] components:NSHourCalendarUnit fromDate:[NSDate date]];
+    
+    // If it is between 5 AM and 5 PM, alert the user that the vans are not running.
+    if (currentDateComponents.hour >= 5 && currentDateComponents.hour < 17) {
+        self.vansAreRunning = NO;
+        // If it has just turned 5 AM, clear any cached arrival times and clear the table view.
+        if (self.arrivalTimes.count != 0) {
+            self.arrivalTimes = nil;
+        }
+        
+        UIAlertView *vansNotRunningAlertView = [VVAlertBuilder vansNotRunningAlertWithDelegate:self];
+        [self.refreshControl endRefreshing];
+        [vansNotRunningAlertView show];
+    } else {
+        [VVArrivalTime arrivalTimesForStopID:self.stopID stopName:self.title withBlock:^(NSArray *arrivalTimesArray) {
+            [self.refreshControl endRefreshing];
+            self.arrivalTimes = [NSOrderedSet orderedSetWithArray:arrivalTimesArray];
+            
+            // If the arrival times set is empty, there are currently no predictions.
+            if (self.arrivalTimes.count == 0) {                
+                UIAlertView *noArrivalPredictionsAlertView = [VVAlertBuilder noArrivalPredictionsAlert];
+                [noArrivalPredictionsAlertView show];
+            }
+        }];
+    }
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+- (IBAction)notificationSwitchPressed:(UISwitch *)sender {
+    if (sender.on) {
+        // If there is already a local notification scheduled for another stop, warn the user.
+        NSArray *scheduledLocalNotifications = [UIApplication sharedApplication].scheduledLocalNotifications;
+        if (scheduledLocalNotifications.count != 0) {
+            UILocalNotification *scheduledNotification = scheduledLocalNotifications[0];
+            
+            UIAlertView *reminderAlreadyExistsAlertView = [VVAlertBuilder reminderAlreadyExistsAlertForStopName:scheduledNotification.userInfo[@"StopName"] newStopName:self.title delegate:self];
+            [reminderAlreadyExistsAlertView show];
+        } else {
+            [self findAndScheduleNextArrivalTime];
+        }
+    } else {
+        [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    }
+}
+
+- (void)findAndScheduleNextArrivalTime {
+    for (VVArrivalTime *arrivalTime in self.arrivalTimes) {
+        if ([arrivalTime.arrivalTimeInMinutes integerValue] > 2) {
+            [self scheduleNotificationWithArrivalTime:arrivalTime];
+            
+            // Create and display an alert to tell the user for which route and stop they have set a notification.
+            UIAlertView *reminderSetAlertView = [VVAlertBuilder reminderSetAlertWithRouteName:arrivalTime.routeName andStopName:arrivalTime.stopName];
+            [reminderSetAlertView show];
+            
+            break;
+        }
+    }
+}
+
+- (void)scheduleNotificationWithArrivalTime:(VVArrivalTime *)arrivalTime {
+    NSDate *scheduledNotificationDate = [NSDate dateWithTimeIntervalSinceNow:(([arrivalTime.arrivalTimeInMinutes integerValue] - 2) * 60)];
+    
+    UILocalNotification *localNotification = [[UILocalNotification alloc] init];
+    
+    localNotification.fireDate = scheduledNotificationDate;
+    localNotification.timeZone = [NSTimeZone defaultTimeZone];
+    
+    localNotification.alertBody = [VVAlertBuilder vanArrivingAlertMessageWithRouteName:arrivalTime.routeName andStopName:arrivalTime.stopName];
+    
+    localNotification.soundName = UILocalNotificationDefaultSoundName;
+    ++localNotification.applicationIconBadgeNumber;
+    
+    localNotification.userInfo = @{@"StopName" : arrivalTime.stopName, @"RouteName" : arrivalTime.routeName};
+    
+    [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+}
+
+#pragma mark - Table View Data Source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 2;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    NSInteger numberOfRows = 0;
+    
+    if (section == 0) {
+        numberOfRows = self.arrivalTimes.count;
+    } else if (self.vansAreRunning) {
+        numberOfRows = 1;
+    }
+    
+    return numberOfRows;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    static NSString *ArrivalTimeCellIdentifier = @"ArrivalTimeCell";
+    static NSString *PushNotificationCellIdentifier = @"PushNotificationCell";
+    UITableViewCell *cell;
     
-    // Configure the cell...
+    if (indexPath.section == 0) {
+        cell = [tableView dequeueReusableCellWithIdentifier:ArrivalTimeCellIdentifier forIndexPath:indexPath];
+        
+        // Configure the cell to display the route name and the number of minutes until arrival.
+        VVArrivalTime *arrivalTime = [self.arrivalTimes objectAtIndex:indexPath.row];
+        cell.textLabel.text = arrivalTime.routeName;
+        
+        if ([arrivalTime.arrivalTimeInMinutes intValue] == 0) {
+            cell.detailTextLabel.text = @"Arriving";
+        } else {
+            cell.detailTextLabel.text = [[arrivalTime.arrivalTimeInMinutes stringValue] stringByAppendingString:@" minutes"];
+        }
+    } else {
+        VVNotificationCell *notificationCell = [tableView dequeueReusableCellWithIdentifier:PushNotificationCellIdentifier];
+        
+        // If a local notification has already been scheduled for this stop, turn the switch on.
+        NSArray *scheduledLocalNotifications = [UIApplication sharedApplication].scheduledLocalNotifications;
+        if (scheduledLocalNotifications.count != 0) {
+            UILocalNotification *scheduledNotification = scheduledLocalNotifications[0];
+            if ([scheduledNotification.userInfo[@"StopName"] isEqualToString:self.title]) {
+                [notificationCell.notificationSwitch setOn:YES animated:NO];
+            }
+        }
+        
+        cell = notificationCell;
+    }
     
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+#pragma mark - Alert View Delegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+        [[UIApplication sharedApplication] cancelAllLocalNotifications];
+        [self findAndScheduleNextArrivalTime];
+        
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
+    }
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-#pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 0) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 @end
