@@ -1,7 +1,7 @@
 Vandy Vans
 ==========
 
-Vandy Vans is an open-source iPhone project created by [Vanderbilt University](http://vanderbilt.edu) through a student organization called [VandyMobile](https://www.facebook.com/VandyMobile).
+Vandy Vans is an open-source iPhone project created by [Vanderbilt University](http://vanderbilt.edu) students through a student organization called [VandyMobile](https://www.facebook.com/VandyMobile).
 
 The purpose of the app is to provide a fast, native way for Vanderbilt students to access the van schedule as well as a live map of the vans' locations on their iPhones.
 
@@ -17,8 +17,8 @@ You can submit any bug reports or feedback either directly through the app or by
 
 ### Creators
 
-[Seth Friedman](https://github.com/sethfri)
+[Seth Friedman](https://github.com/sethfri) 
 [@sethfri](https://twitter.com/sethfri)
 
-[McArthur Gill](https://github.com/mcarthurgill)
+[McArthur Gill](https://github.com/mcarthurgill) 
 [@mcarthur_gill](https://twitter.com/mcarthur_gill)
