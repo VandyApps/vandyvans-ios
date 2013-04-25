@@ -42,7 +42,7 @@
     
     self.navigationController.navigationBar.tintColor = [UIColor blackColor];
     
-    self.tableView.backgroundColor = [VVColorPalette blackColor];
+    self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"VVBackground"]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -85,28 +85,6 @@
     
     return cell;
 }
-
-#pragma mark - Table View Delegate
-
-/*- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CGFloat rowHeight;
-    
-    if ([[UIScreen mainScreen] bounds].size.height == 568) {
-        rowHeight = 91.0f;
-    } else {
-        rowHeight = 74.0f;
-    }
-    
-    return rowHeight;
-}
-
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Alternatingly sets the background color to dark gray or gold for each row.
-    cell.backgroundColor = (indexPath.row % 2 == 0) ? [VVColorPalette blackColor] : [VVColorPalette goldColor];
-    
-    // Alternatingly sets the text color to gold or dark gray for each row.
-    cell.textLabel.textColor = (indexPath.row % 2 == 0) ? [VVColorPalette goldColor] : [VVColorPalette blackColor];
-}*/
 
 #pragma mark - About Table View Controller Delegate
 

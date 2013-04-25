@@ -80,7 +80,7 @@
     
     self.navigationController.navigationBar.tintColor = [UIColor blackColor];
     
-    self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"VVArrivalTimeBackground-568h.jpg"]];
+    self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"VVBackground"]];
     
     // Set up the refresh control and then refresh to load the initial data.
     [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
@@ -165,7 +165,7 @@
     localNotification.soundName = UILocalNotificationDefaultSoundName;
     ++localNotification.applicationIconBadgeNumber;
     
-    localNotification.userInfo = @{@"StopName" : arrivalTime.stopName};
+    localNotification.userInfo = @{@"StopName" : arrivalTime.stopName, @"RouteName" : arrivalTime.routeName};
     
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
 }

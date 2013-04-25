@@ -39,7 +39,8 @@
 		2DB1190716BD180E008BA3E9 /* VVColorPalette.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB1190616BD180E008BA3E9 /* VVColorPalette.m */; };
 		2DB1191316BD2161008BA3E9 /* VVAboutBackground-568h@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2DB1191116BD2161008BA3E9 /* VVAboutBackground-568h@2x.jpg */; };
 		2DB1191416BD2161008BA3E9 /* VVArrivalTimeBackground-568h@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2DB1191216BD2161008BA3E9 /* VVArrivalTimeBackground-568h@2x.jpg */; };
-		2DB1191616BD229E008BA3E9 /* VVBackground-568h@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2DB1191516BD229E008BA3E9 /* VVBackground-568h@2x.jpg */; };
+		2DBA66F51707E1D1003B3D99 /* VVBackground-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DBA66F41707E1D1003B3D99 /* VVBackground-568h@2x.png */; };
+		2DBA66F71707E2B6003B3D99 /* VVBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DBA66F61707E2B6003B3D99 /* VVBackground@2x.png */; };
 		2DBD694816B5272B0058EFE4 /* VVVandyMobileAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBD694716B5272B0058EFE4 /* VVVandyMobileAPIClient.m */; };
 		2DBD694B16B548100058EFE4 /* VVReport.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBD694A16B548100058EFE4 /* VVReport.m */; };
 		2DC2059616E45591008B3F31 /* VVNotificationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC2059516E45591008B3F31 /* VVNotificationCell.m */; };
@@ -93,7 +94,8 @@
 		2DB1190616BD180E008BA3E9 /* VVColorPalette.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVColorPalette.m; sourceTree = "<group>"; };
 		2DB1191116BD2161008BA3E9 /* VVAboutBackground-568h@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "VVAboutBackground-568h@2x.jpg"; sourceTree = "<group>"; };
 		2DB1191216BD2161008BA3E9 /* VVArrivalTimeBackground-568h@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "VVArrivalTimeBackground-568h@2x.jpg"; sourceTree = "<group>"; };
-		2DB1191516BD229E008BA3E9 /* VVBackground-568h@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "VVBackground-568h@2x.jpg"; sourceTree = "<group>"; };
+		2DBA66F41707E1D1003B3D99 /* VVBackground-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VVBackground-568h@2x.png"; sourceTree = "<group>"; };
+		2DBA66F61707E2B6003B3D99 /* VVBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VVBackground@2x.png"; sourceTree = "<group>"; };
 		2DBD694616B5272B0058EFE4 /* VVVandyMobileAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVVandyMobileAPIClient.h; sourceTree = "<group>"; };
 		2DBD694716B5272B0058EFE4 /* VVVandyMobileAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVVandyMobileAPIClient.m; sourceTree = "<group>"; };
 		2DBD694916B548100058EFE4 /* VVReport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVReport.h; sourceTree = "<group>"; };
@@ -207,12 +209,13 @@
 		2D78910016998AF600C70302 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				2DBA66F61707E2B6003B3D99 /* VVBackground@2x.png */,
+				2DBA66F41707E1D1003B3D99 /* VVBackground-568h@2x.png */,
 				2DB1190116BD1468008BA3E9 /* map.png */,
 				2DB1190216BD1468008BA3E9 /* map@2x.png */,
 				2DB118FD16BD142C008BA3E9 /* target.png */,
 				2DB118FE16BD142C008BA3E9 /* target@2x.png */,
 				2DB1191116BD2161008BA3E9 /* VVAboutBackground-568h@2x.jpg */,
-				2DB1191516BD229E008BA3E9 /* VVBackground-568h@2x.jpg */,
 				2DB1191216BD2161008BA3E9 /* VVArrivalTimeBackground-568h@2x.jpg */,
 				2D78910B16998C0900C70302 /* VVSpotlightIcon@2x.png */,
 				2D78910C16998C0900C70302 /* VVSpotlightIcon.png */,
@@ -297,7 +300,8 @@
 				2DB1190416BD1468008BA3E9 /* map@2x.png in Resources */,
 				2DB1191316BD2161008BA3E9 /* VVAboutBackground-568h@2x.jpg in Resources */,
 				2DB1191416BD2161008BA3E9 /* VVArrivalTimeBackground-568h@2x.jpg in Resources */,
-				2DB1191616BD229E008BA3E9 /* VVBackground-568h@2x.jpg in Resources */,
+				2DBA66F51707E1D1003B3D99 /* VVBackground-568h@2x.png in Resources */,
+				2DBA66F71707E2B6003B3D99 /* VVBackground@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,12 +424,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = ADCAEF1C8A2C492EB2B3961B /* Pods.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Seth Friedman (95YMDB77KG)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Vandy Vans/Vandy Vans-Prefix.pch";
 				INFOPLIST_FILE = "Vandy Vans/Vandy Vans-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "B5675856-8335-4FC9-8DBC-6C728E9D56CF";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -435,12 +439,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = ADCAEF1C8A2C492EB2B3961B /* Pods.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Seth Friedman (95YMDB77KG)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Vandy Vans/Vandy Vans-Prefix.pch";
 				INFOPLIST_FILE = "Vandy Vans/Vandy Vans-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "B5675856-8335-4FC9-8DBC-6C728E9D56CF";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

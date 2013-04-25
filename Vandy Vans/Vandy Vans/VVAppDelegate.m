@@ -21,14 +21,7 @@
     return YES;
 }
 
-- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
-    /*UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
-    UINavigationController *navigationController = (UINavigationController *)[tabBarController.viewControllers objectAtIndex:0];
-    
-    VVArrivalTimeTableViewController *arrivalTimeTableViewController = [[VVArrivalTimeTableViewController alloc] init];
-    arrivalTimeTableViewController.title = [notification.userInfo objectForKey:@"StopName"];
-    [navigationController pushViewController:arrivalTimeTableViewController animated:YES];*/
-    
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {    
     UIAlertView *vanArrivingAlertView = [VVAlertBuilder vanArrivingAlertWithRouteName:notification.userInfo[@"RouteName"] andStopName:notification.userInfo[@"StopName"]];
     [vanArrivingAlertView show];
     

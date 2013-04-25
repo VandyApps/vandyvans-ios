@@ -1,17 +1,16 @@
+PODS:
+  - AFNetworking (1.2.1)
+  - SSToolkit (1.0.4)
+  - SVProgressHUD (0.9)
 
-COCOAPODS: 0.16.1
+DEPENDENCIES:
+  - AFNetworking
+  - SSToolkit
+  - SVProgressHUD
 
-SPEC CHECKSUMS: 
-  SVProgressHUD: 592da548680cd3613923b5f98113add52ad30cc2
-  SSToolkit: 9751b7ec0d068dc1dc46c8121dfeff808f9e3d35
-  AFNetworking: 761a418233d280c1e0580bcb76ff9cb4c3073d17
+SPEC CHECKSUMS:
+  AFNetworking: 616da0028916ce296f5c3cef74e5552eb4e10e13
+  SSToolkit: 689acaedac79c2079e492e528a55bcb5db9d98c4
+  SVProgressHUD: 03d4845ec8e64591726428a08236c6a5489d45f8
 
-PODS: 
-- AFNetworking (1.1.0)
-- SSToolkit (1.0.2)
-- SVProgressHUD (0.8.1)
-
-DEPENDENCIES: 
-- AFNetworking
-- SSToolkit
-- SVProgressHUD
+COCOAPODS: 0.18.1
