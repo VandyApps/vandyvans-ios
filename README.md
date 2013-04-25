@@ -18,7 +18,9 @@ You can submit any bug reports or feedback either directly through the app or by
 ### Creators
 
 [Seth Friedman](https://github.com/sethfri) 
+
 [@sethfri](https://twitter.com/sethfri)
 
 [McArthur Gill](https://github.com/mcarthurgill) 
+
 [@mcarthur_gill](https://twitter.com/mcarthur_gill)
