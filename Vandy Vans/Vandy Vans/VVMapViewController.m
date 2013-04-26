@@ -41,10 +41,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.vanMapView.camera = [GMSCameraPosition cameraWithLatitude:36.14381 longitude:-86.801643 zoom:14.7];
-    
     self.vanMapView.myLocationEnabled = YES;
     self.vanMapView.settings.myLocationButton = YES;
+    
+    self.vanMapView.camera = [GMSCameraPosition cameraWithLatitude:36.14381 longitude:-86.801643 zoom:14.7];
     
     // Drop pins on stops depending on which route is being displayed.
     [self dropMarkersForRoute:self.routeBeingDisplayed];
@@ -53,6 +53,8 @@
     [self addPolylineToRoute:self.routeBeingDisplayed];
     
     //[self repositionCamera];
+    
+    self.navigationController.navigationBar.tintColor = [UIColor blackColor];
 }
 
 - (IBAction)routePressed:(UIBarButtonItem *)sender {

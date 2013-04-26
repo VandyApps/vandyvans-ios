@@ -11,8 +11,22 @@
 
 @interface VVRoute : NSObject
 
+/**
+ * This method produces an array of all of the `GMSMarker`s for a particular Vandy Van route.
+ *
+ * @param routeName The name of the Vandy Van route selected.
+ *
+ * @return An array of all of the `GMSMarker`s for the Vandy Van route.
+ */
 + (NSArray *)markersForRouteName:(NSString *)routeName;
 
+/**
+ * This method produces a `GMSPolyline` overlay for a particular Vandy Van route.
+ *
+ * @param routeName The name of the Vandy Van route selected.
+ *
+ * @return A `GMSPolyline` for the Vandy Van route.
+ */
 + (GMSPolyline *)polylineForRouteName:(NSString *)routeName;
 
 @end

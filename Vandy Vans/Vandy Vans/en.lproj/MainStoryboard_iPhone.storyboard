@@ -373,7 +373,7 @@
             </objects>
             <point key="canvasLocation" x="3408" y="312"/>
         </scene>
-        <!--Map View Controller-->
+        <!--Map View Controller - Live Map-->
         <scene sceneID="s48-ky-5d3">
             <objects>
                 <viewController id="5wh-qK-Mbq" customClass="VVMapViewController" sceneMemberID="viewController">
@@ -393,7 +393,7 @@
                             <constraint firstItem="feV-Ep-Gkd" firstAttribute="trailing" secondItem="nbf-XI-cDw" secondAttribute="trailing" type="default" id="udX-IL-dON"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="FsR-Gf-r8R">
+                    <navigationItem key="navigationItem" title="Live Map" id="FsR-Gf-r8R">
                         <barButtonItem key="rightBarButtonItem" title="Route" id="4p3-jh-Gv8">
                             <connections>
                                 <action selector="routePressed:" destination="5wh-qK-Mbq" id="e9r-uk-WJF"/>
@@ -504,19 +504,18 @@
         <class className="VVAboutTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VVAboutTableViewController.h"/>
             <relationships>
+                <relationship kind="action" name="donePressed:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="reportBugTableViewCell" candidateClass="UITableViewCell"/>
                 <relationship kind="outlet" name="sendFeedbackTableViewCell" candidateClass="UITableViewCell"/>
             </relationships>
         </class>
         <class className="VVArrivalTimeTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VVArrivalTimeTableViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="notificationSwitchPressed:" candidateClass="UISwitch"/>
-            </relationships>
         </class>
         <class className="VVMapViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VVMapViewController.h"/>
             <relationships>
+                <relationship kind="action" name="routePressed:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="vanMapView" candidateClass="GMSMapView"/>
             </relationships>
         </class>

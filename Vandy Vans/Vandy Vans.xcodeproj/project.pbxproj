@@ -11,6 +11,7 @@
 		2D0A6EE6172B131600781754 /* map@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D0A6EE4172B131600781754 /* map@2x.png */; };
 		2D0A6EE9172B135F00781754 /* target.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D0A6EE7172B135F00781754 /* target.png */; };
 		2D0A6EEA172B135F00781754 /* target@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D0A6EE8172B135F00781754 /* target@2x.png */; };
+		2D0A6EED172B1C7100781754 /* GMSMarker+ConstructorAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D0A6EEC172B1C7100781754 /* GMSMarker+ConstructorAdditions.m */; };
 		2D1950A01729392E0071A6EA /* VVRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D19509F1729392E0071A6EA /* VVRoute.m */; };
 		2D34C561162718C500F170CA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D34C560162718C400F170CA /* UIKit.framework */; };
 		2D34C563162718C500F170CA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D34C562162718C500F170CA /* Foundation.framework */; };
@@ -66,6 +67,8 @@
 		2D0A6EE4172B131600781754 /* map@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map@2x.png"; sourceTree = "<group>"; };
 		2D0A6EE7172B135F00781754 /* target.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = target.png; sourceTree = "<group>"; };
 		2D0A6EE8172B135F00781754 /* target@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "target@2x.png"; sourceTree = "<group>"; };
+		2D0A6EEB172B1C7000781754 /* GMSMarker+ConstructorAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GMSMarker+ConstructorAdditions.h"; sourceTree = "<group>"; };
+		2D0A6EEC172B1C7100781754 /* GMSMarker+ConstructorAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GMSMarker+ConstructorAdditions.m"; sourceTree = "<group>"; };
 		2D19509E1729392E0071A6EA /* VVRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVRoute.h; sourceTree = "<group>"; };
 		2D19509F1729392E0071A6EA /* VVRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVRoute.m; sourceTree = "<group>"; };
 		2D34C55C162718C400F170CA /* Vandy Vans.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Vandy Vans.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -212,6 +215,8 @@
 				2D4D0098168E5A6E00F0BF67 /* MainStoryboard_iPhone.storyboard */,
 				2D19509E1729392E0071A6EA /* VVRoute.h */,
 				2D19509F1729392E0071A6EA /* VVRoute.m */,
+				2D0A6EEB172B1C7000781754 /* GMSMarker+ConstructorAdditions.h */,
+				2D0A6EEC172B1C7100781754 /* GMSMarker+ConstructorAdditions.m */,
 				2DA198AA16AAB8F7008F5CB5 /* VVReportTableViewController.h */,
 				2DA198AB16AAB8F7008F5CB5 /* VVReportTableViewController.m */,
 				2DA198AE16AAC0CC008F5CB5 /* VVAboutTableViewController.h */,
@@ -393,6 +398,7 @@
 				2DC2059616E45591008B3F31 /* VVNotificationCell.m in Sources */,
 				2DAE7C0A16F081370014701E /* VVAlertBuilder.m in Sources */,
 				2D1950A01729392E0071A6EA /* VVRoute.m in Sources */,
+				2D0A6EED172B1C7100781754 /* GMSMarker+ConstructorAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
