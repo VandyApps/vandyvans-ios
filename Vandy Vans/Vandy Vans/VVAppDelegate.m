@@ -10,6 +10,7 @@
 #import <AFNetworking/AFNetworkActivityIndicatorManager.h>
 #import "VVArrivalTimeTableViewController.h"
 #import "VVAlertBuilder.h"
+#import <GoogleMaps/GoogleMaps.h>
 
 @implementation VVAppDelegate
 
@@ -17,6 +18,8 @@
     // Override point for customization after application launch.
     
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
+    
+    [GMSServices provideAPIKey:@"AIzaSyAWPQGIizS9XbqSRQztd53yDeaPrW_MHH0"];
     
     return YES;
 }
