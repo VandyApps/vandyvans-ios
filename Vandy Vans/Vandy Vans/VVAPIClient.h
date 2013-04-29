@@ -12,4 +12,7 @@
 
 + (VVAPIClient *)sharedClient;
 
+/** This method gives the API key for accessing Syncromatics's Vandy Vans service. */
++ (NSString *)apiKey;
+
 @end

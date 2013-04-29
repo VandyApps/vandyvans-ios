@@ -547,4 +547,18 @@
     return routePolyline;
 }
 
++ (NSInteger)routeIDForRouteName:(NSString *)routeName {
+    NSInteger routeID;
+    
+    if ([routeName isEqualToString:@"Blue"]) {
+        routeID = 745;
+    } else if ([routeName isEqualToString:@"Green"]) {
+        routeID = 749;
+    } else { // Red
+        routeID = 746;
+    }
+    
+    return routeID;
+}
+
 @end

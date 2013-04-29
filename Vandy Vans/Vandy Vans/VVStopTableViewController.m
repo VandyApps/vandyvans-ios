@@ -8,7 +8,6 @@
 
 #import "VVStopTableViewController.h"
 #import "VVArrivalTimeTableViewController.h"
-#import "VVColorPalette.h"
 
 @interface VVStopTableViewController ()
 

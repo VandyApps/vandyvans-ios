@@ -36,4 +36,8 @@ static NSString * const kVVAPIBaseURLString = @"http://api.syncromatics.com/";
     return self;
 }
 
++ (NSString *)apiKey {
+    return @"a922a34dfb5e63ba549adbb259518909";
+}
+
 @end

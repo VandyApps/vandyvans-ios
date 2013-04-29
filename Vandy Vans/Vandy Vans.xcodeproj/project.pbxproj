@@ -37,7 +37,6 @@
 		2DAE7C0A16F081370014701E /* VVAlertBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAE7C0916F081370014701E /* VVAlertBuilder.m */; };
 		2DB065A8166177D20077AAB4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DB065A7166177D20077AAB4 /* SystemConfiguration.framework */; };
 		2DB065AA166177DA0077AAB4 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DB065A9166177DA0077AAB4 /* MobileCoreServices.framework */; };
-		2DB1190716BD180E008BA3E9 /* VVColorPalette.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB1190616BD180E008BA3E9 /* VVColorPalette.m */; };
 		2DB1191316BD2161008BA3E9 /* VVAboutBackground-568h@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2DB1191116BD2161008BA3E9 /* VVAboutBackground-568h@2x.jpg */; };
 		2DB1191416BD2161008BA3E9 /* VVArrivalTimeBackground-568h@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2DB1191216BD2161008BA3E9 /* VVArrivalTimeBackground-568h@2x.jpg */; };
 		2DBA66F51707E1D1003B3D99 /* VVBackground-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DBA66F41707E1D1003B3D99 /* VVBackground-568h@2x.png */; };
@@ -96,8 +95,6 @@
 		2DAE7C0916F081370014701E /* VVAlertBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVAlertBuilder.m; sourceTree = "<group>"; };
 		2DB065A7166177D20077AAB4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		2DB065A9166177DA0077AAB4 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		2DB1190516BD180E008BA3E9 /* VVColorPalette.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVColorPalette.h; sourceTree = "<group>"; };
-		2DB1190616BD180E008BA3E9 /* VVColorPalette.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVColorPalette.m; sourceTree = "<group>"; };
 		2DB1191116BD2161008BA3E9 /* VVAboutBackground-568h@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "VVAboutBackground-568h@2x.jpg"; sourceTree = "<group>"; };
 		2DB1191216BD2161008BA3E9 /* VVArrivalTimeBackground-568h@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "VVArrivalTimeBackground-568h@2x.jpg"; sourceTree = "<group>"; };
 		2DBA66F41707E1D1003B3D99 /* VVBackground-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VVBackground-568h@2x.png"; sourceTree = "<group>"; };
@@ -185,8 +182,6 @@
 				2DBD694A16B548100058EFE4 /* VVReport.m */,
 				2D5BE9FA16609B4300CEFFA3 /* VVAPIClient.h */,
 				2D5BE9FB16609B4300CEFFA3 /* VVAPIClient.m */,
-				2DB1190516BD180E008BA3E9 /* VVColorPalette.h */,
-				2DB1190616BD180E008BA3E9 /* VVColorPalette.m */,
 				2DBD694616B5272B0058EFE4 /* VVVandyMobileAPIClient.h */,
 				2DBD694716B5272B0058EFE4 /* VVVandyMobileAPIClient.m */,
 				2D34C56F162718C500F170CA /* VVAppDelegate.h */,
@@ -354,7 +349,6 @@
 				2DA198B016AAC0CC008F5CB5 /* VVAboutTableViewController.m in Sources */,
 				2DBD694816B5272B0058EFE4 /* VVVandyMobileAPIClient.m in Sources */,
 				2DBD694B16B548100058EFE4 /* VVReport.m in Sources */,
-				2DB1190716BD180E008BA3E9 /* VVColorPalette.m in Sources */,
 				2DC2059616E45591008B3F31 /* VVNotificationCell.m in Sources */,
 				2DAE7C0A16F081370014701E /* VVAlertBuilder.m in Sources */,
 				2D1950A01729392E0071A6EA /* VVRoute.m in Sources */,

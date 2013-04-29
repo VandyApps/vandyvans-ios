@@ -29,4 +29,13 @@
  */
 + (GMSPolyline *)polylineForRouteName:(NSString *)routeName;
 
+/**
+ * This method gives the route ID for a particular Vandy Van route.
+ *
+ * @param routeName The name of the Vandy Van route.
+ *
+ * @return A route ID.
+ */
++ (NSInteger)routeIDForRouteName:(NSString *)routeName;
+
 @end
