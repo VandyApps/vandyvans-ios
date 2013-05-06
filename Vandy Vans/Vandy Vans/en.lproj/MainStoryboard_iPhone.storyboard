@@ -518,7 +518,6 @@
         <class className="VVMapViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VVMapViewController.h"/>
             <relationships>
-                <relationship kind="action" name="routePressed:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="vanMapView" candidateClass="GMSMapView"/>
             </relationships>
         </class>
@@ -549,8 +548,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Yb4-In-ycU"/>
-        <segue reference="uTP-je-CRm"/>
+        <segue reference="vSy-tV-Pjo"/>
+        <segue reference="7Di-BC-NYA"/>
         <segue reference="tSf-t1-2MO"/>
     </inferredMetricsTieBreakers>
 </document>
