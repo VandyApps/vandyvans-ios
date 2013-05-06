@@ -301,23 +301,6 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <label key="tableFooterView" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="320" id="oWo-bf-FPu">
-                            <rect key="frame" x="0.0" y="146" width="320" height="75"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <attributedString key="attributedText">
-                                <fragment>
-                                    <string key="content">Turn on reminders to be alerted when the next van is close-by. These will be turned off automatically after you get the reminder.</string>
-                                    <attributes>
-                                        <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <font key="NSFont" size="15" name="Helvetica-Bold"/>
-                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" headIndent="2"/>
-                                    </attributes>
-                                </fragment>
-                            </attributedString>
-                            <nil key="highlightedColor"/>
-                            <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        </label>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ArrivalTimeCell" textLabel="Nkr-Nx-xIf" detailTextLabel="tY3-ie-Ej0" style="IBUITableViewCellStyleValue1" id="yBi-Y3-9zd">
                                 <rect key="frame" x="0.0" y="46" width="320" height="45"/>
@@ -543,6 +526,7 @@
         <class className="VVReportTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VVReportTableViewController.h"/>
             <relationships>
+                <relationship kind="action" name="sendPressed:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="descriptionTableViewCell" candidateClass="UITableViewCell"/>
                 <relationship kind="outlet" name="descriptionTextView" candidateClass="SSTextView"/>
                 <relationship kind="outlet" name="emailTableViewCell" candidateClass="UITableViewCell"/>

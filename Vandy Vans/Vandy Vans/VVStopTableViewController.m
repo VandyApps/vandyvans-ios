@@ -40,8 +40,6 @@
         self.title = @"Stops";
     }
     
-    self.navigationController.navigationBar.tintColor = [UIColor blackColor];
-    
     self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"VVBackground"]];
 }
 

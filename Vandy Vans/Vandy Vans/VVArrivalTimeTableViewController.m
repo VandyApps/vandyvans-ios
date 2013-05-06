@@ -73,12 +73,10 @@
     }
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-    self.vansAreRunning = YES;
     
-    self.navigationController.navigationBar.tintColor = [UIColor blackColor];
+    self.vansAreRunning = YES;
     
     self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"VVBackground"]];
     
@@ -168,6 +166,41 @@
     localNotification.userInfo = @{@"StopName" : arrivalTime.stopName, @"RouteName" : arrivalTime.routeName};
     
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+}
+
+#pragma mark - Table View Delegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    CGFloat footerHeight = 0;
+    
+    if (section == 1) {
+        footerHeight = 300.0f;
+    }
+    
+    return footerHeight;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    UIView *footerView;
+    
+    if (section == 1) {
+        footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320.0f, 300.0f)];
+        
+        UILabel *footerTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 0, 280.0f, 95.0f)];
+        footerTextLabel.opaque = YES;
+        footerTextLabel.backgroundColor = [UIColor clearColor];
+        footerTextLabel.shadowColor = [UIColor blackColor];
+        footerTextLabel.numberOfLines = 0; // Removes any maximum number of lines.
+        footerTextLabel.textAlignment = NSTextAlignmentCenter;
+        
+        NSString *footerText = @"Turn on reminders to be alerted when the next van is close-by. These will be turned off automatically after you get the reminder.";
+        NSDictionary *footerTextAttributes = @{NSFontAttributeName : [UIFont fontWithName:@"Helvetica" size:15.0f], NSForegroundColorAttributeName : [UIColor whiteColor]};
+        footerTextLabel.attributedText = [[NSAttributedString alloc] initWithString:footerText attributes:footerTextAttributes];
+        
+        [footerView addSubview:footerTextLabel];
+    }
+    
+    return footerView;
 }
 
 #pragma mark - Table View Data Source

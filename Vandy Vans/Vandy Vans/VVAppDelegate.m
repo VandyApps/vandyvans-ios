@@ -11,11 +11,14 @@
 #import "VVArrivalTimeTableViewController.h"
 #import "VVAlertBuilder.h"
 #import <GoogleMaps/GoogleMaps.h>
+#import "VVAppearanceBuilder.h"
 
 @implementation VVAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [VVAppearanceBuilder buildAppearance];
     
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
     

@@ -36,9 +36,7 @@
     
     self.descriptionTextView.placeholder = @"Description";
     
-    self.navigationController.navigationBar.tintColor = [UIColor blackColor];
-    
-    self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"VVBackground-568h.jpg"]];
+    self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"VVBackground"]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -93,7 +91,7 @@
 #pragma mark - Table View Delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 1) {
+    if (indexPath.section == 2) {
         if (self.notifyWhenResolvedTableViewCell.accessoryType == UITableViewCellAccessoryCheckmark) {
             self.notifyWhenResolvedTableViewCell.accessoryType = UITableViewCellAccessoryNone;
         } else {

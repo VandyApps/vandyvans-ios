@@ -7,6 +7,7 @@
 //
 
 #import "VVAboutTableViewController.h"
+#import "VVReportTableViewController.h"
 
 @interface VVAboutTableViewController ()
 
@@ -19,8 +20,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.navigationController.navigationBar.tintColor = [UIColor blackColor];
     
     self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"VVAboutBackground-568h.jpg"]];
 }
