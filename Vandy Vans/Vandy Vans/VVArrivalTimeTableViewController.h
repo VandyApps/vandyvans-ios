@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "VVAboutTableViewController.h"
 
 @interface VVArrivalTimeTableViewController : UITableViewController
 

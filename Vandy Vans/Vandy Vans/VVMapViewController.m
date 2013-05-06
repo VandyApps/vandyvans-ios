@@ -9,6 +9,7 @@
 #import "VVMapViewController.h"
 #import <BSModalPickerView/BSModalPickerView.h>
 #import "VVRoute.h"
+#import <GoogleMaps/GoogleMaps.h>
 #import "GMSMarker+ConstructorAdditions.h"
 
 @interface VVMapViewController () <GMSMapViewDelegate>

@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <GoogleMaps/GoogleMaps.h>
+
+@class GMSPolyline;
 
 @interface VVRoute : NSObject
 

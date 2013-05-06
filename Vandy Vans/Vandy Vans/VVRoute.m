@@ -7,6 +7,7 @@
 //
 
 #import "VVRoute.h"
+#import <GoogleMaps/GoogleMaps.h>
 #import "GMSMarker+ConstructorAdditions.h"
 
 @implementation VVRoute
