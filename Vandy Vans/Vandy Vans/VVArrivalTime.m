@@ -28,19 +28,19 @@
     return self;
 }
 
-+ (BOOL)isStopForAllRoutes:(NSString *)stopName {
++ (BOOL)isStopForAllRoutes:(NSString *)stopName __attribute__((pure)) {
     return ([stopName isEqualToString:@"Branscomb Quad"] || [stopName isEqualToString:@"Carmichael Towers"] ||
       [stopName isEqualToString:@"Murray House"] || [stopName isEqualToString:@"Highland Quad"]);
 }
 
-+ (BOOL)isStopForGreenRouteButNotAllRoutes:(NSString *)stopName {
++ (BOOL)isStopForGreenRouteButNotAllRoutes:(NSString *)stopName __attribute__((pure)) {
     return ([stopName isEqualToString:@"Vanderbilt Police Department"] || [stopName isEqualToString:@"Vanderbilt Book Store"] ||
       [stopName isEqualToString:@"Kissam Quad"] || [stopName isEqualToString:@"Terrace Place Garage"] ||
       [stopName isEqualToString:@"Wesley Place Garage"] || [stopName isEqualToString:@"Blair School of Music"] ||
       [stopName isEqualToString:@"McGugin Center"] || [stopName isEqualToString:@"Blakemore House"]);
 }
 
-+ (BOOL)isStopForBlueRouteButNotAllRoutes:(NSString *)stopName {
++ (BOOL)isStopForBlueRouteButNotAllRoutes:(NSString *)stopName __attribute__((pure)) {
     return [stopName isEqualToString:@"Kissam Quad"];
 }
 
@@ -49,7 +49,6 @@
     NSDictionary *params = @{@"api_key" : [VVAPIClient apiKey]};
     
     __block NSMutableOrderedSet *arrivalTimesSet = [[NSMutableOrderedSet alloc] init];
-    __block NSDictionary *arrivalTimeAttributes;
     
     NSComparator arrivalTimesComparator = ^NSComparisonResult(id obj1, id obj2) {
         VVArrivalTime *arrivalTime1 = (VVArrivalTime *)obj1;
@@ -100,22 +99,31 @@
             redRouteArrivalTimeRequestOperation = operations[0];
         }
         
+        // The code below uses `@autoreleasepool` to more quickly clean up the large amount of `NSDictionary`s created for
+        // each set of arrival time predictions.
+        
         for (NSDictionary *predictions in [blueRouteArrivalTimeRequestOperation.responseJSON objectForKey:@"Predictions"]) {
-            arrivalTimeAttributes = @{@"StopName": stopName, @"RouteName": @"Blue", @"ArrivalTimeInMinutes": [predictions objectForKey:@"Minutes"]};
+            @autoreleasepool {
+                NSDictionary *arrivalTimeAttributes = @{@"StopName": stopName, @"RouteName": @"Blue", @"ArrivalTimeInMinutes": [predictions objectForKey:@"Minutes"]};
             
-            [arrivalTimesSet addObject:[[VVArrivalTime alloc] initWithAttributes:arrivalTimeAttributes]];
+                [arrivalTimesSet addObject:[[VVArrivalTime alloc] initWithAttributes:arrivalTimeAttributes]];
+            }
         }
         
         for (NSDictionary *predictions in [greenRouteArrivalTimeRequestOperation.responseJSON objectForKey:@"Predictions"]) {
-            arrivalTimeAttributes = @{@"StopName": stopName, @"RouteName": @"Green", @"ArrivalTimeInMinutes": [predictions objectForKey:@"Minutes"]};
+            @autoreleasepool {
+                NSDictionary *arrivalTimeAttributes = @{@"StopName": stopName, @"RouteName": @"Green", @"ArrivalTimeInMinutes": [predictions objectForKey:@"Minutes"]};
             
-            [arrivalTimesSet addObject:[[VVArrivalTime alloc] initWithAttributes:arrivalTimeAttributes]];
+                [arrivalTimesSet addObject:[[VVArrivalTime alloc] initWithAttributes:arrivalTimeAttributes]];
+            }
         }
         
         for (NSDictionary *predictions in [redRouteArrivalTimeRequestOperation.responseJSON objectForKey:@"Predictions"]) {
-            arrivalTimeAttributes = @{@"StopName": stopName, @"RouteName": @"Red", @"ArrivalTimeInMinutes": [predictions objectForKey:@"Minutes"]};
+            @autoreleasepool {
+                NSDictionary *arrivalTimeAttributes = @{@"StopName": stopName, @"RouteName": @"Red", @"ArrivalTimeInMinutes": [predictions objectForKey:@"Minutes"]};
             
-            [arrivalTimesSet addObject:[[VVArrivalTime alloc] initWithAttributes:arrivalTimeAttributes]];
+                [arrivalTimesSet addObject:[[VVArrivalTime alloc] initWithAttributes:arrivalTimeAttributes]];
+            }
         }
         
         if (block) {

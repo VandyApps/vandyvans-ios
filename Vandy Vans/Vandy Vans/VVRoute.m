@@ -339,10 +339,10 @@
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.144258,-86.806338)];
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.144302,-86.806361)];
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.144874,-86.806777)];
-        /*[routePath addCoordinate:CLLocationCoordinate2DMake(36.145217,-86.806064)];
-         [routePath addCoordinate:CLLocationCoordinate2DMake(36.145478,-86.805525)];
-         [routePath addCoordinate:CLLocationCoordinate2DMake(36.145542,-86.805437)];
-         [routePath addCoordinate:CLLocationCoordinate2DMake(36.145791,-86.804902)]; */
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.145217,-86.806064)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.145478,-86.805525)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.145542,-86.805437)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.145791,-86.804902)];
         
         routeColor = [UIColor redColor];
     } else if ([routeName isEqualToString:@"Green"]) {
