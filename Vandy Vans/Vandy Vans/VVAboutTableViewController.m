@@ -13,6 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableViewCell *reportBugTableViewCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *sendFeedbackTableViewCell;
+@property (weak, nonatomic) IBOutlet UITableViewCell *attributionTableViewCell;
 
 @end
 
@@ -45,7 +46,7 @@
 #pragma mark - Table View Data Source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -54,8 +55,10 @@
     // We assume that we are dealing with the first section, as the other sections have no rows.
     if (indexPath.row == 0) {
         cell = self.reportBugTableViewCell;
-    } else {
+    } else if (indexPath.row == 1) {
         cell = self.sendFeedbackTableViewCell;
+    } else {
+        cell = self.attributionTableViewCell;
     }
     
     return cell;

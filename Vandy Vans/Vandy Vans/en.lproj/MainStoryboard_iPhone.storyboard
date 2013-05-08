@@ -120,6 +120,9 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <connections>
+                                            <segue destination="yK6-0T-tfm" kind="push" id="ULS-8b-OBK"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -137,6 +140,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="attributionTableViewCell" destination="fxC-mD-coz" id="xUf-r3-xdq"/>
                         <outlet property="reportBugTableViewCell" destination="3s6-9O-iwU" id="93Z-Gx-H0z"/>
                         <outlet property="sendFeedbackTableViewCell" destination="aNb-cY-MIB" id="SOA-K2-I0B"/>
                     </connections>
@@ -144,6 +148,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LPR-4B-FVK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2907" y="-398"/>
+        </scene>
+        <!--Attribution View Controller - Attribution-->
+        <scene sceneID="gr2-cR-k9j">
+            <objects>
+                <viewController id="yK6-0T-tfm" customClass="VVAttributionViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WHF-lU-A2x">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LH2-EW-wSk">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <attributedString key="attributedText"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="LH2-EW-wSk" firstAttribute="bottom" secondItem="WHF-lU-A2x" secondAttribute="bottom" type="default" id="Spp-8c-2ec"/>
+                            <constraint firstItem="LH2-EW-wSk" firstAttribute="top" secondItem="WHF-lU-A2x" secondAttribute="top" type="default" id="tCL-xG-Smp"/>
+                            <constraint firstItem="LH2-EW-wSk" firstAttribute="leading" secondItem="WHF-lU-A2x" secondAttribute="leading" type="default" id="wtz-ST-olV"/>
+                            <constraint firstItem="LH2-EW-wSk" firstAttribute="trailing" secondItem="WHF-lU-A2x" secondAttribute="trailing" type="default" id="xVm-dh-Aap"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Attribution" id="1Zm-Eo-2QR"/>
+                    <connections>
+                        <outlet property="attributionTextView" destination="LH2-EW-wSk" id="kZM-Mv-1ef"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nYz-ww-Del" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3672" y="-788"/>
         </scene>
         <!--Report Table View Controller - Report a Bug-->
         <scene sceneID="1A9-FN-nw5">
@@ -504,12 +540,23 @@
         <class className="VVAboutTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VVAboutTableViewController.h"/>
             <relationships>
+                <relationship kind="action" name="donePressed:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="attributionTableViewCell" candidateClass="UITableViewCell"/>
                 <relationship kind="outlet" name="reportBugTableViewCell" candidateClass="UITableViewCell"/>
                 <relationship kind="outlet" name="sendFeedbackTableViewCell" candidateClass="UITableViewCell"/>
             </relationships>
         </class>
         <class className="VVArrivalTimeTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VVArrivalTimeTableViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="notificationSwitchPressed:" candidateClass="UISwitch"/>
+            </relationships>
+        </class>
+        <class className="VVAttributionViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/VVAttributionViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="attributionTextView" candidateClass="UITextView"/>
+            </relationships>
         </class>
         <class className="VVMapViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VVMapViewController.h"/>
