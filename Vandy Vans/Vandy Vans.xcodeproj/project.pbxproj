@@ -173,21 +173,14 @@
 		2D34C566162718C500F170CA /* Vandy Vans */ = {
 			isa = PBXGroup;
 			children = (
+				2D6EB648173B263600A6FD53 /* Models */,
+				2D6EB649173B268500A6FD53 /* View Controllers */,
+				2D6EB64A173B287900A6FD53 /* Views */,
 				2D4D0098168E5A6E00F0BF67 /* MainStoryboard_iPhone.storyboard */,
-				2DADC6D9173889130067B052 /* VVAttributionViewController.h */,
-				2DADC6DA173889130067B052 /* VVAttributionViewController.m */,
-				2D19509E1729392E0071A6EA /* VVRoute.h */,
 				2DB213C31737804F008CD801 /* VVAppearanceBuilder.h */,
 				2DB213C417378050008CD801 /* VVAppearanceBuilder.m */,
-				2D19509F1729392E0071A6EA /* VVRoute.m */,
 				2D0A6EEB172B1C7000781754 /* GMSMarker+ConstructorAdditions.h */,
 				2D0A6EEC172B1C7100781754 /* GMSMarker+ConstructorAdditions.m */,
-				2DA198AA16AAB8F7008F5CB5 /* VVReportTableViewController.h */,
-				2DA198AB16AAB8F7008F5CB5 /* VVReportTableViewController.m */,
-				2DA198AE16AAC0CC008F5CB5 /* VVAboutTableViewController.h */,
-				2DA198AF16AAC0CC008F5CB5 /* VVAboutTableViewController.m */,
-				2DBD694916B548100058EFE4 /* VVReport.h */,
-				2DBD694A16B548100058EFE4 /* VVReport.m */,
 				2D5BE9FA16609B4300CEFFA3 /* VVAPIClient.h */,
 				2D5BE9FB16609B4300CEFFA3 /* VVAPIClient.m */,
 				2DBD694616B5272B0058EFE4 /* VVVandyMobileAPIClient.h */,
@@ -196,16 +189,6 @@
 				2D34C570162718C500F170CA /* VVAppDelegate.m */,
 				2DAE7C0816F081360014701E /* VVAlertBuilder.h */,
 				2DAE7C0916F081370014701E /* VVAlertBuilder.m */,
-				2D5BE9FD1660A5A000CEFFA3 /* VVArrivalTime.h */,
-				2D5BE9FE1660A5A000CEFFA3 /* VVArrivalTime.m */,
-				2DDDB2F6165DBAA5007077E9 /* VVArrivalTimeTableViewController.h */,
-				2DDDB2F7165DBAA5007077E9 /* VVArrivalTimeTableViewController.m */,
-				2DC2059416E45591008B3F31 /* VVNotificationCell.h */,
-				2DC2059516E45591008B3F31 /* VVNotificationCell.m */,
-				2D34C59416271B8600F170CA /* VVMapViewController.h */,
-				2D34C59516271B8600F170CA /* VVMapViewController.m */,
-				2D34C59116271A9100F170CA /* VVStopTableViewController.h */,
-				2D34C59216271A9100F170CA /* VVStopTableViewController.m */,
 				2D34C567162718C500F170CA /* Supporting Files */,
 			);
 			path = "Vandy Vans";
@@ -221,6 +204,47 @@
 				2D34C56E162718C500F170CA /* Vandy Vans-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2D6EB648173B263600A6FD53 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2D5BE9FD1660A5A000CEFFA3 /* VVArrivalTime.h */,
+				2D5BE9FE1660A5A000CEFFA3 /* VVArrivalTime.m */,
+				2DBD694916B548100058EFE4 /* VVReport.h */,
+				2DBD694A16B548100058EFE4 /* VVReport.m */,
+				2D19509E1729392E0071A6EA /* VVRoute.h */,
+				2D19509F1729392E0071A6EA /* VVRoute.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		2D6EB649173B268500A6FD53 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2DA198AE16AAC0CC008F5CB5 /* VVAboutTableViewController.h */,
+				2DA198AF16AAC0CC008F5CB5 /* VVAboutTableViewController.m */,
+				2DDDB2F6165DBAA5007077E9 /* VVArrivalTimeTableViewController.h */,
+				2DDDB2F7165DBAA5007077E9 /* VVArrivalTimeTableViewController.m */,
+				2DADC6D9173889130067B052 /* VVAttributionViewController.h */,
+				2DADC6DA173889130067B052 /* VVAttributionViewController.m */,
+				2D34C59416271B8600F170CA /* VVMapViewController.h */,
+				2D34C59516271B8600F170CA /* VVMapViewController.m */,
+				2DA198AA16AAB8F7008F5CB5 /* VVReportTableViewController.h */,
+				2DA198AB16AAB8F7008F5CB5 /* VVReportTableViewController.m */,
+				2D34C59116271A9100F170CA /* VVStopTableViewController.h */,
+				2D34C59216271A9100F170CA /* VVStopTableViewController.m */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		2D6EB64A173B287900A6FD53 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2DC2059416E45591008B3F31 /* VVNotificationCell.h */,
+				2DC2059516E45591008B3F31 /* VVNotificationCell.m */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		2D78910016998AF600C70302 /* Images */ = {
