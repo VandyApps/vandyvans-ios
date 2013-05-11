@@ -54,9 +54,9 @@
     // Add the appropriate polyline for the given route.
     [self addPolylineToRoute:self.routeBeingDisplayed];
     
-    GMSMarker *vanMarker = [GMSMarker markerWithLatitude:36.148118 longitude:-86.806012 andTitle:@"Test"];
+    /*GMSMarker *vanMarker = [GMSMarker markerWithLatitude:36.148118 longitude:-86.806012 andTitle:@"Test"];
     vanMarker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
-    vanMarker.map = self.vanMapView;
+    vanMarker.map = self.vanMapView;*/
     
     //[self repositionCamera];
     
