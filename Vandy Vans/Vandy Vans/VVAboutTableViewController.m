@@ -9,14 +9,6 @@
 #import "VVAboutTableViewController.h"
 #import "VVReportTableViewController.h"
 
-@interface VVAboutTableViewController ()
-
-@property (weak, nonatomic) IBOutlet UITableViewCell *reportBugTableViewCell;
-@property (weak, nonatomic) IBOutlet UITableViewCell *sendFeedbackTableViewCell;
-@property (weak, nonatomic) IBOutlet UITableViewCell *attributionTableViewCell;
-
-@end
-
 @implementation VVAboutTableViewController
 
 - (void)viewDidLoad {
@@ -41,27 +33,6 @@
 
 - (IBAction)donePressed:(UIBarButtonItem *)sender {
     [self.delegate aboutTableViewControllerDidFinish:self];
-}
-
-#pragma mark - Table View Data Source
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell;
-    
-    // We assume that we are dealing with the first section, as the other sections have no rows.
-    if (indexPath.row == 0) {
-        cell = self.reportBugTableViewCell;
-    } else if (indexPath.row == 1) {
-        cell = self.sendFeedbackTableViewCell;
-    } else {
-        cell = self.attributionTableViewCell;
-    }
-    
-    return cell;
 }
 
 @end

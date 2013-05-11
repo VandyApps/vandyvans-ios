@@ -14,8 +14,6 @@
 
 @interface VVReportTableViewController ()
 
-@property (weak, nonatomic) IBOutlet UITableViewCell *emailTableViewCell;
-@property (weak, nonatomic) IBOutlet UITableViewCell *descriptionTableViewCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *notifyWhenResolvedTableViewCell;
 
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
@@ -72,20 +70,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 1;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell;
-    
-    if (indexPath.section == 0) {
-        cell = self.emailTableViewCell;
-    } else if (indexPath.section == 1) {
-        cell = self.descriptionTableViewCell;
-    } else if (!self.userIsSendingFeedback) {
-        cell = self.notifyWhenResolvedTableViewCell;
-    }
-    
-    return cell;
 }
 
 #pragma mark - Table View Delegate

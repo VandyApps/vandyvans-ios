@@ -139,11 +139,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="attributionTableViewCell" destination="fxC-mD-coz" id="xUf-r3-xdq"/>
-                        <outlet property="reportBugTableViewCell" destination="3s6-9O-iwU" id="93Z-Gx-H0z"/>
-                        <outlet property="sendFeedbackTableViewCell" destination="aNb-cY-MIB" id="SOA-K2-I0B"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LPR-4B-FVK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -541,16 +536,10 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VVAboutTableViewController.h"/>
             <relationships>
                 <relationship kind="action" name="donePressed:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="attributionTableViewCell" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="reportBugTableViewCell" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="sendFeedbackTableViewCell" candidateClass="UITableViewCell"/>
             </relationships>
         </class>
         <class className="VVArrivalTimeTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VVArrivalTimeTableViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="notificationSwitchPressed:" candidateClass="UISwitch"/>
-            </relationships>
         </class>
         <class className="VVAttributionViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VVAttributionViewController.h"/>
@@ -573,7 +562,6 @@
         <class className="VVReportTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VVReportTableViewController.h"/>
             <relationships>
-                <relationship kind="action" name="sendPressed:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="descriptionTableViewCell" candidateClass="UITableViewCell"/>
                 <relationship kind="outlet" name="descriptionTextView" candidateClass="SSTextView"/>
                 <relationship kind="outlet" name="emailTableViewCell" candidateClass="UITableViewCell"/>
