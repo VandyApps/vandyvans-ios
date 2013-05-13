@@ -9,7 +9,7 @@ The purpose of the app is to provide a fast, native way for Vanderbilt students 
 
 Vandy Vans was created by [Seth Friedman](https://github.com/sethfri) and [McArthur Gill](https://github.com/mcarthurgill) through the sponsorship of VandyMobile.
 
-The graphic design for the project was done by Fletcher Young.
+The graphic design for the project was done by [Fletcher Young](http://vandycommodore.deviantart.com/).
 
 ## Contact
 
