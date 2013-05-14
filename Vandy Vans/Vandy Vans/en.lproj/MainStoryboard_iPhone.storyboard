@@ -214,7 +214,7 @@
                             </tableViewSection>
                             <tableViewSection id="Ym0-bn-eHL">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="198" id="SnN-ev-SF7">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="198" id="SnN-ev-SF7">
                                         <rect key="frame" x="0.0" y="76" width="320" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -562,9 +562,7 @@
         <class className="VVReportTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VVReportTableViewController.h"/>
             <relationships>
-                <relationship kind="outlet" name="descriptionTableViewCell" candidateClass="UITableViewCell"/>
                 <relationship kind="outlet" name="descriptionTextView" candidateClass="SSTextView"/>
-                <relationship kind="outlet" name="emailTableViewCell" candidateClass="UITableViewCell"/>
                 <relationship kind="outlet" name="emailTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="notifyWhenResolvedTableViewCell" candidateClass="UITableViewCell"/>
             </relationships>
