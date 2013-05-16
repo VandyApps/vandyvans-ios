@@ -1,7 +1,7 @@
 PODS:
   - AFNetworking (1.2.1)
   - BSModalPickerView (0.3)
-  - Google-Maps-iOS-SDK (1.2.2)
+  - Google-Maps-iOS-SDK (1.3.0)
   - SSToolkit (1.0.4)
   - SVProgressHUD (0.9)
 
@@ -13,9 +13,9 @@ DEPENDENCIES:
   - SVProgressHUD
 
 SPEC CHECKSUMS:
-  AFNetworking: 616da0028916ce296f5c3cef74e5552eb4e10e13
+  AFNetworking: d1ba5908b233189e424e101721acef7905b58efb
   BSModalPickerView: dccca4aba5a90e13041fd00bce5a1e0cf0149d88
-  Google-Maps-iOS-SDK: 8fac3dc92a848f38fb7b5dd34211e9f4ca046853
+  Google-Maps-iOS-SDK: 5df23959b024f9f16618e1f92fd5accfd62d1072
   SSToolkit: 689acaedac79c2079e492e528a55bcb5db9d98c4
   SVProgressHUD: 03d4845ec8e64591726428a08236c6a5489d45f8
 
