@@ -16,16 +16,16 @@
     NSMutableArray *mutableMarkers = [[NSMutableArray alloc] init];
     
     // Initialize Branscomb Quad stop.
-    GMSMarker *branscombQuadMarker = [GMSMarker markerWithLatitude:36.1451786450032 longitude:-86.805682182312 andTitle:@"Branscomb Quad"];
+    GMSMarker *branscombQuadMarker = [GMSMarker markerWithLatitude:36.1451786450032 longitude:-86.805682182312 title:@"Branscomb Quad" animated:YES];
     
     // Initialize Carmichael Towers stop.
-    GMSMarker *carmichaelTowersMarker = [GMSMarker markerWithLatitude:36.1472839210716 longitude:-86.8059504032135 andTitle:@"Carmichael Towers"];
+    GMSMarker *carmichaelTowersMarker = [GMSMarker markerWithLatitude:36.1472839210716 longitude:-86.8059504032135 title:@"Carmichael Towers" animated:YES];
     
     // Initialize Murray House stop.
-    GMSMarker *murrayHouseMarker = [GMSMarker markerWithLatitude:36.1399888548681 longitude:-86.7964553833008 andTitle:@"Murray House"];
+    GMSMarker *murrayHouseMarker = [GMSMarker markerWithLatitude:36.1399888548681 longitude:-86.7964553833008 title:@"Murray House" animated:YES];
     
     // Initialize Highland Quad stop.
-    GMSMarker *highlandQuadMarker = [GMSMarker markerWithLatitude:36.1408206306468 longitude:-86.8065512180328 andTitle:@"Highland Quad"];
+    GMSMarker *highlandQuadMarker = [GMSMarker markerWithLatitude:36.1408206306468 longitude:-86.8065512180328 title:@"Highland Quad" animated:YES];
     
     [mutableMarkers addObject:branscombQuadMarker];
     [mutableMarkers addObject:carmichaelTowersMarker];
@@ -34,31 +34,31 @@
     
     if (![routeName isEqualToString:@"Red"]) {
         // Initialize Kissam Quad stop.
-        GMSMarker *kissamQuadMarker = [GMSMarker markerWithLatitude:36.1490685964468 longitude:-86.8026459217072 andTitle:@"Kissam Quad"];
+        GMSMarker *kissamQuadMarker = [GMSMarker markerWithLatitude:36.1490685964468 longitude:-86.8026459217072 title:@"Kissam Quad" animated:YES];
         
         [mutableMarkers addObject:kissamQuadMarker];
         
         if ([routeName isEqualToString:@"Green"]) {
             // Initialize Vanderbilt Police Station stop.
-            GMSMarker *policeStationMarker = [GMSMarker markerWithLatitude:36.1433765531155 longitude:-86.8107461929321 andTitle:@"Vanderbilt Police Station"];
+            GMSMarker *policeStationMarker = [GMSMarker markerWithLatitude:36.1433765531155 longitude:-86.8107461929321 title:@"Vanderbilt Police Station" animated:YES];
             
             // Initialize Vanderbilt Bookstore stop.
-            GMSMarker *bookstoreMarker = [GMSMarker markerWithLatitude:36.1455078688563 longitude:-86.8083053827286 andTitle:@"Vanderbilt Bookstore"];
+            GMSMarker *bookstoreMarker = [GMSMarker markerWithLatitude:36.1455078688563 longitude:-86.8083053827286 title:@"Vanderbilt Bookstore" animated:YES];
             
             // Initialize Terrace Place Garage stop.
-            GMSMarker *terracePlaceGarageMarker = [GMSMarker markerWithLatitude:36.14995225563 longitude:-86.7994487285614 andTitle:@"Terrace Place Garage"];
+            GMSMarker *terracePlaceGarageMarker = [GMSMarker markerWithLatitude:36.14995225563 longitude:-86.7994487285614 title:@"Terrace Place Garage" animated:YES];
             
             // Initialize Wesley Place Garage stop.
-            GMSMarker *wesleyPlaceGarageMarker = [GMSMarker markerWithLatitude:36.1459973701886 longitude:-86.799556016922 andTitle:@"Wesley Place Garage"];
+            GMSMarker *wesleyPlaceGarageMarker = [GMSMarker markerWithLatitude:36.1459973701886 longitude:-86.799556016922 title:@"Wesley Place Garage" animated:YES];
             
             // Initialize Blair School of Music stop.
-            GMSMarker *blairSchoolOfMusicMarker = [GMSMarker markerWithLatitude:36.1389231292643 longitude:-86.805859208107 andTitle:@"Blair School of Music"];
+            GMSMarker *blairSchoolOfMusicMarker = [GMSMarker markerWithLatitude:36.1389231292643 longitude:-86.805859208107 title:@"Blair School of Music" animated:YES];
             
             // Initialize McGugin Center stop.
-            GMSMarker *mcguginCenterMarker = [GMSMarker markerWithLatitude:36.142900031513 longitude:-86.8079996109009 andTitle:@"McGugin Center"];
+            GMSMarker *mcguginCenterMarker = [GMSMarker markerWithLatitude:36.142900031513 longitude:-86.8079996109009 title:@"McGugin Center" animated:YES];
             
             // Initialize Blakemore House stop.
-            GMSMarker *blakemoreHouseMarker = [GMSMarker markerWithLatitude:36.14276140650328 longitude:-86.81162595748901 andTitle:@"Blakemore House"];
+            GMSMarker *blakemoreHouseMarker = [GMSMarker markerWithLatitude:36.14276140650328 longitude:-86.81162595748901 title:@"Blakemore House" animated:YES];
             
             [mutableMarkers addObject:policeStationMarker];
             [mutableMarkers addObject:bookstoreMarker];
@@ -70,7 +70,7 @@
         }
     } else {
         // Initialize North House stop.
-        GMSMarker *northHouseMarker = [GMSMarker markerWithLatitude:36.1414357924771 longitude:-86.7998135089874 andTitle:@"North House"];
+        GMSMarker *northHouseMarker = [GMSMarker markerWithLatitude:36.1414357924771 longitude:-86.7998135089874 title:@"North House" animated:YES];
         
         [mutableMarkers addObject:northHouseMarker];
     }

@@ -10,7 +10,7 @@
 
 @interface GMSMarker (ConstructorAdditions)
 
-/** Convenience constructor for a marker with a particular latitude, longitude, and title. */
-+ (instancetype)markerWithLatitude:(CGFloat)latitude longitude:(CGFloat)longitude andTitle:(NSString *)title;
+/** Convenience constructor for a marker with a particular latitude, longitude, title, and animated value. */
++ (instancetype)markerWithLatitude:(CGFloat)latitude longitude:(CGFloat)longitude title:(NSString *)title animated:(BOOL)animated;
 
 @end

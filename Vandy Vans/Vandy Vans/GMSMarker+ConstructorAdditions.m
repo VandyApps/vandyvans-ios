@@ -10,9 +10,10 @@
 
 @implementation GMSMarker (ConstructorAdditions)
 
-+ (instancetype)markerWithLatitude:(CGFloat)latitude longitude:(CGFloat)longitude andTitle:(NSString *)title {
++ (instancetype)markerWithLatitude:(CGFloat)latitude longitude:(CGFloat)longitude title:(NSString *)title animated:(BOOL)animated {
     GMSMarker *marker = [GMSMarker markerWithPosition:CLLocationCoordinate2DMake(latitude, longitude)];
     marker.title = title;
+    marker.animated = animated;
     
     return marker;
 }
