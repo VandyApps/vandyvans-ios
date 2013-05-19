@@ -406,21 +406,10 @@
         <scene sceneID="s48-ky-5d3">
             <objects>
                 <viewController id="5wh-qK-Mbq" customClass="VVMapViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="nbf-XI-cDw">
+                    <view key="view" contentMode="scaleToFill" id="nbf-XI-cDw" customClass="GMSMapView">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="feV-Ep-Gkd" customClass="GMSMapView">
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="feV-Ep-Gkd" firstAttribute="leading" secondItem="nbf-XI-cDw" secondAttribute="leading" type="default" id="MrG-kb-oY5"/>
-                            <constraint firstItem="feV-Ep-Gkd" firstAttribute="top" secondItem="nbf-XI-cDw" secondAttribute="top" type="default" id="NX0-Yj-qL8"/>
-                            <constraint firstItem="feV-Ep-Gkd" firstAttribute="bottom" secondItem="nbf-XI-cDw" secondAttribute="bottom" type="default" id="Yz1-sZ-RUd"/>
-                            <constraint firstItem="feV-Ep-Gkd" firstAttribute="trailing" secondItem="nbf-XI-cDw" secondAttribute="trailing" type="default" id="udX-IL-dON"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Live Map" id="FsR-Gf-r8R">
                         <barButtonItem key="rightBarButtonItem" title="Route" id="4p3-jh-Gv8">
@@ -430,7 +419,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="vanMapView" destination="feV-Ep-Gkd" id="dkN-gB-Hr1"/>
+                        <outlet property="vanMapView" destination="nbf-XI-cDw" id="lLu-iw-I9e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fuu-Ds-vp3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -532,12 +521,12 @@
         </class>
         <class className="VVAboutTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VVAboutTableViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="donePressed:" candidateClass="UIBarButtonItem"/>
+            </relationships>
         </class>
         <class className="VVArrivalTimeTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VVArrivalTimeTableViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="notificationSwitchPressed:" candidateClass="UISwitch"/>
-            </relationships>
         </class>
         <class className="VVAttributionViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VVAttributionViewController.h"/>
@@ -548,6 +537,7 @@
         <class className="VVMapViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VVMapViewController.h"/>
             <relationships>
+                <relationship kind="action" name="routePressed:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="vanMapView" candidateClass="GMSMapView"/>
             </relationships>
         </class>
@@ -560,7 +550,6 @@
         <class className="VVReportTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VVReportTableViewController.h"/>
             <relationships>
-                <relationship kind="action" name="sendPressed:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="descriptionTextView" candidateClass="SSTextView"/>
                 <relationship kind="outlet" name="emailTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="notifyWhenResolvedTableViewCell" candidateClass="UITableViewCell"/>
