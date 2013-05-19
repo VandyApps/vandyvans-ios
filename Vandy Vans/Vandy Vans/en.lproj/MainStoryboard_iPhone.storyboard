@@ -274,9 +274,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="descriptionTableViewCell" destination="SnN-ev-SF7" id="8IE-fn-fGC"/>
                         <outlet property="descriptionTextView" destination="WZe-p4-1i3" id="MGd-ly-dcV"/>
-                        <outlet property="emailTableViewCell" destination="nOv-b0-C7X" id="8D6-H3-ymG"/>
                         <outlet property="emailTextField" destination="Gts-4i-uwU" id="YxU-Xf-4Wu"/>
                         <outlet property="notifyWhenResolvedTableViewCell" destination="6m7-dD-TpX" id="cVq-eT-dvv"/>
                     </connections>
@@ -534,12 +532,12 @@
         </class>
         <class className="VVAboutTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VVAboutTableViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="donePressed:" candidateClass="UIBarButtonItem"/>
-            </relationships>
         </class>
         <class className="VVArrivalTimeTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VVArrivalTimeTableViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="notificationSwitchPressed:" candidateClass="UISwitch"/>
+            </relationships>
         </class>
         <class className="VVAttributionViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VVAttributionViewController.h"/>
@@ -562,6 +560,7 @@
         <class className="VVReportTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VVReportTableViewController.h"/>
             <relationships>
+                <relationship kind="action" name="sendPressed:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="descriptionTextView" candidateClass="SSTextView"/>
                 <relationship kind="outlet" name="emailTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="notifyWhenResolvedTableViewCell" candidateClass="UITableViewCell"/>
