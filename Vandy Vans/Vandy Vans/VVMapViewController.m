@@ -14,7 +14,7 @@
 
 @interface VVMapViewController () <GMSMapViewDelegate>
 
-@property (weak, nonatomic) IBOutlet GMSMapView *vanMapView;
+@property (strong, nonatomic) IBOutlet GMSMapView *vanMapView;
 @property (strong, nonatomic) NSString *routeBeingDisplayed;
 @property (strong, nonatomic) NSOrderedSet *routes;
 
@@ -63,6 +63,11 @@
     self.navigationController.navigationBar.tintColor = [UIColor blackColor];
 }
 
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
 - (IBAction)routePressed:(UIBarButtonItem *)sender {
     sender.enabled = NO;
     
@@ -99,11 +104,6 @@
 
 - (void)addPolylineToRoute:(NSString *)routeName {
     [VVRoute polylineForRouteName:routeName].map = self.vanMapView;
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

@@ -13,7 +13,7 @@ DEPENDENCIES:
   - SVProgressHUD
 
 SPEC CHECKSUMS:
-  AFNetworking: d1ba5908b233189e424e101721acef7905b58efb
+  AFNetworking: a44069e3c9c89867544f6639482f155c7e5f9b41
   BSModalPickerView: dccca4aba5a90e13041fd00bce5a1e0cf0149d88
   Google-Maps-iOS-SDK: 5df23959b024f9f16618e1f92fd5accfd62d1072
   SSToolkit: 689acaedac79c2079e492e528a55bcb5db9d98c4
