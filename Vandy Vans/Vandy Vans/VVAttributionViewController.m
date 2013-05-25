@@ -38,6 +38,9 @@
     [super viewDidLoad];
     
     self.attributionTextView.attributedText = self.attributionText;
+    
+    // Google Analytics
+    self.trackedViewName = @"Attribution View";
 }
 
 - (void)didReceiveMemoryWarning

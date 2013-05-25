@@ -9,6 +9,7 @@
 #import "VVStopTableViewController.h"
 #import "VVArrivalTimeTableViewController.h"
 #import <GoogleMaps/GoogleMaps.h>
+#import <GoogleAnalytics-iOS-SDK/GAI.h>
 
 @interface VVStopTableViewController ()
 
@@ -35,9 +36,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // Google Analytics
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    
     // If the title has not yet been set, it is the Stops view, not the Other Stops view.
     if (!self.title) {
         self.title = @"Stops";
+        [tracker sendView:@"Stops View"];
+    } else {
+        [tracker sendView:@"Other Stops View"];
     }
     
     self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"VVBackground"]];

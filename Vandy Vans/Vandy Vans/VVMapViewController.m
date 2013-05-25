@@ -58,9 +58,10 @@
     vanMarker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
     vanMarker.map = self.vanMapView;*/
     
-    //[self repositionCamera];
-    
     self.navigationController.navigationBar.tintColor = [UIColor blackColor];
+    
+    // Google Analytics
+    self.trackedViewName = @"Map View";
 }
 
 - (void)didReceiveMemoryWarning {

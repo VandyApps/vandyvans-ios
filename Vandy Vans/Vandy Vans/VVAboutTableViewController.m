@@ -8,6 +8,7 @@
 
 #import "VVAboutTableViewController.h"
 #import "VVReportTableViewController.h"
+#import <GoogleAnalytics-iOS-SDK/GAI.h>
 
 @implementation VVAboutTableViewController
 
@@ -15,6 +16,10 @@
     [super viewDidLoad];
     
     self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"VVAboutBackground-568h.jpg"]];
+    
+    // Google Analytics
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker sendView:@"About View"];
 }
 
 - (void)didReceiveMemoryWarning
