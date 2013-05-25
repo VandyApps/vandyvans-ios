@@ -72,7 +72,11 @@
         // Initialize North House stop.
         GMSMarker *northHouseMarker = [GMSMarker markerWithLatitude:36.1414357924771 longitude:-86.7998135089874 title:@"North House" animated:YES];
         
+        // Initialize Medical Center stop.
+        GMSMarker *medicalCenterMarker = [GMSMarker markerWithLatitude:36.142779 longitude:-86.801205 title:@"Medical Center" animated:YES];
+        
         [mutableMarkers addObject:northHouseMarker];
+        [mutableMarkers addObject:medicalCenterMarker];
     }
     
     return [mutableMarkers copy];
@@ -94,27 +98,35 @@
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.147319,-86.806036)];
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.147901,-86.806451)];
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.148118,-86.806012)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.148809,-86.804537)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.148959,-86.804239)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149192,-86.803772)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149356,-86.803443)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149501,-86.803142)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149207,-86.802929)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149182,-86.802977)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149162,-86.802999)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.14913,-86.803019)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149091,-86.803015)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149062,-86.803004)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.148236,-86.802382)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.148199,-86.802299)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.148226,-86.802201)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.148289,-86.802156)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.148339,-86.802143)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149194,-86.802775)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149221,-86.802856)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149207,-86.802929)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149501,-86.803142)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149878,-86.802366)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.148808,-86.804536)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149496,-86.803156)]; // West End connection
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149211,-86.802951)]; // Beginning of circle
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149193,-86.802979)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149162,-86.803008)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149117,-86.803019)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149087,-86.803011)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149058,-86.802993)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.148898,-86.802873)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.148652,-86.802683)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.148257,-86.802407)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.148221,-86.802354)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.148206,-86.802289)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.148206,-86.802258)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.148212,-86.802223)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.14822,-86.802206)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.148239,-86.802179)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.148258,-86.802162)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.148291,-86.802147)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.148346,-86.802133)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.148414,-86.802163)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.14876,-86.802435)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149141,-86.80272)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149186,-86.802764)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149212,-86.802806)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149222,-86.802854)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149222,-86.8029)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149211,-86.802951)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149496,-86.803156)]; // End of Kissam turn...West End connection
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.150025,-86.802069)];
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.150231,-86.801652)];
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.150455,-86.801198)];
@@ -183,13 +195,21 @@
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.138745,-86.807076)];
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.139178,-86.807015)];
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.140031,-86.806901)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140236,-86.806873)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140313,-86.806676)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140342,-86.806637)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140385,-86.806618)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140563,-86.806585)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140793,-86.806586)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140841,-86.806608)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140246,-86.806871)]; // Start of Morgan/Lewis
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.1403,-86.806691)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140317,-86.806662)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140345,-86.806629)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140384,-86.806606)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140425,-86.806592)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140588,-86.806555)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.14066,-86.806545)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140727,-86.806545)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140759,-86.806551)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140795,-86.806567)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140843,-86.806602)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140892,-86.806655)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140922,-86.806692)]; // End of Morgan/Lewis turn
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140971,-86.806768)];
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.141041,-86.806759)];
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.141547,-86.806688)];
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.142297,-86.806589)];
@@ -250,51 +270,52 @@
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.145357,-86.799656)];
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.144812,-86.799737)];
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.144341,-86.799807)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.14408,-86.799846)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.14408,-86.799846)]; // Turn off 21st onto Edgehill coming from West End
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.143638,-86.799917)];
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.143159,-86.799994)];
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.142786,-86.800056)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.142772,-86.799761)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.142764,-86.799732)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.142745,-86.7997)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.142718,-86.799669)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.142692,-86.799657)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.142656,-86.799659)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.141504,-86.799803)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.141485,-86.799819)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.141468,-86.79984)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.141463,-86.79987)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.141465,-86.799923)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.141505,-86.800242)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.142786,-86.800054)]; // Beginning of North turn
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.14278,-86.799926)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.142772,-86.799777)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.142758,-86.799724)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.142725,-86.799695)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.142676,-86.799684)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.142315,-86.799724)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.141527,-86.799796)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.141502,-86.799805)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.141485,-86.799814)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.141468,-86.799837)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.141463,-86.799855)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.141463,-86.799902)]; // End of North turn
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.141507,-86.800229)];
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.140704,-86.800351)];
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.140142,-86.800416)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.139595,-86.800479)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.138839,-86.800581)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.137744,-86.800736)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.137583,-86.800761)]; // Corner of 21st and Wedgewood
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.137555,-86.800501)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.137489,-86.799845)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.137392,-86.798914)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.137313,-86.798155)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.137872,-86.798046)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.138239,-86.797974)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.138563,-86.797919)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.138516,-86.797475)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.138525,-86.797389)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.138561,-86.797337)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.138602,-86.797316)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.138645,-86.797304)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.138966,-86.797259)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.139074,-86.797236)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.139609,-86.800478)]; // Start of Med Center loop on 21st end
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.139685,-86.801148)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.139748,-86.801669)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140473,-86.801557)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.141057,-86.801476)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.142309,-86.801312)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.142631,-86.80127)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.142752,-86.801221)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.142793,-86.801185)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.142813,-86.801158)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.142826,-86.801132)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.142848,-86.80105)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.142862,-86.800947)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.142863,-86.800819)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.142856,-86.80072)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.142817,-86.800419)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.142786,-86.800055)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.14408,-86.799846)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.143877,-86.797675)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.143664,-86.795688)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.141442,-86.79611)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.139988,-86.79639)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.139672,-86.796451)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.139065,-86.796568)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.139144,-86.797167)];
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.139118,-86.79721)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.139144,-86.797167)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.139065,-86.796568)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.139672,-86.796451)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.1399888548681,-86.7964553833008)]; // Murray stop
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.139672,-86.796451)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.139065,-86.796568)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.139144,-86.797167)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.139118,-86.797210)];
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.139074,-86.797236)];
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.138966,-86.797259)];
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.138645,-86.797304)];
@@ -309,7 +330,7 @@
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.137392,-86.798914)];
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.137489,-86.799845)];
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.137555,-86.800501)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.137583,-86.800761)]; // Back to corner of 21st and Wedgewood
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.137583,-86.800761)];
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.137636,-86.801179)];
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.137705,-86.801832)];
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.137736,-86.802287)];
@@ -321,14 +342,22 @@
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.138242,-86.807147)];
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.139178,-86.807015)];
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.140234,-86.806876)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140311,-86.806679)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140344,-86.80664)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.14039,-86.806618)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140576,-86.806585)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140743,-86.80658)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140798,-86.806585)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140841,-86.806605)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.141043,-86.80676)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140246,-86.806871)]; // Start of Morgan/Lewis
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.1403,-86.806691)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140317,-86.806662)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140345,-86.806629)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140384,-86.806606)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140425,-86.806592)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140588,-86.806555)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.14066,-86.806545)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140727,-86.806545)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140759,-86.806551)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140795,-86.806567)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140843,-86.806602)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140892,-86.806655)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140922,-86.806692)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.14097,-86.806768)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.141043,-86.80676)]; // End of Morgan/Lewis turn
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.14231,-86.806587)];
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.142725,-86.80653)];
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.143422,-86.806438)];
@@ -357,53 +386,45 @@
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.147319,-86.806036)];
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.147901,-86.806451)];
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.148118,-86.806012)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.148809,-86.804537)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.148959,-86.804239)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149192,-86.803772)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149356,-86.803443)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149501,-86.803142)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149207,-86.802929)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149182,-86.802977)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149162,-86.802999)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.14913,-86.803019)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149091,-86.803015)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149062,-86.803004)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.148236,-86.802382)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.148199,-86.802299)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.148226,-86.802201)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.148289,-86.802156)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.148339,-86.802143)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149194,-86.802775)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149221,-86.802856)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149207,-86.802929)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149501,-86.803142)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.148959,-86.804239)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149192,-86.803772)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149356,-86.803443)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149501,-86.803142)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149207,-86.802929)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149182,-86.802977)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149162,-86.802999)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.14913,-86.803019)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149091,-86.803015)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149062,-86.803004)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.148236,-86.802382)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.148199,-86.802299)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.148226,-86.802201)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.148289,-86.802156)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.148339,-86.802143)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149194,-86.802775)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149221,-86.802856)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149207,-86.802929)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149501,-86.803142)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149878,-86.802366)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.148809,-86.804535)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149496,-86.803156)]; // West End connection
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149211,-86.802951)]; // Beginning of circle
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149193,-86.802979)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149162,-86.803008)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149117,-86.803019)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149087,-86.803011)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149058,-86.802993)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.148898,-86.802873)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.148652,-86.802683)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.148257,-86.802407)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.148221,-86.802354)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.148206,-86.802289)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.148206,-86.802258)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.148212,-86.802223)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.14822,-86.802206)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.148239,-86.802179)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.148258,-86.802162)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.148291,-86.802147)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.148346,-86.802133)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.148414,-86.802163)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.14876,-86.802435)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149141,-86.80272)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149186,-86.802764)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149212,-86.802806)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149222,-86.802854)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149222,-86.8029)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149211,-86.802951)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149496,-86.803156)]; // End of Kissam turn...West End connection
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.150025,-86.802069)];
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.150231,-86.801652)];
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.150455,-86.801198)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149502,-86.800479)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.150004,-86.799459)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149502,-86.800479)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149502, -86.800494)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.14951,-86.800505)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.14972,-86.800055)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149781,-86.799943)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.150007,-86.799485)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.149781,-86.799943)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.14972,-86.800055)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.14951,-86.800505)];
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.148934,-86.800063)];
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.148838,-86.799997)];
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.148489,-86.79974)];
@@ -477,15 +498,21 @@
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.139178,-86.807014)];
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.139673,-86.806946)];
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.140041,-86.8069)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140234,-86.806876)]; // Start of Morgan/Lewis turn
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140311,-86.806679)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140345,-86.80664)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140391,-86.806618)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140579,-86.806586)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140743,-86.806581)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140798,-86.806585)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140841,-86.806604)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.141043,-86.80676)]; // End of turn
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140246,-86.806871)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.1403,-86.806691)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140317,-86.806662)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140345,-86.806629)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140384,-86.806606)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140425,-86.806592)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140588,-86.806555)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.14066,-86.806545)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140727,-86.806545)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140759,-86.806551)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140795,-86.806567)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140843,-86.806602)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140892,-86.806655)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140922,-86.806692)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.140971,-86.806768)]; // End of turn
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.141526,-86.80669)];
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.141763,-86.80666)];
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.142112,-86.806614)];
@@ -501,30 +528,29 @@
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.143067,-86.810109)];
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.143249,-86.81041)]; // Corner of Vanderbilt PL and 28th
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.143145,-86.810601)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.143287,-86.810693)]; // Start of Police Department loop
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.143705,-86.810998)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.143736,-86.811013)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.143761,-86.811014)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.143773,-86.811006)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.143854,-86.810872)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.143249,-86.81041)]; // End of Police Department loop (corner of Vanderbilt PL and 28th)]
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.143248,-86.81041)]; // Start of Police Department loop
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.143854,-86.810874)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.143755,-86.811057)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.143291,-86.8107)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.143144,-86.810601)]; // End of Police Department loop (corner of Vanderbilt PL and 28th)
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.143145,-86.810601)];
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.142847,-86.81121)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.142804,-86.811293)]; // Start of Blakemore House loop
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.142934,-86.811396)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.14295,-86.811446)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.142947,-86.811477)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.14279,-86.811786)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.142765,-86.811786)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.142616,-86.811696)]; // End of Blakemore House loop
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.142804,-86.811293)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.142809,-86.811296)]; // Start of Blakemore House loop
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.14294,-86.811399)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.142951,-86.811427)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.142951,-86.811444)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.142797,-86.811781)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.14278,-86.811789)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.142748,-86.811773)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.142621,-86.81169)];
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.142809,-86.811296)]; // End of Blakemore House loop
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.142847,-86.81121)];
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.143145,-86.810601)];
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.143249,-86.81041)]; // Corner of Vanderbilt PL and 28th
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.143067,-86.810109)]; // Corner of Natchez and 28th
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.144527,-86.809815)];
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.144774,-86.809777)];
-        [routePath addCoordinate:CLLocationCoordinate2DMake(36.144949,-86.80981)]; // Natchez and 26th
+        [routePath addCoordinate:CLLocationCoordinate2DMake(36.144947,-86.809785)]; // Natchez and 26th
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.144959,-86.809581)];
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.144983,-86.809249)];
         [routePath addCoordinate:CLLocationCoordinate2DMake(36.145037,-86.809096)];
