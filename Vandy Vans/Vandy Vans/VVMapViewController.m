@@ -17,12 +17,15 @@
 @property (strong, nonatomic) IBOutlet GMSMapView *vanMapView;
 @property (strong, nonatomic) NSString *routeBeingDisplayed;
 @property (strong, nonatomic) NSOrderedSet *routes;
+@property (strong, nonatomic) BSModalPickerView *routePickerView;
 
 @end
 
 @implementation VVMapViewController
 
-@synthesize vanMapView = _vanMapView;
+@synthesize routeBeingDisplayed = _routeBeingDisplayed;
+
+#pragma mark - Custom Getters
 
 - (NSString *)routeBeingDisplayed {
     if (!_routeBeingDisplayed) {
@@ -40,19 +43,44 @@
     return _routes;
 }
 
+- (BSModalPickerView *)routePickerView {
+    if (!_routePickerView) {
+        _routePickerView = [[BSModalPickerView alloc] initWithValues:[self.routes array]];
+        _routePickerView.selectedValue = self.routeBeingDisplayed;
+    }
+    
+    return _routePickerView;
+}
+
+#pragma mark - Custom Setter
+
+- (void)setRouteBeingDisplayed:(NSString *)routeBeingDisplayed {
+    if (_routeBeingDisplayed != routeBeingDisplayed) {
+        _routeBeingDisplayed = routeBeingDisplayed;
+        
+        [self.vanMapView clear];
+        [self dropMarkersForRoute:_routeBeingDisplayed];
+        [self addPolylineToRoute:_routeBeingDisplayed];
+        
+        [self repositionCamera];
+    }
+}
+
+#pragma mark - View Controller Lifecycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.vanMapView.myLocationEnabled = YES;
     self.vanMapView.settings.myLocationButton = YES;
     
-    self.vanMapView.camera = [GMSCameraPosition cameraWithLatitude:36.14381 longitude:-86.801643 zoom:14.7];
-    
     // Drop pins on stops depending on which route is being displayed.
     [self dropMarkersForRoute:self.routeBeingDisplayed];
     
     // Add the appropriate polyline for the given route.
     [self addPolylineToRoute:self.routeBeingDisplayed];
+    
+    [self repositionCamera];
     
     /*GMSMarker *vanMarker = [GMSMarker markerWithLatitude:36.148118 longitude:-86.806012 andTitle:@"Test"];
     vanMarker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
@@ -69,25 +97,21 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - IB Actions
+
 - (IBAction)routePressed:(UIBarButtonItem *)sender {
     sender.enabled = NO;
     
-    BSModalPickerView *routePickerView = [[BSModalPickerView alloc] initWithValues:[self.routes array]];
-    routePickerView.selectedValue = self.routeBeingDisplayed;
-    [routePickerView presentInView:self.view withBlock:^(BOOL madeChoice) {
-        if (self.routeBeingDisplayed != [routePickerView selectedValue]) {
-            self.routeBeingDisplayed = [routePickerView selectedValue];
-            
-            [self.vanMapView clear];
-            [self dropMarkersForRoute:self.routeBeingDisplayed];
-            [self addPolylineToRoute:self.routeBeingDisplayed];
-            
-            [self repositionCamera];
+    [self.routePickerView presentInView:self.view withBlock:^(BOOL madeChoice) {
+        if (madeChoice) {
+            self.routeBeingDisplayed = [self.routePickerView selectedValue];
         }
         
         sender.enabled = YES;
     }];
 }
+
+#pragma mark - Helper Methods
 
 - (void)repositionCamera {
     GMSPolyline *polyline = self.vanMapView.polylines[0];

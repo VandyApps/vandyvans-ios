@@ -410,6 +410,7 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                     </view>
                     <navigationItem key="navigationItem" title="Live Map" id="FsR-Gf-r8R">
                         <barButtonItem key="rightBarButtonItem" title="Route" id="4p3-jh-Gv8">
@@ -507,6 +508,9 @@
         <image name="target" width="16" height="16"/>
     </resources>
     <classes>
+        <class className="GAITrackedViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GAITrackedViewController.h"/>
+        </class>
         <class className="GMSMapView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/GMSMapView.h"/>
         </class>
@@ -521,20 +525,17 @@
         </class>
         <class className="VVAboutTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VVAboutTableViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="donePressed:" candidateClass="UIBarButtonItem"/>
-            </relationships>
         </class>
         <class className="VVArrivalTimeTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VVArrivalTimeTableViewController.h"/>
         </class>
-        <class className="VVAttributionViewController" superclassName="UIViewController">
+        <class className="VVAttributionViewController" superclassName="GAITrackedViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VVAttributionViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="attributionTextView" candidateClass="UITextView"/>
             </relationships>
         </class>
-        <class className="VVMapViewController" superclassName="UIViewController">
+        <class className="VVMapViewController" superclassName="GAITrackedViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VVMapViewController.h"/>
             <relationships>
                 <relationship kind="action" name="routePressed:" candidateClass="UIBarButtonItem"/>
