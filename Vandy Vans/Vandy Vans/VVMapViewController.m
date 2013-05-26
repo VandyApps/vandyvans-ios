@@ -120,7 +120,7 @@
 }
 
 - (void)dropMarkersForRoute:(NSString *)routeName {
-    NSArray *routeMarkers = [VVRoute markersForRouteName:routeName];
+    NSArray *routeMarkers = [VVRoute markersForRouteColor:[VVRoute routeColorForRouteName:routeName]];
     
     for (GMSMarker *marker in routeMarkers) {
         marker.map = self.vanMapView;
@@ -128,7 +128,7 @@
 }
 
 - (void)addPolylineToRoute:(NSString *)routeName {
-    [VVRoute polylineForRouteName:routeName].map = self.vanMapView;
+    [VVRoute polylineForRouteColor:[VVRoute routeColorForRouteName:routeName]].map = self.vanMapView;
 }
 
 @end

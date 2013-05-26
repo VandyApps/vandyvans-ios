@@ -8,6 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSInteger, VVRouteColor) {
+    VVRouteColorBlue,
+    VVRouteColorRed,
+    VVRouteColorGreen
+};
+
 @class GMSPolyline;
 
 @interface VVRoute : NSObject
@@ -15,28 +21,37 @@
 /**
  * This method produces an array of all of the `GMSMarker`s for a particular Vandy Van route.
  *
- * @param routeName The name of the Vandy Van route selected.
+ * @param routeColor The color of the Vandy Van route selected.
  *
  * @return An array of all of the `GMSMarker`s for the Vandy Van route.
  */
-+ (NSArray *)markersForRouteName:(NSString *)routeName;
++ (NSArray *)markersForRouteColor:(VVRouteColor)routeColor;
 
 /**
  * This method produces a `GMSPolyline` overlay for a particular Vandy Van route.
  *
- * @param routeName The name of the Vandy Van route selected.
+ * @param routeColor The color of the Vandy Van route selected.
  *
  * @return A `GMSPolyline` for the Vandy Van route.
  */
-+ (GMSPolyline *)polylineForRouteName:(NSString *)routeName;
++ (GMSPolyline *)polylineForRouteColor:(VVRouteColor)routeColor;
 
 /**
  * This method gives the route ID for a particular Vandy Van route.
  *
- * @param routeName The name of the Vandy Van route.
+ * @param routeColor The color of the Vandy Van route.
  *
  * @return A route ID.
  */
-+ (NSInteger)routeIDForRouteName:(NSString *)routeName;
++ (NSInteger)routeIDForRouteColor:(VVRouteColor)routeColor;
+
+/**
+ * This method gives the route color enum value for the name of a route.
+ *
+ * @param routeName The name of the Vandy Van route.
+ *
+ * @return The color enum value of the route.
+ */
++ (VVRouteColor)routeColorForRouteName:(NSString *)routeName;
 
 @end

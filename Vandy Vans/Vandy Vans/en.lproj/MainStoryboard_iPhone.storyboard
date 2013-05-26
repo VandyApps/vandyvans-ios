@@ -44,7 +44,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="V72-qO-SMk">
-                        <barButtonItem key="rightBarButtonItem" title="Settings" style="plain" id="gk7-pp-U5d">
+                        <barButtonItem key="rightBarButtonItem" title="Settings" id="gk7-pp-U5d">
                             <connections>
                                 <segue destination="Ajz-r1-vjM" kind="modal" identifier="StopsToAbout" modalTransitionStyle="flipHorizontal" id="vSy-tV-Pjo"/>
                             </connections>
@@ -525,9 +525,15 @@
         </class>
         <class className="VVAboutTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VVAboutTableViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="donePressed:" candidateClass="UIBarButtonItem"/>
+            </relationships>
         </class>
         <class className="VVArrivalTimeTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VVArrivalTimeTableViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="notificationSwitchPressed:" candidateClass="UISwitch"/>
+            </relationships>
         </class>
         <class className="VVAttributionViewController" superclassName="GAITrackedViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VVAttributionViewController.h"/>

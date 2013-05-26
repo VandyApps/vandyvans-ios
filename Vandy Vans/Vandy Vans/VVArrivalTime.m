@@ -133,7 +133,7 @@
 }
 
 + (AFJSONRequestOperation *)arrivalTimeRequestOperationForRouteName:(NSString *)routeName stopName:(NSString *)stopName stopID:(NSUInteger)stopID params:(NSDictionary *)params {
-    NSString *path = [[[[@"Route/" stringByAppendingFormat:@"%i", [VVRoute routeIDForRouteName:routeName]] stringByAppendingString:@"/Stop/"] stringByAppendingFormat:@"%i", stopID] stringByAppendingString:@"/Arrivals"];
+    NSString *path = [[[[@"Route/" stringByAppendingFormat:@"%i", [VVRoute routeIDForRouteColor:[VVRoute routeColorForRouteName:routeName]]] stringByAppendingString:@"/Stop/"] stringByAppendingFormat:@"%i", stopID] stringByAppendingString:@"/Arrivals"];
     NSMutableURLRequest *URLRequest = [[VVAPIClient sharedClient] requestWithMethod:@"GET" path:path parameters:params];
     return [AFJSONRequestOperation JSONRequestOperationWithRequest:URLRequest success:nil failure:nil];
 }
