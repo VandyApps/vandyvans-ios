@@ -12,10 +12,12 @@
 
 @implementation VVAboutTableViewController
 
+#pragma mark - View Controller Lifecycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"VVAboutBackground-568h.jpg"]];
+    self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"VVBackground"]];
     
     // Google Analytics
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
@@ -36,8 +38,36 @@
     }
 }
 
+#pragma mark - IB Action
+
 - (IBAction)donePressed:(UIBarButtonItem *)sender {
     [self.delegate aboutTableViewControllerDidFinish:self];
+}
+
+#pragma mark - Table View Delegate
+
+/*- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 300.0f;
+}*/
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, tableView.bounds.size.height - ([self tableView:self.tableView heightForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]] * [self tableView:self.tableView numberOfRowsInSection:0]))];
+        
+    UILabel *footerTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 0, footerView.bounds.size.width - 40.0f, footerView.bounds.size.height)];
+    footerTextLabel.opaque = YES;
+    footerTextLabel.backgroundColor = [UIColor clearColor];
+    footerTextLabel.shadowColor = [UIColor blackColor];
+    footerTextLabel.numberOfLines = 0; // Removes any maximum number of lines.
+    footerTextLabel.textAlignment = NSTextAlignmentCenter;
+        
+    //NSString *footerText = @"Created By:\nSeth Friedman\nand\nMcArthur Gill\n\nGraphic Design\nBy:\nFletcher Young";
+    NSString *footerText = @"CREATED BY:\nSETH FRIEDMAN\nand\nMCARTHUR GILL\n\nGRAPHIC DESIGN BY:\nFLETCHER YOUNG";
+    NSDictionary *footerTextAttributes = @{NSFontAttributeName : [UIFont fontWithName:@"Helvetica-Bold" size:17.0f], NSForegroundColorAttributeName : [UIColor whiteColor]};
+    footerTextLabel.attributedText = [[NSAttributedString alloc] initWithString:footerText attributes:footerTextAttributes];
+        
+    [footerView addSubview:footerTextLabel];
+    
+    return footerView;
 }
 
 @end
