@@ -43,7 +43,7 @@ typedef NS_ENUM(NSInteger, VVRouteColor) {
  *
  * @return A route ID.
  */
-+ (NSInteger)routeIDForRouteColor:(VVRouteColor)routeColor;
++ (NSInteger)routeIDForRouteColor:(VVRouteColor)routeColor __attribute__((const));
 
 /**
  * This method gives the route color enum value for the name of a route.
@@ -52,6 +52,6 @@ typedef NS_ENUM(NSInteger, VVRouteColor) {
  *
  * @return The color enum value of the route.
  */
-+ (VVRouteColor)routeColorForRouteName:(NSString *)routeName;
++ (VVRouteColor)routeColorForRouteName:(NSString *)routeName __attribute__((pure));
 
 @end

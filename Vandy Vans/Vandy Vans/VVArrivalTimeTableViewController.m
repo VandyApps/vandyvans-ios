@@ -28,35 +28,46 @@
 
 - (NSUInteger)stopID {
     if (!_stopID) {
-        if ([self.title isEqualToString:@"Branscomb Quad"]) {
-            self.stopID = 263473;
-        } else if ([self.title isEqualToString:@"Carmichael Towers"]) {
-            self.stopID = 263470;
-        } else if ([self.title isEqualToString:@"Murray House"]) {
-            self.stopID = 263454;
-        } else if ([self.title isEqualToString:@"Highland Quad"]) {
-            self.stopID = 263444;
-        } else if ([self.title isEqualToString:@"Vanderbilt Police Department"]) {
-            self.stopID = 264041;
-        } else if ([self.title isEqualToString:@"Vanderbilt Book Store"]) {
-            self.stopID = 332298;
-        } else if ([self.title isEqualToString:@"Kissam Quad"]) {
-            self.stopID = 263415;
-        } else if ([self.title isEqualToString:@"Terrace Place Garage"]) {
-            self.stopID = 238083;
-        } else if ([self.title isEqualToString:@"Wesley Place Garage"]) {
-            self.stopID = 238096;
-        } else if ([self.title isEqualToString:@"North House"]) {
-            self.stopID = 263463;
-        } else if ([self.title isEqualToString:@"Blair School of Music"]) {
-            self.stopID = 264091;
-        } else if ([self.title isEqualToString:@"McGugin Center"]) {
-            self.stopID = 264101;
-        } else {
-            self.stopID = 401204;
-        }
+        _stopID = [self stopIDForStopName:self.title];
     }
+    
     return _stopID;
+}
+
+- (NSUInteger)stopIDForStopName:(NSString *)stopName __attribute__((pure)) {
+    NSUInteger stopID;
+    
+    if ([stopName isEqualToString:@"Branscomb Quad"]) {
+        stopID = 263473;
+    } else if ([stopName isEqualToString:@"Carmichael Towers"]) {
+        stopID = 263470;
+    } else if ([stopName isEqualToString:@"Murray House"]) {
+        stopID = 263454;
+    } else if ([stopName isEqualToString:@"Highland Quad"]) {
+        stopID = 263444;
+    } else if ([stopName isEqualToString:@"Vanderbilt Police Department"]) {
+        stopID = 264041;
+    } else if ([stopName isEqualToString:@"Vanderbilt Book Store"]) {
+        stopID = 332298;
+    } else if ([stopName isEqualToString:@"Kissam Quad"]) {
+        stopID = 263415;
+    } else if ([stopName isEqualToString:@"Terrace Place Garage"]) {
+        stopID = 238083;
+    } else if ([stopName isEqualToString:@"Wesley Place Garage"]) {
+        stopID = 238096;
+    } else if ([stopName isEqualToString:@"North House"]) {
+        stopID = 263463;
+    } else if ([stopName isEqualToString:@"Blair School of Music"]) {
+        stopID = 264091;
+    } else if ([stopName isEqualToString:@"McGugin Center"]) {
+        stopID = 264101;
+    } else if ([stopName isEqualToString:@"Blakemore House"]) {
+        stopID = 401204;
+    } else { // Medical Center
+        stopID = 446923;
+    }
+    
+    return stopID;
 }
 
 - (NSOrderedSet *)arrivalTimes {

@@ -85,6 +85,8 @@
     }
     
     [[VVAPIClient sharedClient] enqueueBatchOfHTTPRequestOperations:requestOperations progressBlock:nil completionBlock:^(NSArray *operations) {
+        // TODO - This can probably be done faster by using GCD and putting this all on another thread. According to the AFHTTPClient source,
+        // the `completionBlock` is run on the main thread.
         if ([self isStopForAllRoutes:stopName]) {
             blueRouteArrivalTimeRequestOperation = operations[0];
             greenRouteArrivalTimeRequestOperation = operations[1];
