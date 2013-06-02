@@ -44,10 +44,6 @@
 
 #pragma mark - Table View Delegate
 
-/*- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 300.0f;
-}*/
-
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, tableView.bounds.size.height - ([self tableView:self.tableView heightForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]] * [self tableView:self.tableView numberOfRowsInSection:0]))];
         
@@ -57,15 +53,28 @@
     footerTextLabel.shadowColor = [UIColor blackColor];
     footerTextLabel.numberOfLines = 0; // Removes any maximum number of lines.
     footerTextLabel.textAlignment = NSTextAlignmentCenter;
-        
-    //NSString *footerText = @"Created By:\nSeth Friedman\nand\nMcArthur Gill\n\nGraphic Design\nBy:\nFletcher Young";
-    NSString *footerText = @"CREATED BY:\nSETH FRIEDMAN\nand\nMCARTHUR GILL\n\nGRAPHIC DESIGN BY:\nFLETCHER YOUNG";
-    NSDictionary *footerTextAttributes = @{NSFontAttributeName : [UIFont fontWithName:@"Helvetica-Bold" size:17.0f], NSForegroundColorAttributeName : [UIColor whiteColor]};
-    footerTextLabel.attributedText = [[NSAttributedString alloc] initWithString:footerText attributes:footerTextAttributes];
+    
+    footerTextLabel.attributedText = [self footerText];
         
     [footerView addSubview:footerTextLabel];
     
     return footerView;
+}
+
+#pragma mark - Helper Method
+
+- (NSAttributedString *)footerText {
+    NSDictionary *nameTextAttributes = @{NSFontAttributeName : [UIFont fontWithName:@"Helvetica-Bold" size:17.0f], NSForegroundColorAttributeName : [UIColor whiteColor]};
+    NSDictionary *smallerTextAttributes = @{NSFontAttributeName : [UIFont fontWithName:@"Helvetica" size:15.0f], NSForegroundColorAttributeName : [UIColor whiteColor]};
+    
+    NSMutableAttributedString *footerText = [[NSMutableAttributedString alloc] initWithString:@"CREATED BY:\n" attributes:smallerTextAttributes];
+    [footerText appendAttributedString:[[NSAttributedString alloc] initWithString:@"SETH FRIEDMAN" attributes:nameTextAttributes]];
+    [footerText appendAttributedString:[[NSAttributedString alloc] initWithString:@"\nand\n" attributes:smallerTextAttributes]];
+    [footerText appendAttributedString:[[NSAttributedString alloc] initWithString:@"MCARTHUR GILL\n\n" attributes:nameTextAttributes]];
+    [footerText appendAttributedString:[[NSAttributedString alloc] initWithString:@"GRAPHIC DESIGN BY:\n" attributes:smallerTextAttributes]];
+    [footerText appendAttributedString:[[NSAttributedString alloc] initWithString:@"FLETCHER YOUNG" attributes:nameTextAttributes]];
+    
+    return [footerText copy];
 }
 
 @end
