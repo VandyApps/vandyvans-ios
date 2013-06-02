@@ -27,7 +27,7 @@
             _stops = @[@"Branscomb Quad", @"Carmichael Towers", @"Murray House", @"Highland Quad", @"Other Stops"];
         } else {
             _stops = @[@"Vanderbilt Police Department", @"Vanderbilt Book Store", @"Kissam Quad", @"Terrace Place Garage",
-                @"Wesley Place Garage", @"North House", @"Blair School of Music", @"McGugin Center", @"Blakemore House"];
+                @"Wesley Place Garage", @"North House", @"Blair School of Music", @"McGugin Center", @"Blakemore House", @"Medical Center"];
         }
     }
     return _stops;
@@ -35,6 +35,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"VVBackground"]];
     
     // Google Analytics
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
@@ -59,10 +61,12 @@
         ((VVArrivalTimeTableViewController *)segue.destinationViewController).title = ((UITableViewCell *)sender).textLabel.text;
     } else if ([segue.identifier isEqualToString:@"StopsToOtherStops"]) {
         ((VVStopTableViewController *)segue.destinationViewController).title = @"Other Stops";
-    } else if ([segue.identifier isEqualToString:@"StopsToAbout"] || [segue.identifier isEqualToString:@"OtherStopsToAbout"]) {
-        ((VVAboutTableViewController *)[((UINavigationController *)segue.destinationViewController).viewControllers objectAtIndex:0]).delegate = self;
     }
 }
+
+#pragma mark - IB Action
+
+- (IBAction)aboutViewDismissed:(UIStoryboardSegue *)segue {}
 
 #pragma mark - Table View Data Source
 
@@ -87,12 +91,6 @@
     cell.textLabel.text = [self.stops objectAtIndex:indexPath.row];
     
     return cell;
-}
-
-#pragma mark - About Table View Controller Delegate
-
-- (void)aboutTableViewControllerDidFinish:(VVAboutTableViewController *)aboutTableViewController {
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

@@ -10,12 +10,13 @@
 #import "VVStopTableViewController.h"
 #import "VVArrivalTimeTableViewController.h"
 #import "VVAboutTableViewController.h"
+#import "VVReportTableViewController.h"
 
 @implementation VVAppearanceBuilder
 
 + (void)buildAppearance {
     // Set the background view in the table views to the default application background.
-    [[UITableView appearance] setBackgroundView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"VVBackground"]]];
+    //[[UITableView appearanceWhenContainedIn:[UINavigationController class], nil] setBackgroundView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"VVBackground"]]];
     
     // Set the navigation bar's tint color across the application to black.
     [[UINavigationBar appearance] setTintColor:[UIColor blackColor]];

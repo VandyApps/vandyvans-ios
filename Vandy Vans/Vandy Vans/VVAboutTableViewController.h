@@ -8,16 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@class VVAboutTableViewController;
-
-@protocol VVAboutTableViewControllerDelegate <NSObject>
-
-- (void)aboutTableViewControllerDidFinish:(VVAboutTableViewController *)aboutTableViewController;
-
-@end
-
 @interface VVAboutTableViewController : UITableViewController
-
-@property (weak, nonatomic) id <VVAboutTableViewControllerDelegate> delegate;
 
 @end

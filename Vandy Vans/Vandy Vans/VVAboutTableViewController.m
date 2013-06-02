@@ -17,6 +17,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"VVBackground"]];
+    
     // Google Analytics
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker sendView:@"About View"];
@@ -34,12 +36,6 @@
         
         reportTableViewController.userIsSendingFeedback = YES;
     }
-}
-
-#pragma mark - IB Action
-
-- (IBAction)donePressed:(UIBarButtonItem *)sender {
-    [self.delegate aboutTableViewControllerDidFinish:self];
 }
 
 #pragma mark - Table View Delegate

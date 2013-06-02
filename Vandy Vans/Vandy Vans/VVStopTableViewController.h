@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "VVAboutTableViewController.h"
 
-@interface VVStopTableViewController : UITableViewController <VVAboutTableViewControllerDelegate>
+@interface VVStopTableViewController : UITableViewController
 
 @end
