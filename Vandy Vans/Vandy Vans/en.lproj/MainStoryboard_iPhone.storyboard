@@ -507,73 +507,14 @@
         <image name="map" width="16" height="16"/>
         <image name="target" width="16" height="16"/>
     </resources>
-    <classes>
-        <class className="GAITrackedViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GAITrackedViewController.h"/>
-        </class>
-        <class className="GMSMapView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GMSMapView.h"/>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="SSTextView" superclassName="UITextView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SSTextView.h"/>
-        </class>
-        <class className="UIRefreshControl" superclassName="UIControl">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIRefreshControl.h"/>
-        </class>
-        <class className="VVAboutTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/VVAboutTableViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="donePressed:" candidateClass="UIBarButtonItem"/>
-            </relationships>
-        </class>
-        <class className="VVArrivalTimeTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/VVArrivalTimeTableViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="notificationSwitchPressed:" candidateClass="UISwitch"/>
-            </relationships>
-        </class>
-        <class className="VVAttributionViewController" superclassName="GAITrackedViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/VVAttributionViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="attributionTextView" candidateClass="UITextView"/>
-            </relationships>
-        </class>
-        <class className="VVMapViewController" superclassName="GAITrackedViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/VVMapViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="vanMapView" candidateClass="GMSMapView"/>
-            </relationships>
-        </class>
-        <class className="VVNotificationCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/VVNotificationCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="notificationSwitch" candidateClass="UISwitch"/>
-            </relationships>
-        </class>
-        <class className="VVReportTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/VVReportTableViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="sendPressed:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="descriptionTextView" candidateClass="SSTextView"/>
-                <relationship kind="outlet" name="emailTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="notifyWhenResolvedTableViewCell" candidateClass="UITableViewCell"/>
-            </relationships>
-        </class>
-        <class className="VVStopTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/VVStopTableViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="vSy-tV-Pjo"/>
-        <segue reference="7Di-BC-NYA"/>
+        <segue reference="uTP-je-CRm"/>
+        <segue reference="Yb4-In-ycU"/>
         <segue reference="tSf-t1-2MO"/>
     </inferredMetricsTieBreakers>
 </document>

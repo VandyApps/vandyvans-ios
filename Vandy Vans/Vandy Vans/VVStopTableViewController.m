@@ -46,8 +46,6 @@
     } else {
         [tracker sendView:@"Other Stops View"];
     }
-    
-    self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"VVBackground"]];
 }
 
 - (void)didReceiveMemoryWarning
