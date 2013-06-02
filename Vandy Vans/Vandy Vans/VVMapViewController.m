@@ -61,8 +61,6 @@
         [self.vanMapView clear];
         [self dropMarkersForRoute:_routeBeingDisplayed];
         [self addPolylineToRoute:_routeBeingDisplayed];
-        
-        [self repositionCamera];
     }
 }
 
@@ -79,8 +77,6 @@
     
     // Add the appropriate polyline for the given route.
     [self addPolylineToRoute:self.routeBeingDisplayed];
-    
-    [self repositionCamera];
     
     /*GMSMarker *vanMarker = [GMSMarker markerWithLatitude:36.148118 longitude:-86.806012 andTitle:@"Test"];
     vanMarker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
@@ -120,15 +116,29 @@
 }
 
 - (void)dropMarkersForRoute:(NSString *)routeName {
-    NSArray *routeMarkers = [VVRoute markersForRouteColor:[VVRoute routeColorForRouteName:routeName]];
-    
-    for (GMSMarker *marker in routeMarkers) {
-        marker.map = self.vanMapView;
-    }
+    dispatch_queue_t dispatchQueue = dispatch_queue_create("org.VandyMobile.Vandy-Vans.DropMarkers", 0);
+    dispatch_async(dispatchQueue, ^{
+        NSArray *routeMarkers = [VVRoute markersForRouteColor:[VVRoute routeColorForRouteName:routeName]];
+        
+        [routeMarkers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            GMSMarker *marker = obj;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                marker.map = self.vanMapView;
+            });
+        }];
+    });
 }
 
 - (void)addPolylineToRoute:(NSString *)routeName {
-    [VVRoute polylineForRouteColor:[VVRoute routeColorForRouteName:routeName]].map = self.vanMapView;
+    dispatch_queue_t dispatchQueue = dispatch_queue_create("org.VandyMobile.Vandy-Vans.AddPolyline", 0);
+    dispatch_async(dispatchQueue, ^{
+        GMSPolyline *polyline = [VVRoute polylineForRouteColor:[VVRoute routeColorForRouteName:routeName]];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            polyline.map = self.vanMapView;
+            
+            [self repositionCamera];
+        });
+    });
 }
 
 @end
