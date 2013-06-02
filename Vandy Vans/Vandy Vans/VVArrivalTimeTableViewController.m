@@ -153,17 +153,23 @@
 }
 
 - (void)findAndScheduleNextArrivalTime {
-    for (VVArrivalTime *arrivalTime in self.arrivalTimes) {
-        if ([arrivalTime.arrivalTimeInMinutes integerValue] > 2) {
-            [self scheduleNotificationWithArrivalTime:arrivalTime];
-            
-            // Create and display an alert to tell the user for which route and stop they have set a notification.
-            UIAlertView *reminderSetAlertView = [VVAlertBuilder reminderSetAlertWithRouteName:arrivalTime.routeName andStopName:arrivalTime.stopName];
-            [reminderSetAlertView show];
-            
-            break;
-        }
-    }
+    dispatch_queue_t dispatchQueue = dispatch_queue_create("org.VandyMobile.Vandy-Vans.FindAndScheduleArrivalTime", 0);
+    dispatch_async(dispatchQueue, ^{
+        [self.arrivalTimes enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            VVArrivalTime *arrivalTime = obj;
+            if ([arrivalTime.arrivalTimeInMinutes integerValue] > 2) {
+                [self scheduleNotificationWithArrivalTime:arrivalTime];
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    // Create and display an alert to tell the user for which route and stop they have set a notification.
+                    UIAlertView *reminderSetAlertView = [VVAlertBuilder reminderSetAlertWithRouteName:arrivalTime.routeName andStopName:arrivalTime.stopName];
+                    [reminderSetAlertView show];
+                });
+                
+                stop = YES;
+            }
+        }];
+    });
 }
 
 - (void)scheduleNotificationWithArrivalTime:(VVArrivalTime *)arrivalTime {

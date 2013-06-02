@@ -53,6 +53,7 @@
 }
 
 - (IBAction)sendPressed:(UIBarButtonItem *)sender {
+    // TODO - This can be changed into an unwind segue as well as be made multithreaded.
     if ([self.emailTextField.text isEqualToString:@""] || [self.descriptionTextView.text isEqualToString:@"Description"]) {
         [SVProgressHUD showErrorWithStatus:@"Please fill in the email and description fields."];
     }
