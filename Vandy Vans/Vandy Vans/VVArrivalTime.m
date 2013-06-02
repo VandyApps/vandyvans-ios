@@ -101,35 +101,26 @@
             redRouteArrivalTimeRequestOperation = operations[0];
         }
         
-        // The code below uses `@autoreleasepool` to more quickly clean up the large amount of `NSDictionary`s created for
-        // each set of arrival time predictions.
-        
-        for (NSDictionary *predictions in [blueRouteArrivalTimeRequestOperation.responseJSON objectForKey:@"Predictions"]) {
-            @autoreleasepool {
-                NSDictionary *arrivalTimeAttributes = @{@"StopName": stopName, @"RouteName": @"Blue", @"ArrivalTimeInMinutes": [predictions objectForKey:@"Minutes"]};
-            
-                [arrivalTimesSet addObject:[[VVArrivalTime alloc] initWithAttributes:arrivalTimeAttributes]];
-            }
-        }
-        
-        for (NSDictionary *predictions in [greenRouteArrivalTimeRequestOperation.responseJSON objectForKey:@"Predictions"]) {
-            @autoreleasepool {
-                NSDictionary *arrivalTimeAttributes = @{@"StopName": stopName, @"RouteName": @"Green", @"ArrivalTimeInMinutes": [predictions objectForKey:@"Minutes"]};
-            
-                [arrivalTimesSet addObject:[[VVArrivalTime alloc] initWithAttributes:arrivalTimeAttributes]];
-            }
-        }
-        
-        for (NSDictionary *predictions in [redRouteArrivalTimeRequestOperation.responseJSON objectForKey:@"Predictions"]) {
-            @autoreleasepool {
-                NSDictionary *arrivalTimeAttributes = @{@"StopName": stopName, @"RouteName": @"Red", @"ArrivalTimeInMinutes": [predictions objectForKey:@"Minutes"]};
-            
-                [arrivalTimesSet addObject:[[VVArrivalTime alloc] initWithAttributes:arrivalTimeAttributes]];
-            }
-        }
+        [self addArrivalTimeFromOperation:blueRouteArrivalTimeRequestOperation withStopName:stopName andRouteName:@"Blue" toArrivalTimesSet:arrivalTimesSet];
+        [self addArrivalTimeFromOperation:greenRouteArrivalTimeRequestOperation withStopName:stopName andRouteName:@"Green" toArrivalTimesSet:arrivalTimesSet];
+        [self addArrivalTimeFromOperation:redRouteArrivalTimeRequestOperation withStopName:stopName andRouteName:@"Red" toArrivalTimesSet:arrivalTimesSet];
         
         if (block) {
             block([arrivalTimesSet sortedArrayUsingComparator:arrivalTimesComparator]);
+        }
+    }];
+}
+
++ (void)addArrivalTimeFromOperation:(AFJSONRequestOperation *)operation withStopName:(NSString *)stopName andRouteName:(NSString *)routeName toArrivalTimesSet:(NSMutableOrderedSet *)arrivalTimesSet {
+    // The code below uses `@autoreleasepool` to more quickly clean up the large amount of `NSDictionary`s created for
+    // each set of arrival time predictions.
+    
+    [[operation.responseJSON objectForKey:@"Predictions"] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        @autoreleasepool {
+            NSDictionary *predictions = obj;
+            NSDictionary *arrivalTimeAttributes = @{@"StopName" : stopName, @"RouteName" : routeName, @"ArrivalTimeInMinutes" : predictions[@"Minutes"]};
+            
+            [arrivalTimesSet addObject:[[VVArrivalTime alloc] initWithAttributes:arrivalTimeAttributes]];
         }
     }];
 }
