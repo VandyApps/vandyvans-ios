@@ -166,7 +166,7 @@
                     [reminderSetAlertView show];
                 });
                 
-                stop = YES;
+                *stop = YES;
             }
         }];
     });
