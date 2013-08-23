@@ -17,6 +17,8 @@
 @synthesize stopName = _stopName;
 @synthesize arrivalTimeInMinutes = _arrivalTimeInMinutes;
 
+#pragma mark - Designated Initializer
+
 - (id)initWithAttributes:(NSDictionary*)attributes {
     self = [super init];
     if (self) {
@@ -27,6 +29,20 @@
     
     return self;
 }
+
+#pragma mark - NSObject
+
+- (NSString *)description {
+    return [NSString stringWithFormat:@"Stop Name: %@\nRoute Name: %@\nArrival Time: %@ minutes", self.stopName, self.routeName, self.arrivalTimeInMinutes];
+}
+
+- (BOOL)isEqual:(id)object {
+    VVArrivalTime *otherArrivalTime = object;
+    
+    return [self.stopName isEqualToString:otherArrivalTime.stopName] && [self.routeName isEqualToString:otherArrivalTime.routeName] && [self.arrivalTimeInMinutes isEqualToNumber:otherArrivalTime.arrivalTimeInMinutes];
+}
+
+#pragma mark - Class Methods
 
 + (BOOL)isStopForAllRoutes:(NSString *)stopName __attribute__((pure)) {
     return ([stopName isEqualToString:@"Branscomb Quad"] || [stopName isEqualToString:@"Carmichael Towers"] ||
