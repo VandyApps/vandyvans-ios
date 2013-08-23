@@ -31,6 +31,7 @@
     return self;
 }
 
+// TODO - Refactor this with GCD. Note: AFNetworking already calls the success and failure blocks on separate threads.
 - (void)sendWithBlock:(void (^)(void))block {
     NSDictionary *params = @{
         @"verifyHash" : [@"vandyvansapp" SHA1Sum],

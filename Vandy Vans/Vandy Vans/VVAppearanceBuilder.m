@@ -18,6 +18,10 @@
     // Set the background view in the table views to the default application background.
     //[[UITableView appearanceWhenContainedIn:[UINavigationController class], nil] setBackgroundView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"VVBackground"]]];
     
+    [[UITableView appearanceWhenContainedIn:[VVStopTableViewController class], nil] setBackgroundView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"VVBackground"]]];
+    
+    //[[UITableView appearanceWhenContainedIn:[VVAboutTableViewController class], nil] setBackgroundView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"VVBackgroundFull"]]];
+    
     // Set the navigation bar's tint color across the application to black.
     [[UINavigationBar appearance] setTintColor:[UIColor blackColor]];
 }
