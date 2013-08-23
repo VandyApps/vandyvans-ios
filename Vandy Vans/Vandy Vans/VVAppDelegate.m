@@ -37,11 +37,13 @@
     return YES;
 }
 
-- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {    
-    UIAlertView *vanArrivingAlertView = [VVAlertBuilder vanArrivingAlertWithRouteName:notification.userInfo[@"RouteName"] andStopName:notification.userInfo[@"StopName"]];
-    [vanArrivingAlertView show];
-    
-    application.applicationIconBadgeNumber = --notification.applicationIconBadgeNumber;
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
+    if (application.applicationState == UIApplicationStateActive) {
+        UIAlertView *vanArrivingAlertView = [VVAlertBuilder vanArrivingAlertWithRouteName:notification.userInfo[@"RouteName"] andStopName:notification.userInfo[@"StopName"]];
+        [vanArrivingAlertView show];
+    } else {
+        application.applicationIconBadgeNumber += notification.applicationIconBadgeNumber;
+    }
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application
