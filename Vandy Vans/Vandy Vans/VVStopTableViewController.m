@@ -36,6 +36,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"VVBackgroundFull"]];
+    
     // Google Analytics
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     
