@@ -116,29 +116,18 @@
 }
 
 - (void)dropMarkersForRoute:(NSString *)routeName {
-    dispatch_queue_t dispatchQueue = dispatch_queue_create("org.VandyMobile.Vandy-Vans.DropMarkers", 0);
-    dispatch_async(dispatchQueue, ^{
-        NSArray *routeMarkers = [VVRoute markersForRouteColor:[VVRoute routeColorForRouteName:routeName]];
-        
-        [routeMarkers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            GMSMarker *marker = obj;
-            dispatch_async(dispatch_get_main_queue(), ^{
-                marker.map = self.vanMapView;
-            });
-        }];
-    });
+    NSArray *routeMarkers = [VVRoute markersForRouteColor:[VVRoute routeColorForRouteName:routeName]];
+    
+    for (GMSMarker *marker in routeMarkers) {
+        marker.map = self.vanMapView;
+    }
 }
 
 - (void)addPolylineToRoute:(NSString *)routeName {
-    dispatch_queue_t dispatchQueue = dispatch_queue_create("org.VandyMobile.Vandy-Vans.AddPolyline", 0);
-    dispatch_async(dispatchQueue, ^{
-        GMSPolyline *polyline = [VVRoute polylineForRouteColor:[VVRoute routeColorForRouteName:routeName]];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            polyline.map = self.vanMapView;
-            
-            [self repositionCamera];
-        });
-    });
+    GMSPolyline *polyline = [VVRoute polylineForRouteColor:[VVRoute routeColorForRouteName:routeName]];
+    polyline.map = self.vanMapView;
+        
+    [self repositionCamera];
 }
 
 @end
