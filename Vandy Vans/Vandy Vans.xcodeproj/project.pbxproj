@@ -295,7 +295,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = VV;
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = VandyMobile;
 			};
 			buildConfigurationList = 2D34C556162718C400F170CA /* Build configuration list for PBXProject "Vandy Vans" */;
@@ -462,14 +462,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = ADCAEF1C8A2C492EB2B3961B /* Pods.xcconfig */;
 			buildSettings = {
-				ARCHS = armv7;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Seth Friedman (95YMDB77KG)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Vandy Vans/Vandy Vans-Prefix.pch";
 				INFOPLIST_FILE = "Vandy Vans/Vandy Vans-Info.plist";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "95C5AF57-EB64-47C6-B131-83F40A92F8DE";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s";
 				WARNING_CFLAGS = "-Wall";
@@ -481,14 +480,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = ADCAEF1C8A2C492EB2B3961B /* Pods.xcconfig */;
 			buildSettings = {
-				ARCHS = armv7;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Seth Friedman (95YMDB77KG)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Vandy Vans/Vandy Vans-Prefix.pch";
 				INFOPLIST_FILE = "Vandy Vans/Vandy Vans-Info.plist";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "95C5AF57-EB64-47C6-B131-83F40A92F8DE";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WARNING_CFLAGS = "-Wall";
 				WRAPPER_EXTENSION = app;
