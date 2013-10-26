@@ -406,7 +406,7 @@
             </objects>
             <point key="canvasLocation" x="3040" y="569"/>
         </scene>
-        <!--Map View Controller - Live Map-->
+        <!--Map View Controller-->
         <scene sceneID="s48-ky-5d3">
             <objects>
                 <viewController id="5wh-qK-Mbq" customClass="VVMapViewController" sceneMemberID="viewController">
@@ -420,12 +420,21 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                     </view>
-                    <navigationItem key="navigationItem" title="Live Map" id="FsR-Gf-r8R">
-                        <barButtonItem key="rightBarButtonItem" title="Route" id="4p3-jh-Gv8">
+                    <navigationItem key="navigationItem" id="FsR-Gf-r8R">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="ZWs-SX-meW">
+                            <rect key="frame" x="68" y="7" width="185" height="31"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Blue"/>
+                                <segment title="Red"/>
+                                <segment title="Green"/>
+                            </segments>
+                            <color key="tintColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <action selector="routePressed:" destination="5wh-qK-Mbq" id="e9r-uk-WJF"/>
+                                <action selector="routeTapped:" destination="5wh-qK-Mbq" eventType="valueChanged" id="34B-BK-DZs"/>
                             </connections>
-                        </barButtonItem>
+                        </segmentedControl>
                     </navigationItem>
                     <connections>
                         <outlet property="vanMapView" destination="nbf-XI-cDw" id="lLu-iw-I9e"/>

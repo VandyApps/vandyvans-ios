@@ -7,7 +7,6 @@
 //
 
 #import "VVMapViewController.h"
-#import <BSModalPickerView/BSModalPickerView.h>
 #import "VVRoute.h"
 #import <GoogleMaps/GoogleMaps.h>
 #import "GMSMarker+ConstructorAdditions.h"
@@ -17,7 +16,6 @@
 @property (strong, nonatomic) IBOutlet GMSMapView *vanMapView;
 @property (strong, nonatomic) NSString *routeBeingDisplayed;
 @property (strong, nonatomic) NSOrderedSet *routes;
-@property (strong, nonatomic) BSModalPickerView *routePickerView;
 
 @end
 
@@ -41,15 +39,6 @@
     }
     
     return _routes;
-}
-
-- (BSModalPickerView *)routePickerView {
-    if (!_routePickerView) {
-        _routePickerView = [[BSModalPickerView alloc] initWithValues:[self.routes array]];
-        _routePickerView.selectedValue = self.routeBeingDisplayed;
-    }
-    
-    return _routePickerView;
 }
 
 #pragma mark - Custom Setter
@@ -81,8 +70,6 @@
     /*GMSMarker *vanMarker = [GMSMarker markerWithLatitude:36.148118 longitude:-86.806012 andTitle:@"Test"];
     vanMarker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
     vanMarker.map = self.vanMapView;*/
-    
-    self.navigationController.navigationBar.tintColor = [UIColor blackColor];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -92,16 +79,26 @@
 
 #pragma mark - IB Actions
 
-- (IBAction)routePressed:(UIBarButtonItem *)sender {
-    sender.enabled = NO;
-    
-    [self.routePickerView presentInView:self.view withBlock:^(BOOL madeChoice) {
-        if (madeChoice) {
-            self.routeBeingDisplayed = [self.routePickerView selectedValue];
-        }
-        
-        sender.enabled = YES;
-    }];
+- (IBAction)routeTapped:(UISegmentedControl *)sender {
+    switch (sender.selectedSegmentIndex) {
+        case 0:
+            sender.tintColor = [UIColor blueColor];
+            self.routeBeingDisplayed = @"Blue";
+            break;
+            
+        case 1:
+            sender.tintColor = [UIColor redColor];
+            self.routeBeingDisplayed = @"Red";
+            break;
+            
+        case 2:
+            sender.tintColor = [UIColor greenColor];
+            self.routeBeingDisplayed = @"Green";
+            break;
+            
+        default:
+            break;
+    }
 }
 
 #pragma mark - Helper Methods
