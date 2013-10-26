@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <GoogleAnalytics-iOS-SDK/GAITrackedViewController.h>
 
-@interface VVAttributionViewController : GAITrackedViewController
+@interface VVAttributionViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UITextView *attributionTextView;
 

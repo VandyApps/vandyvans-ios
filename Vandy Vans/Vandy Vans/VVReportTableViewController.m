@@ -11,7 +11,6 @@
 #import "VVVandyMobileAPIClient.h"
 #import "VVReport.h"
 #import <SSToolkit/SSTextView.h>
-#import <GoogleAnalytics-iOS-SDK/GAI.h>
 
 @interface VVReportTableViewController ()
 
@@ -36,14 +35,6 @@
     self.descriptionTextView.placeholder = @"Description";
     
     self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"VVBackground"]];
-    
-    // Google Analytics
-    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    if (self.userIsSendingFeedback) {
-        [tracker sendView:@"Send Feedback View"];
-    } else {
-        [tracker sendView:@"Bug Report View"];
-    }
 }
 
 - (void)didReceiveMemoryWarning

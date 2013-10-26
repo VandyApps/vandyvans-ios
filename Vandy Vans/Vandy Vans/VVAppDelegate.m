@@ -12,7 +12,6 @@
 #import "VVAlertBuilder.h"
 #import <GoogleMaps/GoogleMaps.h>
 #import "VVAppearanceBuilder.h"
-#import <GoogleAnalytics-iOS-SDK/GAI.h>
 
 @implementation VVAppDelegate
 
@@ -24,15 +23,6 @@
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
     
     [GMSServices provideAPIKey:@"AIzaSyAWPQGIizS9XbqSRQztd53yDeaPrW_MHH0"];
-    
-    // Optional: automatically send uncaught exceptions to Google Analytics.
-    [GAI sharedInstance].trackUncaughtExceptions = YES;
-    // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
-    //[GAI sharedInstance].dispatchInterval = 20;
-    // Optional: set debug to YES for extra debugging information.
-    //[GAI sharedInstance].debug = YES;
-    // Create tracker instance.
-    [[GAI sharedInstance] trackerWithTrackingId:@"UA-41212921-1"];
     
     return YES;
 }

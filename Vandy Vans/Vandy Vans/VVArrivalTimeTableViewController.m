@@ -12,7 +12,6 @@
 #import "VVAboutTableViewController.h"
 #import "VVNotificationCell.h"
 #import "VVAlertBuilder.h"
-#import <GoogleAnalytics-iOS-SDK/GAI.h>
 
 @interface VVArrivalTimeTableViewController () <UIAlertViewDelegate>
 
@@ -95,10 +94,6 @@
     // Set up the refresh control and then refresh to load the initial data.
     [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     [self refresh];
-    
-    // Google Analytics
-    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker sendView:@"Arrival Time View"];
 }
 
 - (void)didReceiveMemoryWarning

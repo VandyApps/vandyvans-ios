@@ -83,9 +83,6 @@
     vanMarker.map = self.vanMapView;*/
     
     self.navigationController.navigationBar.tintColor = [UIColor blackColor];
-    
-    // Google Analytics
-    self.trackedViewName = @"Map View";
 }
 
 - (void)didReceiveMemoryWarning {
