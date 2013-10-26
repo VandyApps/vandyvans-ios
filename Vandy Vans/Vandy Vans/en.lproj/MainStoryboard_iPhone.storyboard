@@ -133,13 +133,12 @@
                     <navigationItem key="navigationItem" title="About" id="3ar-R7-UEN">
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="zcG-se-jcg">
                             <connections>
-                                <segue destination="4Yk-su-FHY" kind="unwind" unwindAction="aboutViewDismissed:" id="ZRN-sZ-oHw"/>
+                                <action selector="doneTapped:" destination="hTO-Uo-jDl" id="G2K-0Z-dGZ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LPR-4B-FVK" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="4Yk-su-FHY" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2907" y="-398"/>
         </scene>
@@ -503,6 +502,10 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Z1a-fi-IDJ">
+                        <rect key="frame" x="0.0" y="416" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="5wh-qK-Mbq" kind="relationship" relationship="rootViewController" id="4SP-ek-ngq"/>
                     </connections>
@@ -522,8 +525,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="jcO-rt-1wY"/>
-        <segue reference="fyC-YF-nEp"/>
+        <segue reference="Yb4-In-ycU"/>
+        <segue reference="uTP-je-CRm"/>
         <segue reference="tSf-t1-2MO"/>
     </inferredMetricsTieBreakers>
 </document>

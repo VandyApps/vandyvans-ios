@@ -19,11 +19,19 @@
     self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"VVBackgroundFull"]];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self.navigationController.navigationBar.layer removeAllAnimations];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"AboutToSendFeedback"]) {
@@ -31,6 +39,18 @@
         
         reportTableViewController.userIsSendingFeedback = YES;
     }
+}
+
+#pragma mark - IB Action
+
+/* Fix jumpy navbar bug: http://stackoverflow.com/questions/19136899/navigation-bar-has-wrong-position-when-modal-a-view-controller-with-flip-horizon/19265558#19265558 */
+- (IBAction)doneTapped:(UIBarButtonItem *)sender {
+    [UIView transitionWithView:self.navigationController.view
+                      duration:1
+                       options:UIViewAnimationOptionTransitionFlipFromLeft
+                    animations:nil
+                    completion:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - Table View Delegate

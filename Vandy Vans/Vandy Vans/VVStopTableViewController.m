@@ -59,7 +59,13 @@
 
 #pragma mark - IB Action
 
-- (IBAction)aboutViewDismissed:(UIStoryboardSegue *)segue {}
+- (IBAction)aboutViewDismissed:(UIStoryboardSegue *)segue {
+    [UIView transitionWithView:self.navigationController.view
+                      duration:0.75
+                       options:UIViewAnimationOptionTransitionFlipFromLeft
+                    animations:nil
+                    completion:nil];
+}
 
 #pragma mark - Table View Data Source
 
