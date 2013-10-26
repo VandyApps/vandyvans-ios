@@ -203,7 +203,7 @@
     if (self.vansAreRunning && section == 1) {
         footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320.0f, 300.0f)];
         
-        UILabel *footerTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 0, 280.0f, 95.0f)];
+        UILabel *footerTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 10.0f, 280.0f, 115.0f)];
         footerTextLabel.opaque = YES;
         footerTextLabel.backgroundColor = [UIColor clearColor];
         footerTextLabel.shadowColor = [UIColor blackColor];
@@ -211,7 +211,7 @@
         footerTextLabel.textAlignment = NSTextAlignmentCenter;
         
         NSString *footerText = @"Turn on reminders to be alerted when the next van is close-by. These will be turned off automatically after you get the reminder.";
-        NSDictionary *footerTextAttributes = @{NSFontAttributeName : [UIFont fontWithName:@"Helvetica-Bold" size:15.0f], NSForegroundColorAttributeName : [UIColor whiteColor]};
+        NSDictionary *footerTextAttributes = @{NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleBody], NSForegroundColorAttributeName : [UIColor whiteColor]};
         footerTextLabel.attributedText = [[NSAttributedString alloc] initWithString:footerText attributes:footerTextAttributes];
         
         [footerView addSubview:footerTextLabel];
