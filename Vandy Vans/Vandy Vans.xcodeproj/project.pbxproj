@@ -470,6 +470,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = ADCAEF1C8A2C492EB2B3961B /* Pods.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Vandy Vans/Vandy Vans-Prefix.pch";
@@ -488,6 +489,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = ADCAEF1C8A2C492EB2B3961B /* Pods.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Vandy Vans/Vandy Vans-Prefix.pch";
@@ -496,6 +498,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = "armv7 armv7s";
 				WARNING_CFLAGS = "-Wall";
 				WRAPPER_EXTENSION = app;
 			};
