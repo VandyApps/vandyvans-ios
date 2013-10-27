@@ -230,7 +230,7 @@
     NSInteger numberOfRows = 0;
     
     if (section == 0) {
-        numberOfRows = self.arrivalTimes.count;
+        numberOfRows = [self.arrivalTimes count];
     } else if (self.vansAreRunning) {
         numberOfRows = 1;
     }
