@@ -51,7 +51,6 @@
 - (NSMutableAttributedString *)MITLicenseAttributions {
     NSMutableAttributedString *MITLicenseAttributions = [[NSMutableAttributedString alloc] initWithString:@"\nThe following packages are distributed under the MIT License:\n\n"];
     [MITLicenseAttributions appendAttributedString:[self AFNetworkingAttribution]];
-    [MITLicenseAttributions appendAttributedString:[self BSModalPickerViewAttribution]];
     [MITLicenseAttributions appendAttributedString:[self SSToolkitAttribution]];
     [MITLicenseAttributions appendAttributedString:[self MITLicenseText]];
     
@@ -60,7 +59,7 @@
 
 - (NSMutableAttributedString *)GoogleMapsAttribution {
     NSMutableAttributedString *packageName = [[NSMutableAttributedString alloc] initWithString:@"Google Maps SDK for iOS" attributes:@{NSFontAttributeName : [UIFont italicSystemFontOfSize:12.0f]}];
-    NSAttributedString *copyrightLine = [[NSAttributedString alloc] initWithString:[[@"\n\n" stringByAppendingString:[GMSServices openSourceLicenseInfo]] stringByAppendingString:@"\n"]];
+    NSAttributedString *copyrightLine = [[NSAttributedString alloc] initWithString:[[@"\n\n" stringByAppendingString:[GMSServices openSourceLicenseInfo]] stringByAppendingString:@"\n\n"]];
     [packageName appendAttributedString:copyrightLine];
     
     return packageName;
@@ -68,10 +67,6 @@
 
 - (NSAttributedString *)AFNetworkingAttribution {
     return [self packageAttributionWithPackageName:@"AFNetworking" copyrightLine:@"Copyright (c) 2011 Gowalla (http://gowalla.com/)"];
-}
-
-- (NSAttributedString *)BSModalPickerViewAttribution {
-    return [self packageAttributionWithPackageName:@"BSModalPickerView" copyrightLine:@"Copyright (c) 2012 Ben Scheirman"];
 }
 
 - (NSAttributedString *)SSToolkitAttribution {
