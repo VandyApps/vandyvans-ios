@@ -59,9 +59,9 @@
 #pragma mark - Table View Delegate
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-    UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, tableView.bounds.size.height - ([self tableView:self.tableView heightForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]] * [self tableView:self.tableView numberOfRowsInSection:0]))];
-        
-    UILabel *footerTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 0, footerView.bounds.size.width - 40.0f, footerView.bounds.size.height)];
+    UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320.0f, 300.0f)];
+    
+    UILabel *footerTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 10.0f, 280.0f, 190.0f)];
     footerTextLabel.opaque = YES;
     footerTextLabel.backgroundColor = [UIColor clearColor];
     footerTextLabel.shadowColor = [UIColor blackColor];
@@ -69,7 +69,7 @@
     footerTextLabel.textAlignment = NSTextAlignmentCenter;
     
     footerTextLabel.attributedText = [self footerText];
-        
+    
     [footerView addSubview:footerTextLabel];
     
     return footerView;
@@ -78,8 +78,8 @@
 #pragma mark - Helper Method
 
 - (NSAttributedString *)footerText {
-    NSDictionary *nameTextAttributes = @{NSFontAttributeName : [UIFont fontWithName:@"Helvetica-Bold" size:17.0f], NSForegroundColorAttributeName : [UIColor whiteColor]};
-    NSDictionary *smallerTextAttributes = @{NSFontAttributeName : [UIFont fontWithName:@"Helvetica" size:15.0f], NSForegroundColorAttributeName : [UIColor whiteColor]};
+    NSDictionary *nameTextAttributes = @{NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline], NSForegroundColorAttributeName : [UIColor whiteColor]};
+    NSDictionary *smallerTextAttributes = @{NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleBody], NSForegroundColorAttributeName : [UIColor whiteColor]};
     
     NSMutableAttributedString *footerText = [[NSMutableAttributedString alloc] initWithString:@"CREATED BY:\n" attributes:smallerTextAttributes];
     [footerText appendAttributedString:[[NSAttributedString alloc] initWithString:@"SETH FRIEDMAN" attributes:nameTextAttributes]];
