@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2D0A6EE5172B131600781754 /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D0A6EE3172B131600781754 /* map.png */; };
 		2D0A6EE6172B131600781754 /* map@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D0A6EE4172B131600781754 /* map@2x.png */; };
-		2D0A6EE9172B135F00781754 /* target.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D0A6EE7172B135F00781754 /* target.png */; };
 		2D0A6EEA172B135F00781754 /* target@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D0A6EE8172B135F00781754 /* target@2x.png */; };
 		2D0A6EED172B1C7100781754 /* GMSMarker+ConstructorAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D0A6EEC172B1C7100781754 /* GMSMarker+ConstructorAdditions.m */; };
 		2D1950A01729392E0071A6EA /* VVRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D19509F1729392E0071A6EA /* VVRoute.m */; };
@@ -23,11 +21,9 @@
 		2D4D009A168E5A6E00F0BF67 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D4D0098168E5A6E00F0BF67 /* MainStoryboard_iPhone.storyboard */; };
 		2D5BE9FC16609B4300CEFFA3 /* VVAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5BE9FB16609B4300CEFFA3 /* VVAPIClient.m */; };
 		2D5BE9FF1660A5A000CEFFA3 /* VVArrivalTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5BE9FE1660A5A000CEFFA3 /* VVArrivalTime.m */; };
-		2D7890FF16998AE700C70302 /* VVIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D7890FE16998AE700C70302 /* VVIcon.png */; };
 		2D78910216998B0F00C70302 /* VVIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D78910116998B0F00C70302 /* VVIcon@2x.png */; };
 		2D78910416998B3400C70302 /* VVAppStoreIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D78910316998B3400C70302 /* VVAppStoreIcon.png */; };
 		2D78910E16998C0900C70302 /* VVSpotlightIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D78910B16998C0900C70302 /* VVSpotlightIcon@2x.png */; };
-		2D78910F16998C0900C70302 /* VVSpotlightIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D78910C16998C0900C70302 /* VVSpotlightIcon.png */; };
 		2D78911016998C0900C70302 /* VVAppStoreIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D78910D16998C0900C70302 /* VVAppStoreIcon@2x.png */; };
 		2D830BD1175B505D0053462E /* VVBackground-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D830BD0175B505D0053462E /* VVBackground-568h@2x.png */; };
 		2DA198AC16AAB8F7008F5CB5 /* VVReportTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA198AB16AAB8F7008F5CB5 /* VVReportTableViewController.m */; };
@@ -40,7 +36,6 @@
 		2DB1B89E181C6C24001B74D9 /* VVBackgroundFull@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DB1B89C181C6C24001B74D9 /* VVBackgroundFull@2x.png */; };
 		2DB213BE173752A9008CD801 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DB213BD173752A9008CD801 /* Default-568h@2x.png */; };
 		2DB213C0173752B3008CD801 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DB213BF173752B3008CD801 /* Default@2x.png */; };
-		2DB213C2173752BB008CD801 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DB213C1173752BB008CD801 /* Default.png */; };
 		2DB213C517378050008CD801 /* VVAppearanceBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB213C417378050008CD801 /* VVAppearanceBuilder.m */; };
 		2DBA66F71707E2B6003B3D99 /* VVBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DBA66F61707E2B6003B3D99 /* VVBackground@2x.png */; };
 		2DBD694816B5272B0058EFE4 /* VVVandyMobileAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBD694716B5272B0058EFE4 /* VVVandyMobileAPIClient.m */; };
@@ -55,9 +50,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2D0A6EE3172B131600781754 /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
 		2D0A6EE4172B131600781754 /* map@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map@2x.png"; sourceTree = "<group>"; };
-		2D0A6EE7172B135F00781754 /* target.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = target.png; sourceTree = "<group>"; };
 		2D0A6EE8172B135F00781754 /* target@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "target@2x.png"; sourceTree = "<group>"; };
 		2D0A6EEB172B1C7000781754 /* GMSMarker+ConstructorAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GMSMarker+ConstructorAdditions.h"; sourceTree = "<group>"; };
 		2D0A6EEC172B1C7100781754 /* GMSMarker+ConstructorAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GMSMarker+ConstructorAdditions.m"; sourceTree = "<group>"; };
@@ -81,11 +74,9 @@
 		2D5BE9FB16609B4300CEFFA3 /* VVAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVAPIClient.m; sourceTree = "<group>"; };
 		2D5BE9FD1660A5A000CEFFA3 /* VVArrivalTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVArrivalTime.h; sourceTree = "<group>"; };
 		2D5BE9FE1660A5A000CEFFA3 /* VVArrivalTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVArrivalTime.m; sourceTree = "<group>"; };
-		2D7890FE16998AE700C70302 /* VVIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = VVIcon.png; path = ../VVIcon.png; sourceTree = "<group>"; };
 		2D78910116998B0F00C70302 /* VVIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "VVIcon@2x.png"; path = "../VVIcon@2x.png"; sourceTree = "<group>"; };
 		2D78910316998B3400C70302 /* VVAppStoreIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VVAppStoreIcon.png; sourceTree = "<group>"; };
 		2D78910B16998C0900C70302 /* VVSpotlightIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VVSpotlightIcon@2x.png"; sourceTree = "<group>"; };
-		2D78910C16998C0900C70302 /* VVSpotlightIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VVSpotlightIcon.png; sourceTree = "<group>"; };
 		2D78910D16998C0900C70302 /* VVAppStoreIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VVAppStoreIcon@2x.png"; sourceTree = "<group>"; };
 		2D830BD0175B505D0053462E /* VVBackground-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VVBackground-568h@2x.png"; sourceTree = "<group>"; };
 		2DA198AA16AAB8F7008F5CB5 /* VVReportTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVReportTableViewController.h; sourceTree = "<group>"; };
@@ -102,7 +93,6 @@
 		2DB1B89C181C6C24001B74D9 /* VVBackgroundFull@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VVBackgroundFull@2x.png"; sourceTree = "<group>"; };
 		2DB213BD173752A9008CD801 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		2DB213BF173752B3008CD801 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		2DB213C1173752BB008CD801 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		2DB213C31737804F008CD801 /* VVAppearanceBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVAppearanceBuilder.h; sourceTree = "<group>"; };
 		2DB213C417378050008CD801 /* VVAppearanceBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVAppearanceBuilder.m; sourceTree = "<group>"; };
 		2DBA66F61707E2B6003B3D99 /* VVBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VVBackground@2x.png"; sourceTree = "<group>"; };
@@ -257,21 +247,16 @@
 			children = (
 				2DB1B89B181C6C24001B74D9 /* VVBackgroundFull-568h@2x.png */,
 				2DB1B89C181C6C24001B74D9 /* VVBackgroundFull@2x.png */,
-				2DB213C1173752BB008CD801 /* Default.png */,
 				2DB213BF173752B3008CD801 /* Default@2x.png */,
 				2DB213BD173752A9008CD801 /* Default-568h@2x.png */,
 				2D830BD0175B505D0053462E /* VVBackground-568h@2x.png */,
 				2DBA66F61707E2B6003B3D99 /* VVBackground@2x.png */,
-				2D0A6EE3172B131600781754 /* map.png */,
 				2D0A6EE4172B131600781754 /* map@2x.png */,
-				2D0A6EE7172B135F00781754 /* target.png */,
 				2D0A6EE8172B135F00781754 /* target@2x.png */,
 				2D78910B16998C0900C70302 /* VVSpotlightIcon@2x.png */,
-				2D78910C16998C0900C70302 /* VVSpotlightIcon.png */,
 				2D78910D16998C0900C70302 /* VVAppStoreIcon@2x.png */,
 				2D78910316998B3400C70302 /* VVAppStoreIcon.png */,
 				2D78910116998B0F00C70302 /* VVIcon@2x.png */,
-				2D7890FE16998AE700C70302 /* VVIcon.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -332,22 +317,17 @@
 				2D34C56B162718C500F170CA /* InfoPlist.strings in Resources */,
 				2DCA1D6A181E32F8003A85E5 /* Images.xcassets in Resources */,
 				2D4D009A168E5A6E00F0BF67 /* MainStoryboard_iPhone.storyboard in Resources */,
-				2D7890FF16998AE700C70302 /* VVIcon.png in Resources */,
 				2D78910216998B0F00C70302 /* VVIcon@2x.png in Resources */,
 				2D78910416998B3400C70302 /* VVAppStoreIcon.png in Resources */,
 				2D78910E16998C0900C70302 /* VVSpotlightIcon@2x.png in Resources */,
 				2DB1B89D181C6C24001B74D9 /* VVBackgroundFull-568h@2x.png in Resources */,
 				2DB1B89E181C6C24001B74D9 /* VVBackgroundFull@2x.png in Resources */,
-				2D78910F16998C0900C70302 /* VVSpotlightIcon.png in Resources */,
 				2D78911016998C0900C70302 /* VVAppStoreIcon@2x.png in Resources */,
 				2DBA66F71707E2B6003B3D99 /* VVBackground@2x.png in Resources */,
-				2D0A6EE5172B131600781754 /* map.png in Resources */,
 				2D0A6EE6172B131600781754 /* map@2x.png in Resources */,
-				2D0A6EE9172B135F00781754 /* target.png in Resources */,
 				2D0A6EEA172B135F00781754 /* target@2x.png in Resources */,
 				2DB213BE173752A9008CD801 /* Default-568h@2x.png in Resources */,
 				2DB213C0173752B3008CD801 /* Default@2x.png in Resources */,
-				2DB213C2173752BB008CD801 /* Default.png in Resources */,
 				2D830BD1175B505D0053462E /* VVBackground-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -440,7 +420,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -462,7 +442,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -481,7 +461,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Vandy Vans/Vandy Vans-Prefix.pch";
 				INFOPLIST_FILE = "Vandy Vans/Vandy Vans-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -503,7 +483,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Vandy Vans/Vandy Vans-Prefix.pch";
 				INFOPLIST_FILE = "Vandy Vans/Vandy Vans-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
