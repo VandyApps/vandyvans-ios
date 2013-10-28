@@ -569,7 +569,10 @@
             [routePath addCoordinate:CLLocationCoordinate2DMake(36.145346,-86.807124)];
             [routePath addCoordinate:CLLocationCoordinate2DMake(36.144863,-86.806782)];
             
-            routePolylineColor = [UIColor greenColor];
+            routePolylineColor = [UIColor colorWithRed:51/255.0f
+                                                 green:189/255.0f
+                                                  blue:50/255.0f
+                                                 alpha:1.0f];
             break;
     }
     
