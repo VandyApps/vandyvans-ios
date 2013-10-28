@@ -291,6 +291,11 @@
 				CLASSPREFIX = VV;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = VandyMobile;
+				TargetAttributes = {
+					2D34C55B162718C400F170CA = {
+						DevelopmentTeam = 7MA825R8KR;
+					};
+				};
 			};
 			buildConfigurationList = 2D34C556162718C400F170CA /* Build configuration list for PBXProject "Vandy Vans" */;
 			compatibilityVersion = "Xcode 3.2";
