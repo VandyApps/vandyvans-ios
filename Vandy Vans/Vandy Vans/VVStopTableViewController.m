@@ -35,12 +35,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
+    
     self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"VVBackground"]];
     
     // If the title has not yet been set, it is the Stops view, not the Other Stops view.
     if (!self.title) {
         self.title = @"Stops";
     }
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    self.tabBarController.tabBar.barStyle = UIBarStyleBlack;
 }
 
 - (void)didReceiveMemoryWarning
