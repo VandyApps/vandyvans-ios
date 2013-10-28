@@ -9,7 +9,7 @@
 #import "VVReport.h"
 #import "VVVandyMobileAPIClient.h"
 #import <SVProgressHUD/SVProgressHUD.h>
-#import <SSToolkit/NSString+SSToolkitAdditions.h>
+#import <SAMCategories/SAMCategories.h>
 
 @implementation VVReport
 
@@ -34,7 +34,7 @@
 // TODO - Refactor this with GCD. Note: AFNetworking already calls the success and failure blocks on separate threads.
 - (void)sendWithBlock:(void (^)(void))block {
     NSDictionary *params = @{
-        @"verifyHash" : [@"vandyvansapp" SHA1Sum],
+        @"verifyHash" : [@"vandyvansapp" sam_SHA1Digest],
         @"isBugReport" : self.isBugReport ? @"TRUE" : @"FALSE",
         @"senderAddress" : self.senderAddress,
         @"body" : self.body,

@@ -51,7 +51,8 @@
 - (NSMutableAttributedString *)MITLicenseAttributions {
     NSMutableAttributedString *MITLicenseAttributions = [[NSMutableAttributedString alloc] initWithString:@"\nThe following packages are distributed under the MIT License:\n\n"];
     [MITLicenseAttributions appendAttributedString:[self AFNetworkingAttribution]];
-    [MITLicenseAttributions appendAttributedString:[self SSToolkitAttribution]];
+    [MITLicenseAttributions appendAttributedString:[self SAMTextViewAttribution]];
+    [MITLicenseAttributions appendAttributedString:[self SAMCategoriesAttribution]];
     [MITLicenseAttributions appendAttributedString:[self MITLicenseText]];
     
     return MITLicenseAttributions;
@@ -69,12 +70,16 @@
     return [self packageAttributionWithPackageName:@"AFNetworking" copyrightLine:@"Copyright (c) 2011 Gowalla (http://gowalla.com/)"];
 }
 
-- (NSAttributedString *)SSToolkitAttribution {
-    return [self packageAttributionWithPackageName:@"SSToolkit" copyrightLine:@"Copyright (c) 2008-2013 Sam Soffes"];
+- (NSAttributedString *)SAMTextViewAttribution {
+    return [self packageAttributionWithPackageName:@"SAMTextView" copyrightLine:@"Copyright (c) 2010-2013 Sam Soffes, http://soff.es"];
+}
+
+- (NSAttributedString *)SAMCategoriesAttribution {
+    return [self packageAttributionWithPackageName:@"SAMCategories" copyrightLine:@"Copyright (c) 2008-2013 Sam Soffes, http://soff.es"];
 }
 
 - (NSAttributedString *)SVProgressHUDAttribution {
-    NSAttributedString *GlyphishAttribution = [[NSAttributedString alloc] initWithString:@"A different license may apply to other ressources included in this package, including Joseph Wain's Glyphish Icons. Please consult their respective headers for the terms of their individual licenses."];
+    NSAttributedString *GlyphishAttribution = [[NSAttributedString alloc] initWithString:@"A different license may apply to other resources included in this package, including Joseph Wain's Glyphish Icons. Please consult their respective headers for the terms of their individual licenses."];
     NSMutableAttributedString *SVProgressHUDAttribution = [[self packageAttributionWithPackageName:@"SVProgressHUD" copyrightLine:@"Copyright (c) 2011 Sam Vermette"] mutableCopy];
     [SVProgressHUDAttribution appendAttributedString:[self MITLicenseText]];
     [SVProgressHUDAttribution appendAttributedString:GlyphishAttribution];

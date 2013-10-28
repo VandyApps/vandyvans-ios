@@ -10,14 +10,14 @@
 #import <SVProgressHUD/SVProgressHUD.h>
 #import "VVVandyMobileAPIClient.h"
 #import "VVReport.h"
-#import <SSToolkit/SSTextView.h>
+#import <SAMTextView/SAMTextView.h>
 
 @interface VVReportTableViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableViewCell *notifyWhenResolvedTableViewCell;
 
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
-@property (weak, nonatomic) IBOutlet SSTextView *descriptionTextView;
+@property (weak, nonatomic) IBOutlet SAMTextView *descriptionTextView;
 
 @end
 

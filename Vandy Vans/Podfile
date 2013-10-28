@@ -1,5 +1,6 @@
 platform :ios, '6.0'
 pod 'AFNetworking', '< 1.3'
 pod 'SVProgressHUD'
-pod 'SSToolkit', '< 2.0'
+pod 'SAMTextView'
+pod 'SAMCategories'
 pod 'Google-Maps-iOS-SDK', '~> 1.5'

@@ -1,19 +1,22 @@
 PODS:
   - AFNetworking (1.2.1)
   - Google-Maps-iOS-SDK (1.5.0)
-  - SSToolkit (1.0.4)
+  - SAMCategories (0.3.4)
+  - SAMTextView (0.1.0)
   - SVProgressHUD (0.9)
 
 DEPENDENCIES:
   - AFNetworking (< 1.3)
   - Google-Maps-iOS-SDK (~> 1.5)
-  - SSToolkit (< 2.0)
+  - SAMCategories
+  - SAMTextView
   - SVProgressHUD
 
 SPEC CHECKSUMS:
   AFNetworking: a44069e3c9c89867544f6639482f155c7e5f9b41
   Google-Maps-iOS-SDK: a7ae159dce2959927aeec2ebae1765f3b64e20b4
-  SSToolkit: 689acaedac79c2079e492e528a55bcb5db9d98c4
+  SAMCategories: 5f80b33342912f2f1fa9936fe35e9892e1b891df
+  SAMTextView: 650d23b197b50918e2e2762ec5e85c0c372c83b8
   SVProgressHUD: 03d4845ec8e64591726428a08236c6a5489d45f8
 
 COCOAPODS: 0.27.1
