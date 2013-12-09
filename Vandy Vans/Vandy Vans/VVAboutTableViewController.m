@@ -81,12 +81,18 @@
     NSDictionary *nameTextAttributes = @{NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline], NSForegroundColorAttributeName : [UIColor whiteColor]};
     NSDictionary *smallerTextAttributes = @{NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleBody], NSForegroundColorAttributeName : [UIColor whiteColor]};
     
-    NSMutableAttributedString *footerText = [[NSMutableAttributedString alloc] initWithString:@"CREATED BY:\n" attributes:smallerTextAttributes];
-    [footerText appendAttributedString:[[NSAttributedString alloc] initWithString:@"SETH FRIEDMAN" attributes:nameTextAttributes]];
-    [footerText appendAttributedString:[[NSAttributedString alloc] initWithString:@"\nand\n" attributes:smallerTextAttributes]];
-    [footerText appendAttributedString:[[NSAttributedString alloc] initWithString:@"MCARTHUR GILL\n\n" attributes:nameTextAttributes]];
-    [footerText appendAttributedString:[[NSAttributedString alloc] initWithString:@"GRAPHIC DESIGN BY:\n" attributes:smallerTextAttributes]];
-    [footerText appendAttributedString:[[NSAttributedString alloc] initWithString:@"FLETCHER YOUNG" attributes:nameTextAttributes]];
+    NSMutableAttributedString *footerText = [[NSMutableAttributedString alloc] initWithString:@"CREATED BY:\n"
+                                                                                   attributes:smallerTextAttributes];
+    [footerText appendAttributedString:[[NSAttributedString alloc] initWithString:@"SETH FRIEDMAN\n\n"
+                                                                       attributes:nameTextAttributes]];
+    [footerText appendAttributedString:[[NSAttributedString alloc] initWithString:@"GRAPHIC DESIGN BY:\n"
+                                                                       attributes:smallerTextAttributes]];
+    [footerText appendAttributedString:[[NSAttributedString alloc] initWithString:@"FLETCHER YOUNG\n\n"
+                                                                       attributes:nameTextAttributes]];
+    [footerText appendAttributedString:[[NSAttributedString alloc] initWithString:@"SPECIAL THANKS TO:\n"
+                                                                       attributes:smallerTextAttributes]];
+    [footerText appendAttributedString:[[NSAttributedString alloc] initWithString:@"MCARTHUR GILL"
+                                                                       attributes:nameTextAttributes]];
     
     return [footerText copy];
 }
