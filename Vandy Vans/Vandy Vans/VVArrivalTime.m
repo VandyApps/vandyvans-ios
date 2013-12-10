@@ -9,7 +9,6 @@
 #import "VVArrivalTime.h"
 #import "VVAPIClient.h"
 #import <SVProgressHUD/SVProgressHUD.h>
-#import <AFNetworking/AFJSONRequestOperation.h>
 #import "VVRoute.h"
 
 @implementation VVArrivalTime
@@ -18,6 +17,18 @@
 @synthesize arrivalTimeInMinutes = _arrivalTimeInMinutes;
 
 #pragma mark - Designated Initializer
+
+- (instancetype)initWithStopName:(NSString *)stopName routeName:(NSString *)routeName andArrivalTimeInMinutes:(NSNumber *)arrivalTimeInMinutes {
+    self = [super init];
+    
+    if (self) {
+        _stopName = stopName;
+        _routeName = routeName;
+        _arrivalTimeInMinutes = arrivalTimeInMinutes;
+    }
+    
+    return self;
+}
 
 - (id)initWithAttributes:(NSDictionary*)attributes {
     self = [super init];
@@ -61,7 +72,7 @@
 }
 
 // The four possible scenarios for this method are that stops are either on all routes, on just the Green Route, on the Green and Blue Routes, or on just the Red Route.
-+ (void)arrivalTimesForStopID:(NSUInteger)stopID stopName:(NSString *)stopName withBlock:(void (^)(NSArray *arrivalTimesArray))block {
+/*+ (void)arrivalTimesForStopID:(NSUInteger)stopID stopName:(NSString *)stopName withBlock:(void (^)(NSArray *arrivalTimesArray))block {
     NSDictionary *params = @{@"api_key" : [VVAPIClient apiKey]};
     
     __block NSMutableOrderedSet *arrivalTimesSet = [[NSMutableOrderedSet alloc] init];
@@ -125,9 +136,9 @@
             block([arrivalTimesSet sortedArrayUsingComparator:arrivalTimesComparator]);
         }
     }];
-}
+}*/
 
-+ (void)addArrivalTimeFromOperation:(AFJSONRequestOperation *)operation withStopName:(NSString *)stopName andRouteName:(NSString *)routeName toArrivalTimesSet:(NSMutableOrderedSet *)arrivalTimesSet {
+/*+ (void)addArrivalTimeFromOperation:(AFJSONRequestOperation *)operation withStopName:(NSString *)stopName andRouteName:(NSString *)routeName toArrivalTimesSet:(NSMutableOrderedSet *)arrivalTimesSet {
     // The code below uses `@autoreleasepool` to more quickly clean up the large amount of `NSDictionary`s created for
     // each set of arrival time predictions.
     
@@ -139,12 +150,12 @@
             [arrivalTimesSet addObject:[[VVArrivalTime alloc] initWithAttributes:arrivalTimeAttributes]];
         }
     }];
-}
+}*/
 
-+ (AFJSONRequestOperation *)arrivalTimeRequestOperationForRouteName:(NSString *)routeName stopName:(NSString *)stopName stopID:(NSUInteger)stopID params:(NSDictionary *)params {
-    NSString *path = [[[[@"Route/" stringByAppendingFormat:@"%i", [VVRoute routeIDForRouteColor:[VVRoute routeColorForRouteName:routeName]]] stringByAppendingString:@"/Stop/"] stringByAppendingFormat:@"%i", stopID] stringByAppendingString:@"/Arrivals"];
+/*+ (AFJS *)arrivalTimeRequestOperationForRouteName:(NSString *)routeName stopName:(NSString *)stopName stopID:(NSUInteger)stopID params:(NSDictionary *)params {
+    NSString *path = [[[[@"Route/" stringByAppendingFormat:@"%li", (long)[VVRoute routeIDForRouteColor:[VVRoute routeColorForRouteName:routeName]]] stringByAppendingString:@"/Stop/"] stringByAppendingFormat:@"%i", stopID] stringByAppendingString:@"/Arrivals"];
     NSMutableURLRequest *URLRequest = [[VVAPIClient sharedClient] requestWithMethod:@"GET" path:path parameters:params];
     return [AFJSONRequestOperation JSONRequestOperationWithRequest:URLRequest success:nil failure:nil];
-}
+}*/
 
 @end

@@ -7,7 +7,6 @@
 //
 
 #import "VVAPIClient.h"
-#import "AFJSONRequestOperation.h"
 
 static NSString * const kVVAPIBaseURLString = @"http://api.syncromatics.com/";
 
@@ -24,7 +23,7 @@ static NSString * const kVVAPIBaseURLString = @"http://api.syncromatics.com/";
     return _sharedClient;
 }
 
-- (id)initWithBaseURL:(NSURL *)url {
+/*- (id)initWithBaseURL:(NSURL *)url {
     self = [super initWithBaseURL:url];
     if (self) {
         [self registerHTTPOperationClass:[AFJSONRequestOperation class]];
@@ -34,7 +33,7 @@ static NSString * const kVVAPIBaseURLString = @"http://api.syncromatics.com/";
     }
     
     return self;
-}
+}*/
 
 + (NSString *)apiKey {
     return @"a922a34dfb5e63ba549adbb259518909";

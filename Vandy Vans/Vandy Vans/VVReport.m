@@ -41,29 +41,31 @@
         @"notifyWhenResolved" : self.notification ? @"TRUE" : @"FALSE"
     };
     
-    [[VVVandyMobileAPIClient sharedClient] postPath:@"bugReport.php" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSString *response = [responseObject objectForKey:@"status"];
-        
-        if ([response isEqualToString:@"success"]) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [SVProgressHUD showSuccessWithStatus:@"Report submitted!"];
-            });
-            
-            if (block) {
-                block();
-            }
-        } else if ([response isEqualToString:@"invalid email"]) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [SVProgressHUD showErrorWithStatus:@"Invalid email address. Please try again."];
-            });
-        }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [SVProgressHUD showErrorWithStatus:@"Report failed. Please try again later."];
-        });
-    }];
+    [[VVVandyMobileAPIClient sharedClient] POST:@"bugReport.php"
+                                     parameters:params
+                                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                            NSString *response = [responseObject objectForKey:@"status"];
+                                            
+                                            if ([response isEqualToString:@"success"]) {
+                                                dispatch_async(dispatch_get_main_queue(), ^{
+                                                    [SVProgressHUD showSuccessWithStatus:@"Report submitted!"];
+                                                });
+                                                
+                                                if (block) {
+                                                    block();
+                                                }
+                                            } else if ([response isEqualToString:@"invalid email"]) {
+                                                dispatch_async(dispatch_get_main_queue(), ^{
+                                                    [SVProgressHUD showErrorWithStatus:@"Invalid email address. Please try again."];
+                                                });
+                                            }
+                                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                            NSLog(@"Error: %@", error);
+                                            
+                                            dispatch_async(dispatch_get_main_queue(), ^{
+                                                [SVProgressHUD showErrorWithStatus:@"Report failed. Please try again later."];
+                                            });
+                                        }];
 }
 
 @end

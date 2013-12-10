@@ -8,14 +8,18 @@
 
 #import "VVMapViewController.h"
 #import "VVRoute.h"
-#import <GoogleMaps/GoogleMaps.h>
-#import "GMSMarker+ConstructorAdditions.h"
 
-@interface VVMapViewController () <GMSMapViewDelegate>
+@import MapKit;
 
-@property (strong, nonatomic) IBOutlet GMSMapView *vanMapView;
+@interface VVMapViewController () <MKMapViewDelegate>
+
+@property (weak, nonatomic) IBOutlet MKMapView *vanMapView;
 @property (strong, nonatomic) NSString *routeBeingDisplayed;
 @property (strong, nonatomic) NSOrderedSet *routes;
+
+@property (strong, nonatomic) NSArray *blueAnnotations;
+@property (strong, nonatomic) NSArray *redAnnotations;
+@property (strong, nonatomic) NSArray *greenAnnotations;
 
 @end
 
@@ -47,9 +51,9 @@
     if (_routeBeingDisplayed != routeBeingDisplayed) {
         _routeBeingDisplayed = routeBeingDisplayed;
         
-        [self.vanMapView clear];
+        /*[self.vanMapView clear];
         [self dropMarkersForRoute:_routeBeingDisplayed];
-        [self addPolylineToRoute:_routeBeingDisplayed];
+        [self addPolylineToRoute:_routeBeingDisplayed];*/
     }
 }
 
@@ -58,18 +62,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.vanMapView.myLocationEnabled = YES;
-    self.vanMapView.settings.myLocationButton = YES;
-    
     // Drop pins on stops depending on which route is being displayed.
-    [self dropMarkersForRoute:self.routeBeingDisplayed];
+    [self displayAnnotationsForRoute:self.routeBeingDisplayed];
     
     // Add the appropriate polyline for the given route.
-    [self addPolylineToRoute:self.routeBeingDisplayed];
-    
-    /*GMSMarker *vanMarker = [GMSMarker markerWithLatitude:36.148118 longitude:-86.806012 andTitle:@"Test"];
-    vanMarker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
-    vanMarker.map = self.vanMapView;*/
+    [self displayPolylineForRoute:self.routeBeingDisplayed];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -112,7 +109,7 @@
 
 #pragma mark - Helper Methods
 
-- (void)repositionCamera {
+/*- (void)repositionCamera {
     GMSPolyline *polyline = self.vanMapView.polylines[0];
     GMSCameraUpdate *cameraUpdate = [GMSCameraUpdate fitBounds:[[GMSCoordinateBounds alloc] initWithPath:polyline.path]];
     [self.vanMapView animateWithCameraUpdate:cameraUpdate];
@@ -131,6 +128,38 @@
     polyline.map = self.vanMapView;
         
     [self repositionCamera];
+}*/
+
+- (void)displayAnnotationsForRoute:(NSString *)routeName {
+    [VVRoute annotationsForRouteColor:[VVRoute routeColorForRouteName:routeName]
+                  withCompletionBlock:^(NSArray *stops) {
+                      [self.vanMapView addAnnotations:stops];
+                  }];
+}
+
+- (void)displayPolylineForRoute:(NSString *)routeName {
+    [VVRoute polylineForRouteColor:[VVRoute routeColorForRouteName:routeName]
+               withCompletionBlock:^(MKPolyline *polyline) {
+                   [self.vanMapView addOverlay:polyline];
+               }];
+}
+
+#pragma mark - Map View Delegate
+
+- (void)mapViewDidFinishLoadingMap:(MKMapView *)mapView {
+    
+}
+
+- (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay {
+    MKOverlayRenderer *renderer;
+    
+    if ([overlay isKindOfClass:[MKPolyline class]]) {
+        renderer = [[MKPolylineRenderer alloc] initWithPolyline:overlay];
+        ((MKPolylineRenderer *)renderer).strokeColor = [UIColor blueColor];
+        ((MKPolylineRenderer *)renderer).lineWidth = 3.0f;
+    }
+    
+    return renderer;
 }
 
 @end

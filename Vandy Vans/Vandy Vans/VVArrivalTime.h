@@ -10,9 +10,11 @@
 
 @interface VVArrivalTime : NSObject
 
-@property (nonatomic, readonly) NSString *stopName;
-@property (nonatomic, readonly) NSString *routeName;
+@property (nonatomic, readonly, copy) NSString *stopName;
+@property (nonatomic, readonly, copy) NSString *routeName;
 @property (nonatomic, readonly) NSNumber *arrivalTimeInMinutes;
+
+- (instancetype)initWithStopName:(NSString *)stopName routeName:(NSString *)routeName andArrivalTimeInMinutes:(NSNumber *)arrivalTimeInMinutes;
 
 + (void)arrivalTimesForStopID:(NSUInteger)stopID stopName:(NSString *)stopName withBlock:(void (^)(NSArray *arrivalTimesArray))block;
 

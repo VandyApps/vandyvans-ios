@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		2D0A6EE6172B131600781754 /* map@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D0A6EE4172B131600781754 /* map@2x.png */; };
 		2D0A6EEA172B135F00781754 /* target@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D0A6EE8172B135F00781754 /* target@2x.png */; };
-		2D0A6EED172B1C7100781754 /* GMSMarker+ConstructorAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D0A6EEC172B1C7100781754 /* GMSMarker+ConstructorAdditions.m */; };
 		2D1950A01729392E0071A6EA /* VVRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D19509F1729392E0071A6EA /* VVRoute.m */; };
 		2D34C561162718C500F170CA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D34C560162718C400F170CA /* UIKit.framework */; };
 		2D34C563162718C500F170CA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D34C562162718C500F170CA /* Foundation.framework */; };
@@ -21,11 +20,13 @@
 		2D4D009A168E5A6E00F0BF67 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D4D0098168E5A6E00F0BF67 /* MainStoryboard_iPhone.storyboard */; };
 		2D5BE9FC16609B4300CEFFA3 /* VVAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5BE9FB16609B4300CEFFA3 /* VVAPIClient.m */; };
 		2D5BE9FF1660A5A000CEFFA3 /* VVArrivalTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5BE9FE1660A5A000CEFFA3 /* VVArrivalTime.m */; };
-		2D78910216998B0F00C70302 /* VVIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D78910116998B0F00C70302 /* VVIcon@2x.png */; };
 		2D78910416998B3400C70302 /* VVAppStoreIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D78910316998B3400C70302 /* VVAppStoreIcon.png */; };
 		2D78910E16998C0900C70302 /* VVSpotlightIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D78910B16998C0900C70302 /* VVSpotlightIcon@2x.png */; };
 		2D78911016998C0900C70302 /* VVAppStoreIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D78910D16998C0900C70302 /* VVAppStoreIcon@2x.png */; };
 		2D830BD1175B505D0053462E /* VVBackground-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D830BD0175B505D0053462E /* VVBackground-568h@2x.png */; };
+		2D95BF671855E8D600AA585C /* VVSyncromaticsClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D95BF661855E8D600AA585C /* VVSyncromaticsClient.m */; };
+		2D95BF6A1855ED3700AA585C /* VVSyncromaticsResponseSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D95BF691855ED3700AA585C /* VVSyncromaticsResponseSerializer.m */; };
+		2D99B7CF1856F79100435675 /* VVVan.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D99B7CE1856F79100435675 /* VVVan.m */; };
 		2DA198AC16AAB8F7008F5CB5 /* VVReportTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA198AB16AAB8F7008F5CB5 /* VVReportTableViewController.m */; };
 		2DA198B016AAC0CC008F5CB5 /* VVAboutTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA198AF16AAC0CC008F5CB5 /* VVAboutTableViewController.m */; };
 		2DADC6DB173889130067B052 /* VVAttributionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DADC6DA173889130067B052 /* VVAttributionViewController.m */; };
@@ -52,8 +53,6 @@
 /* Begin PBXFileReference section */
 		2D0A6EE4172B131600781754 /* map@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map@2x.png"; sourceTree = "<group>"; };
 		2D0A6EE8172B135F00781754 /* target@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "target@2x.png"; sourceTree = "<group>"; };
-		2D0A6EEB172B1C7000781754 /* GMSMarker+ConstructorAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GMSMarker+ConstructorAdditions.h"; sourceTree = "<group>"; };
-		2D0A6EEC172B1C7100781754 /* GMSMarker+ConstructorAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GMSMarker+ConstructorAdditions.m"; sourceTree = "<group>"; };
 		2D19509E1729392E0071A6EA /* VVRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVRoute.h; sourceTree = "<group>"; };
 		2D19509F1729392E0071A6EA /* VVRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVRoute.m; sourceTree = "<group>"; };
 		2D34C55C162718C400F170CA /* Vandy Vans.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Vandy Vans.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,11 +73,16 @@
 		2D5BE9FB16609B4300CEFFA3 /* VVAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVAPIClient.m; sourceTree = "<group>"; };
 		2D5BE9FD1660A5A000CEFFA3 /* VVArrivalTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVArrivalTime.h; sourceTree = "<group>"; };
 		2D5BE9FE1660A5A000CEFFA3 /* VVArrivalTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVArrivalTime.m; sourceTree = "<group>"; };
-		2D78910116998B0F00C70302 /* VVIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "VVIcon@2x.png"; path = "../VVIcon@2x.png"; sourceTree = "<group>"; };
 		2D78910316998B3400C70302 /* VVAppStoreIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VVAppStoreIcon.png; sourceTree = "<group>"; };
 		2D78910B16998C0900C70302 /* VVSpotlightIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VVSpotlightIcon@2x.png"; sourceTree = "<group>"; };
 		2D78910D16998C0900C70302 /* VVAppStoreIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VVAppStoreIcon@2x.png"; sourceTree = "<group>"; };
 		2D830BD0175B505D0053462E /* VVBackground-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VVBackground-568h@2x.png"; sourceTree = "<group>"; };
+		2D95BF651855E8D600AA585C /* VVSyncromaticsClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVSyncromaticsClient.h; sourceTree = "<group>"; };
+		2D95BF661855E8D600AA585C /* VVSyncromaticsClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVSyncromaticsClient.m; sourceTree = "<group>"; };
+		2D95BF681855ED3700AA585C /* VVSyncromaticsResponseSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVSyncromaticsResponseSerializer.h; sourceTree = "<group>"; };
+		2D95BF691855ED3700AA585C /* VVSyncromaticsResponseSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVSyncromaticsResponseSerializer.m; sourceTree = "<group>"; };
+		2D99B7CD1856F79100435675 /* VVVan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVVan.h; sourceTree = "<group>"; };
+		2D99B7CE1856F79100435675 /* VVVan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVVan.m; sourceTree = "<group>"; };
 		2DA198AA16AAB8F7008F5CB5 /* VVReportTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVReportTableViewController.h; sourceTree = "<group>"; };
 		2DA198AB16AAB8F7008F5CB5 /* VVReportTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVReportTableViewController.m; sourceTree = "<group>"; };
 		2DA198AE16AAC0CC008F5CB5 /* VVAboutTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVAboutTableViewController.h; sourceTree = "<group>"; };
@@ -173,8 +177,6 @@
 				2D4D0098168E5A6E00F0BF67 /* MainStoryboard_iPhone.storyboard */,
 				2DB213C31737804F008CD801 /* VVAppearanceBuilder.h */,
 				2DB213C417378050008CD801 /* VVAppearanceBuilder.m */,
-				2D0A6EEB172B1C7000781754 /* GMSMarker+ConstructorAdditions.h */,
-				2D0A6EEC172B1C7100781754 /* GMSMarker+ConstructorAdditions.m */,
 				2D5BE9FA16609B4300CEFFA3 /* VVAPIClient.h */,
 				2D5BE9FB16609B4300CEFFA3 /* VVAPIClient.m */,
 				2DBD694616B5272B0058EFE4 /* VVVandyMobileAPIClient.h */,
@@ -185,6 +187,10 @@
 				2DAE7C0916F081370014701E /* VVAlertBuilder.m */,
 				2DCA1D69181E32F8003A85E5 /* Images.xcassets */,
 				2D34C567162718C500F170CA /* Supporting Files */,
+				2D95BF651855E8D600AA585C /* VVSyncromaticsClient.h */,
+				2D95BF661855E8D600AA585C /* VVSyncromaticsClient.m */,
+				2D95BF681855ED3700AA585C /* VVSyncromaticsResponseSerializer.h */,
+				2D95BF691855ED3700AA585C /* VVSyncromaticsResponseSerializer.m */,
 			);
 			path = "Vandy Vans";
 			sourceTree = "<group>";
@@ -210,6 +216,8 @@
 				2DBD694A16B548100058EFE4 /* VVReport.m */,
 				2D19509E1729392E0071A6EA /* VVRoute.h */,
 				2D19509F1729392E0071A6EA /* VVRoute.m */,
+				2D99B7CD1856F79100435675 /* VVVan.h */,
+				2D99B7CE1856F79100435675 /* VVVan.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -256,7 +264,6 @@
 				2D78910B16998C0900C70302 /* VVSpotlightIcon@2x.png */,
 				2D78910D16998C0900C70302 /* VVAppStoreIcon@2x.png */,
 				2D78910316998B3400C70302 /* VVAppStoreIcon.png */,
-				2D78910116998B0F00C70302 /* VVIcon@2x.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -322,7 +329,6 @@
 				2D34C56B162718C500F170CA /* InfoPlist.strings in Resources */,
 				2DCA1D6A181E32F8003A85E5 /* Images.xcassets in Resources */,
 				2D4D009A168E5A6E00F0BF67 /* MainStoryboard_iPhone.storyboard in Resources */,
-				2D78910216998B0F00C70302 /* VVIcon@2x.png in Resources */,
 				2D78910416998B3400C70302 /* VVAppStoreIcon.png in Resources */,
 				2D78910E16998C0900C70302 /* VVSpotlightIcon@2x.png in Resources */,
 				2DB1B89D181C6C24001B74D9 /* VVBackgroundFull-568h@2x.png in Resources */,
@@ -372,10 +378,12 @@
 				2DA198B016AAC0CC008F5CB5 /* VVAboutTableViewController.m in Sources */,
 				2DBD694816B5272B0058EFE4 /* VVVandyMobileAPIClient.m in Sources */,
 				2DBD694B16B548100058EFE4 /* VVReport.m in Sources */,
+				2D99B7CF1856F79100435675 /* VVVan.m in Sources */,
+				2D95BF671855E8D600AA585C /* VVSyncromaticsClient.m in Sources */,
 				2DC2059616E45591008B3F31 /* VVNotificationCell.m in Sources */,
 				2DAE7C0A16F081370014701E /* VVAlertBuilder.m in Sources */,
+				2D95BF6A1855ED3700AA585C /* VVSyncromaticsResponseSerializer.m in Sources */,
 				2D1950A01729392E0071A6EA /* VVRoute.m in Sources */,
-				2D0A6EED172B1C7100781754 /* GMSMarker+ConstructorAdditions.m in Sources */,
 				2DB213C517378050008CD801 /* VVAppearanceBuilder.m in Sources */,
 				2DADC6DB173889130067B052 /* VVAttributionViewController.m in Sources */,
 			);
@@ -461,9 +469,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = ADCAEF1C8A2C492EB2B3961B /* Pods.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -474,7 +483,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
-				VALID_ARCHS = "armv7 armv7s";
+				VALID_ARCHS = "armv7 armv7s arm64";
 				WARNING_CFLAGS = "-Wall";
 				WRAPPER_EXTENSION = app;
 			};
@@ -484,9 +493,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = ADCAEF1C8A2C492EB2B3961B /* Pods.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -497,7 +507,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
-				VALID_ARCHS = "armv7 armv7s";
+				VALID_ARCHS = "armv7 armv7s arm64";
 				WARNING_CFLAGS = "-Wall";
 				WRAPPER_EXTENSION = app;
 			};

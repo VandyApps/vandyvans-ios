@@ -7,7 +7,6 @@
 //
 
 #import "VVVandyMobileAPIClient.h"
-#import "AFJSONRequestOperation.h"
 
 static NSString * const kVVVandyMobileAPIBaseURLString = @"http://studentorgs.vanderbilt.edu/vandymobile/";
 
@@ -27,10 +26,10 @@ static NSString * const kVVVandyMobileAPIBaseURLString = @"http://studentorgs.va
 - (id)initWithBaseURL:(NSURL *)url {
     self = [super initWithBaseURL:url];
     if (self) {
-        [self registerHTTPOperationClass:[AFJSONRequestOperation class]];
+        //[self registerHTTPOperationClass:[AFJSONRequestOperation class]];
         
         // Accept HTTP Header; see http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.1
-        [self setDefaultHeader:@"Accept" value:@"application/json"];
+        //[self setDefaultHeader:@"Accept" value:@"application/json"];
     }
     
     return self;

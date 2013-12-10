@@ -6,9 +6,9 @@
 //  Copyright (c) 2012 VandyMobile. All rights reserved.
 //
 
-#import "AFHTTPClient.h"
+#import <AFNetworking/AFNetworking.h>
 
-@interface VVAPIClient : AFHTTPClient
+@interface VVAPIClient : AFHTTPRequestOperationManager
 
 + (VVAPIClient *)sharedClient;
 

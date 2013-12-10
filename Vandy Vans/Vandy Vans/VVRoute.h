@@ -14,27 +14,33 @@ typedef NS_ENUM(NSInteger, VVRouteColor) {
     VVRouteColorGreen
 };
 
-@class GMSPolyline;
+@class MKPolyline;
 
 @interface VVRoute : NSObject
 
 /**
- * This method produces an array of all of the `GMSMarker`s for a particular Vandy Van route.
+ * This method produces an array of all of the `MKPointAnnotation`s for the stops on a particular Vandy Van route.
  *
  * @param routeColor The color of the Vandy Van route selected.
- *
- * @return An array of all of the `GMSMarker`s for the Vandy Van route.
+ * @param completionBlock What to do with the stops once they are fetched.
  */
-+ (NSArray *)markersForRouteColor:(VVRouteColor)routeColor;
++ (void)annotationsForRouteColor:(VVRouteColor)routeColor withCompletionBlock:(void (^)(NSArray *stops))completionBlock;
 
 /**
- * This method produces a `GMSPolyline` overlay for a particular Vandy Van route.
+ * This method produces a `MKPolyline` overlay for a particular Vandy Van route.
  *
  * @param routeColor The color of the Vandy Van route selected.
- *
- * @return A `GMSPolyline` for the Vandy Van route.
+ * @param completionBlock What to do with the polyline once it is fetched.
  */
-+ (GMSPolyline *)polylineForRouteColor:(VVRouteColor)routeColor;
++ (void)polylineForRouteColor:(VVRouteColor)routeColor withCompletionBlock:(void (^)(MKPolyline *polyline))completionBlock;
+
+/**
+ * This method produces an array of all of the `VVVan`s on a particular Vandy Van route.
+ *
+ * @param routeColor The color of the Vandy Van route selected.
+ * @param completionBlock What to do with the vans once they are fetched.
+ */
++ (void)vansForRouteColor:(VVRouteColor)routeColor withCompletionBlock:(void (^)(NSArray *vans))completionBlock;
 
 /**
  * This method gives the route ID for a particular Vandy Van route.
