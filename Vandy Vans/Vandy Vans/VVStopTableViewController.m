@@ -8,7 +8,6 @@
 
 #import "VVStopTableViewController.h"
 #import "VVArrivalTimeTableViewController.h"
-#import <GoogleMaps/GoogleMaps.h>
 
 @interface VVStopTableViewController ()
 

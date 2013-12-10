@@ -17,21 +17,18 @@ PODS:
   - AFNetworking/Serialization (2.0.3)
   - AFNetworking/UIKit (2.0.3):
     - AFNetworking/NSURLConnection
-  - Google-Maps-iOS-SDK (1.6.1)
   - SAMCategories (0.3.5)
   - SAMTextView (0.2.0)
   - SVProgressHUD (1.0)
 
 DEPENDENCIES:
   - AFNetworking
-  - Google-Maps-iOS-SDK (~> 1.5)
   - SAMCategories
   - SAMTextView
   - SVProgressHUD
 
 SPEC CHECKSUMS:
   AFNetworking: e499052cbf3d743e9bb727bb37adb9dc2547ba15
-  Google-Maps-iOS-SDK: 29876f757dd2c9b61236a0940e629005ad3ad811
   SAMCategories: d5c5246f7685c4c43e1fef723a68e0a26f991fe6
   SAMTextView: 3a18c24b6bbfb856ac6e519536b3eec27a2f2fb8
   SVProgressHUD: 5e10939a296debf5fe5a5895eda9539b8b2114f1

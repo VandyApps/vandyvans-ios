@@ -10,7 +10,6 @@
 #import <AFNetworking/AFNetworkActivityIndicatorManager.h>
 #import "VVArrivalTimeTableViewController.h"
 #import "VVAlertBuilder.h"
-#import <GoogleMaps/GoogleMaps.h>
 #import "VVAppearanceBuilder.h"
 
 @implementation VVAppDelegate
@@ -21,8 +20,6 @@
     [VVAppearanceBuilder buildAppearance];
     
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
-    
-    [GMSServices provideAPIKey:@"AIzaSyAWPQGIizS9XbqSRQztd53yDeaPrW_MHH0"];
     
     return YES;
 }

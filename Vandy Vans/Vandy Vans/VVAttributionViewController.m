@@ -7,7 +7,6 @@
 //
 
 #import "VVAttributionViewController.h"
-#import <GoogleMaps/GoogleMaps.h>
 
 @interface VVAttributionViewController ()
 
@@ -23,7 +22,6 @@
     if (!_attributionText) {
         
         NSMutableAttributedString *MITLicenseAttributions = [self MITLicenseAttributions];
-        [MITLicenseAttributions appendAttributedString:[self GoogleMapsAttribution]];
         [MITLicenseAttributions appendAttributedString:[self SVProgressHUDAttribution]];
         
         _attributionText = MITLicenseAttributions;
@@ -58,16 +56,8 @@
     return MITLicenseAttributions;
 }
 
-- (NSMutableAttributedString *)GoogleMapsAttribution {
-    NSMutableAttributedString *packageName = [[NSMutableAttributedString alloc] initWithString:@"Google Maps SDK for iOS" attributes:@{NSFontAttributeName : [UIFont italicSystemFontOfSize:12.0f]}];
-    NSAttributedString *copyrightLine = [[NSAttributedString alloc] initWithString:[[@"\n\n" stringByAppendingString:[GMSServices openSourceLicenseInfo]] stringByAppendingString:@"\n\n"]];
-    [packageName appendAttributedString:copyrightLine];
-    
-    return packageName;
-}
-
 - (NSAttributedString *)AFNetworkingAttribution {
-    return [self packageAttributionWithPackageName:@"AFNetworking" copyrightLine:@"Copyright (c) 2011 Gowalla (http://gowalla.com/)"];
+    return [self packageAttributionWithPackageName:@"AFNetworking" copyrightLine:@"Copyright (c) 2013 AFNetworking (http://afnetworking.com/)"];
 }
 
 - (NSAttributedString *)SAMTextViewAttribution {
