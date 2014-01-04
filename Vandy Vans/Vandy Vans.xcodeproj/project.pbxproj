@@ -23,6 +23,7 @@
 		2D78910416998B3400C70302 /* VVAppStoreIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D78910316998B3400C70302 /* VVAppStoreIcon.png */; };
 		2D78910E16998C0900C70302 /* VVSpotlightIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D78910B16998C0900C70302 /* VVSpotlightIcon@2x.png */; };
 		2D78911016998C0900C70302 /* VVAppStoreIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D78910D16998C0900C70302 /* VVAppStoreIcon@2x.png */; };
+		2D7B2668187822DC00AFBF42 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D7B2667187822DC00AFBF42 /* CoreGraphics.framework */; };
 		2D830BD1175B505D0053462E /* VVBackground-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D830BD0175B505D0053462E /* VVBackground-568h@2x.png */; };
 		2D95BF671855E8D600AA585C /* VVSyncromaticsClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D95BF661855E8D600AA585C /* VVSyncromaticsClient.m */; };
 		2D95BF6A1855ED3700AA585C /* VVSyncromaticsResponseSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D95BF691855ED3700AA585C /* VVSyncromaticsResponseSerializer.m */; };
@@ -32,8 +33,6 @@
 		2DA198B016AAC0CC008F5CB5 /* VVAboutTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA198AF16AAC0CC008F5CB5 /* VVAboutTableViewController.m */; };
 		2DADC6DB173889130067B052 /* VVAttributionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DADC6DA173889130067B052 /* VVAttributionViewController.m */; };
 		2DAE7C0A16F081370014701E /* VVAlertBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAE7C0916F081370014701E /* VVAlertBuilder.m */; };
-		2DB065A8166177D20077AAB4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DB065A7166177D20077AAB4 /* SystemConfiguration.framework */; };
-		2DB065AA166177DA0077AAB4 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DB065A9166177DA0077AAB4 /* MobileCoreServices.framework */; };
 		2DB1B89D181C6C24001B74D9 /* VVBackgroundFull-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DB1B89B181C6C24001B74D9 /* VVBackgroundFull-568h@2x.png */; };
 		2DB1B89E181C6C24001B74D9 /* VVBackgroundFull@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DB1B89C181C6C24001B74D9 /* VVBackgroundFull@2x.png */; };
 		2DB213BE173752A9008CD801 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DB213BD173752A9008CD801 /* Default-568h@2x.png */; };
@@ -45,9 +44,6 @@
 		2DC2059616E45591008B3F31 /* VVNotificationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC2059516E45591008B3F31 /* VVNotificationCell.m */; };
 		2DCA1D6A181E32F8003A85E5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DCA1D69181E32F8003A85E5 /* Images.xcassets */; };
 		2DDDB2F8165DBAA5007077E9 /* VVArrivalTimeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DDDB2F7165DBAA5007077E9 /* VVArrivalTimeTableViewController.m */; };
-		2DE5294D172A61DE00F949DD /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DE5294C172A61DE00F949DD /* libc++.dylib */; };
-		2DE5294F172A620700F949DD /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DE5294E172A620700F949DD /* libicucore.dylib */; };
-		2DE52951172A620F00F949DD /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DE52950172A620F00F949DD /* libz.dylib */; };
 		809D88CC0AAF4B31A477FF7E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA171022C5534BA0B4C4AA79 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +73,7 @@
 		2D78910316998B3400C70302 /* VVAppStoreIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VVAppStoreIcon.png; sourceTree = "<group>"; };
 		2D78910B16998C0900C70302 /* VVSpotlightIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VVSpotlightIcon@2x.png"; sourceTree = "<group>"; };
 		2D78910D16998C0900C70302 /* VVAppStoreIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VVAppStoreIcon@2x.png"; sourceTree = "<group>"; };
+		2D7B2667187822DC00AFBF42 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		2D830BD0175B505D0053462E /* VVBackground-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VVBackground-568h@2x.png"; sourceTree = "<group>"; };
 		2D95BF651855E8D600AA585C /* VVSyncromaticsClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVSyncromaticsClient.h; sourceTree = "<group>"; };
 		2D95BF661855E8D600AA585C /* VVSyncromaticsClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVSyncromaticsClient.m; sourceTree = "<group>"; };
@@ -94,8 +91,6 @@
 		2DADC6DA173889130067B052 /* VVAttributionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVAttributionViewController.m; sourceTree = "<group>"; };
 		2DAE7C0816F081360014701E /* VVAlertBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVAlertBuilder.h; sourceTree = "<group>"; };
 		2DAE7C0916F081370014701E /* VVAlertBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVAlertBuilder.m; sourceTree = "<group>"; };
-		2DB065A7166177D20077AAB4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		2DB065A9166177DA0077AAB4 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		2DB1B89B181C6C24001B74D9 /* VVBackgroundFull-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VVBackgroundFull-568h@2x.png"; sourceTree = "<group>"; };
 		2DB1B89C181C6C24001B74D9 /* VVBackgroundFull@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VVBackgroundFull@2x.png"; sourceTree = "<group>"; };
 		2DB213BD173752A9008CD801 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -112,9 +107,6 @@
 		2DCA1D69181E32F8003A85E5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2DDDB2F6165DBAA5007077E9 /* VVArrivalTimeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVArrivalTimeTableViewController.h; sourceTree = "<group>"; };
 		2DDDB2F7165DBAA5007077E9 /* VVArrivalTimeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVArrivalTimeTableViewController.m; sourceTree = "<group>"; };
-		2DE5294C172A61DE00F949DD /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
-		2DE5294E172A620700F949DD /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
-		2DE52950172A620F00F949DD /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		ADCAEF1C8A2C492EB2B3961B /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		BA171022C5534BA0B4C4AA79 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -124,11 +116,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DE52951172A620F00F949DD /* libz.dylib in Frameworks */,
-				2DE5294F172A620700F949DD /* libicucore.dylib in Frameworks */,
-				2DE5294D172A61DE00F949DD /* libc++.dylib in Frameworks */,
-				2DB065AA166177DA0077AAB4 /* MobileCoreServices.framework in Frameworks */,
-				2DB065A8166177D20077AAB4 /* SystemConfiguration.framework in Frameworks */,
+				2D7B2668187822DC00AFBF42 /* CoreGraphics.framework in Frameworks */,
 				2D34C561162718C500F170CA /* UIKit.framework in Frameworks */,
 				2D34C563162718C500F170CA /* Foundation.framework in Frameworks */,
 				809D88CC0AAF4B31A477FF7E /* libPods.a in Frameworks */,
@@ -159,11 +147,7 @@
 		2D34C55F162718C400F170CA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2DE52950172A620F00F949DD /* libz.dylib */,
-				2DE5294E172A620700F949DD /* libicucore.dylib */,
-				2DE5294C172A61DE00F949DD /* libc++.dylib */,
-				2DB065A9166177DA0077AAB4 /* MobileCoreServices.framework */,
-				2DB065A7166177D20077AAB4 /* SystemConfiguration.framework */,
+				2D7B2667187822DC00AFBF42 /* CoreGraphics.framework */,
 				2D34C560162718C400F170CA /* UIKit.framework */,
 				2D34C562162718C500F170CA /* Foundation.framework */,
 				BA171022C5534BA0B4C4AA79 /* libPods.a */,
@@ -306,6 +290,11 @@
 				TargetAttributes = {
 					2D34C55B162718C400F170CA = {
 						DevelopmentTeam = 7MA825R8KR;
+						SystemCapabilities = {
+							com.apple.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
