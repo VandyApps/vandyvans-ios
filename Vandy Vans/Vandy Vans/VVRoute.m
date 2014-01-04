@@ -9,6 +9,10 @@
 #import "VVRoute.h"
 #import "VVSyncromaticsClient.h"
 
+NSString * const kAnnotationsDateKey = @"annotationsDate";
+NSString * const kPolylineDateKey = @"polylineDate";
+NSTimeInterval const kStaleTimeInterval = -14*24*60*60; // 2 weeks ago
+
 @import MapKit;
 
 @interface VVRoute ()
@@ -50,10 +54,12 @@
 
 + (void)annotationsForRoute:(VVRoute *)route withCompletionBlock:(void (^)(NSArray *stops))completionBlock {
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+    NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject];
     NSString *annotationsPath = [documentsPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@ annotations", route.name]];
     
-    if (![fileManager fileExistsAtPath:annotationsPath]) {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    if (![fileManager fileExistsAtPath:annotationsPath] || ([[userDefaults objectForKey:kAnnotationsDateKey] timeIntervalSinceNow] <= kStaleTimeInterval)) {
         [[VVSyncromaticsClient sharedClient] fetchStopsForRoute:route
                                             withCompletionBlock:^(NSArray *stops, NSError *error) {
                                                 if (stops) {
@@ -61,6 +67,10 @@
                                                     [fileManager createFileAtPath:annotationsPath
                                                                          contents:stopsData
                                                                        attributes:nil];
+                                                    
+                                                    [userDefaults setObject:[NSDate date]
+                                                                     forKey:kAnnotationsDateKey];
+                                                    [userDefaults synchronize];
                                                     
                                                     completionBlock(stops);
                                                 } else {
@@ -75,10 +85,12 @@
 
 + (void)polylineForRoute:(VVRoute *)route withCompletionBlock:(void (^)(MKPolyline *polyline))completionBlock {
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+    NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject];
     NSString *polylinePath = [documentsPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@ polyline", route.name]];
     
-    if (![fileManager fileExistsAtPath:polylinePath]) {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    if (![fileManager fileExistsAtPath:polylinePath] || ([[userDefaults objectForKey:kPolylineDateKey] timeIntervalSinceNow] <= kStaleTimeInterval)) {
         [[VVSyncromaticsClient sharedClient] fetchPolylineForRoute:route
                                                withCompletionBlock:^(MKPolyline *polyline, NSError *error) {
                                                    if (polyline) {
@@ -86,6 +98,10 @@
                                                        [fileManager createFileAtPath:polylinePath
                                                                             contents:polylineData
                                                                           attributes:nil];
+                                                       
+                                                       [userDefaults setObject:[NSDate date]
+                                                                        forKey:kPolylineDateKey];
+                                                       [userDefaults synchronize];
                                                        
                                                        completionBlock(polyline);
                                                    } else {

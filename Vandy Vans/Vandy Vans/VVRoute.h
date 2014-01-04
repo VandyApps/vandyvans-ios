@@ -14,6 +14,9 @@ typedef NS_ENUM(NSInteger, VVRouteColor) {
     VVRouteColorGreen
 };
 
+extern NSString * const kAnnotationsDateKey;
+extern NSString * const kPolylineDateKey;
+
 @class MKPolyline;
 
 @interface VVRoute : NSObject
