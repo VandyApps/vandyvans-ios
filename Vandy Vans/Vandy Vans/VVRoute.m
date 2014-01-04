@@ -49,14 +49,28 @@
 #pragma mark - Class Methods
 
 + (void)annotationsForRoute:(VVRoute *)route withCompletionBlock:(void (^)(NSArray *stops))completionBlock {
-    [[VVSyncromaticsClient sharedClient] fetchStopsForRoute:route
-                                        withCompletionBlock:^(NSArray *stops, NSError *error) {
-                                            if (stops) {
-                                                completionBlock(stops);
-                                            } else {
-                                                NSLog(@"ERROR: %@", error);
-                                            }
-                                        }];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+    NSString *annotationsPath = [documentsPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@ annotations", route.name]];
+    
+    if (![fileManager fileExistsAtPath:annotationsPath]) {
+        [[VVSyncromaticsClient sharedClient] fetchStopsForRoute:route
+                                            withCompletionBlock:^(NSArray *stops, NSError *error) {
+                                                if (stops) {
+                                                    NSData *stopsData = [NSKeyedArchiver archivedDataWithRootObject:stops];
+                                                    [fileManager createFileAtPath:annotationsPath
+                                                                         contents:stopsData
+                                                                       attributes:nil];
+                                                    
+                                                    completionBlock(stops);
+                                                } else {
+                                                    NSLog(@"ERROR: %@", error);
+                                                }
+                                            }];
+    } else {
+        NSArray *annotations = [NSKeyedUnarchiver unarchiveObjectWithFile:annotationsPath];
+        completionBlock(annotations);
+    }
 }
 
 + (void)polylineForRoute:(VVRoute *)route withCompletionBlock:(void (^)(MKPolyline *polyline))completionBlock {
