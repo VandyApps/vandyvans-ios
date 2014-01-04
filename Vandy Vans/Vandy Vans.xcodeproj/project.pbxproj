@@ -28,6 +28,7 @@
 		2D830BD1175B505D0053462E /* VVBackground-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D830BD0175B505D0053462E /* VVBackground-568h@2x.png */; };
 		2D95BF671855E8D600AA585C /* VVSyncromaticsClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D95BF661855E8D600AA585C /* VVSyncromaticsClient.m */; };
 		2D95BF6A1855ED3700AA585C /* VVSyncromaticsResponseSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D95BF691855ED3700AA585C /* VVSyncromaticsResponseSerializer.m */; };
+		2D972BF71878C0300019FA1F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D972BF61878C0300019FA1F /* MapKit.framework */; };
 		2D977705185829D7000D5F47 /* VVStop.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D977704185829D7000D5F47 /* VVStop.m */; };
 		2D99B7CF1856F79100435675 /* VVVan.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D99B7CE1856F79100435675 /* VVVan.m */; };
 		2DA198AC16AAB8F7008F5CB5 /* VVReportTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA198AB16AAB8F7008F5CB5 /* VVReportTableViewController.m */; };
@@ -82,6 +83,7 @@
 		2D95BF661855E8D600AA585C /* VVSyncromaticsClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVSyncromaticsClient.m; sourceTree = "<group>"; };
 		2D95BF681855ED3700AA585C /* VVSyncromaticsResponseSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVSyncromaticsResponseSerializer.h; sourceTree = "<group>"; };
 		2D95BF691855ED3700AA585C /* VVSyncromaticsResponseSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVSyncromaticsResponseSerializer.m; sourceTree = "<group>"; };
+		2D972BF61878C0300019FA1F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		2D977703185829D7000D5F47 /* VVStop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVStop.h; sourceTree = "<group>"; };
 		2D977704185829D7000D5F47 /* VVStop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVStop.m; sourceTree = "<group>"; };
 		2D99B7CD1856F79100435675 /* VVVan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVVan.h; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 			files = (
 				2D7B2668187822DC00AFBF42 /* CoreGraphics.framework in Frameworks */,
 				2D34C561162718C500F170CA /* UIKit.framework in Frameworks */,
+				2D972BF71878C0300019FA1F /* MapKit.framework in Frameworks */,
 				2D34C563162718C500F170CA /* Foundation.framework in Frameworks */,
 				809D88CC0AAF4B31A477FF7E /* libPods.a in Frameworks */,
 			);
@@ -150,6 +153,7 @@
 		2D34C55F162718C400F170CA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2D972BF61878C0300019FA1F /* MapKit.framework */,
 				2D7B2667187822DC00AFBF42 /* CoreGraphics.framework */,
 				2D34C560162718C400F170CA /* UIKit.framework */,
 				2D34C562162718C500F170CA /* Foundation.framework */,
