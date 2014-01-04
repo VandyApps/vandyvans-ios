@@ -105,17 +105,20 @@
         // If this is the Stops table view, check to see which cell is being retrieved. If it is not the last one, return
         // a normal stop cell. If it is, return the cell for "Other Stops".
         cell = (row != ([self.stops count] - 1)) ? [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath] : [tableView dequeueReusableCellWithIdentifier:OtherCellIdentifier forIndexPath:indexPath];
+        
+        if (row != [self.stops count] - 1) {
+            VVStop *stop = self.stops[row];
+            cell.textLabel.text = stop.name;
+        } else {
+            // "Other Stops"
+            cell.textLabel.text = self.stops[row];
+        }
     } else {
         // If it is not the Stops table view, just return the next cell as normal.
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    }
-    
-    if (row != [self.stops count] - 1) {
+        
         VVStop *stop = self.stops[row];
         cell.textLabel.text = stop.name;
-    } else {
-        // "Other Stops"
-        cell.textLabel.text = self.stops[row];
     }
     
     return cell;
