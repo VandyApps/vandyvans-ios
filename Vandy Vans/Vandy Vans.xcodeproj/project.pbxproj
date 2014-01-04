@@ -25,6 +25,7 @@
 		2D78911016998C0900C70302 /* VVAppStoreIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D78910D16998C0900C70302 /* VVAppStoreIcon@2x.png */; };
 		2D7B2668187822DC00AFBF42 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D7B2667187822DC00AFBF42 /* CoreGraphics.framework */; };
 		2D7B266B1878274900AFBF42 /* MKPointAnnotation+NSCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7B266A1878274900AFBF42 /* MKPointAnnotation+NSCoding.m */; };
+		2D7B266E1878317C00AFBF42 /* MKPolyline+NSCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7B266D1878317C00AFBF42 /* MKPolyline+NSCoding.m */; };
 		2D830BD1175B505D0053462E /* VVBackground-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D830BD0175B505D0053462E /* VVBackground-568h@2x.png */; };
 		2D95BF671855E8D600AA585C /* VVSyncromaticsClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D95BF661855E8D600AA585C /* VVSyncromaticsClient.m */; };
 		2D95BF6A1855ED3700AA585C /* VVSyncromaticsResponseSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D95BF691855ED3700AA585C /* VVSyncromaticsResponseSerializer.m */; };
@@ -77,6 +78,8 @@
 		2D7B2667187822DC00AFBF42 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		2D7B26691878274900AFBF42 /* MKPointAnnotation+NSCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKPointAnnotation+NSCoding.h"; sourceTree = "<group>"; };
 		2D7B266A1878274900AFBF42 /* MKPointAnnotation+NSCoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKPointAnnotation+NSCoding.m"; sourceTree = "<group>"; };
+		2D7B266C1878317C00AFBF42 /* MKPolyline+NSCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKPolyline+NSCoding.h"; sourceTree = "<group>"; };
+		2D7B266D1878317C00AFBF42 /* MKPolyline+NSCoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKPolyline+NSCoding.m"; sourceTree = "<group>"; };
 		2D830BD0175B505D0053462E /* VVBackground-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VVBackground-568h@2x.png"; sourceTree = "<group>"; };
 		2D95BF651855E8D600AA585C /* VVSyncromaticsClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVSyncromaticsClient.h; sourceTree = "<group>"; };
 		2D95BF661855E8D600AA585C /* VVSyncromaticsClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVSyncromaticsClient.m; sourceTree = "<group>"; };
@@ -183,6 +186,8 @@
 				2D95BF691855ED3700AA585C /* VVSyncromaticsResponseSerializer.m */,
 				2D7B26691878274900AFBF42 /* MKPointAnnotation+NSCoding.h */,
 				2D7B266A1878274900AFBF42 /* MKPointAnnotation+NSCoding.m */,
+				2D7B266C1878317C00AFBF42 /* MKPolyline+NSCoding.h */,
+				2D7B266D1878317C00AFBF42 /* MKPolyline+NSCoding.m */,
 			);
 			path = "Vandy Vans";
 			sourceTree = "<group>";
@@ -380,6 +385,7 @@
 				2D7B266B1878274900AFBF42 /* MKPointAnnotation+NSCoding.m in Sources */,
 				2D99B7CF1856F79100435675 /* VVVan.m in Sources */,
 				2D95BF671855E8D600AA585C /* VVSyncromaticsClient.m in Sources */,
+				2D7B266E1878317C00AFBF42 /* MKPolyline+NSCoding.m in Sources */,
 				2D977705185829D7000D5F47 /* VVStop.m in Sources */,
 				2DC2059616E45591008B3F31 /* VVNotificationCell.m in Sources */,
 				2DAE7C0A16F081370014701E /* VVAlertBuilder.m in Sources */,

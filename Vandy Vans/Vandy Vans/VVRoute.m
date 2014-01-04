@@ -74,14 +74,28 @@
 }
 
 + (void)polylineForRoute:(VVRoute *)route withCompletionBlock:(void (^)(MKPolyline *polyline))completionBlock {
-    [[VVSyncromaticsClient sharedClient] fetchPolylineForRoute:route
-                                           withCompletionBlock:^(MKPolyline *polyline, NSError *error) {
-                                               if (polyline) {
-                                                   completionBlock(polyline);
-                                               } else {
-                                                   NSLog(@"ERROR: %@", error);
-                                               }
-                                           }];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+    NSString *polylinePath = [documentsPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@ polyline", route.name]];
+    
+    if (![fileManager fileExistsAtPath:polylinePath]) {
+        [[VVSyncromaticsClient sharedClient] fetchPolylineForRoute:route
+                                               withCompletionBlock:^(MKPolyline *polyline, NSError *error) {
+                                                   if (polyline) {
+                                                       NSData *polylineData = [NSKeyedArchiver archivedDataWithRootObject:polyline];
+                                                       [fileManager createFileAtPath:polylinePath
+                                                                            contents:polylineData
+                                                                          attributes:nil];
+                                                       
+                                                       completionBlock(polyline);
+                                                   } else {
+                                                       NSLog(@"ERROR: %@", error);
+                                                   }
+                                               }];
+    } else {
+        MKPolyline *polyline = [NSKeyedUnarchiver unarchiveObjectWithFile:polylinePath];
+        completionBlock(polyline);
+    }
 }
 
 + (void)vansForRoute:(VVRoute *)route withCompletionBlock:(void (^)(NSArray *vans))completionBlock {
