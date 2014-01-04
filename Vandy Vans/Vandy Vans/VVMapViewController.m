@@ -53,9 +53,11 @@
     if (![_routeBeingDisplayed isEqual:routeBeingDisplayed]) {
         _routeBeingDisplayed = routeBeingDisplayed;
         
-        /*[self.vanMapView clear];
-         [self dropMarkersForRoute:_routeBeingDisplayed];
-         [self addPolylineToRoute:_routeBeingDisplayed];*/
+        [self.vanMapView removeAnnotations:self.vanMapView.annotations];
+        [self.vanMapView removeOverlay:[self.vanMapView.overlays firstObject]];
+        
+        [self displayAnnotationsForRoute:_routeBeingDisplayed];
+        [self displayPolylineForRoute:_routeBeingDisplayed];
     }
 }
 
@@ -87,50 +89,25 @@
 - (IBAction)routeTapped:(UISegmentedControl *)sender {
     switch (sender.selectedSegmentIndex) {
         case 0:
-            sender.tintColor = [UIColor blueColor];
             self.routeBeingDisplayed = self.routes[0];
             break;
             
         case 1:
-            sender.tintColor = [UIColor redColor];
             self.routeBeingDisplayed = self.routes[1];
             break;
             
         case 2:
-            sender.tintColor = [UIColor colorWithRed:51/255.0f
-                                               green:189/255.0f
-                                                blue:50/255.0f
-                                               alpha:1.0f];
             self.routeBeingDisplayed = self.routes[2];
             break;
             
         default:
             break;
     }
+    
+    sender.tintColor = [self colorForRoute:self.routeBeingDisplayed];
 }
 
 #pragma mark - Helper Methods
-
-/*- (void)repositionCamera {
-    GMSPolyline *polyline = self.vanMapView.polylines[0];
-    GMSCameraUpdate *cameraUpdate = [GMSCameraUpdate fitBounds:[[GMSCoordinateBounds alloc] initWithPath:polyline.path]];
-    [self.vanMapView animateWithCameraUpdate:cameraUpdate];
-}
-
-- (void)dropMarkersForRoute:(NSString *)routeName {
-    NSArray *routeMarkers = [VVRoute markersForRouteColor:[VVRoute routeColorForRouteName:routeName]];
-    
-    for (GMSMarker *marker in routeMarkers) {
-        marker.map = self.vanMapView;
-    }
-}
-
-- (void)addPolylineToRoute:(NSString *)routeName {
-    GMSPolyline *polyline = [VVRoute polylineForRouteColor:[VVRoute routeColorForRouteName:routeName]];
-    polyline.map = self.vanMapView;
-        
-    [self repositionCamera];
- }*/
 
 - (void)displayAnnotationsForRoute:(VVRoute *)route {
     [VVRoute annotationsForRoute:route
@@ -143,28 +120,52 @@
     [VVRoute polylineForRoute:route
           withCompletionBlock:^(MKPolyline *polyline) {
               [self.vanMapView addOverlay:polyline];
-              [self.vanMapView setVisibleMapRect:polyline.boundingMapRect
+              
+              MKMapRect mapRect = polyline.boundingMapRect;
+              NSUInteger widthAdjustment = mapRect.size.width * 0.1;
+              
+              MKMapRect adjustedMapRect = MKMapRectMake(mapRect.origin.x - (widthAdjustment / 2), mapRect.origin.y, mapRect.size.width + widthAdjustment, mapRect.size.height);
+              
+              [self.vanMapView setVisibleMapRect:adjustedMapRect
                                         animated:YES];
           }];
 }
 
 #pragma mark - Map View Delegate
 
-- (void)mapViewDidFinishLoadingMap:(MKMapView *)mapView {
-}
-
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay {
     MKOverlayRenderer *renderer;
     
     if ([overlay isKindOfClass:[MKPolyline class]]) {
         MKPolylineRenderer *polylineRenderer = [[MKPolylineRenderer alloc] initWithPolyline:overlay];
-        polylineRenderer.strokeColor = [UIColor blueColor];
+        polylineRenderer.strokeColor = [self colorForRoute:self.routeBeingDisplayed];
         polylineRenderer.lineWidth = 3.0f;
         
         renderer = polylineRenderer;
     }
     
     return renderer;
+}
+
+#pragma mark - Helper Method
+
+- (UIColor *)colorForRoute:(VVRoute *)route {
+    UIColor *color;
+    
+    if ([route.name isEqualToString:@"Blue"]) {
+        color = [UIColor blueColor];
+    } else if ([route.name isEqualToString:@"Red"]) {
+        color = [UIColor redColor];
+    } else if ([route.name isEqualToString:@"Green"]) {
+        color = [UIColor colorWithRed:51/255.0f
+                                green:189/255.0f
+                                 blue:50/255.0f
+                                alpha:1.0f];
+    } else { // New route
+        color = [UIColor blackColor];
+    }
+    
+    return color;
 }
 
 @end

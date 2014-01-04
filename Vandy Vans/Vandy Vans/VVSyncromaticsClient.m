@@ -13,7 +13,7 @@
 
 @import MapKit;
 
-static NSString * const kVVSyncromaticsBaseURLString = @"http://api.syncromatics.com/";
+static NSString * const kVVSyncromaticsBaseURLString = @"http://vandyvans.com/";
 
 @implementation VVSyncromaticsClient
 
@@ -60,7 +60,7 @@ static NSString * const kVVSyncromaticsBaseURLString = @"http://api.syncromatics
 #pragma mark - Instance Methods
 
 - (NSURLSessionDataTask *)fetchStopsForRoute:(VVRoute *)route withCompletionBlock:(void (^)(NSArray *stops, NSError *error))completionBlock {
-    NSString *path = [[[[@"Route" stringByAppendingPathComponent:[NSString stringWithFormat:@"%lu", (unsigned long)route.routeID]] stringByAppendingPathComponent:@"Direction"] stringByAppendingPathComponent:@"0"] stringByAppendingPathComponent:@"Stops"];
+    NSString *path = [[[[@"Route" stringByAppendingPathComponent:route.routeID] stringByAppendingPathComponent:@"Direction"] stringByAppendingPathComponent:@"0"] stringByAppendingPathComponent:@"Stops"];
     
     NSURLSessionDataTask *task = [[VVSyncromaticsClient sharedClient] GET:path
                                                                parameters:@{@"api_key": [self.class apiKey]}
@@ -78,7 +78,7 @@ static NSString * const kVVSyncromaticsBaseURLString = @"http://api.syncromatics
 }
 
 - (NSURLSessionDataTask *)fetchPolylineForRoute:(VVRoute *)route withCompletionBlock:(void (^)(MKPolyline *polyline, NSError *error))completionBlock {
-    NSString *path = [[@"Route" stringByAppendingPathComponent:[NSString stringWithFormat:@"%lu", (unsigned long)route.routeID]] stringByAppendingPathComponent:@"Waypoints"];
+    NSString *path = [[@"Route" stringByAppendingPathComponent:route.routeID] stringByAppendingPathComponent:@"Waypoints"];
     
     NSURLSessionDataTask *task = [[VVSyncromaticsClient sharedClient] GET:path
                                                                parameters:@{@"api_key": [self.class apiKey]}
@@ -96,7 +96,7 @@ static NSString * const kVVSyncromaticsBaseURLString = @"http://api.syncromatics
 }
 
 - (NSURLSessionDataTask *)fetchVansForRoute:(VVRoute *)route withCompletionBlock:(void (^)(NSArray *vans, NSError *error))completionBlock {
-    NSString *path = [[@"Route" stringByAppendingPathComponent:[NSString stringWithFormat:@"%lu", (unsigned long)route.routeID]] stringByAppendingPathComponent:@"Vehicles"];
+    NSString *path = [[@"Route" stringByAppendingPathComponent:route.routeID] stringByAppendingPathComponent:@"Vehicles"];
     
     NSURLSessionDataTask *task = [[VVSyncromaticsClient sharedClient] GET:path
                                                                parameters:@{@"api_key": [self.class apiKey]}
