@@ -8,6 +8,7 @@
 
 #import "VVStopTableViewController.h"
 #import "VVArrivalTimeTableViewController.h"
+#import "VVStop.h"
 
 @interface VVStopTableViewController ()
 
@@ -17,17 +18,28 @@
 
 @implementation VVStopTableViewController
 
-@synthesize stops = _stops;
-
 - (NSArray *)stops {
     if (!_stops) {
         if ([self.title isEqualToString:@"Stops"]) {
-            _stops = @[@"Branscomb Quad", @"Carmichael Towers", @"Murray House", @"Highland Quad", @"Other Stops"];
+            _stops = @[[VVStop stopWithID:@"263473"], // Branscomb
+                       [VVStop stopWithID:@"263470"], // Towers
+                       [VVStop stopWithID:@"263454"], // Murray
+                       [VVStop stopWithID:@"263444"], // Highland
+                       @"Other Stops"];
         } else {
-            _stops = @[@"Vanderbilt Police Department", @"Vanderbilt Book Store", @"Kissam Quad", @"Terrace Place Garage",
-                @"Wesley Place Garage", @"North House", @"Blair School of Music", @"McGugin Center", @"Blakemore House", @"Medical Center"];
+            _stops = @[[VVStop stopWithID:@"264041"], // VUPD
+                       [VVStop stopWithID:@"332298"], // Book Store
+                       [VVStop stopWithID:@"263415"], // Kissam
+                       [VVStop stopWithID:@"238083"], // Terrace Place
+                       [VVStop stopWithID:@"238096"], // Wesley
+                       [VVStop stopWithID:@"263463"], // North
+                       [VVStop stopWithID:@"264091"], // Blair
+                       [VVStop stopWithID:@"264101"], // McGugin
+                       [VVStop stopWithID:@"401204"], // Blakemore
+                       [VVStop stopWithID:@"446923"]]; // VUMC
         }
     }
+    
     return _stops;
 }
 
@@ -51,15 +63,16 @@
     self.tabBarController.tabBar.barStyle = UIBarStyleBlack;
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
+    self.stops = nil;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"StopsToArrivalTimes"]) {
-        ((VVArrivalTimeTableViewController *)segue.destinationViewController).title = ((UITableViewCell *)sender).textLabel.text;
+        NSInteger row = [self.tableView indexPathForCell:sender].row;
+        [segue.destinationViewController setSelectedStop:self.stops[row]];
     } else if ([segue.identifier isEqualToString:@"StopsToOtherStops"]) {
         ((VVStopTableViewController *)segue.destinationViewController).title = @"Other Stops";
     }
@@ -86,16 +99,24 @@
     static NSString *OtherCellIdentifier = @"OtherStops";
     UITableViewCell *cell;
     
+    NSInteger row = indexPath.row;
+    
     if ([self.title isEqualToString:@"Stops"]) {
         // If this is the Stops table view, check to see which cell is being retrieved. If it is not the last one, return
         // a normal stop cell. If it is, return the cell for "Other Stops".
-        cell = (indexPath.row != (self.stops.count - 1)) ? [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath] : [tableView dequeueReusableCellWithIdentifier:OtherCellIdentifier forIndexPath:indexPath];
+        cell = (row != ([self.stops count] - 1)) ? [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath] : [tableView dequeueReusableCellWithIdentifier:OtherCellIdentifier forIndexPath:indexPath];
     } else {
         // If it is not the Stops table view, just return the next cell as normal.
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     }
     
-    cell.textLabel.text = [self.stops objectAtIndex:indexPath.row];
+    if (row != [self.stops count] - 1) {
+        VVStop *stop = self.stops[row];
+        cell.textLabel.text = stop.name;
+    } else {
+        // "Other Stops"
+        cell.textLabel.text = self.stops[row];
+    }
     
     return cell;
 }

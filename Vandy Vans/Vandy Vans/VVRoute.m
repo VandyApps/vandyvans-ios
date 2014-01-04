@@ -11,67 +11,107 @@
 
 @import MapKit;
 
+@interface VVRoute ()
+
+- (NSString *)routeNameForRouteColor:(VVRouteColor)routeColor;
+- (VVRouteColor)routeColorForRouteID:(NSString *)routeID;
+
+@end
+
 @implementation VVRoute
 
-+ (void)annotationsForRouteColor:(VVRouteColor)routeColor withCompletionBlock:(void (^)(NSArray *stops))completionBlock {
-    [[VVSyncromaticsClient sharedClient] fetchStopsForRouteColor:routeColor
-                                             withCompletionBlock:^(NSArray *stops, NSError *error) {
-                                                 if (stops) {
-                                                     completionBlock(stops);
-                                                 } else {
-                                                     NSLog(@"ERROR: %@", error);
-                                                 }
-                                             }];
+#pragma mark - Designated Initializer
+
+- (instancetype)initWithRouteID:(NSString *)routeID {
+    self = [super init];
+    
+    if (self) {
+        _routeColor = [self routeColorForRouteID:routeID];
+        _name = [self routeNameForRouteColor:_routeColor];
+        _routeID = routeID;
+    }
+    
+    return self;
 }
 
-+ (void)polylineForRouteColor:(VVRouteColor)routeColor withCompletionBlock:(void (^)(MKPolyline *polyline))completionBlock {
-    [[VVSyncromaticsClient sharedClient] fetchPolylineForRouteColor:routeColor
-                                                withCompletionBlock:^(MKPolyline *polyline, NSError *error) {
-                                                    if (polyline) {
-                                                        completionBlock(polyline);
-                                                    } else {
-                                                        NSLog(@"ERROR: %@", error);
-                                                    }
-                                                }];
+#pragma mark - Factory Method
+
++ (instancetype)routeWithRouteID:(NSString *)routeID {
+    return [[self alloc] initWithRouteID:routeID];
 }
 
-+ (void)vansForRouteColor:(VVRouteColor)routeColor withCompletionBlock:(void (^)(NSArray *vans))completionBlock {
-    [[VVSyncromaticsClient sharedClient] fetchVansForRouteColor:routeColor
-                                            withCompletionBlock:^(NSArray *vans, NSError *error) {
-                                                if (vans) {
-                                                    completionBlock(vans);
-                                                } else {
-                                                    NSLog(@"ERROR: %@", error);
-                                                }
-                                            }];
+#pragma mark - NSObject
+
+- (BOOL)isEqual:(id)object {
+    return (self.routeColor == [object routeColor]) && [self.name isEqualToString:[object name]] && (self.routeID == [object routeID]);
 }
 
-+ (NSInteger)routeIDForRouteColor:(VVRouteColor)routeColor {
-    NSInteger routeID;
+#pragma mark - Class Methods
+
++ (void)annotationsForRoute:(VVRoute *)route withCompletionBlock:(void (^)(NSArray *stops))completionBlock {
+    [[VVSyncromaticsClient sharedClient] fetchStopsForRoute:route
+                                        withCompletionBlock:^(NSArray *stops, NSError *error) {
+                                            if (stops) {
+                                                completionBlock(stops);
+                                            } else {
+                                                NSLog(@"ERROR: %@", error);
+                                            }
+                                        }];
+}
+
++ (void)polylineForRoute:(VVRoute *)route withCompletionBlock:(void (^)(MKPolyline *polyline))completionBlock {
+    [[VVSyncromaticsClient sharedClient] fetchPolylineForRoute:route
+                                           withCompletionBlock:^(MKPolyline *polyline, NSError *error) {
+                                               if (polyline) {
+                                                   completionBlock(polyline);
+                                               } else {
+                                                   NSLog(@"ERROR: %@", error);
+                                               }
+                                           }];
+}
+
++ (void)vansForRoute:(VVRoute *)route withCompletionBlock:(void (^)(NSArray *vans))completionBlock {
+    [[VVSyncromaticsClient sharedClient] fetchVansForRoute:route
+                                       withCompletionBlock:^(NSArray *vans, NSError *error) {
+                                           if (vans) {
+                                               completionBlock(vans);
+                                           } else {
+                                               NSLog(@"ERROR: %@", error);
+                                           }
+                                       }];
+}
+
+#pragma mark - Helper Methods
+
+- (NSString *)routeNameForRouteColor:(VVRouteColor)routeColor {
+    NSString *routeName;
     
     switch (routeColor) {
         case VVRouteColorBlue:
-            routeID = 745;
+            routeName = @"Blue";
             break;
             
         case VVRouteColorRed:
-            routeID = 746;
+            routeName = @"Red";
             break;
             
-        default: // Green
-            routeID = 749;
+        case VVRouteColorGreen:
+            routeName = @"Green";
+            break;
+            
+        default:
             break;
     }
     
-    return routeID;
+    return routeName;
 }
 
-+ (VVRouteColor)routeColorForRouteName:(NSString *)routeName {
+- (VVRouteColor)routeColorForRouteID:(NSString *)routeID {
     VVRouteColor routeColor;
     
-    if ([routeName isEqualToString:@"Blue"]) {
+    if ([routeID isEqualToString:@"745"]) {
         routeColor = VVRouteColorBlue;
-    } else if ([routeName isEqualToString:@"Red"]) {
+    } else if ([routeID isEqualToString:@"746"]) {
         routeColor = VVRouteColorRed;
     } else { // Green
         routeColor = VVRouteColorGreen;

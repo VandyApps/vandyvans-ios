@@ -9,6 +9,8 @@
 #import "VVSyncromaticsResponseSerializer.h"
 #import "VVArrivalTime.h"
 #import "VVVan.h"
+#import "VVStop.h"
+#import "VVRoute.h"
 
 @import MapKit;
 
@@ -63,6 +65,20 @@
         }
         
         responseObject = [vans copy];
+    } else if ([response.URL.lastPathComponent isEqualToString:@"Arrivals"]) {
+        NSDictionary *arrivalsResponseDictionary = responseObject;
+        NSArray *predictionsResponseArray = arrivalsResponseDictionary[@"Predictions"];
+        
+        NSMutableArray *arrivalTimes = [NSMutableArray arrayWithCapacity:[predictionsResponseArray count]];
+        
+        for (NSDictionary *prediction in predictionsResponseArray) {
+            // Make sure it is accurately getting the Stop Name from the JSON
+            [arrivalTimes addObject:[VVArrivalTime arrivalTimeWithStop:[VVStop stopWithID:[NSString stringWithFormat:@"%@", prediction[@"StopId"]]]
+                                                                 route:[VVRoute routeWithRouteID:[NSString stringWithFormat:@"%@", prediction[@"RouteId"]]]
+                                               andArrivalTimeInMinutes:prediction[@"Minutes"]]];
+        }
+        
+        responseObject = [arrivalTimes copy];
     }
     
     return responseObject;

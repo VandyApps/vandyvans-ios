@@ -8,10 +8,12 @@
 
 #import "VVSyncromaticsClient.h"
 #import "VVSyncromaticsResponseSerializer.h"
+#import "VVRoute.h"
+#import "VVStop.h"
 
 @import MapKit;
 
-static NSString * const kVVSyncromaticsBaseURLString = @"http://vandyvans.com/";
+static NSString * const kVVSyncromaticsBaseURLString = @"http://api.syncromatics.com/";
 
 @implementation VVSyncromaticsClient
 
@@ -57,11 +59,11 @@ static NSString * const kVVSyncromaticsBaseURLString = @"http://vandyvans.com/";
 
 #pragma mark - Instance Methods
 
-- (NSURLSessionDataTask *)fetchStopsForRouteColor:(VVRouteColor)routeColor withCompletionBlock:(void (^)(NSArray *stops, NSError *error))completionBlock {
-    NSString *path = [[[[@"Route" stringByAppendingPathComponent:[NSString stringWithFormat:@"%li", (long)[VVRoute routeIDForRouteColor:routeColor]]] stringByAppendingPathComponent:@"Direction"] stringByAppendingPathComponent:@"0"] stringByAppendingPathComponent:@"Stops"];
+- (NSURLSessionDataTask *)fetchStopsForRoute:(VVRoute *)route withCompletionBlock:(void (^)(NSArray *stops, NSError *error))completionBlock {
+    NSString *path = [[[[@"Route" stringByAppendingPathComponent:[NSString stringWithFormat:@"%lu", (unsigned long)route.routeID]] stringByAppendingPathComponent:@"Direction"] stringByAppendingPathComponent:@"0"] stringByAppendingPathComponent:@"Stops"];
     
     NSURLSessionDataTask *task = [[VVSyncromaticsClient sharedClient] GET:path
-                                                               parameters:@{@"api_key": [VVSyncromaticsClient apiKey]}
+                                                               parameters:@{@"api_key": [self.class apiKey]}
                                                                   success:^(NSURLSessionDataTask *task, id responseObject) {
                                                                       [self respondSuccessfullyWithTask:task
                                                                                          responseObject:responseObject
@@ -75,11 +77,11 @@ static NSString * const kVVSyncromaticsBaseURLString = @"http://vandyvans.com/";
     return task;
 }
 
-- (NSURLSessionDataTask *)fetchPolylineForRouteColor:(VVRouteColor)routeColor withCompletionBlock:(void (^)(MKPolyline *polyline, NSError *error))completionBlock {
-    NSString *path = [[@"Route" stringByAppendingPathComponent:[NSString stringWithFormat:@"%li", (long)[VVRoute routeIDForRouteColor:routeColor]]] stringByAppendingPathComponent:@"Waypoints"];
+- (NSURLSessionDataTask *)fetchPolylineForRoute:(VVRoute *)route withCompletionBlock:(void (^)(MKPolyline *polyline, NSError *error))completionBlock {
+    NSString *path = [[@"Route" stringByAppendingPathComponent:[NSString stringWithFormat:@"%lu", (unsigned long)route.routeID]] stringByAppendingPathComponent:@"Waypoints"];
     
     NSURLSessionDataTask *task = [[VVSyncromaticsClient sharedClient] GET:path
-                                                               parameters:@{@"api_key": [VVSyncromaticsClient apiKey]}
+                                                               parameters:@{@"api_key": [self.class apiKey]}
                                                                   success:^(NSURLSessionDataTask *task, id responseObject) {
                                                                       [self respondSuccessfullyWithTask:task
                                                                                          responseObject:responseObject
@@ -93,11 +95,11 @@ static NSString * const kVVSyncromaticsBaseURLString = @"http://vandyvans.com/";
     return task;
 }
 
-- (NSURLSessionDataTask *)fetchVansForRouteColor:(VVRouteColor)routeColor withCompletionBlock:(void (^)(NSArray *vans, NSError *error))completionBlock {
-    NSString *path = [[@"Route" stringByAppendingPathComponent:[NSString stringWithFormat:@"%li", (long)[VVRoute routeIDForRouteColor:routeColor]]] stringByAppendingPathComponent:@"Vehicles"];
+- (NSURLSessionDataTask *)fetchVansForRoute:(VVRoute *)route withCompletionBlock:(void (^)(NSArray *vans, NSError *error))completionBlock {
+    NSString *path = [[@"Route" stringByAppendingPathComponent:[NSString stringWithFormat:@"%lu", (unsigned long)route.routeID]] stringByAppendingPathComponent:@"Vehicles"];
     
     NSURLSessionDataTask *task = [[VVSyncromaticsClient sharedClient] GET:path
-                                                               parameters:@{@"api_key": [VVSyncromaticsClient apiKey]}
+                                                               parameters:@{@"api_key": [self.class apiKey]}
                                                                   success:^(NSURLSessionDataTask *task, id responseObject) {
                                                                       [self respondSuccessfullyWithTask:task
                                                                                          responseObject:responseObject
@@ -109,6 +111,42 @@ static NSString * const kVVSyncromaticsBaseURLString = @"http://vandyvans.com/";
                                                                   }];
     
     return task;
+}
+
+- (void)fetchArrivalTimesForStop:(VVStop *)stop withCompletionBlock:(void (^)(NSArray *arrivalTimes))completionBlock {
+    NSMutableArray *arrivalTimes = [NSMutableArray array];
+    
+    NSString *stopPath = [[@"Stop" stringByAppendingPathComponent:stop.stopID] stringByAppendingPathComponent:@"Arrivals"];
+    
+    dispatch_group_t group = dispatch_group_create();
+    
+    for (VVRoute *route in stop.routes) {
+        dispatch_group_enter(group);
+        
+        NSString *path = [[@"Route" stringByAppendingPathComponent:route.routeID] stringByAppendingPathComponent:stopPath];
+        [self GET:path
+       parameters:@{@"api_key": [self.class apiKey]}
+          success:^(NSURLSessionDataTask *task, id responseObject) {
+              NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)task.response;
+              
+              if (httpResponse.statusCode == 200) {
+                  [arrivalTimes addObjectsFromArray:responseObject];
+              }
+              
+              dispatch_group_leave(group);
+          } failure:^(NSURLSessionDataTask *task, NSError *error) {
+              dispatch_group_leave(group);
+          }];
+    }
+    
+    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+        if ([arrivalTimes count]) {
+            completionBlock([arrivalTimes sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"arrivalTimeInMinutes"
+                                                                                                    ascending:YES]]]);
+        } else {
+            completionBlock(nil);
+        }
+    });
 }
 
 #pragma mark - Helper Methods

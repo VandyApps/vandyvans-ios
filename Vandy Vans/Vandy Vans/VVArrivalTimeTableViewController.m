@@ -12,11 +12,13 @@
 #import "VVAboutTableViewController.h"
 #import "VVNotificationCell.h"
 #import "VVAlertBuilder.h"
+#import "VVStop.h"
+#import "VVRoute.h"
 
 @interface VVArrivalTimeTableViewController () <UIAlertViewDelegate>
 
 @property (nonatomic) NSUInteger stopID;
-@property (strong, nonatomic) NSOrderedSet *arrivalTimes;
+@property (strong, nonatomic) NSArray *arrivalTimes;
 @property (nonatomic) BOOL vansAreRunning;
 
 @end
@@ -25,62 +27,19 @@
 
 @synthesize arrivalTimes = _arrivalTimes;
 
-- (NSUInteger)stopID {
-    if (!_stopID) {
-        _stopID = [self stopIDForStopName:self.title];
-    }
-    
-    return _stopID;
-}
-
-- (NSUInteger)stopIDForStopName:(NSString *)stopName __attribute__((pure)) {
-    NSUInteger stopID;
-    
-    if ([stopName isEqualToString:@"Branscomb Quad"]) {
-        stopID = 263473;
-    } else if ([stopName isEqualToString:@"Carmichael Towers"]) {
-        stopID = 263470;
-    } else if ([stopName isEqualToString:@"Murray House"]) {
-        stopID = 263454;
-    } else if ([stopName isEqualToString:@"Highland Quad"]) {
-        stopID = 263444;
-    } else if ([stopName isEqualToString:@"Vanderbilt Police Department"]) {
-        stopID = 264041;
-    } else if ([stopName isEqualToString:@"Vanderbilt Book Store"]) {
-        stopID = 332298;
-    } else if ([stopName isEqualToString:@"Kissam Quad"]) {
-        stopID = 263415;
-    } else if ([stopName isEqualToString:@"Terrace Place Garage"]) {
-        stopID = 238083;
-    } else if ([stopName isEqualToString:@"Wesley Place Garage"]) {
-        stopID = 238096;
-    } else if ([stopName isEqualToString:@"North House"]) {
-        stopID = 263463;
-    } else if ([stopName isEqualToString:@"Blair School of Music"]) {
-        stopID = 264091;
-    } else if ([stopName isEqualToString:@"McGugin Center"]) {
-        stopID = 264101;
-    } else if ([stopName isEqualToString:@"Blakemore House"]) {
-        stopID = 401204;
-    } else { // Medical Center
-        stopID = 446923;
-    }
-    
-    return stopID;
-}
-
-- (NSOrderedSet *)arrivalTimes {
+- (NSArray *)arrivalTimes {
     if (!_arrivalTimes) {
-        _arrivalTimes = [[NSOrderedSet alloc] init];
+        _arrivalTimes = [NSArray array];
     }
     
     return _arrivalTimes;
 }
 
-- (void)setArrivalTimes:(NSOrderedSet *)arrivalTimes {
+- (void)setArrivalTimes:(NSArray *)arrivalTimes {
     if (_arrivalTimes != arrivalTimes) {
         _arrivalTimes = arrivalTimes;
-        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0]
+                      withRowAnimation:UITableViewRowAnimationAutomatic];
     }
 }
 
@@ -92,7 +51,9 @@
     self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"VVBackground"]];
     
     // Set up the refresh control and then refresh to load the initial data.
-    [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
+    [self.refreshControl addTarget:self
+                            action:@selector(refresh)
+                  forControlEvents:UIControlEventValueChanged];
     [self refresh];
 }
 
@@ -103,7 +64,8 @@
 }
 
 - (void)refresh {
-    NSDateComponents *currentDateComponents = [[NSCalendar autoupdatingCurrentCalendar] components:NSHourCalendarUnit fromDate:[NSDate date]];
+    NSDateComponents *currentDateComponents = [[NSCalendar autoupdatingCurrentCalendar] components:NSHourCalendarUnit
+                                                                                          fromDate:[NSDate date]];
     
     // If it is between 5 AM and 5 PM, alert the user that the vans are not running.
     if (currentDateComponents.hour >= 5 && currentDateComponents.hour < 17) {
@@ -117,16 +79,17 @@
         [self.refreshControl endRefreshing];
         [vansNotRunningAlertView show];
     } else {
-        [VVArrivalTime arrivalTimesForStopID:self.stopID stopName:self.title withBlock:^(NSArray *arrivalTimesArray) {
-            [self.refreshControl endRefreshing];
-            self.arrivalTimes = [NSOrderedSet orderedSetWithArray:arrivalTimesArray];
-            
-            // If the arrival times set is empty, there are currently no predictions.
-            if (self.arrivalTimes.count == 0) {                
-                UIAlertView *noArrivalPredictionsAlertView = [VVAlertBuilder noArrivalPredictionsAlert];
-                [noArrivalPredictionsAlertView show];
-            }
-        }];
+        [VVArrivalTime arrivalTimesForStop:self.selectedStop
+                                 withBlock:^(NSArray *arrivalTimesArray) {
+                                     [self.refreshControl endRefreshing];
+                                     self.arrivalTimes = arrivalTimesArray;
+                                     
+                                     // If the arrival times set is empty, there are currently no predictions.
+                                     if ([self.arrivalTimes count] == 0) {
+                                         UIAlertView *noArrivalPredictionsAlertView = [VVAlertBuilder noArrivalPredictionsAlert];
+                                         [noArrivalPredictionsAlertView show];
+                                     }
+                                 }];
     }
 }
 
@@ -137,7 +100,9 @@
         if (scheduledLocalNotifications.count != 0) {
             UILocalNotification *scheduledNotification = scheduledLocalNotifications[0];
             
-            UIAlertView *reminderAlreadyExistsAlertView = [VVAlertBuilder reminderAlreadyExistsAlertForStopName:scheduledNotification.userInfo[@"StopName"] newStopName:self.title delegate:self];
+            UIAlertView *reminderAlreadyExistsAlertView = [VVAlertBuilder reminderAlreadyExistsAlertForStopName:scheduledNotification.userInfo[@"StopName"]
+                                                                                                    newStopName:self.title
+                                                                                                       delegate:self];
             [reminderAlreadyExistsAlertView show];
         } else {
             [self findAndScheduleNextArrivalTime];
@@ -157,7 +122,8 @@
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
                     // Create and display an alert to tell the user for which route and stop they have set a notification.
-                    UIAlertView *reminderSetAlertView = [VVAlertBuilder reminderSetAlertWithRouteName:arrivalTime.routeName andStopName:arrivalTime.stopName];
+                    UIAlertView *reminderSetAlertView = [VVAlertBuilder reminderSetAlertWithRouteName:arrivalTime.route.name
+                                                                                          andStopName:arrivalTime.stop.name];
                     [reminderSetAlertView show];
                 });
                 
@@ -175,12 +141,14 @@
     localNotification.fireDate = scheduledNotificationDate;
     localNotification.timeZone = [NSTimeZone defaultTimeZone];
     
-    localNotification.alertBody = [VVAlertBuilder vanArrivingAlertMessageWithRouteName:arrivalTime.routeName andStopName:arrivalTime.stopName];
+    localNotification.alertBody = [VVAlertBuilder vanArrivingAlertMessageWithRouteName:arrivalTime.route.name
+                                                                           andStopName:arrivalTime.stop.name];
     
     localNotification.soundName = UILocalNotificationDefaultSoundName;
     ++localNotification.applicationIconBadgeNumber;
     
-    localNotification.userInfo = @{@"StopName" : arrivalTime.stopName, @"RouteName" : arrivalTime.routeName};
+    localNotification.userInfo = @{@"StopName" : arrivalTime.stop.name,
+                                   @"RouteName" : arrivalTime.route.name};
     
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
 }
@@ -211,7 +179,8 @@
         footerTextLabel.textAlignment = NSTextAlignmentCenter;
         
         NSString *footerText = @"Turn on reminders to be alerted when the next van is close-by. These will be turned off automatically after you get the reminder.";
-        NSDictionary *footerTextAttributes = @{NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleBody], NSForegroundColorAttributeName : [UIColor whiteColor]};
+        NSDictionary *footerTextAttributes = @{NSFontAttributeName : [UIFont preferredFontForTextStyle:UIFontTextStyleBody],
+                                               NSForegroundColorAttributeName : [UIColor whiteColor]};
         footerTextLabel.attributedText = [[NSAttributedString alloc] initWithString:footerText attributes:footerTextAttributes];
         
         [footerView addSubview:footerTextLabel];
@@ -238,23 +207,23 @@
     return numberOfRows;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *ArrivalTimeCellIdentifier = @"ArrivalTimeCell";
     static NSString *PushNotificationCellIdentifier = @"PushNotificationCell";
     UITableViewCell *cell;
     
     if (indexPath.section == 0) {
-        cell = [tableView dequeueReusableCellWithIdentifier:ArrivalTimeCellIdentifier forIndexPath:indexPath];
+        cell = [tableView dequeueReusableCellWithIdentifier:ArrivalTimeCellIdentifier
+                                               forIndexPath:indexPath];
         
         // Configure the cell to display the route name and the number of minutes until arrival.
-        VVArrivalTime *arrivalTime = [self.arrivalTimes objectAtIndex:indexPath.row];
-        cell.textLabel.text = arrivalTime.routeName;
+        VVArrivalTime *arrivalTime = self.arrivalTimes[indexPath.row];
+        cell.textLabel.text = arrivalTime.route.name;
         
         if ([arrivalTime.arrivalTimeInMinutes intValue] == 0) {
             cell.detailTextLabel.text = @"Arriving";
         } else {
-            cell.detailTextLabel.text = [[arrivalTime.arrivalTimeInMinutes stringValue] stringByAppendingString:@" minutes"];
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ minutes", [arrivalTime.arrivalTimeInMinutes stringValue]];
         }
     } else {
         VVNotificationCell *notificationCell = [tableView dequeueReusableCellWithIdentifier:PushNotificationCellIdentifier];
@@ -264,7 +233,8 @@
         if (scheduledLocalNotifications.count != 0) {
             UILocalNotification *scheduledNotification = scheduledLocalNotifications[0];
             if ([scheduledNotification.userInfo[@"StopName"] isEqualToString:self.title]) {
-                [notificationCell.notificationSwitch setOn:YES animated:NO];
+                [notificationCell.notificationSwitch setOn:YES
+                                                  animated:NO];
             }
         }
         
@@ -281,7 +251,8 @@
         [[UIApplication sharedApplication] cancelAllLocalNotifications];
         [self findAndScheduleNextArrivalTime];
         
-        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1]
+                      withRowAnimation:UITableViewRowAnimationNone];
     }
 }
 

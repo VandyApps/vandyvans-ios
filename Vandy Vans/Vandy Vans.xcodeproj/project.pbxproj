@@ -26,6 +26,7 @@
 		2D830BD1175B505D0053462E /* VVBackground-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D830BD0175B505D0053462E /* VVBackground-568h@2x.png */; };
 		2D95BF671855E8D600AA585C /* VVSyncromaticsClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D95BF661855E8D600AA585C /* VVSyncromaticsClient.m */; };
 		2D95BF6A1855ED3700AA585C /* VVSyncromaticsResponseSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D95BF691855ED3700AA585C /* VVSyncromaticsResponseSerializer.m */; };
+		2D977705185829D7000D5F47 /* VVStop.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D977704185829D7000D5F47 /* VVStop.m */; };
 		2D99B7CF1856F79100435675 /* VVVan.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D99B7CE1856F79100435675 /* VVVan.m */; };
 		2DA198AC16AAB8F7008F5CB5 /* VVReportTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA198AB16AAB8F7008F5CB5 /* VVReportTableViewController.m */; };
 		2DA198B016AAC0CC008F5CB5 /* VVAboutTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA198AF16AAC0CC008F5CB5 /* VVAboutTableViewController.m */; };
@@ -81,6 +82,8 @@
 		2D95BF661855E8D600AA585C /* VVSyncromaticsClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVSyncromaticsClient.m; sourceTree = "<group>"; };
 		2D95BF681855ED3700AA585C /* VVSyncromaticsResponseSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVSyncromaticsResponseSerializer.h; sourceTree = "<group>"; };
 		2D95BF691855ED3700AA585C /* VVSyncromaticsResponseSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVSyncromaticsResponseSerializer.m; sourceTree = "<group>"; };
+		2D977703185829D7000D5F47 /* VVStop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVStop.h; sourceTree = "<group>"; };
+		2D977704185829D7000D5F47 /* VVStop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVStop.m; sourceTree = "<group>"; };
 		2D99B7CD1856F79100435675 /* VVVan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVVan.h; sourceTree = "<group>"; };
 		2D99B7CE1856F79100435675 /* VVVan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVVan.m; sourceTree = "<group>"; };
 		2DA198AA16AAB8F7008F5CB5 /* VVReportTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVReportTableViewController.h; sourceTree = "<group>"; };
@@ -218,6 +221,8 @@
 				2D19509F1729392E0071A6EA /* VVRoute.m */,
 				2D99B7CD1856F79100435675 /* VVVan.h */,
 				2D99B7CE1856F79100435675 /* VVVan.m */,
+				2D977703185829D7000D5F47 /* VVStop.h */,
+				2D977704185829D7000D5F47 /* VVStop.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -380,6 +385,7 @@
 				2DBD694B16B548100058EFE4 /* VVReport.m in Sources */,
 				2D99B7CF1856F79100435675 /* VVVan.m in Sources */,
 				2D95BF671855E8D600AA585C /* VVSyncromaticsClient.m in Sources */,
+				2D977705185829D7000D5F47 /* VVStop.m in Sources */,
 				2DC2059616E45591008B3F31 /* VVNotificationCell.m in Sources */,
 				2DAE7C0A16F081370014701E /* VVAlertBuilder.m in Sources */,
 				2D95BF6A1855ED3700AA585C /* VVSyncromaticsResponseSerializer.m in Sources */,

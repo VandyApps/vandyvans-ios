@@ -8,14 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
+@class VVStop;
+@class VVRoute;
+
 @interface VVArrivalTime : NSObject
 
-@property (nonatomic, readonly, copy) NSString *stopName;
-@property (nonatomic, readonly, copy) NSString *routeName;
-@property (nonatomic, readonly) NSNumber *arrivalTimeInMinutes;
+@property (strong, nonatomic, readonly) VVStop *stop;
+@property (strong, nonatomic, readonly) VVRoute *route;
+@property (strong, nonatomic, readonly) NSNumber *arrivalTimeInMinutes;
 
-- (instancetype)initWithStopName:(NSString *)stopName routeName:(NSString *)routeName andArrivalTimeInMinutes:(NSNumber *)arrivalTimeInMinutes;
+- (instancetype)initWithStop:(VVStop *)stop route:(VVRoute *)route andArrivalTimeInMinutes:(NSNumber *)arrivalTimeInMinutes;
 
-+ (void)arrivalTimesForStopID:(NSUInteger)stopID stopName:(NSString *)stopName withBlock:(void (^)(NSArray *arrivalTimesArray))block;
++ (instancetype)arrivalTimeWithStop:(VVStop *)stop route:(VVRoute *)route andArrivalTimeInMinutes:(NSNumber *)arrivalTimeInMinutes;
+
++ (void)arrivalTimesForStop:(VVStop *)stop withBlock:(void (^)(NSArray *arrivalTimesArray))block;
 
 @end

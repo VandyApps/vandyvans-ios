@@ -14,12 +14,12 @@
 @interface VVMapViewController () <MKMapViewDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *vanMapView;
-@property (strong, nonatomic) NSString *routeBeingDisplayed;
-@property (strong, nonatomic) NSOrderedSet *routes;
+@property (strong, nonatomic) VVRoute *routeBeingDisplayed;
+@property (nonatomic, copy) NSOrderedSet *routes;
 
-@property (strong, nonatomic) NSArray *blueAnnotations;
-@property (strong, nonatomic) NSArray *redAnnotations;
-@property (strong, nonatomic) NSArray *greenAnnotations;
+@property (nonatomic, copy) NSArray *blueAnnotations;
+@property (nonatomic, copy) NSArray *redAnnotations;
+@property (nonatomic, copy) NSArray *greenAnnotations;
 
 @end
 
@@ -29,9 +29,9 @@
 
 #pragma mark - Custom Getters
 
-- (NSString *)routeBeingDisplayed {
+- (VVRoute *)routeBeingDisplayed {
     if (!_routeBeingDisplayed) {
-        _routeBeingDisplayed = @"Blue";
+        _routeBeingDisplayed = self.routes[0];
     }
     
     return _routeBeingDisplayed;
@@ -39,7 +39,9 @@
 
 - (NSOrderedSet *)routes {
     if (!_routes) {
-        _routes = [NSOrderedSet orderedSetWithObjects:@"Blue", @"Red", @"Green", nil];
+        _routes = [NSOrderedSet orderedSetWithObjects:[VVRoute routeWithRouteID:@"745"],
+                   [VVRoute routeWithRouteID:@"746"],
+                   [VVRoute routeWithRouteID:@"749"], nil];
     }
     
     return _routes;
@@ -47,13 +49,13 @@
 
 #pragma mark - Custom Setter
 
-- (void)setRouteBeingDisplayed:(NSString *)routeBeingDisplayed {
-    if (_routeBeingDisplayed != routeBeingDisplayed) {
+- (void)setRouteBeingDisplayed:(VVRoute *)routeBeingDisplayed {
+    if (![_routeBeingDisplayed isEqual:routeBeingDisplayed]) {
         _routeBeingDisplayed = routeBeingDisplayed;
         
         /*[self.vanMapView clear];
-        [self dropMarkersForRoute:_routeBeingDisplayed];
-        [self addPolylineToRoute:_routeBeingDisplayed];*/
+         [self dropMarkersForRoute:_routeBeingDisplayed];
+         [self addPolylineToRoute:_routeBeingDisplayed];*/
     }
 }
 
@@ -86,12 +88,12 @@
     switch (sender.selectedSegmentIndex) {
         case 0:
             sender.tintColor = [UIColor blueColor];
-            self.routeBeingDisplayed = @"Blue";
+            self.routeBeingDisplayed = self.routes[0];
             break;
             
         case 1:
             sender.tintColor = [UIColor redColor];
-            self.routeBeingDisplayed = @"Red";
+            self.routeBeingDisplayed = self.routes[1];
             break;
             
         case 2:
@@ -99,7 +101,7 @@
                                                green:189/255.0f
                                                 blue:50/255.0f
                                                alpha:1.0f];
-            self.routeBeingDisplayed = @"Green";
+            self.routeBeingDisplayed = self.routes[2];
             break;
             
         default:
@@ -128,35 +130,38 @@
     polyline.map = self.vanMapView;
         
     [self repositionCamera];
-}*/
+ }*/
 
-- (void)displayAnnotationsForRoute:(NSString *)routeName {
-    [VVRoute annotationsForRouteColor:[VVRoute routeColorForRouteName:routeName]
-                  withCompletionBlock:^(NSArray *stops) {
-                      [self.vanMapView addAnnotations:stops];
-                  }];
+- (void)displayAnnotationsForRoute:(VVRoute *)route {
+    [VVRoute annotationsForRoute:route
+             withCompletionBlock:^(NSArray *stops) {
+                 [self.vanMapView addAnnotations:stops];
+             }];
 }
 
-- (void)displayPolylineForRoute:(NSString *)routeName {
-    [VVRoute polylineForRouteColor:[VVRoute routeColorForRouteName:routeName]
-               withCompletionBlock:^(MKPolyline *polyline) {
-                   [self.vanMapView addOverlay:polyline];
-               }];
+- (void)displayPolylineForRoute:(VVRoute *)route {
+    [VVRoute polylineForRoute:route
+          withCompletionBlock:^(MKPolyline *polyline) {
+              [self.vanMapView addOverlay:polyline];
+              [self.vanMapView setVisibleMapRect:polyline.boundingMapRect
+                                        animated:YES];
+          }];
 }
 
 #pragma mark - Map View Delegate
 
 - (void)mapViewDidFinishLoadingMap:(MKMapView *)mapView {
-    
 }
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay {
     MKOverlayRenderer *renderer;
     
     if ([overlay isKindOfClass:[MKPolyline class]]) {
-        renderer = [[MKPolylineRenderer alloc] initWithPolyline:overlay];
-        ((MKPolylineRenderer *)renderer).strokeColor = [UIColor blueColor];
-        ((MKPolylineRenderer *)renderer).lineWidth = 3.0f;
+        MKPolylineRenderer *polylineRenderer = [[MKPolylineRenderer alloc] initWithPolyline:overlay];
+        polylineRenderer.strokeColor = [UIColor blueColor];
+        polylineRenderer.lineWidth = 3.0f;
+        
+        renderer = polylineRenderer;
     }
     
     return renderer;

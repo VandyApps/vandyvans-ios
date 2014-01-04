@@ -7,9 +7,10 @@
 //
 
 #import "AFHTTPSessionManager.h"
-#import "VVRoute.h"
 
+@class VVRoute;
 @class MKPolyline;
+@class VVStop;
 
 @interface VVSyncromaticsClient : AFHTTPSessionManager
 
@@ -18,10 +19,12 @@
 /** This method gives the API key for accessing Syncromatics's Vandy Vans service. */
 + (NSString *)apiKey;
 
-- (NSURLSessionDataTask *)fetchStopsForRouteColor:(VVRouteColor)routeColor withCompletionBlock:(void (^)(NSArray *stops, NSError *error))completionBlock;
+- (NSURLSessionDataTask *)fetchStopsForRoute:(VVRoute *)route withCompletionBlock:(void (^)(NSArray *stops, NSError *error))completionBlock;
 
-- (NSURLSessionDataTask *)fetchPolylineForRouteColor:(VVRouteColor)routeColor withCompletionBlock:(void (^)(MKPolyline *polyline, NSError *error))completionBlock;
+- (NSURLSessionDataTask *)fetchPolylineForRoute:(VVRoute *)route withCompletionBlock:(void (^)(MKPolyline *polyline, NSError *error))completionBlock;
 
-- (NSURLSessionDataTask *)fetchVansForRouteColor:(VVRouteColor)routeColor withCompletionBlock:(void (^)(NSArray *vans, NSError *error))completionBlock;
+- (NSURLSessionDataTask *)fetchVansForRoute:(VVRoute *)route withCompletionBlock:(void (^)(NSArray *vans, NSError *error))completionBlock;
+
+- (void)fetchArrivalTimesForStop:(VVStop *)stop withCompletionBlock:(void (^)(NSArray *arrivalTimes))completionBlock;
 
 @end

@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class VVStop;
+
 @interface VVArrivalTimeTableViewController : UITableViewController
+
+@property (strong, nonatomic) VVStop *selectedStop;
 
 @end
