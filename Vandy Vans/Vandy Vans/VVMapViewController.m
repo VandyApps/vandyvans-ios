@@ -8,8 +8,11 @@
 
 #import "VVMapViewController.h"
 #import "VVRoute.h"
+#import "VVVan.h"
 
 @import MapKit;
+
+static NSTimeInterval const kUpdateInterval = 6.0;
 
 @interface VVMapViewController () <MKMapViewDelegate>
 
@@ -20,6 +23,9 @@
 @property (nonatomic, copy) NSArray *blueAnnotations;
 @property (nonatomic, copy) NSArray *redAnnotations;
 @property (nonatomic, copy) NSArray *greenAnnotations;
+
+@property (nonatomic, copy) NSArray *vanAnnotations;
+@property (strong, nonatomic) NSTimer *updateTimer;
 
 @end
 
@@ -71,6 +77,8 @@
     
     // Add the appropriate polyline for the given route.
     [self displayPolylineForRoute:self.routeBeingDisplayed];
+    
+    [self displayVansAndScheduleUpdateTimer];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -87,6 +95,8 @@
 #pragma mark - IB Actions
 
 - (IBAction)routeTapped:(UISegmentedControl *)sender {
+    [self.updateTimer invalidate];
+    
     switch (sender.selectedSegmentIndex) {
         case 0:
             self.routeBeingDisplayed = self.routes[0];
@@ -105,6 +115,8 @@
     }
     
     sender.tintColor = [self colorForRoute:self.routeBeingDisplayed];
+    
+    [self displayVansAndScheduleUpdateTimer];
 }
 
 #pragma mark - Helper Methods
@@ -131,6 +143,38 @@
           }];
 }
 
+- (void)displayVansAndScheduleUpdateTimer {
+    [self displayVans];
+    self.updateTimer = [NSTimer scheduledTimerWithTimeInterval:kUpdateInterval
+                                                        target:self
+                                                      selector:@selector(displayVansWithTimer:)
+                                                      userInfo:nil
+                                                       repeats:YES];
+}
+
+- (void)displayVans {
+    [VVRoute vansForRoute:self.routeBeingDisplayed
+      withCompletionBlock:^(NSArray *vans) {
+          NSMutableArray *annotations = [NSMutableArray arrayWithCapacity:[vans count]];
+          
+          for (VVVan *van in vans) {
+              MKPointAnnotation *pointAnnotation = [[MKPointAnnotation alloc] init];
+              pointAnnotation.title = [NSString stringWithFormat:@"%lu%% Full", (unsigned long)van.percentageFull];
+              pointAnnotation.coordinate = van.coordinate;
+              
+              [annotations addObject:pointAnnotation];
+          }
+          
+          [self.vanMapView removeAnnotations:self.vanAnnotations];
+          self.vanAnnotations = [annotations copy];
+          [self.vanMapView addAnnotations:self.vanAnnotations];
+      }];
+}
+
+- (void)displayVansWithTimer:(NSTimer *)timer {
+    [self displayVans];
+}
+
 #pragma mark - Map View Delegate
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay {
@@ -146,6 +190,10 @@
     
     return renderer;
 }
+
+/*- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+    
+}*/
 
 #pragma mark - Helper Method
 
