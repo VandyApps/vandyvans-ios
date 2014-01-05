@@ -10,8 +10,16 @@
 #import "VVSyncromaticsClient.h"
 
 NSString * const kAnnotationsDateKey = @"annotationsDate";
+NSString * const kBlueAnnotationsDateKey = @"blueAnnotationsDateKey";
+NSString * const kRedAnnotationsDateKey = @"redAnnotationsDateKey";
+NSString * const kGreenAnnotationsDateKey = @"greenAnnotationsDateKey";
+
 NSString * const kPolylineDateKey = @"polylineDate";
-NSTimeInterval const kStaleTimeInterval = -14*24*60*60; // 2 weeks ago
+NSString * const kBluePolylineDateKey = @"bluePolylineDateKey";
+NSString * const kRedPolylineDateKey = @"redPolylineDateKey";
+NSString * const kGreenPolylineDateKey = @"greenPolylineDateKey";
+
+static NSTimeInterval const kStaleTimeInterval = -14*24*60*60; // 2 weeks ago
 
 @import MapKit;
 
@@ -19,6 +27,9 @@ NSTimeInterval const kStaleTimeInterval = -14*24*60*60; // 2 weeks ago
 
 - (NSString *)routeNameForRouteColor:(VVRouteColor)routeColor;
 - (VVRouteColor)routeColorForRouteID:(NSString *)routeID;
+
++ (NSString *)annotationsKeyForRouteColor:(VVRouteColor)routeColor;
++ (NSString *)polylineKeyForRouteColor:(VVRouteColor)routeColor;
 
 @end
 
@@ -38,7 +49,7 @@ NSTimeInterval const kStaleTimeInterval = -14*24*60*60; // 2 weeks ago
     return self;
 }
 
-#pragma mark - Factory Method
+#pragma mark - Factory Methods
 
 + (instancetype)routeWithRouteID:(NSString *)routeID {
     return [[self alloc] initWithRouteID:routeID];
@@ -68,8 +79,16 @@ NSTimeInterval const kStaleTimeInterval = -14*24*60*60; // 2 weeks ago
                                                                          contents:stopsData
                                                                        attributes:nil];
                                                     
-                                                    [userDefaults setObject:[NSDate date]
-                                                                     forKey:kAnnotationsDateKey];
+                                                    NSDate *now = [NSDate date];
+                                                    
+                                                    [userDefaults setObject:now
+                                                                     forKey:[self annotationsKeyForRouteColor:route.routeColor]];
+                                                    
+                                                    if (![userDefaults objectForKey:kAnnotationsDateKey]) {
+                                                        [userDefaults setObject:now
+                                                                         forKey:kAnnotationsDateKey];
+                                                    }
+                                                    
                                                     [userDefaults synchronize];
                                                     
                                                     completionBlock(stops);
@@ -99,8 +118,16 @@ NSTimeInterval const kStaleTimeInterval = -14*24*60*60; // 2 weeks ago
                                                                             contents:polylineData
                                                                           attributes:nil];
                                                        
+                                                       NSDate *now = [NSDate date];
+                                                       
                                                        [userDefaults setObject:[NSDate date]
-                                                                        forKey:kPolylineDateKey];
+                                                                        forKey:[self polylineKeyForRouteColor:route.routeColor]];
+                                                       
+                                                       if (![userDefaults objectForKey:kPolylineDateKey]) {
+                                                           [userDefaults setObject:now
+                                                                            forKey:kPolylineDateKey];
+                                                       }
+                                                       
                                                        [userDefaults synchronize];
                                                        
                                                        completionBlock(polyline);
@@ -126,6 +153,50 @@ NSTimeInterval const kStaleTimeInterval = -14*24*60*60; // 2 weeks ago
 }
 
 #pragma mark - Helper Methods
+
++ (NSString *)annotationsKeyForRouteColor:(VVRouteColor)routeColor {
+    NSString *key;
+    
+    switch (routeColor) {
+        case VVRouteColorBlue:
+            key = kBlueAnnotationsDateKey;
+            break;
+            
+        case VVRouteColorRed:
+            key = kRedAnnotationsDateKey;
+            break;
+            
+        case VVRouteColorGreen:
+            key = kGreenAnnotationsDateKey;
+            
+        default:
+            break;
+    }
+    
+    return key;
+}
+
++ (NSString *)polylineKeyForRouteColor:(VVRouteColor)routeColor {
+    NSString *key;
+    
+    switch (routeColor) {
+        case VVRouteColorBlue:
+            key = kBluePolylineDateKey;
+            break;
+            
+        case VVRouteColorRed:
+            key = kRedPolylineDateKey;
+            break;
+            
+        case VVRouteColorGreen:
+            key = kGreenPolylineDateKey;
+            
+        default:
+            break;
+    }
+    
+    return key;
+}
 
 - (NSString *)routeNameForRouteColor:(VVRouteColor)routeColor {
     NSString *routeName;

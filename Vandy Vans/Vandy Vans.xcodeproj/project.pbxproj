@@ -316,6 +316,9 @@
 					2D34C55B162718C400F170CA = {
 						DevelopmentTeam = 7MA825R8KR;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.iOS = {
 								enabled = 1;
 							};

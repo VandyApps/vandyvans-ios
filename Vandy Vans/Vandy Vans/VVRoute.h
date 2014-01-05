@@ -15,7 +15,14 @@ typedef NS_ENUM(NSInteger, VVRouteColor) {
 };
 
 extern NSString * const kAnnotationsDateKey;
+extern NSString * const kBlueAnnotationsDateKey;
+extern NSString * const kRedAnnotationsDateKey;
+extern NSString * const kGreenAnnotationsDateKey;
+
 extern NSString * const kPolylineDateKey;
+extern NSString * const kBluePolylineDateKey;
+extern NSString * const kRedPolylineDateKey;
+extern NSString * const kGreenPolylineDateKey;
 
 @class MKPolyline;
 

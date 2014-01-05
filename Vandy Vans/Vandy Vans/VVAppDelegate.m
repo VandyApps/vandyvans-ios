@@ -11,6 +11,9 @@
 #import "VVArrivalTimeTableViewController.h"
 #import "VVAlertBuilder.h"
 #import "VVAppearanceBuilder.h"
+#import "VVRoute.h"
+
+static NSTimeInterval const kStaleTimeInterval = -14*24*60*60; // 2 weeks ago
 
 @implementation VVAppDelegate
 
@@ -20,6 +23,8 @@
     [VVAppearanceBuilder buildAppearance];
     
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
+    
+    [application setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
     
     return YES;
 }
@@ -63,6 +68,86 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+#pragma mark - Background Fetch
+
+- (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    if ([[userDefaults objectForKey:kAnnotationsDateKey] timeIntervalSinceNow] <= kStaleTimeInterval) {
+        [self updateAnnotationsWithUserDefaults:userDefaults
+                              completionHandler:completionHandler];
+    } else if ([[userDefaults objectForKey:kPolylineDateKey] timeIntervalSinceNow] <= kStaleTimeInterval) {
+        [self updatePolylineWithUserDefaults:userDefaults
+                           completionHandler:completionHandler];
+    } else {
+        completionHandler(UIBackgroundFetchResultNoData);
+    }
+}
+
+#pragma mark - Helper Methods
+
+- (void)updateAnnotationsWithUserDefaults:(NSUserDefaults *)userDefaults completionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    dispatch_group_t group = dispatch_group_create();
+    
+    dispatch_group_enter(group);
+    [VVRoute annotationsForRoute:[VVRoute routeWithRouteID:@"745"]
+             withCompletionBlock:^(NSArray *stops) {
+                 [userDefaults setObject:[NSDate date]
+                                  forKey:kAnnotationsDateKey];
+                 
+                 dispatch_group_leave(group);
+             }];
+    
+    dispatch_group_enter(group);
+    [VVRoute annotationsForRoute:[VVRoute routeWithRouteID:@"746"]
+             withCompletionBlock:^(NSArray *stops) {
+                 dispatch_group_leave(group);
+             }];
+    
+    dispatch_group_enter(group);
+    [VVRoute annotationsForRoute:[VVRoute routeWithRouteID:@"749"]
+             withCompletionBlock:^(NSArray *stops) {
+                 dispatch_group_leave(group);
+             }];
+    
+    dispatch_group_notify(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [userDefaults synchronize];
+        
+        completionHandler(UIBackgroundFetchResultNewData);
+    });
+}
+
+- (void)updatePolylineWithUserDefaults:(NSUserDefaults *)userDefaults completionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    dispatch_group_t group = dispatch_group_create();
+    
+    dispatch_group_enter(group);
+    [VVRoute polylineForRoute:[VVRoute routeWithRouteID:@"745"]
+          withCompletionBlock:^(MKPolyline *polyline) {
+              [userDefaults setObject:[NSDate date]
+                               forKey:kPolylineDateKey];
+              
+              dispatch_group_leave(group);
+          }];
+    
+    dispatch_group_enter(group);
+    [VVRoute polylineForRoute:[VVRoute routeWithRouteID:@"746"]
+          withCompletionBlock:^(MKPolyline *polyline) {
+              dispatch_group_leave(group);
+          }];
+    
+    dispatch_group_enter(group);
+    [VVRoute polylineForRoute:[VVRoute routeWithRouteID:@"749"]
+          withCompletionBlock:^(MKPolyline *polyline) {
+              dispatch_group_leave(group);
+          }];
+    
+    dispatch_group_notify(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [userDefaults synchronize];
+        
+        completionHandler(UIBackgroundFetchResultNewData);
+    });
 }
 
 @end
