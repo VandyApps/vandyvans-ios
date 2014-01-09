@@ -9,6 +9,8 @@
 #import "VVMapViewController.h"
 #import "VVRoute.h"
 #import "VVVan.h"
+#import "VVVanAnnotation.h"
+#import "VVVanAnnotationView.h"
 
 @import MapKit;
 
@@ -158,11 +160,10 @@ static NSTimeInterval const kUpdateInterval = 6.0;
           NSMutableArray *annotations = [NSMutableArray arrayWithCapacity:[vans count]];
           
           for (VVVan *van in vans) {
-              MKPointAnnotation *pointAnnotation = [[MKPointAnnotation alloc] init];
-              pointAnnotation.title = [NSString stringWithFormat:@"%lu%% Full", (unsigned long)van.percentageFull];
-              pointAnnotation.coordinate = van.coordinate;
+              VVVanAnnotation *vanAnnotation = [VVVanAnnotation vanAnnotationWithTitle:[NSString stringWithFormat:@"%lu%% Full", (unsigned long)van.percentageFull]
+                                                                         andCoordinate:van.coordinate];
               
-              [annotations addObject:pointAnnotation];
+              [annotations addObject:vanAnnotation];
           }
           
           [self.vanMapView removeAnnotations:self.vanAnnotations];
@@ -191,9 +192,32 @@ static NSTimeInterval const kUpdateInterval = 6.0;
     return renderer;
 }
 
-/*- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+    static NSString * const VanAnnotationIdentifier = @"vanAnnotation";
+    static NSString * const StopAnnotationIdentifier = @"stopAnnotation";
     
-}*/
+    MKAnnotationView *annotationView;
+    
+    if ([annotation isKindOfClass:[VVVanAnnotation class]]) {
+        annotationView = [self.vanMapView dequeueReusableAnnotationViewWithIdentifier:VanAnnotationIdentifier];
+        
+        if (!annotationView) {
+            annotationView = [[VVVanAnnotationView alloc] initWithAnnotation:annotation
+                                                             reuseIdentifier:VanAnnotationIdentifier];
+        }
+    } else if ([annotation isKindOfClass:[MKPointAnnotation class]]) {
+        annotationView = [self.vanMapView dequeueReusableAnnotationViewWithIdentifier:StopAnnotationIdentifier];
+        
+        if (!annotationView) {
+            annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation
+                                                             reuseIdentifier:StopAnnotationIdentifier];
+        }
+        
+        ((MKPinAnnotationView *)annotationView).animatesDrop = YES;
+    }
+    
+    return annotationView;
+}
 
 #pragma mark - Helper Method
 
