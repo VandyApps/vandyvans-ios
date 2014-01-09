@@ -61,11 +61,11 @@
 }
 
 - (NSAttributedString *)SAMTextViewAttribution {
-    return [self packageAttributionWithPackageName:@"SAMTextView" copyrightLine:@"Copyright (c) 2010-2013 Sam Soffes, http://soff.es"];
+    return [self packageAttributionWithPackageName:@"SAMTextView" copyrightLine:@"Copyright (c) 2010-2014 Sam Soffes, http://soff.es"];
 }
 
 - (NSAttributedString *)SAMCategoriesAttribution {
-    return [self packageAttributionWithPackageName:@"SAMCategories" copyrightLine:@"Copyright (c) 2008-2013 Sam Soffes, http://soff.es"];
+    return [self packageAttributionWithPackageName:@"SAMCategories" copyrightLine:@"Copyright (c) 2008-2014 Sam Soffes, http://soff.es"];
 }
 
 - (NSAttributedString *)SVProgressHUDAttribution {
