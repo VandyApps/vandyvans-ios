@@ -11,7 +11,7 @@
 @implementation VVAlertBuilder
 
 + (NSString *)vanArrivingAlertMessageWithRouteName:(NSString *)routeName andStopName:(NSString *)stopName {
-    return [[[[@"The " stringByAppendingString:routeName] stringByAppendingString:@" Route will be arriving at "] stringByAppendingString:stopName] stringByAppendingString:@" in 2 minutes!"];
+    return [NSString stringWithFormat:@"The %@ Route will be arriving at %@ in 2 minutes!", routeName, stopName];
 }
 
 + (UIAlertView *)vanArrivingAlertWithRouteName:(NSString *)routeName andStopName:(NSString *)stopName {
@@ -22,8 +22,8 @@
                             otherButtonTitles:nil];
 }
 
-+ (UIAlertView *)reminderSetAlertWithRouteName:(NSString *)routeName andStopName:(NSString *)stopName {
-    NSString *reminderSetMessage = [[[[@"You will be reminded when the " stringByAppendingString:routeName] stringByAppendingString:@" Route is 2 minutes away from "] stringByAppendingString:stopName] stringByAppendingString:@"."];
++ (UIAlertView *)reminderSetAlertWithRouteName:(NSString *)routeName andStopName:(NSString *)stopName {\
+    NSString *reminderSetMessage = [NSString stringWithFormat:@"You will be reminded when the %@ Route is 2 minutes away from %@.", routeName, stopName];
     
     return [[UIAlertView alloc] initWithTitle:@"Reminder Set"
                                       message:reminderSetMessage
@@ -33,7 +33,7 @@
 }
 
 + (UIAlertView *)reminderAlreadyExistsAlertForStopName:(NSString *)stopName newStopName:(NSString *)newStopName delegate:(id)delegate {
-    NSString *reminderAlreadyExistsMessage = [[[[@"You already have a reminder set for " stringByAppendingString:stopName] stringByAppendingString:@". Do you want to delete this and replace it with a reminder for "] stringByAppendingString:newStopName] stringByAppendingString:@"?"];
+    NSString *reminderAlreadyExistsMessage = [NSString stringWithFormat:@"You already have a reminder set for %@. Do you want to delete this and replace it with a reminder for %@?", stopName, newStopName];
     
     return [[UIAlertView alloc] initWithTitle:@"Reminder Already Exists"
                                       message:reminderAlreadyExistsMessage
