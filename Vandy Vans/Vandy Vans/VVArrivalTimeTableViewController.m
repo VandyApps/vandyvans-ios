@@ -71,7 +71,7 @@
     if (currentDateComponents.hour >= 5 && currentDateComponents.hour < 17) {
         self.vansAreRunning = NO;
         // If it has just turned 5 AM, clear any cached arrival times and clear the table view.
-        if (self.arrivalTimes.count != 0) {
+        if ([self.arrivalTimes count]) {
             self.arrivalTimes = nil;
         }
         
@@ -85,8 +85,8 @@
                                      self.arrivalTimes = arrivalTimesArray;
                                      
                                      // If the arrival times set is empty, there are currently no predictions.
-                                     if ([self.arrivalTimes count] == 0) {
-                                         UIAlertView *noArrivalPredictionsAlertView = [VVAlertBuilder noArrivalPredictionsAlert];
+                                     if (![self.arrivalTimes count]) {
+                                         UIAlertView *noArrivalPredictionsAlertView = [VVAlertBuilder noArrivalPredictionsAlertWithDelegate:self];
                                          [noArrivalPredictionsAlertView show];
                                      }
                                  }];
@@ -256,7 +256,7 @@
     }
 }
 
-- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+- (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 0) {
         [self.navigationController popViewControllerAnimated:YES];
     }

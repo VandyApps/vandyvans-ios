@@ -20,6 +20,6 @@
 
 + (UIAlertView *)vansNotRunningAlertWithDelegate:(id)delegate;
 
-+ (UIAlertView *)noArrivalPredictionsAlert;
++ (UIAlertView *)noArrivalPredictionsAlertWithDelegate:(id)delegate;
 
 @end
