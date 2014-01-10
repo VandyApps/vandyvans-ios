@@ -23,8 +23,6 @@
 
 @implementation VVReportTableViewController
 
-@synthesize userIsSendingFeedback = _userIsSendingFeedback;
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -44,12 +42,15 @@
 }
 
 - (IBAction)sendPressed:(UIBarButtonItem *)sender {
-    // TODO - This can be changed into an unwind segue as well as be made multithreaded.
+    // TODO - This can be changed into an unwind segue
     if ([self.emailTextField.text isEqualToString:@""] || [self.descriptionTextView.text isEqualToString:@"Description"]) {
         [SVProgressHUD showErrorWithStatus:@"Please fill in the email and description fields."];
     }
     
-    VVReport *report = [[VVReport alloc] initAsBugReport:!self.userIsSendingFeedback withSenderAddress:self.emailTextField.text body:self.descriptionTextView.text andNotification:(self.notifyWhenResolvedTableViewCell.accessoryType == UITableViewCellAccessoryCheckmark)];
+    VVReport *report = [[VVReport alloc] initAsBugReport:!self.userIsSendingFeedback
+                                       withSenderAddress:self.emailTextField.text
+                                                    body:self.descriptionTextView.text
+                                         andNotification:(self.notifyWhenResolvedTableViewCell.accessoryType == UITableViewCellAccessoryCheckmark)];
     [report sendWithBlock:^{
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.navigationController popViewControllerAnimated:YES];
