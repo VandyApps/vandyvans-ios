@@ -92,6 +92,14 @@ static NSTimeInterval const kUpdateInterval = 6.0;
     [super viewWillAppear:animated];
     
     self.tabBarController.tabBar.barStyle = UIBarStyleDefault;
+    
+    if (!self.updateTimer.isValid) {
+        [self displayVansAndScheduleUpdateTimer];
+    }
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [self.updateTimer invalidate];
 }
 
 - (void)didReceiveMemoryWarning {
