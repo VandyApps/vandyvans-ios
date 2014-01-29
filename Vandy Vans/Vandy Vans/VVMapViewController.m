@@ -213,6 +213,7 @@ static NSTimeInterval const kUpdateInterval = 6.0;
                                                              reuseIdentifier:StopAnnotationIdentifier];
         }
         
+        annotationView.canShowCallout = YES;
         ((MKPinAnnotationView *)annotationView).animatesDrop = YES;
     }
     
