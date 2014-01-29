@@ -11,6 +11,7 @@
 #import "VVVan.h"
 #import "VVVanAnnotation.h"
 #import "VVVanAnnotationView.h"
+#import "VVAlertBuilder.h"
 
 @import MapKit;
 
@@ -28,6 +29,8 @@ static NSTimeInterval const kUpdateInterval = 6.0;
 
 @property (nonatomic, copy) NSArray *vanAnnotations;
 @property (strong, nonatomic) NSTimer *updateTimer;
+
+@property (nonatomic) BOOL vansAreRunning;
 
 @end
 
@@ -73,6 +76,8 @@ static NSTimeInterval const kUpdateInterval = 6.0;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.vansAreRunning = YES;
     
     // Drop pins on stops depending on which route is being displayed.
     [self displayAnnotationsForRoute:self.routeBeingDisplayed];
@@ -155,21 +160,36 @@ static NSTimeInterval const kUpdateInterval = 6.0;
 }
 
 - (void)displayVans {
-    [VVRoute vansForRoute:self.routeBeingDisplayed
-      withCompletionBlock:^(NSArray *vans) {
-          NSMutableArray *annotations = [NSMutableArray arrayWithCapacity:[vans count]];
-          
-          for (VVVan *van in vans) {
-              VVVanAnnotation *vanAnnotation = [VVVanAnnotation vanAnnotationWithTitle:[NSString stringWithFormat:@"%lu%% Full", (unsigned long)van.percentageFull]
-                                                                         andCoordinate:van.coordinate];
+    NSDateComponents *currentDateComponents = [[NSCalendar autoupdatingCurrentCalendar] components:NSHourCalendarUnit
+                                                                                          fromDate:[NSDate date]];
+    
+    // If it is between 5 AM and 5 PM, alert the user that the vans are not running.
+    if (currentDateComponents.hour >= 5 && currentDateComponents.hour < 17) {
+        self.vansAreRunning = NO;
+        // If it has just turned 5 AM, clear any cached van annotations and clear the table view.
+        if ([self.vanAnnotations count]) {
+            [self.vanMapView removeAnnotations:self.vanAnnotations];
+            self.vanAnnotations = nil;
+        }
+        
+        [[VVAlertBuilder vansNotRunningAlertWithDelegate:self] show];
+    } else {
+        [VVRoute vansForRoute:self.routeBeingDisplayed
+          withCompletionBlock:^(NSArray *vans) {
+              NSMutableArray *annotations = [NSMutableArray arrayWithCapacity:[vans count]];
               
-              [annotations addObject:vanAnnotation];
-          }
-          
-          [self.vanMapView removeAnnotations:self.vanAnnotations];
-          self.vanAnnotations = [annotations copy];
-          [self.vanMapView addAnnotations:self.vanAnnotations];
-      }];
+              for (VVVan *van in vans) {
+                  VVVanAnnotation *vanAnnotation = [VVVanAnnotation vanAnnotationWithTitle:[NSString stringWithFormat:@"%lu%% Full", (unsigned long)van.percentageFull]
+                                                                             andCoordinate:van.coordinate];
+                  
+                  [annotations addObject:vanAnnotation];
+              }
+              
+              [self.vanMapView removeAnnotations:self.vanAnnotations];
+              self.vanAnnotations = [annotations copy];
+              [self.vanMapView addAnnotations:self.vanAnnotations];
+          }];
+    }
 }
 
 - (void)displayVansWithTimer:(NSTimer *)timer {
