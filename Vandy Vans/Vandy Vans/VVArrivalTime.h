@@ -10,6 +10,7 @@
 
 @class VVStop;
 @class VVRoute;
+@class VVVan;
 
 @interface VVArrivalTime : NSObject
 
@@ -17,9 +18,13 @@
 @property (strong, nonatomic, readonly) VVRoute *route;
 @property (strong, nonatomic, readonly) NSNumber *arrivalTimeInMinutes;
 
-- (instancetype)initWithStop:(VVStop *)stop route:(VVRoute *)route andArrivalTimeInMinutes:(NSNumber *)arrivalTimeInMinutes;
+- (instancetype)initWithStop:(VVStop *)stop
+                       route:(VVRoute *)route
+     andArrivalTimeInMinutes:(NSNumber *)arrivalTimeInMinutes;
 
-+ (instancetype)arrivalTimeWithStop:(VVStop *)stop route:(VVRoute *)route andArrivalTimeInMinutes:(NSNumber *)arrivalTimeInMinutes;
++ (instancetype)arrivalTimeWithStop:(VVStop *)stop
+                              route:(VVRoute *)route
+            andArrivalTimeInMinutes:(NSNumber *)arrivalTimeInMinutes;
 
 + (void)arrivalTimesForStop:(VVStop *)stop withBlock:(void (^)(NSArray *arrivalTimesArray))block;
 

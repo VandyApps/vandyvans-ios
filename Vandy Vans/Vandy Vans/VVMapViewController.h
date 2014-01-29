@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "VVSelectableRoute.h"
 
-@interface VVMapViewController : UIViewController
+@class VVRoute;
+
+@interface VVMapViewController : UIViewController <VVSelectableRoute>
+
+@property (strong, nonatomic) VVRoute *selectedRoute;
 
 @end

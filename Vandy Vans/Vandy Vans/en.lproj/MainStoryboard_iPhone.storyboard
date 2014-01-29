@@ -325,12 +325,12 @@
         <scene sceneID="Fwi-FB-9Ay">
             <objects>
                 <tableViewController id="YGa-rX-jM2" customClass="VVArrivalTimeTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="bIc-7v-ehB">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="bIc-7v-ehB">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ArrivalTimeCell" textLabel="Nkr-Nx-xIf" detailTextLabel="0m8-pz-xdd" style="IBUITableViewCellStyleValue1" id="yBi-Y3-9zd">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ArrivalTimeCell" textLabel="Nkr-Nx-xIf" detailTextLabel="0m8-pz-xdd" style="IBUITableViewCellStyleValue1" id="yBi-Y3-9zd">
                                 <rect key="frame" x="0.0" y="119" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yBi-Y3-9zd" id="ez9-PL-u09">
@@ -353,7 +353,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PushNotificationCell" id="PNN-Ky-Mwz" customClass="VVNotificationCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PushNotificationCell" id="PNN-Ky-Mwz" customClass="VVNotificationCell">
                                 <rect key="frame" x="0.0" y="163" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PNN-Ky-Mwz" id="goQ-CX-fBp">
@@ -452,6 +452,7 @@
                         </segmentedControl>
                     </navigationItem>
                     <connections>
+                        <outlet property="segmentedControl" destination="ZWs-SX-meW" id="2ku-S1-UGN"/>
                         <outlet property="vanMapView" destination="pdl-qE-2be" id="DLx-0D-jce"/>
                     </connections>
                 </viewController>

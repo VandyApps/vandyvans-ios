@@ -11,6 +11,7 @@
 #import <SVProgressHUD/SVProgressHUD.h>
 #import "VVRoute.h"
 #import "VVStop.h"
+#import "VVVan.h"
 
 @implementation VVArrivalTime
 

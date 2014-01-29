@@ -14,6 +14,7 @@
 #import "VVAlertBuilder.h"
 #import "VVStop.h"
 #import "VVRoute.h"
+#import "VVSelectableRoute.h"
 
 @interface VVArrivalTimeTableViewController () <UIAlertViewDelegate>
 
@@ -195,6 +196,23 @@
     }
     
     return footerView;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0) {
+        VVArrivalTime *arrivalTime = self.arrivalTimes[indexPath.row];
+        
+        if (self.tabBarController) {
+            UINavigationController *adjacentNavigationController = (UINavigationController *)self.tabBarController.viewControllers[1];
+            UIViewController *adjacentViewController = [adjacentNavigationController.viewControllers firstObject];
+            
+            if ([adjacentViewController conformsToProtocol:@protocol(VVSelectableRoute)]) {
+                [(id<VVSelectableRoute>)adjacentViewController setSelectedRoute:arrivalTime.route];
+            }
+            
+            self.tabBarController.selectedViewController = adjacentNavigationController;
+        }
+    }
 }
 
 #pragma mark - Table View Data Source

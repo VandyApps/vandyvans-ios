@@ -56,12 +56,14 @@
         NSMutableArray *vans = [NSMutableArray arrayWithCapacity:[vehicleResponseArray count]];
         
         for (NSDictionary *van in vehicleResponseArray) {
+            NSString *vanID = van[@"ID"];
             CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([van[@"Latitude"] doubleValue],
                                                                            [van[@"Longitude"] doubleValue]);
             NSUInteger percentageFull = [van[@"APCPercentage"] integerValue];
             
-            [vans addObject:[VVVan vanWithCoordinate:coordinate
-                                   andPercentageFull:percentageFull]];
+            [vans addObject:[VVVan vanWithVanID:vanID
+                                     coordinate:coordinate
+                              andPercentageFull:percentageFull]];
         }
         
         responseObject = [vans copy];

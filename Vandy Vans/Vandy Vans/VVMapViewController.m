@@ -19,18 +19,17 @@ static NSTimeInterval const kUpdateInterval = 6.0;
 
 @interface VVMapViewController () <MKMapViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
+
 @property (weak, nonatomic) IBOutlet MKMapView *vanMapView;
 @property (strong, nonatomic) VVRoute *routeBeingDisplayed;
 @property (nonatomic, copy) NSOrderedSet *routes;
-
-@property (nonatomic, copy) NSArray *blueAnnotations;
-@property (nonatomic, copy) NSArray *redAnnotations;
-@property (nonatomic, copy) NSArray *greenAnnotations;
 
 @property (nonatomic, copy) NSArray *vanAnnotations;
 @property (strong, nonatomic) NSTimer *updateTimer;
 
 @property (nonatomic) BOOL vansAreRunning;
+@property (nonatomic) BOOL routeIsSelected;
 
 @end
 
@@ -78,6 +77,12 @@ static NSTimeInterval const kUpdateInterval = 6.0;
     [super viewDidLoad];
     
     self.vansAreRunning = YES;
+    self.routeIsSelected = NO;
+    
+    if (self.selectedRoute) {
+        [self selectRoute:self.selectedRoute];
+        self.routeIsSelected = YES;
+    }
     
     // Drop pins on stops depending on which route is being displayed.
     [self displayAnnotationsForRoute:self.routeBeingDisplayed];
@@ -93,6 +98,10 @@ static NSTimeInterval const kUpdateInterval = 6.0;
     
     self.tabBarController.tabBar.barStyle = UIBarStyleDefault;
     
+    if (!self.routeIsSelected && self.selectedRoute) {
+        [self selectRoute:self.selectedRoute];
+    }
+    
     if (!self.updateTimer.isValid) {
         [self displayVansAndScheduleUpdateTimer];
     }
@@ -100,6 +109,8 @@ static NSTimeInterval const kUpdateInterval = 6.0;
 
 - (void)viewWillDisappear:(BOOL)animated {
     [self.updateTimer invalidate];
+    
+    self.routeIsSelected = NO;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -202,6 +213,23 @@ static NSTimeInterval const kUpdateInterval = 6.0;
 
 - (void)displayVansWithTimer:(NSTimer *)timer {
     [self displayVans];
+}
+
+- (void)selectRoute:(VVRoute *)route {
+    NSInteger selectedIndex;
+    
+    if ([route.name isEqualToString:@"Blue"]) {
+        selectedIndex = 0;
+    } else if ([route.name isEqualToString:@"Red"]) {
+        selectedIndex = 1;
+    } else { // Green
+        selectedIndex = 2;
+    }
+    
+    if (self.segmentedControl.selectedSegmentIndex != selectedIndex) {
+        self.segmentedControl.selectedSegmentIndex = selectedIndex;
+        [self routeTapped:self.segmentedControl];
+    }
 }
 
 #pragma mark - Map View Delegate

@@ -12,11 +12,16 @@
 
 @interface VVVan : NSObject
 
+@property (nonatomic, readonly, copy) NSString *vanID;
 @property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
 @property (nonatomic, readonly) NSUInteger percentageFull;
 
-- (instancetype)initWithCoordinate:(CLLocationCoordinate2D)coordinate andPercentageFull:(NSUInteger)percentageFull;
+- (instancetype)initWithVanID:(NSString *)vanID
+                   coordinate:(CLLocationCoordinate2D)coordinate
+            andPercentageFull:(NSUInteger)percentageFull;
 
-+ (instancetype)vanWithCoordinate:(CLLocationCoordinate2D)cooredinate andPercentageFull:(NSUInteger)percentageFull;
++ (instancetype)vanWithVanID:(NSString *)vanID
+                  coordinate:(CLLocationCoordinate2D)coordinate
+           andPercentageFull:(NSUInteger)percentageFull;
 
 @end
