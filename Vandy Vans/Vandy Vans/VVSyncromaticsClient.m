@@ -13,7 +13,7 @@
 
 @import MapKit;
 
-static NSString * const kVVSyncromaticsBaseURLString = @"http://vandyvans.com/";
+static NSString * const kVVSyncromaticsBaseURLString = @"http://api.syncromatics.com/";
 
 @implementation VVSyncromaticsClient
 
