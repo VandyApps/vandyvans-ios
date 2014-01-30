@@ -62,17 +62,17 @@ static NSString * const kVVSyncromaticsBaseURLString = @"http://api.syncromatics
 - (NSURLSessionDataTask *)fetchStopsForRoute:(VVRoute *)route withCompletionBlock:(void (^)(NSArray *stops, NSError *error))completionBlock {
     NSString *path = [[[[@"Route" stringByAppendingPathComponent:route.routeID] stringByAppendingPathComponent:@"Direction"] stringByAppendingPathComponent:@"0"] stringByAppendingPathComponent:@"Stops"];
     
-    NSURLSessionDataTask *task = [[VVSyncromaticsClient sharedClient] GET:path
-                                                               parameters:@{@"api_key": [self.class apiKey]}
-                                                                  success:^(NSURLSessionDataTask *task, id responseObject) {
-                                                                      [self respondSuccessfullyWithTask:task
-                                                                                         responseObject:responseObject
-                                                                                     andCompletionBlock:completionBlock];
-                                                                  } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                                                                      [self respondUnsuccessfullyWithTask:task
-                                                                                                    error:error
-                                                                                       andCompletionBlock:completionBlock];
-                                                                  }];
+    NSURLSessionDataTask *task = [self GET:path
+                                parameters:@{@"api_key": [self.class apiKey]}
+                                   success:^(NSURLSessionDataTask *task, id responseObject) {
+                                       [self respondSuccessfullyWithTask:task
+                                                          responseObject:responseObject
+                                                      andCompletionBlock:completionBlock];
+                                   } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                       [self respondUnsuccessfullyWithTask:task
+                                                                     error:error
+                                                        andCompletionBlock:completionBlock];
+                                   }];
     
     return task;
 }
@@ -80,17 +80,17 @@ static NSString * const kVVSyncromaticsBaseURLString = @"http://api.syncromatics
 - (NSURLSessionDataTask *)fetchPolylineForRoute:(VVRoute *)route withCompletionBlock:(void (^)(MKPolyline *polyline, NSError *error))completionBlock {
     NSString *path = [[@"Route" stringByAppendingPathComponent:route.routeID] stringByAppendingPathComponent:@"Waypoints"];
     
-    NSURLSessionDataTask *task = [[VVSyncromaticsClient sharedClient] GET:path
-                                                               parameters:@{@"api_key": [self.class apiKey]}
-                                                                  success:^(NSURLSessionDataTask *task, id responseObject) {
-                                                                      [self respondSuccessfullyWithTask:task
-                                                                                         responseObject:responseObject
-                                                                                     andCompletionBlock:completionBlock];
-                                                                  } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                                                                      [self respondUnsuccessfullyWithTask:task
-                                                                                                    error:error
-                                                                                       andCompletionBlock:completionBlock];
-                                                                  }];
+    NSURLSessionDataTask *task = [self GET:path
+                                parameters:@{@"api_key": [self.class apiKey]}
+                                   success:^(NSURLSessionDataTask *task, id responseObject) {
+                                       [self respondSuccessfullyWithTask:task
+                                                          responseObject:responseObject
+                                                      andCompletionBlock:completionBlock];
+                                   } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                       [self respondUnsuccessfullyWithTask:task
+                                                                     error:error
+                                                        andCompletionBlock:completionBlock];
+                                   }];
     
     return task;
 }
@@ -98,17 +98,17 @@ static NSString * const kVVSyncromaticsBaseURLString = @"http://api.syncromatics
 - (NSURLSessionDataTask *)fetchVansForRoute:(VVRoute *)route withCompletionBlock:(void (^)(NSArray *vans, NSError *error))completionBlock {
     NSString *path = [[@"Route" stringByAppendingPathComponent:route.routeID] stringByAppendingPathComponent:@"Vehicles"];
     
-    NSURLSessionDataTask *task = [[VVSyncromaticsClient sharedClient] GET:path
-                                                               parameters:@{@"api_key": [self.class apiKey]}
-                                                                  success:^(NSURLSessionDataTask *task, id responseObject) {
-                                                                      [self respondSuccessfullyWithTask:task
-                                                                                         responseObject:responseObject
-                                                                                     andCompletionBlock:completionBlock];
-                                                                  } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                                                                      [self respondUnsuccessfullyWithTask:task
-                                                                                                    error:error
-                                                                                       andCompletionBlock:completionBlock];
-                                                                  }];
+    NSURLSessionDataTask *task = [self GET:path
+                                parameters:@{@"api_key": [self.class apiKey]}
+                                   success:^(NSURLSessionDataTask *task, id responseObject) {
+                                       [self respondSuccessfullyWithTask:task
+                                                          responseObject:responseObject
+                                                      andCompletionBlock:completionBlock];
+                                   } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                       [self respondUnsuccessfullyWithTask:task
+                                                                     error:error
+                                                        andCompletionBlock:completionBlock];
+                                   }];
     
     return task;
 }
