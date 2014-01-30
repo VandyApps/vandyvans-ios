@@ -21,7 +21,9 @@
                                                     data:data
                                                    error:error];
     
-    if ([response.URL.lastPathComponent isEqualToString:@"Waypoints"]) {
+    NSString *lastPathComponent = response.URL.lastPathComponent;
+    
+    if ([lastPathComponent isEqualToString:@"Waypoints"]) {
         NSArray *coordinateResponseArray = responseObject;
         NSUInteger coordinateResponseArrayCount = [coordinateResponseArray count];
         
@@ -35,7 +37,7 @@
         
         responseObject = [MKPolyline polylineWithCoordinates:coordinates
                                                        count:coordinateResponseArrayCount];
-    } else if ([response.URL.lastPathComponent isEqualToString:@"Stops"]) {
+    } else if ([lastPathComponent isEqualToString:@"Stops"]) {
         NSArray *stopResponseArray = responseObject;
         
         NSMutableArray *stops = [NSMutableArray arrayWithCapacity:[stopResponseArray count]];
@@ -50,7 +52,7 @@
         }
         
         responseObject = [stops copy];
-    } else if ([response.URL.lastPathComponent isEqualToString:@"Vehicles"]) {
+    } else if ([lastPathComponent isEqualToString:@"Vehicles"]) {
         NSArray *vehicleResponseArray = responseObject;
         
         NSMutableArray *vans = [NSMutableArray arrayWithCapacity:[vehicleResponseArray count]];
@@ -67,7 +69,7 @@
         }
         
         responseObject = [vans copy];
-    } else if ([response.URL.lastPathComponent isEqualToString:@"Arrivals"]) {
+    } else if ([lastPathComponent isEqualToString:@"Arrivals"]) {
         NSDictionary *arrivalsResponseDictionary = responseObject;
         NSArray *predictionsResponseArray = arrivalsResponseDictionary[@"Predictions"];
         
