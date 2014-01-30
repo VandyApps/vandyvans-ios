@@ -49,11 +49,9 @@
                                             if ([response isEqualToString:@"success"]) {
                                                 dispatch_async(dispatch_get_main_queue(), ^{
                                                     [SVProgressHUD showSuccessWithStatus:@"Report submitted!"];
-                                                });
-                                                
-                                                if (block) {
+                                                    
                                                     block();
-                                                }
+                                                });
                                             } else if ([response isEqualToString:@"invalid email"]) {
                                                 dispatch_async(dispatch_get_main_queue(), ^{
                                                     [SVProgressHUD showErrorWithStatus:@"Invalid email address. Please try again."];

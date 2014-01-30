@@ -52,9 +52,7 @@
                                                     body:self.descriptionTextView.text
                                          andNotification:(self.notifyWhenResolvedTableViewCell.accessoryType == UITableViewCellAccessoryCheckmark)];
     [report sendWithBlock:^{
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.navigationController popViewControllerAnimated:YES];
-        });
+        [self.navigationController popViewControllerAnimated:YES];
     }];
 }
 
