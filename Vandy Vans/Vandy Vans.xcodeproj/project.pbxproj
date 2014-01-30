@@ -48,6 +48,8 @@
 		2DC2059616E45591008B3F31 /* VVNotificationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC2059516E45591008B3F31 /* VVNotificationCell.m */; };
 		2DCA1D6A181E32F8003A85E5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DCA1D69181E32F8003A85E5 /* Images.xcassets */; };
 		2DDDB2F8165DBAA5007077E9 /* VVArrivalTimeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DDDB2F7165DBAA5007077E9 /* VVArrivalTimeTableViewController.m */; };
+		2DFFD398189A4356006B095E /* VVVandyVansClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DFFD397189A4356006B095E /* VVVandyVansClient.m */; };
+		2DFFD39E189A4671006B095E /* VVVandyVansResponseSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DFFD39D189A4671006B095E /* VVVandyVansResponseSerializer.m */; };
 		809D88CC0AAF4B31A477FF7E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA171022C5534BA0B4C4AA79 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -119,6 +121,10 @@
 		2DCA1D69181E32F8003A85E5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2DDDB2F6165DBAA5007077E9 /* VVArrivalTimeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVArrivalTimeTableViewController.h; sourceTree = "<group>"; };
 		2DDDB2F7165DBAA5007077E9 /* VVArrivalTimeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVArrivalTimeTableViewController.m; sourceTree = "<group>"; };
+		2DFFD396189A4356006B095E /* VVVandyVansClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVVandyVansClient.h; sourceTree = "<group>"; };
+		2DFFD397189A4356006B095E /* VVVandyVansClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVVandyVansClient.m; sourceTree = "<group>"; };
+		2DFFD39C189A4671006B095E /* VVVandyVansResponseSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVVandyVansResponseSerializer.h; sourceTree = "<group>"; };
+		2DFFD39D189A4671006B095E /* VVVandyVansResponseSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVVandyVansResponseSerializer.m; sourceTree = "<group>"; };
 		ADCAEF1C8A2C492EB2B3961B /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		BA171022C5534BA0B4C4AA79 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -290,6 +296,10 @@
 				2D95BF661855E8D600AA585C /* VVSyncromaticsClient.m */,
 				2D95BF681855ED3700AA585C /* VVSyncromaticsResponseSerializer.h */,
 				2D95BF691855ED3700AA585C /* VVSyncromaticsResponseSerializer.m */,
+				2DFFD396189A4356006B095E /* VVVandyVansClient.h */,
+				2DFFD397189A4356006B095E /* VVVandyVansClient.m */,
+				2DFFD39C189A4671006B095E /* VVVandyVansResponseSerializer.h */,
+				2DFFD39D189A4671006B095E /* VVVandyVansResponseSerializer.m */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -404,9 +414,11 @@
 				2D34C56D162718C500F170CA /* main.m in Sources */,
 				2D34C571162718C500F170CA /* VVAppDelegate.m in Sources */,
 				2D972BFA187935360019FA1F /* VVVanAnnotation.m in Sources */,
+				2DFFD398189A4356006B095E /* VVVandyVansClient.m in Sources */,
 				2D34C59316271A9100F170CA /* VVStopTableViewController.m in Sources */,
 				2D34C59616271B8600F170CA /* VVMapViewController.m in Sources */,
 				2DDDB2F8165DBAA5007077E9 /* VVArrivalTimeTableViewController.m in Sources */,
+				2DFFD39E189A4671006B095E /* VVVandyVansResponseSerializer.m in Sources */,
 				2D5BE9FF1660A5A000CEFFA3 /* VVArrivalTime.m in Sources */,
 				2DA198AC16AAB8F7008F5CB5 /* VVReportTableViewController.m in Sources */,
 				2DA198B016AAC0CC008F5CB5 /* VVAboutTableViewController.m in Sources */,

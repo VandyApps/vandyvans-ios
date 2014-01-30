@@ -9,7 +9,6 @@
 #import "AFHTTPSessionManager.h"
 
 @class VVRoute;
-@class MKPolyline;
 @class VVStop;
 
 @interface VVSyncromaticsClient : AFHTTPSessionManager
@@ -18,10 +17,6 @@
 
 /** This method gives the API key for accessing Syncromatics's Vandy Vans service. */
 + (NSString *)apiKey;
-
-- (NSURLSessionDataTask *)fetchStopsForRoute:(VVRoute *)route withCompletionBlock:(void (^)(NSArray *stops, NSError *error))completionBlock;
-
-- (NSURLSessionDataTask *)fetchPolylineForRoute:(VVRoute *)route withCompletionBlock:(void (^)(MKPolyline *polyline, NSError *error))completionBlock;
 
 - (NSURLSessionDataTask *)fetchVansForRoute:(VVRoute *)route withCompletionBlock:(void (^)(NSArray *vans, NSError *error))completionBlock;
 

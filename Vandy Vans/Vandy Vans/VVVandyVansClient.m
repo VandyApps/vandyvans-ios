@@ -1,19 +1,20 @@
 //
-//  VVSyncromaticsClient.m
+//  VVVandyVansClient.m
 //  Vandy Vans
 //
-//  Created by Seth Friedman on 12/9/13.
-//  Copyright (c) 2013 VandyMobile. All rights reserved.
+//  Created by Seth Friedman on 1/30/14.
+//  Copyright (c) 2014 VandyMobile. All rights reserved.
 //
 
-#import "VVSyncromaticsClient.h"
-#import "VVSyncromaticsResponseSerializer.h"
+#import "VVVandyVansClient.h"
 #import "VVRoute.h"
-#import "VVStop.h"
+#import "VVVandyVansResponseSerializer.h"
 
-static NSString * const kVVSyncromaticsBaseURLString = @"http://api.syncromatics.com/";
+@import MapKit;
 
-@implementation VVSyncromaticsClient
+static NSString * const kVVVandyVansBaseURLString = @"http://vandyvans.com/";
+
+@implementation VVVandyVansClient
 
 #pragma mark - Designated Initializer
 
@@ -22,7 +23,7 @@ static NSString * const kVVSyncromaticsBaseURLString = @"http://api.syncromatics
              sessionConfiguration:configuration];
     
     if (self) {
-        self.responseSerializer = [VVSyncromaticsResponseSerializer serializer];
+        self.responseSerializer = [VVVandyVansResponseSerializer serializer];
     }
     
     return self;
@@ -31,7 +32,7 @@ static NSString * const kVVSyncromaticsBaseURLString = @"http://api.syncromatics
 #pragma mark - Singleton
 
 + (instancetype)sharedClient {
-    static VVSyncromaticsClient *_sharedClient;
+    static VVVandyVansClient *_sharedClient;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
@@ -42,8 +43,8 @@ static NSString * const kVVSyncromaticsBaseURLString = @"http://api.syncromatics
         
         config.URLCache = cache;
         
-        _sharedClient = [[VVSyncromaticsClient alloc] initWithBaseURL:[NSURL URLWithString:kVVSyncromaticsBaseURLString]
-                                                 sessionConfiguration:config];
+        _sharedClient = [[VVVandyVansClient alloc] initWithBaseURL:[NSURL URLWithString:kVVVandyVansBaseURLString]
+                                              sessionConfiguration:config];
     });
     
     return _sharedClient;
@@ -57,8 +58,8 @@ static NSString * const kVVSyncromaticsBaseURLString = @"http://api.syncromatics
 
 #pragma mark - Instance Methods
 
-- (NSURLSessionDataTask *)fetchVansForRoute:(VVRoute *)route withCompletionBlock:(void (^)(NSArray *vans, NSError *error))completionBlock {
-    NSString *path = [[@"Route" stringByAppendingPathComponent:route.routeID] stringByAppendingPathComponent:@"Vehicles"];
+- (NSURLSessionDataTask *)fetchStopsForRoute:(VVRoute *)route withCompletionBlock:(void (^)(NSArray *stops, NSError *error))completionBlock {
+    NSString *path = [[[[@"Route" stringByAppendingPathComponent:route.routeID] stringByAppendingPathComponent:@"Direction"] stringByAppendingPathComponent:@"0"] stringByAppendingPathComponent:@"Stops"];
     
     NSURLSessionDataTask *task = [self GET:path
                                 parameters:@{@"api_key": [self.class apiKey]}
@@ -75,40 +76,22 @@ static NSString * const kVVSyncromaticsBaseURLString = @"http://api.syncromatics
     return task;
 }
 
-- (void)fetchArrivalTimesForStop:(VVStop *)stop withCompletionBlock:(void (^)(NSArray *arrivalTimes))completionBlock {
-    NSMutableArray *arrivalTimes = [NSMutableArray array];
+- (NSURLSessionDataTask *)fetchPolylineForRoute:(VVRoute *)route withCompletionBlock:(void (^)(MKPolyline *polyline, NSError *error))completionBlock {
+    NSString *path = [[@"Route" stringByAppendingPathComponent:route.routeID] stringByAppendingPathComponent:@"Waypoints"];
     
-    NSString *stopPath = [[@"Stop" stringByAppendingPathComponent:stop.stopID] stringByAppendingPathComponent:@"Arrivals"];
+    NSURLSessionDataTask *task = [self GET:path
+                                parameters:@{@"api_key": [self.class apiKey]}
+                                   success:^(NSURLSessionDataTask *task, id responseObject) {
+                                       [self respondSuccessfullyWithTask:task
+                                                          responseObject:responseObject
+                                                      andCompletionBlock:completionBlock];
+                                   } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                       [self respondUnsuccessfullyWithTask:task
+                                                                     error:error
+                                                        andCompletionBlock:completionBlock];
+                                   }];
     
-    dispatch_group_t group = dispatch_group_create();
-    
-    for (VVRoute *route in stop.routes) {
-        dispatch_group_enter(group);
-        
-        NSString *path = [[@"Route" stringByAppendingPathComponent:route.routeID] stringByAppendingPathComponent:stopPath];
-        [self GET:path
-       parameters:@{@"api_key": [self.class apiKey]}
-          success:^(NSURLSessionDataTask *task, id responseObject) {
-              NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)task.response;
-              
-              if (httpResponse.statusCode == 200) {
-                  [arrivalTimes addObjectsFromArray:responseObject];
-              }
-              
-              dispatch_group_leave(group);
-          } failure:^(NSURLSessionDataTask *task, NSError *error) {
-              dispatch_group_leave(group);
-          }];
-    }
-    
-    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
-        if ([arrivalTimes count]) {
-            completionBlock([arrivalTimes sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"arrivalTimeInMinutes"
-                                                                                                    ascending:YES]]]);
-        } else {
-            completionBlock(nil);
-        }
-    });
+    return task;
 }
 
 #pragma mark - Helper Methods

@@ -7,6 +7,7 @@
 //
 
 #import "VVRoute.h"
+#import "VVVandyVansClient.h"
 #import "VVSyncromaticsClient.h"
 
 NSString * const kAnnotationsDateKey = @"annotationsDate";
@@ -71,31 +72,31 @@ static NSTimeInterval const kStaleTimeInterval = -14*24*60*60; // 2 weeks ago
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
     if (![fileManager fileExistsAtPath:annotationsPath] || ([[userDefaults objectForKey:kAnnotationsDateKey] timeIntervalSinceNow] <= kStaleTimeInterval)) {
-        [[VVSyncromaticsClient sharedClient] fetchStopsForRoute:route
-                                            withCompletionBlock:^(NSArray *stops, NSError *error) {
-                                                if (stops) {
-                                                    NSData *stopsData = [NSKeyedArchiver archivedDataWithRootObject:stops];
-                                                    [fileManager createFileAtPath:annotationsPath
-                                                                         contents:stopsData
-                                                                       attributes:nil];
-                                                    
-                                                    NSDate *now = [NSDate date];
-                                                    
-                                                    [userDefaults setObject:now
-                                                                     forKey:[self annotationsKeyForRouteColor:route.routeColor]];
-                                                    
-                                                    if (![userDefaults objectForKey:kAnnotationsDateKey]) {
-                                                        [userDefaults setObject:now
-                                                                         forKey:kAnnotationsDateKey];
-                                                    }
-                                                    
-                                                    [userDefaults synchronize];
-                                                    
-                                                    completionBlock(stops);
-                                                } else {
-                                                    NSLog(@"ERROR: %@", error);
-                                                }
-                                            }];
+        [[VVVandyVansClient sharedClient] fetchStopsForRoute:route
+                                         withCompletionBlock:^(NSArray *stops, NSError *error) {
+                                             if (stops) {
+                                                 NSData *stopsData = [NSKeyedArchiver archivedDataWithRootObject:stops];
+                                                 [fileManager createFileAtPath:annotationsPath
+                                                                      contents:stopsData
+                                                                    attributes:nil];
+                                                 
+                                                 NSDate *now = [NSDate date];
+                                                 
+                                                 [userDefaults setObject:now
+                                                                  forKey:[self annotationsKeyForRouteColor:route.routeColor]];
+                                                 
+                                                 if (![userDefaults objectForKey:kAnnotationsDateKey]) {
+                                                     [userDefaults setObject:now
+                                                                      forKey:kAnnotationsDateKey];
+                                                 }
+                                                 
+                                                 [userDefaults synchronize];
+                                                 
+                                                 completionBlock(stops);
+                                             } else {
+                                                 NSLog(@"ERROR: %@", error);
+                                             }
+                                         }];
     } else {
         NSArray *annotations = [NSKeyedUnarchiver unarchiveObjectWithFile:annotationsPath];
         completionBlock(annotations);
@@ -110,31 +111,31 @@ static NSTimeInterval const kStaleTimeInterval = -14*24*60*60; // 2 weeks ago
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
     if (![fileManager fileExistsAtPath:polylinePath] || ([[userDefaults objectForKey:kPolylineDateKey] timeIntervalSinceNow] <= kStaleTimeInterval)) {
-        [[VVSyncromaticsClient sharedClient] fetchPolylineForRoute:route
-                                               withCompletionBlock:^(MKPolyline *polyline, NSError *error) {
-                                                   if (polyline) {
-                                                       NSData *polylineData = [NSKeyedArchiver archivedDataWithRootObject:polyline];
-                                                       [fileManager createFileAtPath:polylinePath
-                                                                            contents:polylineData
-                                                                          attributes:nil];
-                                                       
-                                                       NSDate *now = [NSDate date];
-                                                       
-                                                       [userDefaults setObject:[NSDate date]
-                                                                        forKey:[self polylineKeyForRouteColor:route.routeColor]];
-                                                       
-                                                       if (![userDefaults objectForKey:kPolylineDateKey]) {
-                                                           [userDefaults setObject:now
-                                                                            forKey:kPolylineDateKey];
-                                                       }
-                                                       
-                                                       [userDefaults synchronize];
-                                                       
-                                                       completionBlock(polyline);
-                                                   } else {
-                                                       NSLog(@"ERROR: %@", error);
-                                                   }
-                                               }];
+        [[VVVandyVansClient sharedClient] fetchPolylineForRoute:route
+                                            withCompletionBlock:^(MKPolyline *polyline, NSError *error) {
+                                                if (polyline) {
+                                                    NSData *polylineData = [NSKeyedArchiver archivedDataWithRootObject:polyline];
+                                                    [fileManager createFileAtPath:polylinePath
+                                                                         contents:polylineData
+                                                                       attributes:nil];
+                                                    
+                                                    NSDate *now = [NSDate date];
+                                                    
+                                                    [userDefaults setObject:[NSDate date]
+                                                                     forKey:[self polylineKeyForRouteColor:route.routeColor]];
+                                                    
+                                                    if (![userDefaults objectForKey:kPolylineDateKey]) {
+                                                        [userDefaults setObject:now
+                                                                         forKey:kPolylineDateKey];
+                                                    }
+                                                    
+                                                    [userDefaults synchronize];
+                                                    
+                                                    completionBlock(polyline);
+                                                } else {
+                                                    NSLog(@"ERROR: %@", error);
+                                                }
+                                            }];
     } else {
         MKPolyline *polyline = [NSKeyedUnarchiver unarchiveObjectWithFile:polylinePath];
         completionBlock(polyline);

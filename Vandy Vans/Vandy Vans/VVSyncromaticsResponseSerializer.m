@@ -12,8 +12,6 @@
 #import "VVStop.h"
 #import "VVRoute.h"
 
-@import MapKit;
-
 @implementation VVSyncromaticsResponseSerializer
 
 - (id)responseObjectForResponse:(NSURLResponse *)response data:(NSData *)data error:(NSError *__autoreleasing *)error {
@@ -23,36 +21,7 @@
     
     NSString *lastPathComponent = response.URL.lastPathComponent;
     
-    if ([lastPathComponent isEqualToString:@"Waypoints"]) {
-        NSArray *coordinateResponseArray = responseObject;
-        NSUInteger coordinateResponseArrayCount = [coordinateResponseArray count];
-        
-        CLLocationCoordinate2D coordinates[coordinateResponseArrayCount];
-        
-        for (NSUInteger i = 0; i < coordinateResponseArrayCount; ++i) {
-            CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([coordinateResponseArray[i][@"Latitude"] doubleValue],
-                                                                           [coordinateResponseArray[i][@"Longitude"] doubleValue]);
-            coordinates[i] = coordinate;
-        }
-        
-        responseObject = [MKPolyline polylineWithCoordinates:coordinates
-                                                       count:coordinateResponseArrayCount];
-    } else if ([lastPathComponent isEqualToString:@"Stops"]) {
-        NSArray *stopResponseArray = responseObject;
-        
-        NSMutableArray *stops = [NSMutableArray arrayWithCapacity:[stopResponseArray count]];
-        
-        for (NSDictionary *stop in stopResponseArray) {
-            MKPointAnnotation *pointAnnotation = [[MKPointAnnotation alloc] init];
-            pointAnnotation.title = stop[@"Name"];
-            pointAnnotation.coordinate = CLLocationCoordinate2DMake([stop[@"Latitude"] doubleValue],
-                                                                    [stop[@"Longitude"] doubleValue]);
-            
-            [stops addObject:pointAnnotation];
-        }
-        
-        responseObject = [stops copy];
-    } else if ([lastPathComponent isEqualToString:@"Vehicles"]) {
+    if ([lastPathComponent isEqualToString:@"Vehicles"]) {
         NSArray *vehicleResponseArray = responseObject;
         
         NSMutableArray *vans = [NSMutableArray arrayWithCapacity:[vehicleResponseArray count]];
