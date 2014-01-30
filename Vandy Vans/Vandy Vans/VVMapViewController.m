@@ -82,15 +82,15 @@ static NSTimeInterval const kUpdateInterval = 6.0;
     if (self.selectedRoute) {
         [self selectRoute:self.selectedRoute];
         self.routeIsSelected = YES;
+    } else {
+        // Drop pins on stops depending on which route is being displayed.
+        [self displayAnnotationsForRoute:self.routeBeingDisplayed];
+        
+        // Add the appropriate polyline for the given route.
+        [self displayPolylineForRoute:self.routeBeingDisplayed];
+        
+        [self displayVansAndScheduleUpdateTimer];
     }
-    
-    // Drop pins on stops depending on which route is being displayed.
-    [self displayAnnotationsForRoute:self.routeBeingDisplayed];
-    
-    // Add the appropriate polyline for the given route.
-    [self displayPolylineForRoute:self.routeBeingDisplayed];
-    
-    [self displayVansAndScheduleUpdateTimer];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
