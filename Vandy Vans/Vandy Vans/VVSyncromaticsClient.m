@@ -81,6 +81,7 @@ static NSString * const kVVSyncromaticsBaseURLString = @"http://api.syncromatics
     NSString *stopPath = [[@"Stop" stringByAppendingPathComponent:stop.stopID] stringByAppendingPathComponent:@"Arrivals"];
     
     dispatch_group_t group = dispatch_group_create();
+    BOOL __block failure = NO;
     
     for (VVRoute *route in stop.routes) {
         dispatch_group_enter(group);
@@ -97,6 +98,7 @@ static NSString * const kVVSyncromaticsBaseURLString = @"http://api.syncromatics
               
               dispatch_group_leave(group);
           } failure:^(NSURLSessionDataTask *task, NSError *error) {
+              failure = YES;
               dispatch_group_leave(group);
           }];
     }
@@ -106,7 +108,17 @@ static NSString * const kVVSyncromaticsBaseURLString = @"http://api.syncromatics
             completionBlock([arrivalTimes sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"arrivalTimeInMinutes"
                                                                                                     ascending:YES]]]);
         } else {
-            completionBlock(nil);
+            // At some point, the completion block should probably be called regardless with some sort of NSError. This would also make it automatically
+            // go back to the Stops view.
+            if (failure) {
+                [[[UIAlertView alloc] initWithTitle:@"Site Down"
+                                           message:@"We are sorry for the inconvenience, but VandyVans.com is currently down. Please try again later."
+                                          delegate:nil
+                                 cancelButtonTitle:@"OK"
+                                  otherButtonTitles:nil] show];
+            } else {
+                completionBlock(nil);
+            }
         }
     });
 }
