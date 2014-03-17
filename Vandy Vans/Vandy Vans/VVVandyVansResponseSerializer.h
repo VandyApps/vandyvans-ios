@@ -3,7 +3,7 @@
 //  Vandy Vans
 //
 //  Created by Seth Friedman on 1/30/14.
-//  Copyright (c) 2014 VandyMobile. All rights reserved.
+//  Copyright (c) 2014 VandyApps. All rights reserved.
 //
 
 #import "AFURLResponseSerialization.h"

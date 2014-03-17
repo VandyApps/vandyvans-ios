@@ -3,7 +3,7 @@
 //  Vandy Vans
 //
 //  Created by Seth Friedman on 12/10/13.
-//  Copyright (c) 2013 VandyMobile. All rights reserved.
+//  Copyright (c) 2013 VandyApps. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
