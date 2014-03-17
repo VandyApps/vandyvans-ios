@@ -246,10 +246,20 @@
         VVArrivalTime *arrivalTime = self.arrivalTimes[indexPath.row];
         cell.textLabel.text = arrivalTime.route.name;
         
-        if ([arrivalTime.arrivalTimeInMinutes intValue] == 0) {
-            cell.detailTextLabel.text = @"Arriving";
-        } else {
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ minutes", [arrivalTime.arrivalTimeInMinutes stringValue]];
+        NSUInteger minutesInteger = [arrivalTime.arrivalTimeInMinutes integerValue];
+        
+        switch (minutesInteger) {
+            case 0:
+                cell.detailTextLabel.text = @"Arriving";
+                break;
+                
+            case 1:
+                cell.detailTextLabel.text = @"1 minute";
+                break;
+                
+            default:
+                cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ minutes", [arrivalTime.arrivalTimeInMinutes stringValue]];
+                break;
         }
     } else {
         VVNotificationCell *notificationCell = [tableView dequeueReusableCellWithIdentifier:PushNotificationCellIdentifier];
