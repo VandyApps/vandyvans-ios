@@ -8,6 +8,7 @@
 
 #import "VVStop.h"
 #import "VVRoute.h"
+#import "VVStopToRouteDictionary.h"
 
 static NSString * const kStopNamesKey = @"StopNames";
 
@@ -39,7 +40,7 @@ static NSString * const kStopNamesKey = @"StopNames";
     if (self) {
         _name = [self stopNameForStopID:stopID];
         _stopID = stopID;
-        _routes = [self routesForStopName:_name];
+        _routes = [VVStopToRouteDictionary routesForStopName:_name];
     }
     
     return self;
@@ -119,46 +120,6 @@ static NSString * const kStopNamesKey = @"StopNames";
     }
     
     return stopNamesForStopIDs[stopID];
-}
-
-- (NSArray *)routesForStopName:(NSString *)stopName {
-    VVRoute *blueRoute = [VVRoute routeWithRouteID:@"745"];
-    VVRoute *redRoute = [VVRoute routeWithRouteID:@"746"];
-    VVRoute *greenRoute = [VVRoute routeWithRouteID:@"749"];
-    
-    NSArray *routes;
-    
-    if ([stopName isEqualToString:@"Branscomb Quad"]) {
-        routes = @[blueRoute, redRoute, greenRoute];
-    } else if ([stopName isEqualToString:@"Carmichael Towers"]) {
-        routes = @[blueRoute, redRoute, greenRoute];
-    } else if ([stopName isEqualToString:@"Murray House"]) {
-        routes = @[blueRoute, redRoute, greenRoute];
-    } else if ([stopName isEqualToString:@"Highland Quad"]) {
-        routes = @[blueRoute, redRoute, greenRoute];
-    } else if ([stopName isEqualToString:@"Vanderbilt Police Department"]) {
-        routes = @[redRoute, greenRoute];
-    } else if ([stopName isEqualToString:@"Vanderbilt Book Store"]) {
-        routes = @[greenRoute];
-    } else if ([stopName isEqualToString:@"Kissam Quad"]) {
-        routes = @[blueRoute, greenRoute];
-    } else if ([stopName isEqualToString:@"Terrace Place Garage"]) {
-        routes = @[greenRoute];
-    } else if ([stopName isEqualToString:@"Wesley Place Garage"]) {
-        routes = @[greenRoute];
-    } else if ([stopName isEqualToString:@"North House"]) {
-        routes = @[redRoute];
-    } else if ([stopName isEqualToString:@"Blair School of Music"]) {
-        routes = @[greenRoute];
-    } else if ([stopName isEqualToString:@"McGugin Center"]) {
-        routes = @[greenRoute];
-    } else if ([stopName isEqualToString:@"Blakemore House"]) {
-        routes = @[greenRoute];
-    } else { // Medical Center
-        routes = @[redRoute];
-    }
-    
-    return routes;
 }
 
 @end
