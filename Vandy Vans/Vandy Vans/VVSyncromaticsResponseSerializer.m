@@ -10,7 +10,7 @@
 #import "VVArrivalTime.h"
 #import "VVVan.h"
 #import "VVStop.h"
-#import "VVRoute.h"
+#import "VVRouteDictionary.h"
 
 @implementation VVSyncromaticsResponseSerializer
 
@@ -47,7 +47,7 @@
         for (NSDictionary *prediction in predictionsResponseArray) {
             // Make sure it is accurately getting the Stop Name from the JSON
             [arrivalTimes addObject:[VVArrivalTime arrivalTimeWithStop:[VVStop stopWithID:[NSString stringWithFormat:@"%@", prediction[@"StopId"]]]
-                                                                 route:[VVRoute routeWithRouteID:[NSString stringWithFormat:@"%@", prediction[@"RouteId"]]]
+                                                                 route:[VVRouteDictionary routeForIdentifier:[NSString stringWithFormat:@"%@", prediction[@"RouteId"]]]
                                                andArrivalTimeInMinutes:prediction[@"Minutes"]]];
         }
         

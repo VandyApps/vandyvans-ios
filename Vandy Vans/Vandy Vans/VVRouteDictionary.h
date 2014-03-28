@@ -13,6 +13,6 @@
 // Wrapper around 3 singleton VVRoutes
 @interface VVRouteDictionary : NSObject
 
-+ (VVRoute *)routeForName:(NSString *)name;
++ (VVRoute *)routeForIdentifier:(NSString *)identifier;
 
 @end

@@ -15,9 +15,9 @@
     static NSDictionary *_sharedDictionary;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        VVRoute *blueRoute = [VVRouteDictionary routeForName:@"Blue"];
-        VVRoute *redRoute = [VVRouteDictionary routeForName:@"Red"];
-        VVRoute *greenRoute = [VVRouteDictionary routeForName:@"Green"];
+        VVRoute *blueRoute = [VVRouteDictionary routeForIdentifier:@"745"];
+        VVRoute *redRoute = [VVRouteDictionary routeForIdentifier:@"746"];
+        VVRoute *greenRoute = [VVRouteDictionary routeForIdentifier:@"749"];
         
         NSArray *allRoutes = @[blueRoute, redRoute, greenRoute];
         NSArray *blueAndGreenRoutes = @[blueRoute, greenRoute];

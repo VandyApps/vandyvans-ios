@@ -15,16 +15,16 @@
     static NSDictionary *_sharedDictionary;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _sharedDictionary = @{@"Blue": [VVRoute routeWithRouteID:@"745"],
-                              @"Red": [VVRoute routeWithRouteID:@"746"],
-                              @"Green": [VVRoute routeWithRouteID:@"749"]};
+        _sharedDictionary = @{@"745": [VVRoute routeWithRouteID:@"745"],
+                              @"746": [VVRoute routeWithRouteID:@"746"],
+                              @"749": [VVRoute routeWithRouteID:@"749"]};
     });
     
     return _sharedDictionary;
 }
 
-+ (VVRoute *)routeForName:(NSString *)name {
-    return [self sharedDictionary][name];
++ (VVRoute *)routeForIdentifier:(NSString *)identifier {
+    return [self sharedDictionary][identifier];
 }
 
 @end
