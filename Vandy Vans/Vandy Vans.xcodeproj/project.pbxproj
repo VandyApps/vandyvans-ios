@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2D0A6EE6172B131600781754 /* map@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D0A6EE4172B131600781754 /* map@2x.png */; };
-		2D0A6EEA172B135F00781754 /* target@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D0A6EE8172B135F00781754 /* target@2x.png */; };
 		2D1950A01729392E0071A6EA /* VVRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D19509F1729392E0071A6EA /* VVRoute.m */; };
 		2D34C561162718C500F170CA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D34C560162718C400F170CA /* UIKit.framework */; };
 		2D34C563162718C500F170CA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D34C562162718C500F170CA /* Foundation.framework */; };
@@ -54,8 +52,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2D0A6EE4172B131600781754 /* map@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map@2x.png"; sourceTree = "<group>"; };
-		2D0A6EE8172B135F00781754 /* target@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "target@2x.png"; sourceTree = "<group>"; };
 		2D19509E1729392E0071A6EA /* VVRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVRoute.h; sourceTree = "<group>"; };
 		2D19509F1729392E0071A6EA /* VVRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVRoute.m; sourceTree = "<group>"; };
 		2D34C55C162718C400F170CA /* Vandy Vans.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Vandy Vans.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -269,8 +265,6 @@
 				2DB213BD173752A9008CD801 /* Default-568h@2x.png */,
 				2D830BD0175B505D0053462E /* VVBackground-568h@2x.png */,
 				2DBA66F61707E2B6003B3D99 /* VVBackground@2x.png */,
-				2D0A6EE4172B131600781754 /* map@2x.png */,
-				2D0A6EE8172B135F00781754 /* target@2x.png */,
 				2D78910B16998C0900C70302 /* VVSpotlightIcon@2x.png */,
 				2D78910D16998C0900C70302 /* VVAppStoreIcon@2x.png */,
 				2D78910316998B3400C70302 /* VVAppStoreIcon.png */,
@@ -379,8 +373,6 @@
 				2DB1B89E181C6C24001B74D9 /* VVBackgroundFull@2x.png in Resources */,
 				2D78911016998C0900C70302 /* VVAppStoreIcon@2x.png in Resources */,
 				2DBA66F71707E2B6003B3D99 /* VVBackground@2x.png in Resources */,
-				2D0A6EE6172B131600781754 /* map@2x.png in Resources */,
-				2D0A6EEA172B135F00781754 /* target@2x.png in Resources */,
 				2DB213BE173752A9008CD801 /* Default-568h@2x.png in Resources */,
 				2DB213C0173752B3008CD801 /* Default@2x.png in Resources */,
 				2D830BD1175B505D0053462E /* VVBackground-568h@2x.png in Resources */,

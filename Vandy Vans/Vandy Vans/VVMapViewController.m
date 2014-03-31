@@ -79,6 +79,8 @@ static NSTimeInterval const kUpdateInterval = 6.0;
     self.vansAreRunning = YES;
     self.routeIsSelected = NO;
     
+    self.tabBarItem.selectedImage = [UIImage imageNamed:@"map-selected"];
+    
     if (self.selectedRoute) {
         [self selectRoute:self.selectedRoute];
         self.routeIsSelected = YES;
