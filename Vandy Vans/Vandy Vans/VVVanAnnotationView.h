@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 VandyMobile. All rights reserved.
 //
 
-#import <MapKit/MapKit.h>
+@import MapKit;
 
 @interface VVVanAnnotationView : MKAnnotationView
 

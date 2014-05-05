@@ -8,11 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-@import CoreLocation;
+@import MapKit;
 
-@interface VVVan : NSObject
+@interface VVVan : NSObject <MKAnnotation>
 
 @property (nonatomic, readonly, copy) NSString *vanID;
+@property (nonatomic, readonly, copy) NSString *title;
 @property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
 @property (nonatomic, readonly) NSUInteger percentageFull;
 

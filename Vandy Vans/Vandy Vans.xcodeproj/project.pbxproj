@@ -29,7 +29,6 @@
 		2D95BF671855E8D600AA585C /* VVSyncromaticsClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D95BF661855E8D600AA585C /* VVSyncromaticsClient.m */; };
 		2D95BF6A1855ED3700AA585C /* VVSyncromaticsResponseSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D95BF691855ED3700AA585C /* VVSyncromaticsResponseSerializer.m */; };
 		2D972BF71878C0300019FA1F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D972BF61878C0300019FA1F /* MapKit.framework */; };
-		2D972BFA187935360019FA1F /* VVVanAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D972BF9187935360019FA1F /* VVVanAnnotation.m */; };
 		2D972BFD187935C40019FA1F /* VVVanAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D972BFC187935C40019FA1F /* VVVanAnnotationView.m */; };
 		2D977705185829D7000D5F47 /* VVStop.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D977704185829D7000D5F47 /* VVStop.m */; };
 		2D99B7CF1856F79100435675 /* VVVan.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D99B7CE1856F79100435675 /* VVVan.m */; };
@@ -90,8 +89,6 @@
 		2D95BF681855ED3700AA585C /* VVSyncromaticsResponseSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVSyncromaticsResponseSerializer.h; sourceTree = "<group>"; };
 		2D95BF691855ED3700AA585C /* VVSyncromaticsResponseSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVSyncromaticsResponseSerializer.m; sourceTree = "<group>"; };
 		2D972BF61878C0300019FA1F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		2D972BF8187935360019FA1F /* VVVanAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVVanAnnotation.h; sourceTree = "<group>"; };
-		2D972BF9187935360019FA1F /* VVVanAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVVanAnnotation.m; sourceTree = "<group>"; };
 		2D972BFB187935C40019FA1F /* VVVanAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVVanAnnotationView.h; sourceTree = "<group>"; };
 		2D972BFC187935C40019FA1F /* VVVanAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVVanAnnotationView.m; sourceTree = "<group>"; };
 		2D977703185829D7000D5F47 /* VVStop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVStop.h; sourceTree = "<group>"; };
@@ -200,8 +197,6 @@
 				2D972BF41878BF6D0019FA1F /* NSCoding */,
 				2DCA1D69181E32F8003A85E5 /* Images.xcassets */,
 				2D34C567162718C500F170CA /* Supporting Files */,
-				2D972BF8187935360019FA1F /* VVVanAnnotation.h */,
-				2D972BF9187935360019FA1F /* VVVanAnnotation.m */,
 				2DA53C8B1898FB62009AF5A3 /* VVSelectableRoute.h */,
 			);
 			path = "Vandy Vans";
@@ -423,7 +418,6 @@
 			files = (
 				2D34C56D162718C500F170CA /* main.m in Sources */,
 				2D34C571162718C500F170CA /* VVAppDelegate.m in Sources */,
-				2D972BFA187935360019FA1F /* VVVanAnnotation.m in Sources */,
 				2DFFD398189A4356006B095E /* VVVandyVansClient.m in Sources */,
 				2D34C59316271A9100F170CA /* VVStopTableViewController.m in Sources */,
 				2D34C59616271B8600F170CA /* VVMapViewController.m in Sources */,
