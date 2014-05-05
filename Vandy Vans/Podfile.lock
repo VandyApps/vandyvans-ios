@@ -18,18 +18,21 @@ PODS:
   - AFNetworking/UIKit (2.2.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - MCSwipeTableViewCell (2.1.0)
   - SAMCategories (0.4.1)
   - SAMTextView (0.2.1)
   - SVProgressHUD (1.0)
 
 DEPENDENCIES:
   - AFNetworking
+  - MCSwipeTableViewCell
   - SAMCategories
   - SAMTextView
   - SVProgressHUD
 
 SPEC CHECKSUMS:
   AFNetworking: ae513199cca79e9d7af2708ccabe2ed075550c42
+  MCSwipeTableViewCell: 4a26851568843d15340eeca00210c219aa9f76d5
   SAMCategories: 141c86a5bf56165c9232fda04c88b547bc1ad2b9
   SAMTextView: f0dae9662a7cc45e890eb2b24aa1769148ea2933
   SVProgressHUD: 5e10939a296debf5fe5a5895eda9539b8b2114f1

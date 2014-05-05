@@ -15,6 +15,7 @@
 #import "VVStop.h"
 #import "VVRoute.h"
 #import "VVSelectableRoute.h"
+#import <MCSwipeTableViewCell/MCSwipeTableViewCell.h>
 
 @interface VVArrivalTimeTableViewController () <UIAlertViewDelegate>
 
@@ -102,7 +103,7 @@
     }
 }
 
-- (IBAction)notificationSwitchPressed:(UISwitch *)sender {
+/*- (IBAction)notificationSwitchPressed:(UISwitch *)sender {
     if (sender.on) {
         // If there is already a local notification scheduled for another stop, warn the user.
         NSArray *scheduledLocalNotifications = [UIApplication sharedApplication].scheduledLocalNotifications;
@@ -119,9 +120,32 @@
     } else {
         [[UIApplication sharedApplication] cancelAllLocalNotifications];
     }
+}*/
+
+- (void)scheduleReminderForRouteName:(NSString *)routeName andStopName:(NSString *)stopName withNumberOfMinutes:(NSUInteger)numberOfMinutes {
+    NSDate *scheduledNotificationDate = [NSDate dateWithTimeIntervalSinceNow:(numberOfMinutes * 60)];
+    
+    UILocalNotification *localNotification = [[UILocalNotification alloc] init];
+    
+    localNotification.fireDate = scheduledNotificationDate;
+    localNotification.timeZone = [NSTimeZone defaultTimeZone];
+    
+    localNotification.alertBody = [VVAlertBuilder vanArrivingAlertMessageWithRouteName:routeName
+                                                                           andStopName:stopName];
+    
+    localNotification.soundName = UILocalNotificationDefaultSoundName;
+    ++localNotification.applicationIconBadgeNumber;
+    
+    localNotification.userInfo = @{@"StopName" : stopName,
+                                   @"RouteName" : routeName};
+    
+    [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+    
+    [[VVAlertBuilder reminderSetAlertWithRouteName:routeName
+                                      andStopName:stopName] show];
 }
 
-- (void)findAndScheduleNextArrivalTime {
+/*- (void)findAndScheduleNextArrivalTime {
     dispatch_queue_t dispatchQueue = dispatch_queue_create("org.VandyMobile.Vandy-Vans.FindAndScheduleArrivalTime", 0);
     dispatch_async(dispatchQueue, ^{
         [self.arrivalTimes enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
@@ -140,31 +164,11 @@
             }
         }];
     });
-}
-
-- (void)scheduleNotificationWithArrivalTime:(VVArrivalTime *)arrivalTime {
-    NSDate *scheduledNotificationDate = [NSDate dateWithTimeIntervalSinceNow:(([arrivalTime.arrivalTimeInMinutes integerValue] - 2) * 60)];
-    
-    UILocalNotification *localNotification = [[UILocalNotification alloc] init];
-    
-    localNotification.fireDate = scheduledNotificationDate;
-    localNotification.timeZone = [NSTimeZone defaultTimeZone];
-    
-    localNotification.alertBody = [VVAlertBuilder vanArrivingAlertMessageWithRouteName:arrivalTime.route.name
-                                                                           andStopName:arrivalTime.stop.name];
-    
-    localNotification.soundName = UILocalNotificationDefaultSoundName;
-    ++localNotification.applicationIconBadgeNumber;
-    
-    localNotification.userInfo = @{@"StopName" : arrivalTime.stop.name,
-                                   @"RouteName" : arrivalTime.route.name};
-    
-    [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
-}
+}*/
 
 #pragma mark - Table View Delegate
 
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+/*- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     CGFloat footerHeight = 0;
     
     if (section == 1) {
@@ -172,9 +176,9 @@
     }
     
     return footerHeight;
-}
+}*/
 
-- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+/*- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     UIView *footerView;
     
     if (self.vansAreRunning && section == 1) {
@@ -196,7 +200,7 @@
     }
     
     return footerView;
-}
+}*/
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
@@ -217,9 +221,9 @@
 
 #pragma mark - Table View Data Source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+/*- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 2;
-}
+}*/
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSInteger numberOfRows = 0;
@@ -235,10 +239,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *ArrivalTimeCellIdentifier = @"ArrivalTimeCell";
-    static NSString *PushNotificationCellIdentifier = @"PushNotificationCell";
-    UITableViewCell *cell;
+    //static NSString *PushNotificationCellIdentifier = @"PushNotificationCell";
+    MCSwipeTableViewCell *cell;
     
-    if (indexPath.section == 0) {
+    //if (indexPath.section == 0) {
         cell = [tableView dequeueReusableCellWithIdentifier:ArrivalTimeCellIdentifier
                                                forIndexPath:indexPath];
         
@@ -261,7 +265,7 @@
                 cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ minutes", [arrivalTime.arrivalTimeInMinutes stringValue]];
                 break;
         }
-    } else {
+    /*} else {
         VVNotificationCell *notificationCell = [tableView dequeueReusableCellWithIdentifier:PushNotificationCellIdentifier];
         
         // If a local notification has already been scheduled for this stop, turn the switch on.
@@ -275,21 +279,42 @@
         }
         
         cell = notificationCell;
+    }*/
+    
+    UIImageView *remindView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"van"]];
+    UIColor *greenColor = [UIColor greenColor];
+    
+    if (minutesInteger > 1) {
+        [cell setSwipeGestureWithView:remindView
+                                color:greenColor
+                                 mode:MCSwipeTableViewCellModeSwitch
+                                state:MCSwipeTableViewCellState3
+                      completionBlock:^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
+                          [self scheduleReminderForRouteName:cell.textLabel.text
+                                                 andStopName:self.title
+                                         withNumberOfMinutes:2];
+                      }];
+    } else {
+        cell.shouldDrag = NO;
     }
     
     return cell;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 60.0;
+}
+
 #pragma mark - Alert View Delegate
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 1) {
+    /*if (buttonIndex == 1) {
         [[UIApplication sharedApplication] cancelAllLocalNotifications];
         [self findAndScheduleNextArrivalTime];
         
         [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1]
                       withRowAnimation:UITableViewRowAnimationNone];
-    }
+    }*/
 }
 
 - (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex {
