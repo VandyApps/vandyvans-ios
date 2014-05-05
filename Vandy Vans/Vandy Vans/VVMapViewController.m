@@ -9,7 +9,6 @@
 #import "VVMapViewController.h"
 #import "VVRoute.h"
 #import "VVVan.h"
-#import "VVVanAnnotation.h"
 #import "VVVanAnnotationView.h"
 #import "VVAlertBuilder.h"
 
@@ -200,10 +199,7 @@ static NSTimeInterval const kUpdateInterval = 6.0;
               NSMutableArray *annotations = [NSMutableArray arrayWithCapacity:[vans count]];
               
               for (VVVan *van in vans) {
-                  VVVanAnnotation *vanAnnotation = [VVVanAnnotation vanAnnotationWithTitle:[NSString stringWithFormat:@"%lu%% Full", (unsigned long)van.percentageFull]
-                                                                             andCoordinate:van.coordinate];
-                  
-                  [annotations addObject:vanAnnotation];
+                  [annotations addObject:van];
               }
               
               [self.vanMapView removeAnnotations:self.vanAnnotations];
@@ -256,7 +252,7 @@ static NSTimeInterval const kUpdateInterval = 6.0;
     
     MKAnnotationView *annotationView;
     
-    if ([annotation isKindOfClass:[VVVanAnnotation class]]) {
+    if ([annotation isKindOfClass:[VVVan class]]) {
         annotationView = [self.vanMapView dequeueReusableAnnotationViewWithIdentifier:VanAnnotationIdentifier];
         
         if (!annotationView) {

@@ -8,6 +8,12 @@
 
 #import "VVVan.h"
 
+@interface VVVan ()
+
+@property (nonatomic, copy, readwrite) NSString *title;
+
+@end
+
 @implementation VVVan
 
 #pragma mark - Designated Initializer
@@ -30,6 +36,28 @@
     return [[self alloc] initWithVanID:vanID
                             coordinate:coordinate
                           andPercentageFull:percentageFull];
+}
+
+#pragma mark - Custom Getter
+
+- (NSString *)title {
+    if (!_title) {
+        _title = [NSString stringWithFormat:@"%lu%% Full", (unsigned long)self.percentageFull];
+    }
+    
+    return _title;
+}
+
+#pragma mark - NSObject
+
+- (BOOL)isEqual:(id)object {
+    BOOL equal = NO;
+    
+    if ([object isKindOfClass:[self class]]) {
+        equal = (self.coordinate.latitude == [object coordinate].latitude) && (self.coordinate.longitude == [object coordinate].longitude);
+    }
+    
+    return equal;
 }
 
 @end

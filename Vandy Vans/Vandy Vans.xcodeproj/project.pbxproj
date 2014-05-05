@@ -27,7 +27,6 @@
 		2D95BF671855E8D600AA585C /* VVSyncromaticsClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D95BF661855E8D600AA585C /* VVSyncromaticsClient.m */; };
 		2D95BF6A1855ED3700AA585C /* VVSyncromaticsResponseSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D95BF691855ED3700AA585C /* VVSyncromaticsResponseSerializer.m */; };
 		2D972BF71878C0300019FA1F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D972BF61878C0300019FA1F /* MapKit.framework */; };
-		2D972BFA187935360019FA1F /* VVVanAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D972BF9187935360019FA1F /* VVVanAnnotation.m */; };
 		2D972BFD187935C40019FA1F /* VVVanAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D972BFC187935C40019FA1F /* VVVanAnnotationView.m */; };
 		2D977705185829D7000D5F47 /* VVStop.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D977704185829D7000D5F47 /* VVStop.m */; };
 		2D99B7CF1856F79100435675 /* VVVan.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D99B7CE1856F79100435675 /* VVVan.m */; };
@@ -46,6 +45,8 @@
 		2DC2059616E45591008B3F31 /* VVNotificationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC2059516E45591008B3F31 /* VVNotificationCell.m */; };
 		2DCA1D6A181E32F8003A85E5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DCA1D69181E32F8003A85E5 /* Images.xcassets */; };
 		2DDDB2F8165DBAA5007077E9 /* VVArrivalTimeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DDDB2F7165DBAA5007077E9 /* VVArrivalTimeTableViewController.m */; };
+		2DDE9F0718E52EED006981F2 /* VVRouteDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DDE9F0618E52EED006981F2 /* VVRouteDictionary.m */; };
+		2DDE9F0A18E5311F006981F2 /* VVStopToRouteDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DDE9F0918E5311F006981F2 /* VVStopToRouteDictionary.m */; };
 		2DFFD398189A4356006B095E /* VVVandyVansClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DFFD397189A4356006B095E /* VVVandyVansClient.m */; };
 		2DFFD39E189A4671006B095E /* VVVandyVansResponseSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DFFD39D189A4671006B095E /* VVVandyVansResponseSerializer.m */; };
 		809D88CC0AAF4B31A477FF7E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA171022C5534BA0B4C4AA79 /* libPods.a */; };
@@ -84,8 +85,6 @@
 		2D95BF681855ED3700AA585C /* VVSyncromaticsResponseSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVSyncromaticsResponseSerializer.h; sourceTree = "<group>"; };
 		2D95BF691855ED3700AA585C /* VVSyncromaticsResponseSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVSyncromaticsResponseSerializer.m; sourceTree = "<group>"; };
 		2D972BF61878C0300019FA1F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		2D972BF8187935360019FA1F /* VVVanAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVVanAnnotation.h; sourceTree = "<group>"; };
-		2D972BF9187935360019FA1F /* VVVanAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVVanAnnotation.m; sourceTree = "<group>"; };
 		2D972BFB187935C40019FA1F /* VVVanAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVVanAnnotationView.h; sourceTree = "<group>"; };
 		2D972BFC187935C40019FA1F /* VVVanAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVVanAnnotationView.m; sourceTree = "<group>"; };
 		2D977703185829D7000D5F47 /* VVStop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVStop.h; sourceTree = "<group>"; };
@@ -117,6 +116,10 @@
 		2DCA1D69181E32F8003A85E5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2DDDB2F6165DBAA5007077E9 /* VVArrivalTimeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVArrivalTimeTableViewController.h; sourceTree = "<group>"; };
 		2DDDB2F7165DBAA5007077E9 /* VVArrivalTimeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVArrivalTimeTableViewController.m; sourceTree = "<group>"; };
+		2DDE9F0518E52EED006981F2 /* VVRouteDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVRouteDictionary.h; sourceTree = "<group>"; };
+		2DDE9F0618E52EED006981F2 /* VVRouteDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVRouteDictionary.m; sourceTree = "<group>"; };
+		2DDE9F0818E5311F006981F2 /* VVStopToRouteDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVStopToRouteDictionary.h; sourceTree = "<group>"; };
+		2DDE9F0918E5311F006981F2 /* VVStopToRouteDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVStopToRouteDictionary.m; sourceTree = "<group>"; };
 		2DFFD396189A4356006B095E /* VVVandyVansClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVVandyVansClient.h; sourceTree = "<group>"; };
 		2DFFD397189A4356006B095E /* VVVandyVansClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVVandyVansClient.m; sourceTree = "<group>"; };
 		2DFFD39C189A4671006B095E /* VVVandyVansResponseSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVVandyVansResponseSerializer.h; sourceTree = "<group>"; };
@@ -190,8 +193,6 @@
 				2D972BF41878BF6D0019FA1F /* NSCoding */,
 				2DCA1D69181E32F8003A85E5 /* Images.xcassets */,
 				2D34C567162718C500F170CA /* Supporting Files */,
-				2D972BF8187935360019FA1F /* VVVanAnnotation.h */,
-				2D972BF9187935360019FA1F /* VVVanAnnotation.m */,
 				2DA53C8B1898FB62009AF5A3 /* VVSelectableRoute.h */,
 			);
 			path = "Vandy Vans";
@@ -222,6 +223,10 @@
 				2D99B7CE1856F79100435675 /* VVVan.m */,
 				2D977703185829D7000D5F47 /* VVStop.h */,
 				2D977704185829D7000D5F47 /* VVStop.m */,
+				2DDE9F0518E52EED006981F2 /* VVRouteDictionary.h */,
+				2DDE9F0618E52EED006981F2 /* VVRouteDictionary.m */,
+				2DDE9F0818E5311F006981F2 /* VVStopToRouteDictionary.h */,
+				2DDE9F0918E5311F006981F2 /* VVStopToRouteDictionary.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -405,12 +410,12 @@
 			files = (
 				2D34C56D162718C500F170CA /* main.m in Sources */,
 				2D34C571162718C500F170CA /* VVAppDelegate.m in Sources */,
-				2D972BFA187935360019FA1F /* VVVanAnnotation.m in Sources */,
 				2DFFD398189A4356006B095E /* VVVandyVansClient.m in Sources */,
 				2D34C59316271A9100F170CA /* VVStopTableViewController.m in Sources */,
 				2D34C59616271B8600F170CA /* VVMapViewController.m in Sources */,
 				2DDDB2F8165DBAA5007077E9 /* VVArrivalTimeTableViewController.m in Sources */,
 				2DFFD39E189A4671006B095E /* VVVandyVansResponseSerializer.m in Sources */,
+				2DDE9F0A18E5311F006981F2 /* VVStopToRouteDictionary.m in Sources */,
 				2D5BE9FF1660A5A000CEFFA3 /* VVArrivalTime.m in Sources */,
 				2DA198AC16AAB8F7008F5CB5 /* VVReportTableViewController.m in Sources */,
 				2DA198B016AAC0CC008F5CB5 /* VVAboutTableViewController.m in Sources */,
@@ -428,6 +433,7 @@
 				2DB213C517378050008CD801 /* VVAppearanceBuilder.m in Sources */,
 				2D972BFD187935C40019FA1F /* VVVanAnnotationView.m in Sources */,
 				2DADC6DB173889130067B052 /* VVAttributionViewController.m in Sources */,
+				2DDE9F0718E52EED006981F2 /* VVRouteDictionary.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
