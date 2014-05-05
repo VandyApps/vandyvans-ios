@@ -89,10 +89,6 @@
                                                                        attributes:smallerTextAttributes]];
     [footerText appendAttributedString:[[NSAttributedString alloc] initWithString:@"FLETCHER YOUNG\n\n"
                                                                        attributes:nameTextAttributes]];
-    [footerText appendAttributedString:[[NSAttributedString alloc] initWithString:@"SPECIAL THANKS TO:\n"
-                                                                       attributes:smallerTextAttributes]];
-    [footerText appendAttributedString:[[NSAttributedString alloc] initWithString:@"MCARTHUR GILL"
-                                                                       attributes:nameTextAttributes]];
     
     return [footerText copy];
 }
