@@ -15,6 +15,8 @@
 @import MapKit;
 
 static NSTimeInterval const kUpdateInterval = 6.0;
+static NSTimeInterval const kNonHoursUpdateInterval = 15.0;
+
 
 @interface VVMapViewController () <MKMapViewDelegate>
 
@@ -179,20 +181,34 @@ static NSTimeInterval const kUpdateInterval = 6.0;
                                                        repeats:YES];
 }
 
+-(void)scheduleUpdateTimerForNonHours {
+    self.updateTimer = [NSTimer scheduledTimerWithTimeInterval:kNonHoursUpdateInterval
+                                                        target:self
+                                                      selector:@selector(displayVansWithTimer:)
+                                                      userInfo:nil
+                                                       repeats:YES];
+}
+
 - (void)displayVans {
     NSDateComponents *currentDateComponents = [[NSCalendar autoupdatingCurrentCalendar] components:NSHourCalendarUnit
                                                                                           fromDate:[NSDate date]];
     
     // If it is between 5 AM and 5 PM, alert the user that the vans are not running.
     if (currentDateComponents.hour >= 5 && currentDateComponents.hour < 17) {
+        BOOL vansWereRunning = self.vansAreRunning;
         self.vansAreRunning = NO;
         // If it has just turned 5 AM, clear any cached van annotations and clear the table view.
         if ([self.vanAnnotations count]) {
             [self.vanMapView removeAnnotations:self.vanAnnotations];
             self.vanAnnotations = nil;
         }
-        
-        [[VVAlertBuilder vansNotRunningAlertWithDelegate:self] show];
+        if(vansWereRunning)
+            [[VVAlertBuilder vansNotRunningAlertWithDelegate:self] show];
+        if([self.updateTimer timeInterval] != kNonHoursUpdateInterval) {
+            [self.updateTimer invalidate];
+            self.updateTimer = nil;
+            [self scheduleUpdateTimerForNonHours];
+        }
     } else {
         [VVRoute vansForRoute:self.routeBeingDisplayed
           withCompletionBlock:^(NSArray *vans) {
@@ -206,6 +222,11 @@ static NSTimeInterval const kUpdateInterval = 6.0;
               self.vanAnnotations = [annotations copy];
               [self.vanMapView addAnnotations:self.vanAnnotations];
           }];
+        if ([self.updateTimer timeInterval] != kUpdateInterval) {
+            [self.updateTimer invalidate];
+            self.updateTimer = nil;
+            [self displayVansAndScheduleUpdateTimer];
+        }
     }
 }
 
