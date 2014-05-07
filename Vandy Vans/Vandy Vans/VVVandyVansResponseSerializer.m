@@ -20,14 +20,15 @@
     NSString *lastPathComponent = response.URL.lastPathComponent;
     
     if ([lastPathComponent isEqualToString:@"Waypoints"]) {
-        NSArray *coordinateResponseArray = responseObject;
-        NSUInteger coordinateResponseArrayCount = [coordinateResponseArray count];
+        NSArray *coordinateResponseOuterArray = responseObject;
+        NSArray *coordinateResponseInnerArray = [coordinateResponseOuterArray firstObject];
+        NSUInteger coordinateResponseArrayCount = [coordinateResponseInnerArray count];
         
         CLLocationCoordinate2D coordinates[coordinateResponseArrayCount];
         
         for (NSUInteger i = 0; i < coordinateResponseArrayCount; ++i) {
-            CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([coordinateResponseArray[i][@"Latitude"] doubleValue],
-                                                                           [coordinateResponseArray[i][@"Longitude"] doubleValue]);
+            CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([coordinateResponseInnerArray[i][@"Latitude"] doubleValue],
+                                                                           [coordinateResponseInnerArray[i][@"Longitude"] doubleValue]);
             coordinates[i] = coordinate;
         }
         
