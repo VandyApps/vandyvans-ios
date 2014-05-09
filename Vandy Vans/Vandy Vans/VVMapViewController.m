@@ -202,9 +202,9 @@ static NSTimeInterval const kNonHoursUpdateInterval = 15.0;
             [self.vanMapView removeAnnotations:self.vanAnnotations];
             self.vanAnnotations = nil;
         }
-        if(vansWereRunning)
+        if (vansWereRunning)
             [[VVAlertBuilder vansNotRunningAlertWithDelegate:self] show];
-        if([self.updateTimer timeInterval] != kNonHoursUpdateInterval) {
+        if ([self.updateTimer timeInterval] != kNonHoursUpdateInterval) {
             [self.updateTimer invalidate];
             self.updateTimer = nil;
             [self scheduleUpdateTimerForNonHours];
