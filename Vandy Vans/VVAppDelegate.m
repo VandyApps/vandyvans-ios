@@ -92,7 +92,7 @@ static NSTimeInterval const kStaleTimeInterval = -14*24*60*60; // 2 weeks ago
     dispatch_group_t group = dispatch_group_create();
     
     dispatch_group_enter(group);
-    [VVRoute annotationsForRoute:[VVRoute routeWithRouteID:@"745"]
+    [VVRoute annotationsForRoute:[VVRoute routeWithRouteID:kBlackRouteID]
              withCompletionBlock:^(NSArray *stops) {
                  [userDefaults setObject:[NSDate date]
                                   forKey:kAnnotationsDateKey];
@@ -101,13 +101,13 @@ static NSTimeInterval const kStaleTimeInterval = -14*24*60*60; // 2 weeks ago
              }];
     
     dispatch_group_enter(group);
-    [VVRoute annotationsForRoute:[VVRoute routeWithRouteID:@"746"]
+    [VVRoute annotationsForRoute:[VVRoute routeWithRouteID:kRedRouteID]
              withCompletionBlock:^(NSArray *stops) {
                  dispatch_group_leave(group);
              }];
     
     dispatch_group_enter(group);
-    [VVRoute annotationsForRoute:[VVRoute routeWithRouteID:@"749"]
+    [VVRoute annotationsForRoute:[VVRoute routeWithRouteID:kGoldRouteID]
              withCompletionBlock:^(NSArray *stops) {
                  dispatch_group_leave(group);
              }];
@@ -123,7 +123,7 @@ static NSTimeInterval const kStaleTimeInterval = -14*24*60*60; // 2 weeks ago
     dispatch_group_t group = dispatch_group_create();
     
     dispatch_group_enter(group);
-    [VVRoute polylineForRoute:[VVRoute routeWithRouteID:@"745"]
+    [VVRoute polylineForRoute:[VVRoute routeWithRouteID:kBlackRouteID]
           withCompletionBlock:^(MKPolyline *polyline) {
               [userDefaults setObject:[NSDate date]
                                forKey:kPolylineDateKey];
@@ -132,13 +132,13 @@ static NSTimeInterval const kStaleTimeInterval = -14*24*60*60; // 2 weeks ago
           }];
     
     dispatch_group_enter(group);
-    [VVRoute polylineForRoute:[VVRoute routeWithRouteID:@"746"]
+    [VVRoute polylineForRoute:[VVRoute routeWithRouteID:kRedRouteID]
           withCompletionBlock:^(MKPolyline *polyline) {
               dispatch_group_leave(group);
           }];
     
     dispatch_group_enter(group);
-    [VVRoute polylineForRoute:[VVRoute routeWithRouteID:@"749"]
+    [VVRoute polylineForRoute:[VVRoute routeWithRouteID:kGoldRouteID]
           withCompletionBlock:^(MKPolyline *polyline) {
               dispatch_group_leave(group);
           }];

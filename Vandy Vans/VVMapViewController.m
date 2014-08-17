@@ -50,9 +50,9 @@ static NSTimeInterval const kNonHoursUpdateInterval = 15.0;
 
 - (NSOrderedSet *)routes {
     if (!_routes) {
-        _routes = [NSOrderedSet orderedSetWithObjects:[VVRoute routeWithRouteID:@"745"],
-                   [VVRoute routeWithRouteID:@"746"],
-                   [VVRoute routeWithRouteID:@"749"], nil];
+        _routes = [NSOrderedSet orderedSetWithObjects:[VVRoute routeWithRouteID:kBlackRouteID],
+                   [VVRoute routeWithRouteID:kRedRouteID],
+                   [VVRoute routeWithRouteID:kGoldRouteID], nil];
     }
     
     return _routes;
