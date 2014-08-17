@@ -94,28 +94,27 @@ static NSString * const kStopNamesKey = @"StopNames";
 
 - (NSString *)stopNameForStopID:(NSString *)stopID {
     NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
-    NSDictionary *stopNamesForStopIDs = [standardUserDefaults dictionaryForKey:kStopNamesKey];
     
-    if (!stopNamesForStopIDs) {
-        stopNamesForStopIDs = @{@"263473": @"Branscomb Quad",
-                                @"263470": @"Carmichael Towers",
-                                @"263454": @"Murray House",
-                                @"263444": @"Highland Quad",
-                                @"264041": @"Vanderbilt Police Department",
-                                @"332298": @"Vanderbilt Book Store",
-                                @"263415": @"Kissam Quad",
-                                @"238083": @"Terrace Place Garage",
-                                @"238096": @"Wesley Place Garage",
-                                @"263463": @"North House",
-                                @"264091": @"Blair School of Music",
-                                @"264101": @"McGugin Center",
-                                @"401204": @"Blakemore House",
-                                @"446923": @"Medical Center"};
-        
-        [standardUserDefaults setObject:stopNamesForStopIDs
-                                 forKey:kStopNamesKey];
-        [standardUserDefaults synchronize];
-    }
+    NSDictionary *stopNamesForStopIDs = @{@"263473": @"Branscomb Quad",
+                                          @"263470": @"Carmichael Towers",
+                                          @"644903": @"Hank Ingram",
+                                          @"263444": @"Highland Quad",
+                                          @"264041": @"Vanderbilt Police Department",
+                                          @"332298": @"Vanderbilt Book Store",
+                                          @"644872": @"College Halls at Kissam",
+                                          @"644873": @"21st near Terrace Place",
+                                          @"238096": @"Wesley Place Garage",
+                                          @"263463": @"North House",
+                                          @"264091": @"Blair School of Music",
+                                          @"264101": @"McGugin Center",
+                                          @"644874": @"MRB 3"};
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        if ([standardUserDefaults dictionaryForKey:kStopNamesKey]) {
+            [standardUserDefaults removeObjectForKey:kStopNamesKey];
+        }
+    });
     
     return stopNamesForStopIDs[stopID];
 }
