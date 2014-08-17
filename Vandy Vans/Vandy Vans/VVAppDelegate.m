@@ -18,13 +18,13 @@ static NSTimeInterval const kStaleTimeInterval = -14*24*60*60; // 2 weeks ago
 @implementation VVAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
-    
     [VVAppearanceBuilder buildAppearance];
     
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
     
     [application setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
+    
+    [NSTimeZone setDefaultTimeZone:[NSTimeZone timeZoneWithName:@"America/Chicago"]];
     
     return YES;
 }
