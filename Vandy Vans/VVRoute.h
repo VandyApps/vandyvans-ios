@@ -9,10 +9,14 @@
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSInteger, VVRouteColor) {
-    VVRouteColorBlue,
+    VVRouteColorBlack,
     VVRouteColorRed,
-    VVRouteColorGreen
+    VVRouteColorGold
 };
+
+extern NSString * const kBlackRouteID;
+extern NSString * const kRedRouteID;
+extern NSString * const kGoldRouteID;
 
 extern NSString * const kAnnotationsDateKey;
 extern NSString * const kBlueAnnotationsDateKey;

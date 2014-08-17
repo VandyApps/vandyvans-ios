@@ -8,7 +8,11 @@
 
 #import "VVRoute.h"
 #import "VVVandyVansClient.h"
-#import "VVSyncromaticsClient.h"
+#import "VVParseClient.h"
+
+NSString * const kBlackRouteID = @"1857";
+NSString * const kRedRouteID = @"1858";
+NSString * const kGoldRouteID = @"1856";
 
 NSString * const kAnnotationsDateKey = @"annotationsDate";
 NSString * const kBlueAnnotationsDateKey = @"blueAnnotationsDateKey";
@@ -203,16 +207,16 @@ static NSTimeInterval const kStaleTimeInterval = -14*24*60*60; // 2 weeks ago
     NSString *routeName;
     
     switch (routeColor) {
-        case VVRouteColorBlue:
-            routeName = @"Blue";
+        case VVRouteColorBlack:
+            routeName = @"Black";
             break;
             
         case VVRouteColorRed:
             routeName = @"Red";
             break;
             
-        case VVRouteColorGreen:
-            routeName = @"Green";
+        case VVRouteColorGold:
+            routeName = @"Gold";
             break;
             
         default:
@@ -225,12 +229,12 @@ static NSTimeInterval const kStaleTimeInterval = -14*24*60*60; // 2 weeks ago
 - (VVRouteColor)routeColorForRouteID:(NSString *)routeID {
     VVRouteColor routeColor;
     
-    if ([routeID isEqualToString:@"745"]) {
-        routeColor = VVRouteColorBlue;
-    } else if ([routeID isEqualToString:@"746"]) {
+    if ([routeID isEqualToString:kBlackRouteID]) {
+        routeColor = VVRouteColorBlack;
+    } else if ([routeID isEqualToString:kRedRouteID]) {
         routeColor = VVRouteColorRed;
     } else { // Green
-        routeColor = VVRouteColorGreen;
+        routeColor = VVRouteColorGold;
     }
     
     return routeColor;

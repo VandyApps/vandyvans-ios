@@ -15,9 +15,9 @@
     static NSDictionary *_sharedDictionary;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _sharedDictionary = @{@"1857": [VVRoute routeWithRouteID:@"1857"],
-                              @"1858": [VVRoute routeWithRouteID:@"1858"],
-                              @"1856": [VVRoute routeWithRouteID:@"1856"]};
+        _sharedDictionary = @{kBlackRouteID: [VVRoute routeWithRouteID:kBlackRouteID],
+                              kRedRouteID: [VVRoute routeWithRouteID:kRedRouteID],
+                              kGoldRouteID: [VVRoute routeWithRouteID:kGoldRouteID]};
     });
     
     return _sharedDictionary;
