@@ -8,6 +8,6 @@
 
 #import "AFURLResponseSerialization.h"
 
-@interface VVSyncromaticsResponseSerializer : AFJSONResponseSerializer
+@interface VVParseResponseSerializer : AFJSONResponseSerializer
 
 @end

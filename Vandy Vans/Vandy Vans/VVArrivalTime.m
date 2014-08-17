@@ -7,7 +7,7 @@
 //
 
 #import "VVArrivalTime.h"
-#import "VVSyncromaticsClient.h"
+#import "VVParseClient.h"
 #import <SVProgressHUD/SVProgressHUD.h>
 #import "VVRoute.h"
 #import "VVStop.h"
@@ -69,8 +69,8 @@
 }
 
 + (void)arrivalTimesForStop:(VVStop *)stop withBlock:(void (^)(NSArray *))block {
-    [[VVSyncromaticsClient sharedClient] fetchArrivalTimesForStop:stop
-                                              withCompletionBlock:block];
+    [[VVParseClient sharedClient] fetchArrivalTimesForStop:stop
+                                       withCompletionBlock:block];
 }
 
 @end

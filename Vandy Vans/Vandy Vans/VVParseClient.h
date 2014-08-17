@@ -11,7 +11,7 @@
 @class VVRoute;
 @class VVStop;
 
-@interface VVSyncromaticsClient : AFHTTPSessionManager
+@interface VVParseClient : AFHTTPSessionManager
 
 + (instancetype)sharedClient;
 

@@ -6,13 +6,13 @@
 //  Copyright (c) 2013 VandyApps. All rights reserved.
 //
 
-#import "VVSyncromaticsResponseSerializer.h"
+#import "VVParseResponseSerializer.h"
 #import "VVArrivalTime.h"
 #import "VVVan.h"
 #import "VVStop.h"
 #import "VVRouteDictionary.h"
 
-@implementation VVSyncromaticsResponseSerializer
+@implementation VVParseResponseSerializer
 
 - (id)responseObjectForResponse:(NSURLResponse *)response data:(NSData *)data error:(NSError *__autoreleasing *)error {
     id responseObject = [super responseObjectForResponse:response
@@ -38,17 +38,17 @@
         }
         
         responseObject = [vans copy];
-    } else if ([lastPathComponent isEqualToString:@"Arrivals"]) {
-        NSDictionary *arrivalsResponseDictionary = responseObject;
-        NSArray *predictionsResponseArray = arrivalsResponseDictionary[@"Predictions"];
+    } else if ([lastPathComponent isEqualToString:@"arrivalTimes"]) {
+        NSDictionary *responseDictionary = responseObject;
+        NSArray *arrivalTimesResponseArray = responseDictionary[@"result"];
         
-        NSMutableArray *arrivalTimes = [NSMutableArray arrayWithCapacity:[predictionsResponseArray count]];
+        NSMutableArray *arrivalTimes = [NSMutableArray arrayWithCapacity:[arrivalTimesResponseArray count]];
         
-        for (NSDictionary *prediction in predictionsResponseArray) {
+        for (NSDictionary *arrivalTime in arrivalTimesResponseArray) {
             // Make sure it is accurately getting the Stop Name from the JSON
-            [arrivalTimes addObject:[VVArrivalTime arrivalTimeWithStop:[VVStop stopWithID:[NSString stringWithFormat:@"%@", prediction[@"StopId"]]]
-                                                                 route:[VVRouteDictionary routeForIdentifier:[NSString stringWithFormat:@"%@", prediction[@"RouteId"]]]
-                                               andArrivalTimeInMinutes:prediction[@"Minutes"]]];
+            [arrivalTimes addObject:[VVArrivalTime arrivalTimeWithStop:[VVStop stopWithID:[NSString stringWithFormat:@"%@", arrivalTime[@"stopID"]]]
+                                                                 route:[VVRouteDictionary routeForIdentifier:[NSString stringWithFormat:@"%@", arrivalTime[@"routeID"]]]
+                                               andArrivalTimeInMinutes:arrivalTime[@"minutes"]]];
         }
         
         responseObject = [arrivalTimes copy];

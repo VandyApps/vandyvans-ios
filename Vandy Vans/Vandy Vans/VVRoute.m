@@ -143,7 +143,7 @@ static NSTimeInterval const kStaleTimeInterval = -14*24*60*60; // 2 weeks ago
 }
 
 + (void)vansForRoute:(VVRoute *)route withCompletionBlock:(void (^)(NSArray *vans))completionBlock {
-    [[VVSyncromaticsClient sharedClient] fetchVansForRoute:route
+    [[VVParseClient sharedClient] fetchVansForRoute:route
                                        withCompletionBlock:^(NSArray *vans, NSError *error) {
                                            if (vans) {
                                                completionBlock(vans);
