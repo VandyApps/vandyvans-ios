@@ -183,8 +183,6 @@
 				2D4D0098168E5A6E00F0BF67 /* MainStoryboard_iPhone.storyboard */,
 				2DB213C31737804F008CD801 /* VVAppearanceBuilder.h */,
 				2DB213C417378050008CD801 /* VVAppearanceBuilder.m */,
-				2DBD694616B5272B0058EFE4 /* VVVandyMobileAPIClient.h */,
-				2DBD694716B5272B0058EFE4 /* VVVandyMobileAPIClient.m */,
 				2D34C56F162718C500F170CA /* VVAppDelegate.h */,
 				2D34C570162718C500F170CA /* VVAppDelegate.m */,
 				2DAE7C0816F081360014701E /* VVAlertBuilder.h */,
@@ -291,14 +289,16 @@
 			children = (
 				2D95BF651855E8D600AA585C /* VVParseClient.h */,
 				2D95BF661855E8D600AA585C /* VVParseClient.m */,
+				2D6C96FB19A086DF00B24786 /* VVParseRequestSerializer.h */,
+				2D6C96FC19A086DF00B24786 /* VVParseRequestSerializer.m */,
 				2D95BF681855ED3700AA585C /* VVParseResponseSerializer.h */,
 				2D95BF691855ED3700AA585C /* VVParseResponseSerializer.m */,
 				2DFFD396189A4356006B095E /* VVVandyVansClient.h */,
 				2DFFD397189A4356006B095E /* VVVandyVansClient.m */,
 				2DFFD39C189A4671006B095E /* VVVandyVansResponseSerializer.h */,
 				2DFFD39D189A4671006B095E /* VVVandyVansResponseSerializer.m */,
-				2D6C96FB19A086DF00B24786 /* VVParseRequestSerializer.h */,
-				2D6C96FC19A086DF00B24786 /* VVParseRequestSerializer.m */,
+				2DBD694616B5272B0058EFE4 /* VVVandyMobileAPIClient.h */,
+				2DBD694716B5272B0058EFE4 /* VVVandyMobileAPIClient.m */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
