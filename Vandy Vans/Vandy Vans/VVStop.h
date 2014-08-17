@@ -12,7 +12,6 @@
 
 @property (nonatomic, readonly, copy) NSString *name;
 @property (nonatomic, readonly, copy) NSString *stopID;
-@property (nonatomic, readonly, copy) NSArray *routes;
 
 - (instancetype)initWithID:(NSString *)stopID;
 

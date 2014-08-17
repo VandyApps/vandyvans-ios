@@ -8,7 +8,6 @@
 
 #import "VVStop.h"
 #import "VVRoute.h"
-#import "VVStopToRouteDictionary.h"
 
 static NSString * const kStopNamesKey = @"StopNames";
 
@@ -40,7 +39,6 @@ static NSString * const kStopNamesKey = @"StopNames";
     if (self) {
         _name = [self stopNameForStopID:stopID];
         _stopID = stopID;
-        _routes = [VVStopToRouteDictionary routesForStopName:_name];
     }
     
     return self;
