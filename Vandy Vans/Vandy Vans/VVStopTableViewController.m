@@ -23,20 +23,19 @@
         if ([self.title isEqualToString:@"Stops"]) {
             _stops = @[[VVStop stopWithID:@"263473"], // Branscomb
                        [VVStop stopWithID:@"263470"], // Towers
-                       [VVStop stopWithID:@"263454"], // Murray
+                       [VVStop stopWithID:@"644903"], // Hank Ingram
+                       [VVStop stopWithID:@"644872"], // Kissam
                        [VVStop stopWithID:@"263444"], // Highland
                        @"Other Stops"];
         } else {
             _stops = @[[VVStop stopWithID:@"264041"], // VUPD
                        [VVStop stopWithID:@"332298"], // Book Store
-                       [VVStop stopWithID:@"263415"], // Kissam
-                       [VVStop stopWithID:@"238083"], // Terrace Place
+                       [VVStop stopWithID:@"644873"], // Terrace Place
                        [VVStop stopWithID:@"238096"], // Wesley
                        [VVStop stopWithID:@"263463"], // North
                        [VVStop stopWithID:@"264091"], // Blair
                        [VVStop stopWithID:@"264101"], // McGugin
-                       [VVStop stopWithID:@"401204"], // Blakemore
-                       [VVStop stopWithID:@"446923"]]; // VUMC
+                       [VVStop stopWithID:@"644874"]]; // MRB 3
         }
     }
     
