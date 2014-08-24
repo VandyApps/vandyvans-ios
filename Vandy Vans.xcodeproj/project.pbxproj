@@ -18,6 +18,7 @@
 		2D4D009A168E5A6E00F0BF67 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D4D0098168E5A6E00F0BF67 /* MainStoryboard_iPhone.storyboard */; };
 		2D5BE9FF1660A5A000CEFFA3 /* VVArrivalTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5BE9FE1660A5A000CEFFA3 /* VVArrivalTime.m */; };
 		2D6C96FD19A086DF00B24786 /* VVParseRequestSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D6C96FC19A086DF00B24786 /* VVParseRequestSerializer.m */; };
+		2D6C970019A2628700B24786 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D6C96FF19A2628700B24786 /* Crashlytics.framework */; };
 		2D78910416998B3400C70302 /* VVAppStoreIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D78910316998B3400C70302 /* VVAppStoreIcon.png */; };
 		2D78910E16998C0900C70302 /* VVSpotlightIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D78910B16998C0900C70302 /* VVSpotlightIcon@2x.png */; };
 		2D78911016998C0900C70302 /* VVAppStoreIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D78910D16998C0900C70302 /* VVAppStoreIcon@2x.png */; };
@@ -73,6 +74,7 @@
 		2D5BE9FE1660A5A000CEFFA3 /* VVArrivalTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVArrivalTime.m; sourceTree = "<group>"; };
 		2D6C96FB19A086DF00B24786 /* VVParseRequestSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVParseRequestSerializer.h; sourceTree = "<group>"; };
 		2D6C96FC19A086DF00B24786 /* VVParseRequestSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVParseRequestSerializer.m; sourceTree = "<group>"; };
+		2D6C96FF19A2628700B24786 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		2D78910316998B3400C70302 /* VVAppStoreIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VVAppStoreIcon.png; sourceTree = "<group>"; };
 		2D78910B16998C0900C70302 /* VVSpotlightIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VVSpotlightIcon@2x.png"; sourceTree = "<group>"; };
 		2D78910D16998C0900C70302 /* VVAppStoreIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VVAppStoreIcon@2x.png"; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				2D34C561162718C500F170CA /* UIKit.framework in Frameworks */,
 				2D972BF71878C0300019FA1F /* MapKit.framework in Frameworks */,
 				2D34C563162718C500F170CA /* Foundation.framework in Frameworks */,
+				2D6C970019A2628700B24786 /* Crashlytics.framework in Frameworks */,
 				809D88CC0AAF4B31A477FF7E /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -165,6 +168,7 @@
 		2D34C55F162718C400F170CA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2D6C96FF19A2628700B24786 /* Crashlytics.framework */,
 				2D972BF61878C0300019FA1F /* MapKit.framework */,
 				2D7B2667187822DC00AFBF42 /* CoreGraphics.framework */,
 				2D34C560162718C400F170CA /* UIKit.framework */,
@@ -314,6 +318,7 @@
 				2D34C559162718C400F170CA /* Frameworks */,
 				2D34C55A162718C400F170CA /* Resources */,
 				CF659307DCC44B61AC9EC350 /* Copy Pods Resources */,
+				2D6C96FE19A2622B00B24786 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -387,6 +392,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2D6C96FE19A2622B00B24786 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run 18d97f17a7d34a2b79244c7fc057a01a9e96a9a7 e713d82c41853753cbf40c98abc44474a8e5bf9ffd1eabacb70285722d5ec318\n";
+		};
 		CF659307DCC44B61AC9EC350 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -522,6 +540,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Vandy Vans/Vandy Vans-Prefix.pch";
 				INFOPLIST_FILE = "Vandy Vans/Vandy Vans-Info.plist";
@@ -545,6 +567,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Vandy Vans/Vandy Vans-Prefix.pch";
 				INFOPLIST_FILE = "Vandy Vans/Vandy Vans-Info.plist";

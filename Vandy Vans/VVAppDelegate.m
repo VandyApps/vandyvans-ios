@@ -12,6 +12,7 @@
 #import "VVAlertBuilder.h"
 #import "VVAppearanceBuilder.h"
 #import "VVRoute.h"
+#import <Crashlytics/Crashlytics.h>
 
 static NSTimeInterval const kStaleTimeInterval = -14*24*60*60; // 2 weeks ago
 
@@ -25,6 +26,8 @@ static NSTimeInterval const kStaleTimeInterval = -14*24*60*60; // 2 weeks ago
     [application setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
     
     [NSTimeZone setDefaultTimeZone:[NSTimeZone timeZoneWithName:@"America/Chicago"]];
+    
+    [Crashlytics startWithAPIKey:@"18d97f17a7d34a2b79244c7fc057a01a9e96a9a7"];
     
     return YES;
 }
