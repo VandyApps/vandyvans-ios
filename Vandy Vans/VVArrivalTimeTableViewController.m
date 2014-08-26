@@ -148,7 +148,7 @@
     UILocalNotification *localNotification = [[UILocalNotification alloc] init];
     
     localNotification.fireDate = scheduledNotificationDate;
-    localNotification.timeZone = [NSTimeZone defaultTimeZone];
+    localNotification.timeZone = [NSTimeZone systemTimeZone];
     
     localNotification.alertBody = [VVAlertBuilder vanArrivingAlertMessageWithRouteName:arrivalTime.route.name
                                                                            andStopName:arrivalTime.stop.name];

@@ -14,8 +14,8 @@
 
 @import MapKit;
 
-static NSTimeInterval const kUpdateInterval = 6.0;
-static NSTimeInterval const kNonHoursUpdateInterval = 15.0;
+static NSTimeInterval const kRunningHoursUpdateInterval = 6.0;
+static NSTimeInterval const kOffHoursUpdateInterval = 15.0;
 
 
 @interface VVMapViewController () <MKMapViewDelegate>
@@ -64,6 +64,7 @@ static NSTimeInterval const kNonHoursUpdateInterval = 15.0;
     if (![_routeBeingDisplayed isEqual:routeBeingDisplayed]) {
         _routeBeingDisplayed = routeBeingDisplayed;
         
+        self.vanAnnotations = nil;
         [self.vanMapView removeAnnotations:self.vanMapView.annotations];
         [self.vanMapView removeOverlay:[self.vanMapView.overlays firstObject]];
         
@@ -105,12 +106,14 @@ static NSTimeInterval const kNonHoursUpdateInterval = 15.0;
         [self selectRoute:self.selectedRoute];
     }
     
-    if (!self.updateTimer.isValid) {
+    if (![self.updateTimer isValid]) {
         [self displayVansAndScheduleUpdateTimer];
     }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
     [self.updateTimer invalidate];
     
     self.routeIsSelected = NO;
@@ -174,15 +177,19 @@ static NSTimeInterval const kNonHoursUpdateInterval = 15.0;
 
 - (void)displayVansAndScheduleUpdateTimer {
     [self displayVans];
-    self.updateTimer = [NSTimer scheduledTimerWithTimeInterval:kUpdateInterval
+    [self scheduleUpdateTimerForRunningHours];
+}
+
+- (void)scheduleUpdateTimerForRunningHours {
+    self.updateTimer = [NSTimer scheduledTimerWithTimeInterval:kRunningHoursUpdateInterval
                                                         target:self
                                                       selector:@selector(displayVansWithTimer:)
                                                       userInfo:nil
                                                        repeats:YES];
 }
 
--(void)scheduleUpdateTimerForNonHours {
-    self.updateTimer = [NSTimer scheduledTimerWithTimeInterval:kNonHoursUpdateInterval
+- (void)scheduleUpdateTimerForOffHours {
+    self.updateTimer = [NSTimer scheduledTimerWithTimeInterval:kOffHoursUpdateInterval
                                                         target:self
                                                       selector:@selector(displayVansWithTimer:)
                                                       userInfo:nil
@@ -202,16 +209,21 @@ static NSTimeInterval const kNonHoursUpdateInterval = 15.0;
             [self.vanMapView removeAnnotations:self.vanAnnotations];
             self.vanAnnotations = nil;
         }
-        if (vansWereRunning)
+        
+        if (vansWereRunning) {
             [[VVAlertBuilder vansNotRunningAlertWithDelegate:self] show];
-        if ([self.updateTimer timeInterval] != kNonHoursUpdateInterval) {
+        }
+        
+        if (self.updateTimer && [self.updateTimer timeInterval] != kOffHoursUpdateInterval) {
             [self.updateTimer invalidate];
-            self.updateTimer = nil;
-            [self scheduleUpdateTimerForNonHours];
+            [self scheduleUpdateTimerForOffHours];
         }
     } else {
-        [VVRoute vansForRoute:self.routeBeingDisplayed
+        VVRoute *requestedRoute = self.routeBeingDisplayed;
+        
+        [VVRoute vansForRoute:requestedRoute
           withCompletionBlock:^(NSArray *vans) {
+              if ([self.routeBeingDisplayed isEqual:requestedRoute]) {
               NSMutableArray *annotations = [NSMutableArray arrayWithCapacity:[vans count]];
               
               for (VVVan *van in vans) {
@@ -219,13 +231,14 @@ static NSTimeInterval const kNonHoursUpdateInterval = 15.0;
               }
               
               [self.vanMapView removeAnnotations:self.vanAnnotations];
-              self.vanAnnotations = [annotations copy];
+              self.vanAnnotations = annotations;
               [self.vanMapView addAnnotations:self.vanAnnotations];
+              }
           }];
-        if ([self.updateTimer timeInterval] != kUpdateInterval) {
+        
+        if (self.updateTimer && [self.updateTimer timeInterval] != kRunningHoursUpdateInterval) {
             [self.updateTimer invalidate];
-            self.updateTimer = nil;
-            [self displayVansAndScheduleUpdateTimer];
+            [self scheduleUpdateTimerForRunningHours];
         }
     }
 }
@@ -237,11 +250,11 @@ static NSTimeInterval const kNonHoursUpdateInterval = 15.0;
 - (void)selectRoute:(VVRoute *)route {
     NSInteger selectedIndex;
     
-    if ([route.name isEqualToString:@"Blue"]) {
+    if ([route.name isEqualToString:@"Black"]) {
         selectedIndex = 0;
     } else if ([route.name isEqualToString:@"Red"]) {
         selectedIndex = 1;
-    } else { // Green
+    } else { // Gold
         selectedIndex = 2;
     }
     
@@ -302,13 +315,13 @@ static NSTimeInterval const kNonHoursUpdateInterval = 15.0;
     NSString *routeName = route.name;
     
     if ([routeName isEqualToString:@"Blue"]) {
-        color = [UIColor blueColor];
+        color = [UIColor blackColor];
     } else if ([routeName isEqualToString:@"Red"]) {
         color = [UIColor redColor];
-    } else if ([routeName isEqualToString:@"Green"]) {
-        color = [UIColor colorWithRed:51/255.0f
-                                green:189/255.0f
-                                 blue:50/255.0f
+    } else if ([routeName isEqualToString:@"Gold"]) {
+        color = [UIColor colorWithRed:207/255.0f
+                                green:181/255.0f
+                                 blue:59/255.0f
                                 alpha:1.0f];
     } else { // New route
         color = [UIColor blackColor];

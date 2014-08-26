@@ -76,24 +76,6 @@ static NSString * const kVVVandyVansBaseURLString = @"http://vandyvans.com/";
     return task;
 }
 
-- (NSURLSessionDataTask *)fetchPolylineForRoute:(VVRoute *)route withCompletionBlock:(void (^)(MKPolyline *polyline, NSError *error))completionBlock {
-    NSString *path = [[@"Route" stringByAppendingPathComponent:route.routeID] stringByAppendingPathComponent:@"Waypoints"];
-    
-    NSURLSessionDataTask *task = [self GET:path
-                                parameters:@{@"api_key": [self.class apiKey]}
-                                   success:^(NSURLSessionDataTask *task, id responseObject) {
-                                       [self respondSuccessfullyWithTask:task
-                                                          responseObject:responseObject
-                                                      andCompletionBlock:completionBlock];
-                                   } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                                       [self respondUnsuccessfullyWithTask:task
-                                                                     error:error
-                                                        andCompletionBlock:completionBlock];
-                                   }];
-    
-    return task;
-}
-
 #pragma mark - Helper Methods
 
 - (void)respondSuccessfullyWithTask:(NSURLSessionDataTask *)task responseObject:(id)responseObject andCompletionBlock:(void (^)(id retrievedObject, NSError *error))completionBlock {

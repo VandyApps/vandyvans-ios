@@ -1,5 +1,5 @@
 //
-//  VVSyncromaticsResponseSerializer.h
+//  VVAWSResponseSerializer.h
 //  Vandy Vans
 //
 //  Created by Seth Friedman on 12/9/13.
@@ -8,6 +8,6 @@
 
 #import "AFURLResponseSerialization.h"
 
-@interface VVParseResponseSerializer : AFJSONResponseSerializer
+@interface VVAWSResponseSerializer : AFJSONResponseSerializer
 
 @end

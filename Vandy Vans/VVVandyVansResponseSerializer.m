@@ -19,22 +19,7 @@
     
     NSString *lastPathComponent = response.URL.lastPathComponent;
     
-    if ([lastPathComponent isEqualToString:@"Waypoints"]) {
-        NSArray *coordinateResponseOuterArray = responseObject;
-        NSArray *coordinateResponseInnerArray = [coordinateResponseOuterArray firstObject];
-        NSUInteger coordinateResponseArrayCount = [coordinateResponseInnerArray count];
-        
-        CLLocationCoordinate2D coordinates[coordinateResponseArrayCount];
-        
-        for (NSUInteger i = 0; i < coordinateResponseArrayCount; ++i) {
-            CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([coordinateResponseInnerArray[i][@"Latitude"] doubleValue],
-                                                                           [coordinateResponseInnerArray[i][@"Longitude"] doubleValue]);
-            coordinates[i] = coordinate;
-        }
-        
-        responseObject = [MKPolyline polylineWithCoordinates:coordinates
-                                                       count:coordinateResponseArrayCount];
-    } else if ([lastPathComponent isEqualToString:@"Stops"]) {
+    if ([lastPathComponent isEqualToString:@"Stops"]) {
         NSArray *stopResponseArray = responseObject;
         
         NSMutableArray *stops = [NSMutableArray arrayWithCapacity:[stopResponseArray count]];

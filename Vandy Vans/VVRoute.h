@@ -18,15 +18,19 @@ extern NSString * const kBlackRouteID;
 extern NSString * const kRedRouteID;
 extern NSString * const kGoldRouteID;
 
+extern NSString * const kBlackMapRouteID;
+extern NSString * const kRedMapRouteID;
+extern NSString * const kGoldMapRouteID;
+
 extern NSString * const kAnnotationsDateKey;
-extern NSString * const kBlueAnnotationsDateKey;
+extern NSString * const kBlackAnnotationsDateKey;
 extern NSString * const kRedAnnotationsDateKey;
-extern NSString * const kGreenAnnotationsDateKey;
+extern NSString * const kGoldAnnotationsDateKey;
 
 extern NSString * const kPolylineDateKey;
-extern NSString * const kBluePolylineDateKey;
+extern NSString * const kBlackPolylineDateKey;
 extern NSString * const kRedPolylineDateKey;
-extern NSString * const kGreenPolylineDateKey;
+extern NSString * const kGoldPolylineDateKey;
 
 @class MKPolyline;
 
@@ -34,6 +38,7 @@ extern NSString * const kGreenPolylineDateKey;
 
 @property (nonatomic, readonly, copy) NSString *name;
 @property (nonatomic, readonly, copy) NSString *routeID;
+@property (nonatomic, readonly, copy) NSString *mapRouteID;
 @property (nonatomic, readonly) VVRouteColor routeColor;
 
 - (instancetype)initWithRouteID:(NSString *)routeID;
@@ -41,27 +46,29 @@ extern NSString * const kGreenPolylineDateKey;
 + (instancetype)routeWithRouteID:(NSString *)routeID;
 
 /**
- * This method produces an array of all of the `MKPointAnnotation`s for the stops on a particular Vandy Van route.
+ *  This method produces an array of all of the `MKPointAnnotation`s for the stops on a particular Vandy Van route.
  *
- * @param routeColor The color of the Vandy Van route selected.
- * @param completionBlock What to do with the stops once they are fetched.
+ *  @param route           The Vandy Van route selected.
+ *  @param completionBlock What to do with the stops once they are fetched.
  */
 + (void)annotationsForRoute:(VVRoute *)route withCompletionBlock:(void (^)(NSArray *stops))completionBlock;
 
 /**
- * This method produces a `MKPolyline` overlay for a particular Vandy Van route.
+ *  This method produces a `MKPolyline` overlay for a particular Vandy Van route.
  *
- * @param routeColor The color of the Vandy Van route selected.
- * @param completionBlock What to do with the polyline once it is fetched.
+ *  @param route           The Vandy Van route selected.
+ *  @param completionBlock What to do with the polyline once it is fetched.
  */
 + (void)polylineForRoute:(VVRoute *)route withCompletionBlock:(void (^)(MKPolyline *polyline))completionBlock;
 
 /**
- * This method produces an array of all of the `VVVan`s on a particular Vandy Van route.
+ *  This method produces an array of all of the `VVVan`s on a particular Vandy Van route.
  *
- * @param routeColor The color of the Vandy Van route selected.
- * @param completionBlock What to do with the vans once they are fetched.
+ *  @param route           The Vandy Van route selected
+ *  @param completionBlock What to do with the vans once they are fetched.
+ *
+ *  @return The data task that is fetching the vans.
  */
-+ (void)vansForRoute:(VVRoute *)route withCompletionBlock:(void (^)(NSArray *vans))completionBlock;
++ (NSURLSessionDataTask *)vansForRoute:(VVRoute *)route withCompletionBlock:(void (^)(NSArray *vans))completionBlock;
 
 @end

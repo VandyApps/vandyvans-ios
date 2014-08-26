@@ -1,20 +1,19 @@
 //
-//  VVSyncromaticsClient.m
+//  VVAWSClient.m
 //  Vandy Vans
 //
 //  Created by Seth Friedman on 12/9/13.
 //  Copyright (c) 2013 VandyApps. All rights reserved.
 //
 
-#import "VVParseClient.h"
-#import "VVParseRequestSerializer.h"
-#import "VVParseResponseSerializer.h"
+#import "VVAWSClient.h"
+#import "VVAWSResponseSerializer.h"
 #import "VVRoute.h"
 #import "VVStop.h"
 
-static NSString * const kVVParseBaseURLString = @"https://api.parse.com/1/functions/";
+static NSString * const kVVAWSBaseURLString = @"http://default-environment-pkuc3jhwtp.elasticbeanstalk.com/";
 
-@implementation VVParseClient
+@implementation VVAWSClient
 
 #pragma mark - Designated Initializer
 
@@ -23,8 +22,7 @@ static NSString * const kVVParseBaseURLString = @"https://api.parse.com/1/functi
              sessionConfiguration:configuration];
     
     if (self) {
-        self.requestSerializer = [VVParseRequestSerializer serializer];
-        self.responseSerializer = [VVParseResponseSerializer serializer];
+        self.responseSerializer = [VVAWSResponseSerializer serializer];
     }
     
     return self;
@@ -33,7 +31,7 @@ static NSString * const kVVParseBaseURLString = @"https://api.parse.com/1/functi
 #pragma mark - Singleton
 
 + (instancetype)sharedClient {
-    static VVParseClient *_sharedClient;
+    static VVAWSClient *_sharedClient;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
@@ -44,7 +42,7 @@ static NSString * const kVVParseBaseURLString = @"https://api.parse.com/1/functi
         
         config.URLCache = cache;
         
-        _sharedClient = [[VVParseClient alloc] initWithBaseURL:[NSURL URLWithString:kVVParseBaseURLString]
+        _sharedClient = [[VVAWSClient alloc] initWithBaseURL:[NSURL URLWithString:kVVAWSBaseURLString]
                                           sessionConfiguration:config];
     });
     
@@ -54,25 +52,21 @@ static NSString * const kVVParseBaseURLString = @"https://api.parse.com/1/functi
 #pragma mark - Instance Methods
 
 - (NSURLSessionDataTask *)fetchVansForRoute:(VVRoute *)route withCompletionBlock:(void (^)(NSArray *vans, NSError *error))completionBlock {
-    NSString *path = [[@"Route" stringByAppendingPathComponent:route.routeID] stringByAppendingPathComponent:@"Vehicles"];
-    
-    NSURLSessionDataTask *task = [self GET:path
-                                parameters:nil
-                                   success:^(NSURLSessionDataTask *task, id responseObject) {
-                                       [self respondSuccessfullyWithTask:task
-                                                          responseObject:responseObject
-                                                      andCompletionBlock:completionBlock];
-                                   } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                                       [self respondUnsuccessfullyWithTask:task
-                                                                     error:error
-                                                        andCompletionBlock:completionBlock];
-                                   }];
-    
-    return task;
+    return [self GET:@"vans"
+           parameters:@{@"routeID": route.mapRouteID}
+              success:^(NSURLSessionDataTask *task, id responseObject) {
+                  [self respondSuccessfullyWithTask:task
+                                     responseObject:responseObject
+                                 andCompletionBlock:completionBlock];
+              } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                  [self respondUnsuccessfullyWithTask:task
+                                                error:error
+                                   andCompletionBlock:completionBlock];
+              }];
 }
 
 - (void)fetchArrivalTimesForStop:(VVStop *)stop withCompletionBlock:(void (^)(NSArray *arrivalTimes))completionBlock {
-    [self POST:@"arrivalTimes"
+    [self GET:@"arrivalTimes"
     parameters:@{@"stopID": stop.stopID}
        success:^(NSURLSessionDataTask *task, id responseObject) {
            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)task.response;
@@ -90,6 +84,20 @@ static NSString * const kVVParseBaseURLString = @"https://api.parse.com/1/functi
                              otherButtonTitles:nil] show];
            //completionBlock(nil);
        }];
+}
+
+- (NSURLSessionDataTask *)fetchPolylineForRoute:(VVRoute *)route withCompletionBlock:(void (^)(MKPolyline *polyline, NSError *error))completionBlock {
+    return [self GET:@"waypoints"
+           parameters:@{@"routeID": route.mapRouteID}
+              success:^(NSURLSessionDataTask *task, id responseObject) {
+                  [self respondSuccessfullyWithTask:task
+                                     responseObject:responseObject
+                                 andCompletionBlock:completionBlock];
+              } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                  [self respondUnsuccessfullyWithTask:task
+                                                error:error
+                                   andCompletionBlock:completionBlock];
+              }];
 }
 
 #pragma mark - Helper Methods

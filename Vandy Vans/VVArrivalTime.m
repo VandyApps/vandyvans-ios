@@ -7,7 +7,7 @@
 //
 
 #import "VVArrivalTime.h"
-#import "VVParseClient.h"
+#import "VVAWSClient.h"
 #import <SVProgressHUD/SVProgressHUD.h>
 #import "VVRoute.h"
 #import "VVStop.h"
@@ -54,22 +54,22 @@
 
 + (BOOL)isStopForAllRoutes:(NSString *)stopName __attribute__((pure)) {
     return ([stopName isEqualToString:@"Branscomb Quad"] || [stopName isEqualToString:@"Carmichael Towers"] ||
-      [stopName isEqualToString:@"Murray House"] || [stopName isEqualToString:@"Highland Quad"]);
+      [stopName isEqualToString:@"Hank Ingram"] || [stopName isEqualToString:@"Highland Quad"]);
 }
 
-+ (BOOL)isStopForGreenRouteButNotAllRoutes:(NSString *)stopName __attribute__((pure)) {
++ (BOOL)isStopForGoldRouteButNotAllRoutes:(NSString *)stopName __attribute__((pure)) {
     return ([stopName isEqualToString:@"Vanderbilt Police Department"] || [stopName isEqualToString:@"Vanderbilt Book Store"] ||
-      [stopName isEqualToString:@"Kissam Quad"] || [stopName isEqualToString:@"Terrace Place Garage"] ||
+      [stopName isEqualToString:@"College Halls at Kissam"] || [stopName isEqualToString:@"Terrace Place Garage"] ||
       [stopName isEqualToString:@"Wesley Place Garage"] || [stopName isEqualToString:@"Blair School of Music"] ||
-      [stopName isEqualToString:@"McGugin Center"] || [stopName isEqualToString:@"Blakemore House"]);
+      [stopName isEqualToString:@"McGugin Center"] || [stopName isEqualToString:@"MRB 3"]);
 }
 
-+ (BOOL)isStopForBlueRouteButNotAllRoutes:(NSString *)stopName __attribute__((pure)) {
++ (BOOL)isStopForBlackRouteButNotAllRoutes:(NSString *)stopName __attribute__((pure)) {
     return [stopName isEqualToString:@"Kissam Quad"];
 }
 
 + (void)arrivalTimesForStop:(VVStop *)stop withBlock:(void (^)(NSArray *))block {
-    [[VVParseClient sharedClient] fetchArrivalTimesForStop:stop
+    [[VVAWSClient sharedClient] fetchArrivalTimesForStop:stop
                                        withCompletionBlock:block];
 }
 

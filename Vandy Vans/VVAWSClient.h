@@ -1,5 +1,5 @@
 //
-//  VVSyncromaticsClient.h
+//  VVAWSClient.h
 //  Vandy Vans
 //
 //  Created by Seth Friedman on 12/9/13.
@@ -10,16 +10,16 @@
 
 @class VVRoute;
 @class VVStop;
+@class MKPolyline;
 
-@interface VVParseClient : AFHTTPSessionManager
+@interface VVAWSClient : AFHTTPSessionManager
 
 + (instancetype)sharedClient;
-
-/** This method gives the API key for accessing Syncromatics's Vandy Vans service. */
-+ (NSString *)apiKey;
 
 - (NSURLSessionDataTask *)fetchVansForRoute:(VVRoute *)route withCompletionBlock:(void (^)(NSArray *vans, NSError *error))completionBlock;
 
 - (void)fetchArrivalTimesForStop:(VVStop *)stop withCompletionBlock:(void (^)(NSArray *arrivalTimes))completionBlock;
+
+- (NSURLSessionDataTask *)fetchPolylineForRoute:(VVRoute *)route withCompletionBlock:(void (^)(MKPolyline *polyline, NSError *error))completionBlock;
 
 @end
