@@ -1,0 +1,5 @@
+#include "Pods-GZIP.xcconfig"
+GCC_PREPROCESSOR_DEFINITIONS = COCOAPODS=1
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/BuildHeaders" "${PODS_ROOT}/BuildHeaders/GZIP" "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/AFNetworking" "${PODS_ROOT}/Headers/AWSiOSSDKv2" "${PODS_ROOT}/Headers/Bolts" "${PODS_ROOT}/Headers/CSURITemplate" "${PODS_ROOT}/Headers/GZIP" "${PODS_ROOT}/Headers/Mantle" "${PODS_ROOT}/Headers/Reachability" "${PODS_ROOT}/Headers/SAMCategories" "${PODS_ROOT}/Headers/SAMTextView" "${PODS_ROOT}/Headers/SVProgressHUD" "${PODS_ROOT}/Headers/TMCache" "${PODS_ROOT}/Headers/UICKeyChainStore" "${PODS_ROOT}/Headers/XMLDictionary"
+OTHER_LDFLAGS = -ObjC ${PODS_GZIP_OTHER_LDFLAGS}
+PODS_ROOT = ${SRCROOT}
