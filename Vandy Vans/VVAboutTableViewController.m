@@ -8,8 +8,28 @@
 
 #import "VVAboutTableViewController.h"
 #import "VVReportTableViewController.h"
+#import "AWSMobileAnalytics+VandyVans.h"
+
+static NSString * const kOpenedAboutViewEventType = @"OpenedAboutView";
+
+@interface VVAboutTableViewController ()
+
+@property (weak, nonatomic) id<AWSMobileAnalyticsEventClient> eventClient;
+
+@end
 
 @implementation VVAboutTableViewController
+
+#pragma mark - Custom Getters
+
+- (id<AWSMobileAnalyticsEventClient>)eventClient {
+    if (!_eventClient) {
+        AWSMobileAnalytics *analytics = [AWSMobileAnalytics vv_mobileAnalytics];
+        _eventClient = analytics.eventClient;
+    }
+    
+    return _eventClient;
+}
 
 #pragma mark - View Controller Lifecycle
 
@@ -20,6 +40,9 @@
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
     self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"VVBackgroundFull"]];
+    
+    id<AWSMobileAnalyticsEvent> openedAboutViewEvent = [self.eventClient createEventWithEventType:kOpenedAboutViewEventType];
+    [self.eventClient recordEvent:openedAboutViewEvent];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

@@ -342,7 +342,6 @@ static NSString * const kStopNameKey = @"StopName";
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
     if ([view isKindOfClass:[VVVanAnnotationView class]]) {
         id<AWSMobileAnalyticsEvent> vanIconTappedEvent = [self.eventClient createEventWithEventType:kVanIconTappedEventType];
-        
         [self.eventClient recordEvent:vanIconTappedEvent];
     } else if ([view isKindOfClass:[MKPinAnnotationView class]]) {
         id<AWSMobileAnalyticsEvent> stopIconTappedEvent = [self.eventClient createEventWithEventType:kStopIconTappedEventType];
