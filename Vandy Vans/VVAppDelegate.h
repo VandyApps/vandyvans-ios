@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 
 @interface VVAppDelegate : UIResponder <UIApplicationDelegate>
 
+@property (strong, nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) UIWindow *window;
 
 @end
