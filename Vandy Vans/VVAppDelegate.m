@@ -30,7 +30,10 @@ static NSTimeInterval const kStaleTimeInterval = -14*24*60*60; // 2 weeks ago
     [Crashlytics startWithAPIKey:@"18d97f17a7d34a2b79244c7fc057a01a9e96a9a7"];
     
     self.locationManager = [[CLLocationManager alloc] init];
-    [self.locationManager requestWhenInUseAuthorization];
+    if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
+        [self.locationManager requestWhenInUseAuthorization];
+    }
+    
 
     return YES;
 }
