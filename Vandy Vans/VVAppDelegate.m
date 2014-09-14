@@ -31,12 +31,11 @@ static NSTimeInterval const kStaleTimeInterval = -14*24*60*60; // 2 weeks ago
     
     [Crashlytics startWithAPIKey:@"18d97f17a7d34a2b79244c7fc057a01a9e96a9a7"];
     
-    AWSCognitoCredentialsProvider *credentialsProvider = [AWSCognitoCredentialsProvider
-                                                          credentialsWithRegionType:AWSRegionUSEast1
-                                                          accountId:@"982943484315"
-                                                          identityPoolId:@"us-east-1:072f1854-e969-44e2-a6ec-91df3a72693e"
-                                                          unauthRoleArn:@"arn:aws:iam::982943484315:role/Cognito_VandyVansUnauth_DefaultRole"
-                                                          authRoleArn:@"arn:aws:iam::982943484315:role/Cognito_VandyVansAuth_DefaultRole"];
+    AWSCognitoCredentialsProvider *credentialsProvider = [AWSCognitoCredentialsProvider credentialsWithRegionType:AWSRegionUSEast1
+                                                                                                        accountId:@"982943484315"
+                                                                                                   identityPoolId:@"us-east-1:072f1854-e969-44e2-a6ec-91df3a72693e"
+                                                                                                    unauthRoleArn:@"arn:aws:iam::982943484315:role/Cognito_VandyVansUnauth_DefaultRole"
+                                                                                                      authRoleArn:@"arn:aws:iam::982943484315:role/Cognito_VandyVansAuth_DefaultRole"];
     
     AWSServiceConfiguration *configuration = [AWSServiceConfiguration configurationWithRegion:AWSRegionUSEast1
                                                                           credentialsProvider:credentialsProvider];
