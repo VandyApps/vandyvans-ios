@@ -17,6 +17,7 @@
 		2D34C59616271B8600F170CA /* VVMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D34C59516271B8600F170CA /* VVMapViewController.m */; };
 		2D4D009A168E5A6E00F0BF67 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D4D0098168E5A6E00F0BF67 /* MainStoryboard_iPhone.storyboard */; };
 		2D5BE9FF1660A5A000CEFFA3 /* VVArrivalTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5BE9FE1660A5A000CEFFA3 /* VVArrivalTime.m */; };
+		2D69B67819ADB0680081DA59 /* AWSMobileAnalytics+VandyVans.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D69B67719ADB0680081DA59 /* AWSMobileAnalytics+VandyVans.m */; };
 		2D6C970019A2628700B24786 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D6C96FF19A2628700B24786 /* Crashlytics.framework */; };
 		2D78910416998B3400C70302 /* VVAppStoreIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D78910316998B3400C70302 /* VVAppStoreIcon.png */; };
 		2D78910E16998C0900C70302 /* VVSpotlightIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D78910B16998C0900C70302 /* VVSpotlightIcon@2x.png */; };
@@ -71,6 +72,8 @@
 		2D4D0099168E5A6E00F0BF67 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		2D5BE9FD1660A5A000CEFFA3 /* VVArrivalTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVArrivalTime.h; sourceTree = "<group>"; };
 		2D5BE9FE1660A5A000CEFFA3 /* VVArrivalTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVArrivalTime.m; sourceTree = "<group>"; };
+		2D69B67619ADB0680081DA59 /* AWSMobileAnalytics+VandyVans.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AWSMobileAnalytics+VandyVans.h"; sourceTree = "<group>"; };
+		2D69B67719ADB0680081DA59 /* AWSMobileAnalytics+VandyVans.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AWSMobileAnalytics+VandyVans.m"; sourceTree = "<group>"; };
 		2D6C96FF19A2628700B24786 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		2D78910316998B3400C70302 /* VVAppStoreIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VVAppStoreIcon.png; sourceTree = "<group>"; };
 		2D78910B16998C0900C70302 /* VVSpotlightIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VVSpotlightIcon@2x.png"; sourceTree = "<group>"; };
@@ -189,6 +192,7 @@
 				2DAE7C0816F081360014701E /* VVAlertBuilder.h */,
 				2DAE7C0916F081370014701E /* VVAlertBuilder.m */,
 				2D972BF51878BF850019FA1F /* Networking */,
+				2D69B67919ADB06C0081DA59 /* Categories */,
 				2D972BF41878BF6D0019FA1F /* NSCoding */,
 				2DCA1D69181E32F8003A85E5 /* Images.xcassets */,
 				2D34C567162718C500F170CA /* Supporting Files */,
@@ -207,6 +211,15 @@
 				2D34C56E162718C500F170CA /* Vandy Vans-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2D69B67919ADB06C0081DA59 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				2D69B67619ADB0680081DA59 /* AWSMobileAnalytics+VandyVans.h */,
+				2D69B67719ADB0680081DA59 /* AWSMobileAnalytics+VandyVans.m */,
+			);
+			name = Categories;
 			sourceTree = "<group>";
 		};
 		2D6EB648173B263600A6FD53 /* Models */ = {
@@ -446,6 +459,7 @@
 				2D972BFD187935C40019FA1F /* VVVanAnnotationView.m in Sources */,
 				2DADC6DB173889130067B052 /* VVAttributionViewController.m in Sources */,
 				2DDE9F0718E52EED006981F2 /* VVRouteDictionary.m in Sources */,
+				2D69B67819ADB0680081DA59 /* AWSMobileAnalytics+VandyVans.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

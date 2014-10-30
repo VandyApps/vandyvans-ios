@@ -9,24 +9,35 @@
 #import "VVStopTableViewController.h"
 #import "VVArrivalTimeTableViewController.h"
 #import "VVStop.h"
+#import "AWSMobileAnalytics+VandyVans.h"
+
+static NSString * const kStopsText = @"Stops";
+static NSString * const kOtherStopsText = @"Other Stops";
+
+static NSString * const kStopEventType = @"StopTapped";
+static NSString * const kStopNameKey = @"StopName";
 
 @interface VVStopTableViewController ()
 
 @property (strong, nonatomic) NSArray *stops;
 
+@property (weak, nonatomic) id<AWSMobileAnalyticsEventClient> eventClient;
+
 @end
 
 @implementation VVStopTableViewController
 
+#pragma mark - Custom Getters
+
 - (NSArray *)stops {
     if (!_stops) {
-        if ([self.title isEqualToString:@"Stops"]) {
+        if ([self.title isEqualToString:kStopsText]) {
             _stops = @[[VVStop stopWithID:@"263473"], // Branscomb
                        [VVStop stopWithID:@"263470"], // Towers
                        [VVStop stopWithID:@"644903"], // Hank Ingram
                        [VVStop stopWithID:@"644872"], // Kissam
                        [VVStop stopWithID:@"263444"], // Highland
-                       @"Other Stops"];
+                       kOtherStopsText];
         } else {
             _stops = @[[VVStop stopWithID:@"264041"], // VUPD
                        [VVStop stopWithID:@"332298"], // Book Store
@@ -42,6 +53,17 @@
     return _stops;
 }
 
+- (id<AWSMobileAnalyticsEventClient>)eventClient {
+    if (!_eventClient) {
+        AWSMobileAnalytics *analytics = [AWSMobileAnalytics vv_mobileAnalytics];
+        _eventClient = analytics.eventClient;
+    }
+    
+    return _eventClient;
+}
+
+#pragma mark - View Controller Lifecycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -54,7 +76,7 @@
     
     // If the title has not yet been set, it is the Stops view, not the Other Stops view.
     if (!self.title) {
-        self.title = @"Stops";
+        self.title = kStopsText;
     }
 }
 
@@ -71,12 +93,25 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    id<AWSMobileAnalyticsEvent> stopEvent = [self.eventClient createEventWithEventType:kStopEventType];
+    
     if ([segue.identifier isEqualToString:@"StopsToArrivalTimes"]) {
         NSInteger row = [self.tableView indexPathForCell:sender].row;
-        [segue.destinationViewController setSelectedStop:self.stops[row]];
+        
+        VVStop *selectedStop = self.stops[row];
+        
+        [segue.destinationViewController setSelectedStop:selectedStop];
+        
+        [stopEvent addAttribute:selectedStop.name
+                         forKey:kStopNameKey];
     } else if ([segue.identifier isEqualToString:@"StopsToOtherStops"]) {
-        ((VVStopTableViewController *)segue.destinationViewController).title = @"Other Stops";
+        ((VVStopTableViewController *)segue.destinationViewController).title = kOtherStopsText;
+        
+        [stopEvent addAttribute:kOtherStopsText
+                         forKey:kStopNameKey];
     }
+    
+    [self.eventClient recordEvent:stopEvent];
 }
 
 #pragma mark - IB Action
@@ -102,7 +137,7 @@
     
     NSInteger row = indexPath.row;
     
-    if ([self.title isEqualToString:@"Stops"]) {
+    if ([self.title isEqualToString:kStopsText]) {
         // If this is the Stops table view, check to see which cell is being retrieved. If it is not the last one, return
         // a normal stop cell. If it is, return the cell for "Other Stops".
         cell = (row != ([self.stops count] - 1)) ? [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath] : [tableView dequeueReusableCellWithIdentifier:OtherCellIdentifier forIndexPath:indexPath];

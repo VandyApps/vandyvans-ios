@@ -15,6 +15,14 @@
 #import "VVStop.h"
 #import "VVRoute.h"
 #import "VVSelectableRoute.h"
+#import "AWSMobileAnalytics+VandyVans.h"
+
+static NSString * const kNotificationSwitchTappedEventType = @"NotificationSwitchTapped";
+
+static NSString * const kNotificationSwitchStateKey = @"NotificationSwitchState";
+
+static NSString * const kNotificationSwitchOnValue = @"On";
+static NSString * const kNotificationSwitchOffValue = @"Off";
 
 @interface VVArrivalTimeTableViewController () <UIAlertViewDelegate>
 
@@ -22,11 +30,15 @@
 @property (strong, nonatomic) NSArray *arrivalTimes;
 @property (nonatomic) BOOL vansAreRunning;
 
+@property (weak, nonatomic) id<AWSMobileAnalyticsEventClient> eventClient;
+
 @end
 
 @implementation VVArrivalTimeTableViewController
 
 @synthesize arrivalTimes = _arrivalTimes;
+
+#pragma mark - Custom Getters
 
 - (NSArray *)arrivalTimes {
     if (!_arrivalTimes) {
@@ -35,6 +47,17 @@
     
     return _arrivalTimes;
 }
+
+- (id<AWSMobileAnalyticsEventClient>)eventClient {
+    if (!_eventClient) {
+        AWSMobileAnalytics *analytics = [AWSMobileAnalytics vv_mobileAnalytics];
+        _eventClient = analytics.eventClient;
+    }
+    
+    return _eventClient;
+}
+
+#pragma mark - Custom Setters
 
 - (void)setArrivalTimes:(NSArray *)arrivalTimes {
     if (_arrivalTimes != arrivalTimes) {
@@ -119,6 +142,12 @@
     } else {
         [[UIApplication sharedApplication] cancelAllLocalNotifications];
     }
+    
+    id<AWSMobileAnalyticsEvent> notificationSwitchTappedEvent = [self.eventClient createEventWithEventType:kNotificationSwitchTappedEventType];
+    [notificationSwitchTappedEvent addAttribute:sender.on ? kNotificationSwitchOnValue : kNotificationSwitchOffValue
+                                         forKey:kNotificationSwitchStateKey];
+    
+    [self.eventClient recordEvent:notificationSwitchTappedEvent];
 }
 
 - (void)findAndScheduleNextArrivalTime {

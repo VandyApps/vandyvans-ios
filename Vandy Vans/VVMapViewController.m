@@ -11,12 +11,20 @@
 #import "VVVan.h"
 #import "VVVanAnnotationView.h"
 #import "VVAlertBuilder.h"
+#import "AWSMobileAnalytics+VandyVans.h"
 
 @import MapKit;
 
 static NSTimeInterval const kRunningHoursUpdateInterval = 6.0;
 static NSTimeInterval const kOffHoursUpdateInterval = 15.0;
 
+static NSString * const kOpenedMapEventType = @"OpenedMap";
+static NSString * const kRouteTappedEventType = @"RouteTapped";
+static NSString * const kVanIconTappedEventType = @"VanIconTapped";
+static NSString * const kStopIconTappedEventType = @"StopIconTapped";
+
+static NSString * const kRouteNameKey = @"RouteName";
+static NSString * const kStopNameKey = @"StopName";
 
 @interface VVMapViewController () <MKMapViewDelegate>
 
@@ -31,6 +39,8 @@ static NSTimeInterval const kOffHoursUpdateInterval = 15.0;
 
 @property (nonatomic) BOOL vansAreRunning;
 @property (nonatomic) BOOL routeIsSelected;
+
+@property (weak, nonatomic) id<AWSMobileAnalyticsEventClient> eventClient;
 
 @end
 
@@ -56,6 +66,15 @@ static NSTimeInterval const kOffHoursUpdateInterval = 15.0;
     }
     
     return _routes;
+}
+
+- (id<AWSMobileAnalyticsEventClient>)eventClient {
+    if (!_eventClient) {
+        AWSMobileAnalytics *analytics = [AWSMobileAnalytics vv_mobileAnalytics];
+        _eventClient = analytics.eventClient;
+    }
+    
+    return _eventClient;
 }
 
 #pragma mark - Custom Setter
@@ -95,6 +114,12 @@ static NSTimeInterval const kOffHoursUpdateInterval = 15.0;
         
         [self displayVansAndScheduleUpdateTimer];
     }
+    
+    id<AWSMobileAnalyticsEvent> openedMapEvent = [self.eventClient createEventWithEventType:kOpenedMapEventType];
+    [openedMapEvent addAttribute:self.routeBeingDisplayed.name
+                          forKey:kRouteNameKey];
+    
+    [self.eventClient recordEvent:openedMapEvent];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -145,6 +170,12 @@ static NSTimeInterval const kOffHoursUpdateInterval = 15.0;
         default:
             break;
     }
+    
+    id<AWSMobileAnalyticsEvent> routeTappedEvent = [self.eventClient createEventWithEventType:kRouteTappedEventType];
+    [routeTappedEvent addAttribute:self.routeBeingDisplayed.name
+                            forKey:kRouteNameKey];
+    
+    [self.eventClient recordEvent:routeTappedEvent];
     
     sender.tintColor = [self colorForRoute:self.routeBeingDisplayed];
     
@@ -306,6 +337,19 @@ static NSTimeInterval const kOffHoursUpdateInterval = 15.0;
     }
     
     return annotationView;
+}
+
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
+    if ([view isKindOfClass:[VVVanAnnotationView class]]) {
+        id<AWSMobileAnalyticsEvent> vanIconTappedEvent = [self.eventClient createEventWithEventType:kVanIconTappedEventType];
+        [self.eventClient recordEvent:vanIconTappedEvent];
+    } else if ([view isKindOfClass:[MKPinAnnotationView class]]) {
+        id<AWSMobileAnalyticsEvent> stopIconTappedEvent = [self.eventClient createEventWithEventType:kStopIconTappedEventType];
+        [stopIconTappedEvent addAttribute:[view.annotation title]
+                                   forKey:kStopNameKey];
+        
+        [self.eventClient recordEvent:stopIconTappedEvent];
+    }
 }
 
 #pragma mark - Helper Method
