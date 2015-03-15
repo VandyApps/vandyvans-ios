@@ -11,17 +11,17 @@
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>58B5CD05938E7F0B41975CEFE5C50FF704C5CD20</key>
-		<string>ssh://github.com/VandyApps/vandyvans-ios.git</string>
+		<string>github.com:VandyApps/vandyvans-ios.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Vandy Vans/Vandy Vans.xcworkspace</string>
+	<string>Vandy Vans.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>58B5CD05938E7F0B41975CEFE5C50FF704C5CD20</key>
-		<string>../..</string>
+		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://github.com/VandyApps/vandyvans-ios.git</string>
+	<string>github.com:VandyApps/vandyvans-ios.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>

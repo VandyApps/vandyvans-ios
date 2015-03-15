@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="v6n-B9-8t3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="v6n-B9-8t3">
     <dependencies>
-        <deployment defaultVersion="1792" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
         <!--Stop Table View Controller-->
@@ -54,7 +54,7 @@
             </objects>
             <point key="canvasLocation" x="1700" y="375"/>
         </scene>
-        <!--About Table View Controller - About-->
+        <!--About-->
         <scene sceneID="rBQ-Z3-tlK">
             <objects>
                 <tableViewController id="hTO-Uo-jDl" customClass="VVAboutTableViewController" sceneMemberID="viewController">
@@ -142,7 +142,7 @@
             </objects>
             <point key="canvasLocation" x="2907" y="-398"/>
         </scene>
-        <!--Attribution View Controller - Attribution-->
+        <!--Attribution-->
         <scene sceneID="gr2-cR-k9j">
             <objects>
                 <viewController id="yK6-0T-tfm" customClass="VVAttributionViewController" sceneMemberID="viewController">
@@ -179,7 +179,7 @@
             </objects>
             <point key="canvasLocation" x="3672" y="-788"/>
         </scene>
-        <!--Report Table View Controller - Report a Bug-->
+        <!--Report a Bug-->
         <scene sceneID="1A9-FN-nw5">
             <objects>
                 <tableViewController id="RWM-5b-TYR" customClass="VVReportTableViewController" sceneMemberID="viewController">
@@ -283,7 +283,7 @@
             </objects>
             <point key="canvasLocation" x="3689" y="-113"/>
         </scene>
-        <!--Stop Table View Controller - Other Stops-->
+        <!--Other Stops-->
         <scene sceneID="6tp-h8-66G">
             <objects>
                 <tableViewController id="nOG-jv-e0L" customClass="VVStopTableViewController" sceneMemberID="viewController">
@@ -420,7 +420,6 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pdl-qE-2be">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="5wh-qK-Mbq" id="UzL-Ss-SUk"/>
                                 </connections>
@@ -479,7 +478,7 @@
             </objects>
             <point key="canvasLocation" x="95" y="-84"/>
         </scene>
-        <!--Navigation Controller - Stops-->
+        <!--Stops-->
         <scene sceneID="oUe-XE-ayK">
             <objects>
                 <navigationController id="7Lf-VM-cST" sceneMemberID="viewController">
@@ -516,7 +515,7 @@
             </objects>
             <point key="canvasLocation" x="2443" y="-281"/>
         </scene>
-        <!--Navigation Controller - Live Map-->
+        <!--Live Map-->
         <scene sceneID="nm9-Ce-yP1">
             <objects>
                 <navigationController id="xSt-69-ci1" sceneMemberID="viewController">
