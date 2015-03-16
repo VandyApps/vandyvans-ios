@@ -343,7 +343,7 @@
 				ORGANIZATIONNAME = VandyApps;
 				TargetAttributes = {
 					2D34C55B162718C400F170CA = {
-						DevelopmentTeam = 7MA825R8KR;
+						DevelopmentTeam = ZWW5XFZS4Z;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
