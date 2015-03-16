@@ -7,12 +7,15 @@
 //
 
 #import "VVAboutTableViewController.h"
-#import "VVReportTableViewController.h"
 #import "AWSMobileAnalytics+VandyVans.h"
+@import MessageUI;
 
 static NSString * const kOpenedAboutViewEventType = @"OpenedAboutView";
+static NSString * const kVandyVansEmailAddress = @"vandyvansapp@gmail.com";
+static NSString * const kBugReportSubject = @"Vandy Vans Bug Report";
+static NSString * const kFeedbackSubject = @"Vandy Vans Feedback";
 
-@interface VVAboutTableViewController ()
+@interface VVAboutTableViewController () <MFMailComposeViewControllerDelegate>
 
 @property (weak, nonatomic) id<AWSMobileAnalyticsEventClient> eventClient;
 
@@ -57,16 +60,6 @@ static NSString * const kOpenedAboutViewEventType = @"OpenedAboutView";
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Navigation
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"AboutToSendFeedback"]) {
-        VVReportTableViewController *reportTableViewController = (VVReportTableViewController *)segue.destinationViewController;
-        
-        reportTableViewController.userIsSendingFeedback = YES;
-    }
-}
-
 #pragma mark - IB Action
 
 /* Fix jumpy navbar bug: http://stackoverflow.com/questions/19136899/navigation-bar-has-wrong-position-when-modal-a-view-controller-with-flip-horizon/19265558#19265558 */
@@ -80,6 +73,27 @@ static NSString * const kOpenedAboutViewEventType = @"OpenedAboutView";
 }
 
 #pragma mark - Table View Delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Report a Bug or Send Feedback
+    if (indexPath.row == 0 || indexPath.row == 1) {
+        NSString *subject;
+        
+        if (indexPath.row == 0) {
+            subject = kBugReportSubject;
+        } else {
+            subject = kFeedbackSubject;
+        }
+        
+        MFMailComposeViewController *composeViewController = [[MFMailComposeViewController alloc] init];
+        [composeViewController setToRecipients:@[kVandyVansEmailAddress]];
+        [composeViewController setSubject:subject];
+        
+        [self presentViewController:composeViewController
+                           animated:YES
+                         completion:nil];
+    }
+}
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320.0f, 300.0f)];
@@ -114,6 +128,13 @@ static NSString * const kOpenedAboutViewEventType = @"OpenedAboutView";
                                                                        attributes:nameTextAttributes]];
     
     return [footerText copy];
+}
+
+#pragma mark - MFMailComposeViewController Delegate
+
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
+    [self dismissViewControllerAnimated:YES
+                             completion:nil];
 }
 
 @end

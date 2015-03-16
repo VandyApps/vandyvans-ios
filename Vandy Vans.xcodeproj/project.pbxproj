@@ -32,7 +32,6 @@
 		2D972BFD187935C40019FA1F /* VVVanAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D972BFC187935C40019FA1F /* VVVanAnnotationView.m */; };
 		2D977705185829D7000D5F47 /* VVStop.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D977704185829D7000D5F47 /* VVStop.m */; };
 		2D99B7CF1856F79100435675 /* VVVan.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D99B7CE1856F79100435675 /* VVVan.m */; };
-		2DA198AC16AAB8F7008F5CB5 /* VVReportTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA198AB16AAB8F7008F5CB5 /* VVReportTableViewController.m */; };
 		2DA198B016AAC0CC008F5CB5 /* VVAboutTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA198AF16AAC0CC008F5CB5 /* VVAboutTableViewController.m */; };
 		2DADC6DB173889130067B052 /* VVAttributionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DADC6DA173889130067B052 /* VVAttributionViewController.m */; };
 		2DAE7C0A16F081370014701E /* VVAlertBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAE7C0916F081370014701E /* VVAlertBuilder.m */; };
@@ -95,8 +94,6 @@
 		2D977704185829D7000D5F47 /* VVStop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVStop.m; sourceTree = "<group>"; };
 		2D99B7CD1856F79100435675 /* VVVan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVVan.h; sourceTree = "<group>"; };
 		2D99B7CE1856F79100435675 /* VVVan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVVan.m; sourceTree = "<group>"; };
-		2DA198AA16AAB8F7008F5CB5 /* VVReportTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVReportTableViewController.h; sourceTree = "<group>"; };
-		2DA198AB16AAB8F7008F5CB5 /* VVReportTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVReportTableViewController.m; sourceTree = "<group>"; };
 		2DA198AE16AAC0CC008F5CB5 /* VVAboutTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVAboutTableViewController.h; sourceTree = "<group>"; };
 		2DA198AF16AAC0CC008F5CB5 /* VVAboutTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVAboutTableViewController.m; sourceTree = "<group>"; };
 		2DA53C8B1898FB62009AF5A3 /* VVSelectableRoute.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VVSelectableRoute.h; sourceTree = "<group>"; };
@@ -252,8 +249,6 @@
 				2DADC6DA173889130067B052 /* VVAttributionViewController.m */,
 				2D34C59416271B8600F170CA /* VVMapViewController.h */,
 				2D34C59516271B8600F170CA /* VVMapViewController.m */,
-				2DA198AA16AAB8F7008F5CB5 /* VVReportTableViewController.h */,
-				2DA198AB16AAB8F7008F5CB5 /* VVReportTableViewController.m */,
 				2D34C59116271A9100F170CA /* VVStopTableViewController.h */,
 				2D34C59216271A9100F170CA /* VVStopTableViewController.m */,
 			);
@@ -442,7 +437,6 @@
 				2DDDB2F8165DBAA5007077E9 /* VVArrivalTimeTableViewController.m in Sources */,
 				2DFFD39E189A4671006B095E /* VVVandyVansResponseSerializer.m in Sources */,
 				2D5BE9FF1660A5A000CEFFA3 /* VVArrivalTime.m in Sources */,
-				2DA198AC16AAB8F7008F5CB5 /* VVReportTableViewController.m in Sources */,
 				2DA198B016AAC0CC008F5CB5 /* VVAboutTableViewController.m in Sources */,
 				2DBD694816B5272B0058EFE4 /* VVVandyMobileAPIClient.m in Sources */,
 				2DBD694B16B548100058EFE4 /* VVReport.m in Sources */,
