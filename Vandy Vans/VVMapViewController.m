@@ -28,6 +28,8 @@ static NSString * const kStopNameKey = @"StopName";
 
 @interface VVMapViewController () <MKMapViewDelegate>
 
+@property (strong, nonatomic) CLLocationManager *locationManager;
+
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 
 @property (weak, nonatomic) IBOutlet MKMapView *vanMapView;
@@ -49,6 +51,14 @@ static NSString * const kStopNameKey = @"StopName";
 @synthesize routeBeingDisplayed = _routeBeingDisplayed;
 
 #pragma mark - Custom Getters
+
+- (CLLocationManager *)locationManager {
+    if (!_locationManager) {
+        _locationManager = [[CLLocationManager alloc] init];
+    }
+    
+    return _locationManager;
+}
 
 - (VVRoute *)routeBeingDisplayed {
     if (!_routeBeingDisplayed) {
@@ -96,6 +106,26 @@ static NSString * const kStopNameKey = @"StopName";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    CLAuthorizationStatus authorizationStatus = [CLLocationManager authorizationStatus];
+    
+    if ([UIAlertController class]) {
+        if (authorizationStatus == kCLAuthorizationStatusNotDetermined) {
+            UIAlertController *locationRequestAlertController = [VVAlertBuilder locationRequestAlertControllerWithGrantHandler:^(UIAlertAction *action) {
+                [self.locationManager requestWhenInUseAuthorization];
+            }];
+            
+            [self presentViewController:locationRequestAlertController
+                               animated:YES
+                             completion:nil];
+        } else if (authorizationStatus == kCLAuthorizationStatusDenied || authorizationStatus == kCLAuthorizationStatusRestricted) {
+            UIAlertController *locationAlertController = [VVAlertBuilder locationAuthorizationDeniedAlertController];
+            
+            [self presentViewController:locationAlertController
+                               animated:YES
+                             completion:nil];
+        }
+    }
     
     self.vansAreRunning = YES;
     self.routeIsSelected = NO;

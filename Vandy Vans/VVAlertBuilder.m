@@ -58,4 +58,40 @@
                             otherButtonTitles:nil];
 }
 
++ (UIAlertController *)locationRequestAlertControllerWithGrantHandler:(void (^)(UIAlertAction *))grantHandler {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Location Permission Request"
+                                                                             message:@"Vandy Vans needs to access your current location to help show you the stops around you. Your location will never be stored or saved anywhere."
+                                                                      preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *grantAction = [UIAlertAction actionWithTitle:@"Grant"
+                                                             style:UIAlertActionStyleDefault
+                                                           handler:grantHandler];
+    UIAlertAction *denyAction = [UIAlertAction actionWithTitle:@"Deny"
+                                                         style:UIAlertActionStyleDestructive
+                                                       handler:nil];
+    
+    [alertController addAction:grantAction];
+    [alertController addAction:denyAction];
+    
+    return alertController;
+}
+
++ (UIAlertController *)locationAuthorizationDeniedAlertController {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Location Permission Denied"
+                                                                             message:@"Vandy Vans does not have your permission to show your current location on the map. To fix this, tap Settings."
+                                                                      preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *settingsAction = [UIAlertAction actionWithTitle:@"Settings"
+                                                             style:UIAlertActionStyleDefault
+                                                           handler:^(UIAlertAction *action) {
+                                                               NSURL *settingsURL = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+                                                               
+                                                               [[UIApplication sharedApplication] openURL:settingsURL];
+                                                           }];
+    
+    [alertController addAction:settingsAction];
+    
+    return alertController;
+}
+
 @end

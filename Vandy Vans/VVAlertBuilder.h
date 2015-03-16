@@ -22,4 +22,8 @@
 
 + (UIAlertView *)noArrivalPredictionsAlertWithDelegate:(id)delegate;
 
++ (UIAlertController *)locationRequestAlertControllerWithGrantHandler:(void (^)(UIAlertAction *))grantHandler;
+
++ (UIAlertController *)locationAuthorizationDeniedAlertController;
+
 @end
